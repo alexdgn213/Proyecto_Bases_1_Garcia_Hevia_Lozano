@@ -1619,7 +1619,7 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (13,'Superficie alar'),
 (14,'Techo de servicio'),
 (15,'Régimen de ascenso'),
-(16,'Distance entre asientos'),
+(16,'Distancia entre asientos'),
 (17,'Ancho de los asientos'),
 (18,'Flecha alar'),
 (19,'Ancho del fuselaje'),
@@ -1633,15 +1633,13 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (27,'Máxima capacidad de combustible'),
 (28,'Motores(x2)'),
 (29,'Empuje máximo(x2)'),
-(30,'Empuje a velocidad'),
-(31,'Empuje velocidad crucero'),
-(32,'Diámetro de los álabes o las aspas del motor'),
-(33,'Longitud del motor'),
-(34,'Tripulación en la cabina del piloto'),
-(35,'Autonomía con peso máximo al despegue'),
-(36,'Motorización'),
-(37,'Empuje unitario');
- --Capacidad de pasajeros típica es o no es????? 
+(30,'Empuje velocidad crucero(x2)'),
+(31,'Diámetro de los álabes o las aspas del motor'),
+(32,'Longitud del motor'),
+--(33,'Tripulación en la cabina del piloto'),--ESTO NEIN
+(33,'Autonomía con peso máximo al despegue'),
+(34,'Motorización'),
+(35,'Empuje unitario'); 
  
  INSERT INTO mod_car (mod_car_valor,fk_mod_codigo,fk_car_codigo) VALUES
  (179,1,1); --CAPACIDADES ( hay clase densa,alta densa, estandar... varios tipos de clases, 
@@ -1657,4 +1655,412 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
  (31.2,'metros',9,2);
  (33.6,'metros',10,2);
  (39.5,'metros',11,2);
- (42.1,'metros',12,2); ---LLegamos hasta el AU802F
+ (42.1,'metros',12,2);
+  (70.66,'metros',13,2),
+ (70.66,'metros',14,2),
+ (70.66,'metros',15,2),
+ (70.66,'metros',16,2),
+ (76.4,'metros',17,2),
+  
+ (39.9,'metros',1,3),--Envergaduras
+ (32.9,'metros',5,3),
+ (28.3,'metros',6,3), 
+ (28.9,'metros',7,3),
+ (28.9,'metros',8,3),
+ (35.7,'metros',9,3),
+ (35.7,'metros',10,3),
+ (35.7,'metros',11,3),
+ (35.7,'metros',12,3),
+ (59.64,'metros',13,3),
+ (59.64,'metros',14,3),
+ (59.64,'metros',15,3),
+ (64.4,'metros',16,3),
+ (68.5,'metros',17,3),
+  
+ (12.9,'metros',1,4), --Alturas
+ (10.4,'metros',5,4),
+ (11.3,'metros',6,4),
+ (11.1,'metros',7,4),
+ (11.1,'metros',8,4),
+ (12.6,'metros',9,4),
+ (12.5,'metros',10,4),
+ (12.5,'metros',11,4),
+ (12.5,'metros',12,4),
+ (19.3,'metros',13,4),
+ (19.3,'metros',14,4),
+ (19.3,'metros',15,4),
+ (19.4,'metros',16,4),
+ (19.4,'metros',17,4),
+  
+ (55580,'KG',1,5), --Peso Vacio
+ (46700,'KG',5,5),
+ (28120,'KG',6,5),
+ (33200,'KG',7,5),
+ (31300,'KG',8,5),
+ (36380,'KG',9,5),
+ (38150,'KG',10,5),
+ (41415,'KG',11,5),
+ (44675,'KG',12,5),
+ (162400,'KG',13,5),
+ (174000,'KG',14,5),
+ (178100,'KG',15,5),
+ (178750,'KG',16,5),-- sin ER (ver enunciado)
+-- (184600,'KG',16,5), --con ER (ver enunciado)
+ (186000,'KG',17,5),
+  
+  (116570,'KG',1,6), --Peso maximo al despegue
+  (95028,'KG',5,6),
+  (49190,'KG',6,6),
+  (68050,'KG',7,6),
+  (60550,'KG',8,6),
+  (66000,'KG',9,6),
+  (70000,'KG',10,6), --sin ER (ver enunciado
+  --(77500,'KG',10,6) con ER
+  (79000,'KG',11,6),
+  (85100,'KG',12,6),
+  (333400,'KG',13,6),
+  (378000,'KG',14,6),
+  (378000,'KG',15,6),
+  (397000,'KG',16,6), --sin ER 
+  --(413000,'KG',16,6), con ER
+  (440000,'KG',17,6),
+  
+  (,,1,7), --Plantas Motrices == motorizacion??
+  
+  (75.6,'KN',1,8),-- Empuje Normal solo estos lo tienen
+  (77,'KN',5,8),
+  
+  (907,'km/h a 1000m',5,9), --Velocidad Crucero
+  (780,'km/h',6,9),
+  (780,'km/h',7,9),
+  (780,'km/h',8,9),
+  (828,'km/h',9,9),
+  (828,'km/h',10,9),
+  (828,'km/h',11,9),
+  (823,'km/h',12,9),
+  (893,'km/h a 10500m',13,9),
+  (893,'km/h a 10500m',14,9),
+  (893,'km/h a 10500m',15,9),
+  (913,'km/h a 10500m',16,9), --sin ER
+  --(916,'km/h a 10500m',16,9), con ER
+  (916,'km/h a 10500m',17,9),
+  
+  (1000,'km/h',1,10), --Velocidad maxima operativa Vno) solo esta
+  
+  (6820,'km',1,11), --Alcance solo estos
+  (4450,'km',5,11),
+  
+  (7,'Tripulantes',5,12), -- Tripulacion
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',6,12), 
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',7,12), 
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',8,12), 
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',9,12), 
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',10,12), 
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',11,12), 
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',12,12),
+  (3,'Pilot, copiloto y 1 auxiliar de vuelo',13,12), 
+  (3,'Pilot, copiloto y 1 auxiliar de vuelo',14,12),
+  (3,'Pilot, copiloto y 1 auxiliar de vuelo',15,12),
+  (2,'Pilot y copiloto',16,12),
+  (2,'Pilot y copiloto',17,12), 
+  
+  (153,'m^2',5,13),--Superficie Alar
+  
+  (13000,'metros',5,14), --Techo de Servicio
+  (10700,'metros',6,14),
+  (11300,'metros',7,14),
+  (11300,'metros',8,14),
+  (12500,'metros',9,14),
+  (12500,'metros',10,14),
+  (12500,'metros',11,14),
+  (12500,'metros',12,14),
+  
+  (14.9,'m/s',5,15), --Regimen de Ascenso
+  
+  (76,'cm',6,16),--Distancia entre asientos (1 clase, densa)
+ -- (86,'cm',6,16),-- (1 clase, estandar)
+  (76,'cm',7,16),--1 clase densa
+  --(81,'cm',7,16),
+  (76,'cm',8,16),--1 clase densa
+  --(81,'cm',8,16),
+  (76,'cm',9,16),--1 clase densa
+  --(81,'cm',9,16),
+  (76,'cm',10,16),--1 clase densa
+  --(81,'cm',10,16),
+  (76,'cm',11,16),--1 clase densa
+  --(81,'cm',11,16),
+  (71,'cm',12,16), --1 clase, alta densidad
+  --(76,'cm',12,16), --1 clase, densa
+  --(81,'cm,12,16),--1 clase, estandar
+  
+  (43.7,'cm',6,17),--Ancho de los asientos
+  (43.7,'cm',7,17),
+  (43.7,'cm',8,17),
+  (43.7,'cm',9,17),
+  (43.7,'cm',10,17),
+  (43.7,'cm',11,17),
+  (43.7,'cm',12,17),
+  
+  (25,'',6,18),--Flecha alar FALTA PONERLE EL SIMBOLO DE GRADO
+  (25,'',7,18),
+  (25,'',8,18),
+  (25.02,'',9,18),
+  (25.02,'',10,18),
+  (25.02,'',11,18),
+  (25.02,'',12,18),
+  
+  (3.76,'metros',6,19),--Ancho del Fuselaje
+  (3.76,'metros',7,19),
+  (3.76,'metros',8,19),
+  (3.76,'metros',9,19),
+  (3.76,'metros',10,19),
+  (3.76,'metros',11,19),
+  (3.76,'metros',12,19),
+  
+  (4.01,'m',6,20), --Alto del Fuselaje
+  (4.01,'m',7,20),
+  (4.01,'m',8,20),
+  (4.01,'m',9,20),
+  (4.01,'m',10,20),
+  (4.01,'m',11,20),
+  (4.01,'m',12,20),
+  
+  (2.20,'m',6,21), --Alto de la cabina
+  (2.20,'m',7,21),
+  (2.20,'m',8,21),
+  (2.20,'m',9,21),
+  (2.20,'m',10,21),
+  (2.20,'m',11,21),
+  (2.20,'m',12,21),
+  
+  (45000,'KG',6,22),--Peso de Aterrizaje maximo
+  (56250,'KG',7,22),
+  (50000,'KG',8,22),
+  (55000,'KG',9,22),
+  (58600,'KG',10,22),
+  (66350,'KG',11,22),
+  (66350,'KG',12,22),
+  
+  (18.4,'m^3',6,23), --Volumen de carga
+  (38.9,'m^3',7,23),
+  (23.3,'m^3',8,23),
+  (21.4,'m^3',9,23),
+  (27.3,'m^3',10,23),
+  (45.1,'m^3',11,23),
+  (52.5,'m^3',12,23),
+  
+  (1990,'m',6,24),--Carrera de despegue con peso máximo
+  (2540,'m',7,24),
+  (2470,'m',8,24),
+  (2400,'m',9,24),
+  (2480,'m',10,24),
+  (2450,'m',11,24),
+  (2450,'m',12,24),
+  (3190,'m',13,24),
+  (3190,'m',14,24),
+  (3320,'m',15,24),
+  (3018,'m',16,24),--sin ER
+  (3090,'m',16,24), --con ER
+  (3090,'m',17,24),
+  
+  (1860,'nmi',6,25), --Alcance con carga maxima
+  (2165,'nmi',7,25),
+  (2400,'nmi',8,25),
+  (3050,'nmi',9,25),
+  (3365,'nmi',10,25), --Basic
+  (3900,'nmi',10,25),--WL 
+  (5375,'nmi',10,25), --ER
+  (3060,'nmi',11,25),
+  (2700,'nmi',12,25),--1 clase
+  (3200,'nmi',12,25),--2 clases
+  
+  (876,'km/h',6,26), --Velocidad Maxima
+  (876,'km/h',7,26),
+  (876,'km/h',8,26),
+  (876,'km/h',9,26),
+  (876,'km/h',10,26),
+  (876,'km/h',11,26),
+  (876,'km/h',12,26),
+  (945,'km/h',13,26),
+  (945,'km/h',14,26),
+  (945,'km/h',15,26),
+  (978,'km/h',16,26),
+  --el ultimo no tiene? jajaj
+  
+  (17860,'litros',6,27),--Máxima capacidad de combustible
+  (23170,'litros',7,27),
+  (23800,'litros',8,27),
+  (26020,'litros',9,27),
+  (26020,'litros',10,27),
+  (26020,'litros',11,27),
+  (29660,'litros',12,27),
+  (183380,'litros',13,27),
+  (199160,'litros',14,27),
+  (199160,'litros',15,27),
+  (216840,'litros',16,27),--sin ER
+  --(241140,'litros',16,27), con ER
+  (243120,'litros',17,27),
+  
+  (Pratt & Whitney,'JT8D-7',6,28),--'Motores(x2)
+  (CFM,'International 56-3B-2',7,28),
+  (CFM,'56-3B-1',8,28),
+  (CFM,'56-7B20',9,28),
+  (CFM,'56-7B26',10,28),
+  (CFM,'56-7B27',11,28),
+  (CFM,'56-7',12,28),
+  
+  (84.5,'kN',6,29), --Empuje Maximo(2)
+  (98,'kN',7,29),
+  (89,'kN',8,29),
+  (91.6,'kN',9,29),
+  (116,'kN',10,29),
+  (121.4,'kN',11,29),
+  (121.4,'kN',12,29),
+  
+  (17.21,'kN',6,30), -- Empuje a velocidad crucero x2
+  (21.92,'kN',7,30),
+  (21.80,'kN',8,30),
+  (23.18,'kN',9,30),
+  (24.38,'kN',10,30),
+  (24.38,'kN',11,30),
+  (24.38,'kN',12,30),
+  
+  (1.12,'m',6,31), -- Diametro de los alabes
+  (1.52,'m',7,31),
+  (1.52,'m',8,31),
+  (1.55,'m',9,31),
+  (1.55,'m',10,31),
+  (1.55,'m',11,31),
+  (1.55,'m',12,31),
+  
+  (3.20,'m',6,32),--Longitud del motor
+  (2.36,'m',7,32),
+  (2.36,'m',8,32),
+  (2.51,'m',9,32),
+  (2.51,'m',10,32),
+  (2.51,'m',11,32),
+  (2.51,'m',12,32),
+  
+  (5300,'nmi',13,33), -- Autonomia con peso maximo al despegue
+  (6850,'nmi',14,33),
+  (6700,'nmi',15,33),
+  (7260,'nmi',16,33), -- sin ER
+  --(7670,'nmi',16,33), --Con ER
+  (8000,'nmi',17,33),
+  
+  (Pratt & Whitney,'JT9D-7A,Rolls-Royce,RB211-524B2',13,34),--Motorizacion(x4)
+  (PW JT9D-7R4G2,'GE CF6-50E2, RR RB211-524D4',14,34),
+  (PW JT9D-7R4G2,'GE CF6-80C2B1,RR RB211-524D4 ',15,34),
+  (P&W PW 4062,'GE CF6-80C2B5F,RR RB211-524G/H ',16,34),
+  --(GE CF6-80C2B5F,'',16,34), con ER
+  (GE GEnx-2B67,'',17,34),
+  
+  (PW 207,'kN',13,35),--Empuje Unitario
+  (RR 223,'kN',13,35), --el 2do del au747plus y asi vamos
+  (PW 244,'kN',14,35),
+  (GE 234,'kN',14,35),
+  (RR 236,'kN',14,35),
+  (PW 244,'kN',15,35),
+  (GE 247,'kN',15,35),
+  (RR 236,'kN',15,35),
+  (PW 282,'kN',16,35),
+  (GE 276,'kN',16,35),
+  (RR 265/270,'kN',16,35),
+  (GE 276,'kN',16,35), -- CON ER
+  (296,'kN',17,35);
+  
+  INSERT INTO aeronave(aer_codigo,aer_fecha_compra,fk_cli_rif,fk_mod_codigo) VALUES 
+  (1,'24/07/2017',123336666,13), -- con los fk de clientes arriba y los fk de los modelos de arriba
+  (2,'20/08/2016',99090987,1),
+  (3,'03/02/2017',123447677,6),
+  (4,'02/02/2015',123336686,8),
+  (5,'17/10/2016',223399666,12);
+  
+  INSERT INTO solicitud(sol_codigo,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2) VALUES
+  (1,0,'Se despacharan 55 tornillos',3,2),
+  (2,1,'Se necesita llevar a zona de ensamblaje de avion principal',2,1),
+  (3,1,'Se requiere pintura',1,1),
+  (4,0,'Se Despacharan 50 cauchos',3,1),
+  (5,1,'Se necesita llevar las piezas internas a la zona de despacho',2,3);
+  
+  INSERT INTO material(mat_codigo,mat_nombre) VALUES
+  (1,'cobre'),
+  (2,'metal'),
+  (3,'plastico'),
+  (4,'goma'),
+  (5,'madera'),
+  (6,'hierro');
+  
+  INSERT INTO mat_pro(mat_pro_codigo,mat_pro_precio,mat_pro_fecha_compra,mat_pro_cantidad,fk_mat_codigo,fk_pro_rif) VALUES
+  (1,5000,'10/03/2011',15000,1,71231233),
+  (2,10000,'05/10/2012',2375,2,81231123),
+  (3,500,'07/08/2011',1000,3,62323333),
+  (4,1000,'24/12/2012',3450,6,90001234),
+  (5,2000,'16/10/2013',4010,5,78900010);
+  
+  INSERT INTO tipo_pieza(tip_codigo,fk_tip_codigo,tip_nombre) VALUES --!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  (1,,'Ala'), --No se que poner en fk_tip_codigo de ninguna
+  (2,,'Superficie de Sustentacion'),
+  (3,,'Fuselaje'),
+  (4,,'Grupo Motopropulsor'),
+  (5,,'Superficie de Control'),
+  (6,,'Alerones'),
+  (7,,'Flaps'),
+  (8,,'Spoilers'),
+  (9,,'Slats'),
+  (10,,'Estabilizadores'),
+  --Falta tren de aterrizaje
+  (11,,'Instrumentos de Control'),
+  --Elementos Internos: 
+  (12,,'Asientos'),
+  --ETC
+  
+  --ESTO DE ABAJO NO
+  (1, 'Catia la Mar', 1344),
+(2, 'Valencia', 115),
+(3, 'Maracay', 61),
+(4,	'Guatire', 1014),
+(5, 'Planta de Colon', 343);
+  
+  INSERT INTO tip_mat(tip_mat_codigo,fk_mat_codigo,fk_tip_codigo,tip_mat_cantidad) VALUES --!!!!!!!!!!!!!!!!!!!!!!!!
+  (),
+  (),
+  (),
+  (),
+  ();
+  
+  INSERT INTO inventario(inv_codigo,fk_fab_codigo,inv_descripcion) VALUES
+  (1,1,'Inventario de piezas para ensamblar el avion'),
+  (2,2,'Contiene tantos elementos'),
+  (3,3,'Contiene tantos materiales'),
+  (4,4,'Contiene x cantidades de piezas'),
+  (5,5,'Piezas');
+  
+  INSERT INTO pieza(pie_codigo,pie_fecha_estimada,pie_fecha_entregada,fk_fab_codigo,fk_inv_codigo,fk_aer_codigo,fk_tip_codigo,fk_pie_codigo) VALUES
+  (1,'05/05/2015','06/05/2015',3,3,1,1,?),
+  (2,'10/03/2014','07/03/2014',3,3,1,2,?),
+  (3,'09/09/2016','09/09/2016',5,5,1,3,?),
+  (4,'17/11/2015','16/11/2015',1,1,1,4,?), --Grupo motopropulsor esta compuesto por: Guiñada,Cabaceo y Alabeo .Pag16
+  (5,'23/01/2014','25/01/2014',3,3,1,5,?),--Alerones/flaps entre otros?
+  (6,'14/04/2015','16/04/2015',3,3,1,6,?),
+  (7,'10/10/2016','10/10/2016',3,3,2,7,?),
+  (8,'01/01/2017','31/12/2016',3,3,4,8,?),
+  (9,'02/02/2016','10/01/2016',3,3,5,9,?),
+  (10,'03/03/2016','03/03/2016',3,3,2,10,?), --6 tipos de colas
+  (11,'04/04/2015','04/05/2015',4,4,4,11,?),
+  (12,'05/05/2017','05/05/2017',2,2,5,12,?);
+  
+  INSERT INTO tip_mod(tip_mod_codigo,tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo) VALUES
+  (1,),
+  
+  INSERT INTO prueba(pru_codigo,pru_nombre,pru_descripcion) VALUES
+ (1,'Control de calidad de materiales','Consiste en comprobar el nivel optimo del material'),
+ (2,'Control de calidad de materiales por traslado','Comprueba que no hayan sufrido daños por traslado'),
+ (3,'Control de calidad de la pieza','Comprueba el nivel optimo de la pieza ensamblada'),
+ (4,'Prueba de control de ensamble','Comprueba que el ensamblaje se haya hecho satisfactoriamente'),
+ (5,'Control de calidad de piezas por traslado','Comprueba que no hayan sufrido daños por traslado'),
+  
+  INSERT INTO pru_mat(pru_mat_codigo,pru_mat_fecha_realizacion,fk_pru_codigo,fk_mat_codigo) VALUES
+  ();
+
+ 
