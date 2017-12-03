@@ -4,8 +4,8 @@
 create table lugar
 (
 	lug_codigo serial not null,
-	lug_nombre varchar(40) not null,
-	lug_tipo varchar(20) not null,
+	lug_nombre varchar(80) not null,
+	lug_tipo varchar(80) not null,
 	fk_lug_codigo int,
 	constraint pk_lugar primary key(lug_codigo),
 	constraint fk_lugar foreign key(lug_codigo)
@@ -16,7 +16,7 @@ create table lugar
 create table fabrica
 (
 	fab_codigo int not null,
-	fab_nombre varchar(15),
+	fab_nombre varchar(30),
 	fk_lug_codigo int not null, 
 	constraint pk_fabrica primary key(fab_codigo),
 	constraint fk_lugar foreign key(fk_lug_codigo)
@@ -27,8 +27,8 @@ create table fabrica
 create table zona
 (
 	zon_codigo int not null,
-	zon_nombre varchar(10) not null,
-	zon_descripcion varchar(50),
+	zon_nombre varchar(100) not null,
+	zon_descripcion varchar(100),
 	fk_fab_codigo int not null,
 	constraint pk_zona primary key (zon_codigo),
 	constraint u_zon_nombre unique(zon_nombre),
@@ -39,11 +39,11 @@ create table zona
 create table personal
 (
 	per_ci int not null,
-	per_nombre varchar(15) not null,
-	per_apellido_1 varchar(15) not null,
-	per_apellido_2 varchar(15) not null,
+	per_nombre varchar(30) not null,
+	per_apellido_1 varchar(30) not null,
+	per_apellido_2 varchar(30) not null,
 	per_fecha_inicio date not null,
-	per_titulacion varchar(35) not null,
+	per_titulacion varchar(60) not null,
 	per_experiencia varchar(100) not null,
 	fk_lug_codigo int not null,
 	fk_zon_codigo int not null,
@@ -57,10 +57,10 @@ create table personal
 create table beneficiario
 (
 	ben_ci int not null,
-	ben_nombre varchar(15) not null,
-	ben_apellido_1 varchar(15) not null,
-	ben_apellido_2 varchar(15) not null,
-	ben_parentesco varchar(15),
+	ben_nombre varchar(30) not null,
+	ben_apellido_1 varchar(30) not null,
+	ben_apellido_2 varchar(30) not null,
+	ben_parentesco varchar(30),
 	fk_lug_codigo int not null,
 	fk_per_ci int not null,
 	constraint pk_beneficiario primary key(ben_ci),
@@ -73,7 +73,7 @@ create table beneficiario
 create table proveedor
 (
 	pro_rif int not null,
-	pro_nombre varchar(15) not null,
+	pro_nombre varchar(30) not null,
 	pro_monto_acreditado int not null,
 	pro_fecha_inicio date not null,
 	fk_lug_codigo int not null,
@@ -85,7 +85,7 @@ create table proveedor
 create table cliente
 (
 	cli_rif int not null,
-	cli_nombre varchar(15) not null,
+	cli_nombre varchar(30) not null,
 	cli_monto_acreditado int not null,
 	cli_fecha_inicio date not null,
 	fk_lug_codigo int not null,
@@ -97,8 +97,8 @@ create table cliente
 create table informacion_contacto
 (
 	inf_codigo serial not null,
-	inf_valor varchar(20) not null,
-	inf_tipo varchar(15) not null,
+	inf_valor varchar(80) not null,
+	inf_tipo varchar(30) not null,
 	fk_pro_rif int,
 	fk_per_ci int,
 	fk_cli_rif int,
@@ -116,7 +116,7 @@ create table informacion_contacto
 
 create table modelo_aeronave
 (
-	mod_codigo int not null,
+	mod_codigo serial not null,
 	mod_nombre varchar(30) not null,
 	constraint pk_modelo_aeronave primary key(mod_codigo)
 );
@@ -124,7 +124,7 @@ create table modelo_aeronave
 create table caracteristica
 (
 	car_codigo int not null,
-	car_nombre varchar(40) not null,
+	car_nombre varchar(80) not null,
 	constraint pk_caracteristica primary key(car_codigo)
 );
 
@@ -132,7 +132,7 @@ create table mod_car
 (
 	mod_car_codigo serial not null,
 	mod_car_valor real not null, --Lo cambiamos porque las medidas puedes ser: 44,1 
-	mod_car_descripcion varchar(50), --Se puso para determinar la medida ej: (cm, metros, etc)
+	mod_car_descripcion varchar(100), --Se puso para determinar la medida ej: (cm, metros, etc)
 	fk_mod_codigo int not null,
 	fk_car_codigo int not null,
 	constraint pk_mod_car primary key(mod_car_codigo,fk_mod_codigo,fk_car_codigo),
@@ -158,8 +158,8 @@ create table aeronave
 create table solicitud
 (
 	sol_codigo int not null,
-	sol_completada bit not null, --estatus=1 =realizada, 0=pending
-	sol_descripcion varchar(50) not null,
+	sol_completada int not null, --estatus=1 =realizada, 0=pending
+	sol_descripcion varchar(100) not null,
 	fk_fab_codigo1 int not null,
 	fk_fab_codigo2 int not null,
 	constraint pk_solicitud primary key(sol_codigo,fk_fab_codigo1,fk_fab_codigo2),
@@ -196,7 +196,7 @@ create table mat_pro
 create table tipo_pieza
 (
 	tip_codigo int not null,
-    fk_tip_codigo int not null,
+    fk_tip_codigo int,
 	tip_nombre varchar(30) not null,
 	constraint pk_tip_pieza primary key(tip_codigo),
 	constraint fk_tip_cod foreign key(fk_tip_codigo)
@@ -231,11 +231,11 @@ create table pieza
 	pie_codigo int not null,
 	pie_fecha_estimada date,
 	pie_fecha_entregada date,
-    fk_fab_codigo int not null,
-    fk_inv_codigo int not null,
-    fk_aer_codigo int not null,
+    fk_fab_codigo int,
+    fk_inv_codigo int,
+    fk_aer_codigo int,
     fk_tip_codigo int not null,
-    fk_pie_codigo int not null,
+    fk_pie_codigo int,
 	constraint pk_pieza primary key(pie_codigo),
 	constraint fk_fabrica foreign key(fk_fab_codigo)
 	references fabrica(fab_codigo),
@@ -267,7 +267,7 @@ create table tip_mod
 create table prueba
 (
 	pru_codigo int not null,
-	pru_nombre varchar(35) not null,
+	pru_nombre varchar(60) not null,
 	pru_descripcion varchar(90) not null,
 	constraint pk_prueba primary key(pru_codigo)
 );
@@ -330,7 +330,7 @@ create table per_pru_pie
 create table estatus
 (	
 	 est_codigo int not null,
-	 est_nombre varchar(15) not null,
+	 est_nombre varchar(30) not null,
 	 constraint pk_est_codigo primary key(est_codigo)
 );
 

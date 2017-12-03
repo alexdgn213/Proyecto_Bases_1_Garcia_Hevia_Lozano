@@ -1,4 +1,7 @@
 --Deben ir al reves de los creates
+drop table pru_mat_est;
+drop table pru_pie_est;
+drop table estatus;
 drop table per_pru_pie;
 drop table mat_inv;
 drop table pru_pie;

@@ -1525,18 +1525,18 @@ INSERT INTO zona (zon_codigo, zon_nombre, zon_descripcion, fk_fab_codigo) VALUES
 (5, 'zona de ensamble', 'zona donde se ensamblan las piezas', 3),
 (6, 'zona de certificacion de calidad', 'zona donde se verifica la calidad', 3);
 
-INSERT INTO personal (per_ci, per_nombre, per_apellido1, per_apellido2, per_fecha_inicio, per_titulacion, per_experiencia, fk_lug_codigo, fk_zon_codigo) VALUES
+INSERT INTO personal (per_ci, per_nombre, per_apellido_1, per_apellido_2, per_fecha_inicio, per_titulacion, per_experiencia, fk_lug_codigo, fk_zon_codigo) VALUES
 (10000000, 'Alejandro', 'Rojas', 'Reyes', '01/03/2015', 'Ingeniero aeronautico', 'Recien graduado', 1348, 1),
 (20000000, 'Benito', 'Suarez', 'Ocando', '01/09/2015', 'Pintor', '7 años Toyota', 1348, 2),
 (11212123, 'Keysi', 'Sayago', 'Gomez', '01/03/2014', 'Tecnico superior en administracion', '2 años Plumrose', 476, 3),
-(11212312, 'Michelle', 'Gonzalez', 'Jraiche', '26/01/2006', 'Ingeniero mecánico', '4 años Vepica', 476, 5),
-(19080988, 'Victor', 'Manrique', 'Perez', '15/05/2008', 'Ingeniero en produccion', 'Recien graduado', 476, 6),
+(11212312, 'Michelle', 'Gonzalez', 'Jraiche', '01/26/2006', 'Ingeniero mecánico', '4 años Vepica', 476, 5),
+(19080988, 'Victor', 'Manrique', 'Perez', '05/15/2008', 'Ingeniero en produccion', 'Recien graduado', 476, 6),
 (10909899, 'Jamileth', 'Granados', 'Sislema', '01/08/2015', 'Bachiller', '3 años Mcdonals', 474, 4);
 
 INSERT INTO beneficiario (ben_ci,ben_nombre,ben_apellido_1,ben_apellido_2,ben_parentesco,fk_lug_codigo,fk_per_ci) VALUES
 (16890891, 'Antonio', 'Rojas','Fernández','Hijo',1348,10000000),
 (20123123,'Veronica','Suarez','Verde','Hija',1348,20000000),
-(23666787, 'Andrea','Sayago','Saito',476,11212123),
+(23666787, 'Andrea','Sayago','Saito','Esposa',476,11212123),
 (23606123,'Marialette','Gonzalez','Argueyes','Hija',476,11212312),
 (20012122,'Joneyver','Granados','Granados','Hijo',474,10909899);
 
@@ -1545,7 +1545,7 @@ INSERT INTO proveedor (pro_rif,pro_nombre,pro_monto_acreditado,pro_fecha_inicio,
 (71231233,'Ferretotal',400000,'01/02/2010',382),
 (90001234,'Hierros de Venezuela',600000,'01/11/2011',1003),
 (81231123,'MetalesBE',800000,'01/03/2007',975),
-(100000000,'PizzaHut',10000,'01/0/4/2007',10),
+(100000000,'PizzaHut',10000,'01/04/2007',10),
 (51231233,'Adecos4ever',300000,'01/02/2010',30),
 (121222222,'4ever71',2000000,'02/03/2011',45),
 (98787781,'HundundKatze',1000000,'01/06/2012',97),
@@ -1568,12 +1568,12 @@ INSERT INTO cliente (cli_rif,cli_nombre,cli_monto_acreditado,cli_fecha_inicio,fk
 (99090987,'Avianca',3000000,'10/01/2011',78),
 (123447677,'Aeropostal',3500000,'01/01/2011',80),
 (123336686,'Viasa',1000000,'01/06/2012',100),
-(223399666,'Aserca Airlines','15/08/2011',202),
-(523436896,'Laser','15/10/2010',40),
-(98813312,'Venezolana','15/04/2011',55),
-(145536686,'Conviasa','01/12/2012',71),
-(177738686,'Iberia','15/04/2011',59),
-(275638686,'Rutaca','01/12/2011',78),
+(223399666,'Aserca Airlines',3500000,'08/15/2011',202),
+(523436896,'Laser',4500000,'10/15/2010',40),
+(98813312,'Venezolana',1500000,'04/15/2011',55),
+(145536686,'Conviasa',3550000,'01/12/2012',71),
+(177738686,'Iberia',5600000,'04/15/2011',59),
+(275638686,'Rutaca',7500000,'01/12/2011',78),
 (90812312,'Santa Barbara Airlines',3000000,'01/01/2011',1000),
 (12312333,'Mexicana de Aviacion',2500000,'01/12/2010',987);
 
@@ -1641,21 +1641,21 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (34,'Motorización'),
 (35,'Empuje unitario'); 
  
- INSERT INTO mod_car (mod_car_valor,fk_mod_codigo,fk_car_codigo) VALUES
- (179,1,1); --CAPACIDADES ( hay clase densa,alta densa, estandar... varios tipos de clases, no entiendo como llenarlas
- (189,5,1);
- (118,
+ INSERT INTO mod_car (mod_car_valor,mod_car_descripcion,fk_mod_codigo,fk_car_codigo) VALUES
+ (179,'Personas',1,1), --CAPACIDADES ( hay clase densa,alta densa, estandar... varios tipos de clases, no entiendo como llenarlas
+ (189,'Personas',5,1),
+ --(118,
  
  
- (44.1,'metros',1,2); --Longitudes
- (46.7,'metros',5,2);
- (28.6,'metros',6,2);
- (36.5,'metros',7,2);
- (31.1,'metros',8,2);
- (31.2,'metros',9,2);
- (33.6,'metros',10,2);
- (39.5,'metros',11,2);
- (42.1,'metros',12,2);
+ (44.1,'metros',1,2), --Longitudes
+ (46.7,'metros',5,2),
+ (28.6,'metros',6,2),
+ (36.5,'metros',7,2),
+ (31.1,'metros',8,2),
+ (31.2,'metros',9,2),
+ (33.6,'metros',10,2),
+ (39.5,'metros',11,2),
+ (42.1,'metros',12,2),
   (70.66,'metros',13,2),
  (70.66,'metros',14,2),
  (70.66,'metros',15,2),
@@ -1691,7 +1691,7 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
  (19.3,'metros',15,4),
  (19.4,'metros',16,4),
  (19.4,'metros',17,4),
-  
+ 
  (55580,'KG',1,5), --Peso Vacio
  (46700,'KG',5,5),
  (28120,'KG',6,5),
@@ -1725,7 +1725,7 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   --(413000,'KG',16,6), con ER
   (440000,'KG',17,6),
   
-  (,,1,7), --Plantas Motrices == motorizacion??
+  --(,,1,7), --Plantas Motrices == motorizacion??
   
   (75.6,'KN',1,8),-- Empuje Normal solo estos lo tienen
   (77,'KN',5,8),
@@ -1743,7 +1743,7 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (893,'km/h a 10500m',15,9),
   (913,'km/h a 10500m',16,9), --sin ER
   --(916,'km/h a 10500m',16,9), con ER
-  (916,'km/h a 10500m',17,9),
+  (916,'km/h a 10500m',16,9),
   
   (1000,'km/h',1,10), --Velocidad maxima operativa Vno) solo esta
   
@@ -1774,7 +1774,7 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (12500,'metros',10,14),
   (12500,'metros',11,14),
   (12500,'metros',12,14),
-  
+   
   (14.9,'m/s',5,15), --Regimen de Ascenso
   
   (76,'cm',6,16),--Distancia entre asientos (1 clase, densa)
@@ -1900,7 +1900,7 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (216840,'litros',16,27),--sin ER
   --(241140,'litros',16,27), con ER
   (243120,'litros',17,27),
-  
+  /*
   (Pratt & Whitney,'JT8D-7',6,28),--'Motores(x2)
   (CFM,'International 56-3B-2',7,28),
   (CFM,'56-3B-1',8,28),
@@ -1908,7 +1908,7 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (CFM,'56-7B26',10,28),
   (CFM,'56-7B27',11,28),
   (CFM,'56-7',12,28),
-  
+  */
   (84.5,'kN',6,29), --Empuje Maximo(2)
   (98,'kN',7,29),
   (89,'kN',8,29),
@@ -1946,8 +1946,9 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (6700,'nmi',15,33),
   (7260,'nmi',16,33), -- sin ER
   --(7670,'nmi',16,33), --Con ER
-  (8000,'nmi',17,33),
+  (8000,'nmi',17,33);
   
+  /*
   (Pratt & Whitney,'JT9D-7A,Rolls-Royce,RB211-524B2',13,34),--Motorizacion(x4)
   (PW JT9D-7R4G2,'GE CF6-50E2, RR RB211-524D4',14,34),
   (PW JT9D-7R4G2,'GE CF6-80C2B1,RR RB211-524D4 ',15,34),
@@ -1968,13 +1969,13 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (RR 265/270,'kN',16,35),
   (GE 276,'kN',16,35), -- CON ER
   (296,'kN',17,35);
-  
+  */
   INSERT INTO aeronave(aer_codigo,aer_fecha_compra,fk_cli_rif,fk_mod_codigo) VALUES 
-  (1,'24/07/2017',123336666,13), -- con los fk de clientes arriba y los fk de los modelos de arriba
-  (2,'20/08/2016',99090987,1),
+  (1,'07/24/2017',123336666,13), -- con los fk de clientes arriba y los fk de los modelos de arriba
+  (2,'08/20/2016',99090987,1),
   (3,'03/02/2017',123447677,6),
   (4,'02/02/2015',123336686,8),
-  (5,'17/10/2016',223399666,12);
+  (5,'10/17/2016',223399666,12);
   
   INSERT INTO solicitud(sol_codigo,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2) VALUES
   (1,0,'Se despacharan 55 tornillos',3,2),
@@ -1995,33 +1996,33 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (1,5000,'10/03/2011',15000,1,71231233),
   (2,10000,'05/10/2012',2375,2,81231123),
   (3,500,'07/08/2011',1000,3,62323333),
-  (4,1000,'24/12/2012',3450,6,90001234),
-  (5,2000,'16/10/2013',4010,5,78900010);
+  (4,1000,'12/24/2012',3450,6,90001234),
+  (5,2000,'10/16/2013',4010,5,78900010);
   
-  INSERT INTO tipo_pieza(tip_codigo,fk_tip_codigo,tip_nombre) VALUES --!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  (1,,'Ala'), --No se que poner en fk_tip_codigo de ninguna
-  (2,,'Superficie de Sustentacion'),
-  (3,,'Fuselaje'),
-  (4,,'Grupo Motopropulsor'),
-  (5,,'Superficie de Control'),
-  (6,,'Alerones'),
-  (7,,'Flaps'),
-  (8,,'Spoilers'),
-  (9,,'Slats'),
-  (10,,'Estabilizadores'),
+  INSERT INTO tipo_pieza(tip_codigo,fk_tip_codigo,tip_nombre) VALUES --fk_tip_codigo es para piezas compuestas por otra
+  (1,null,'Ala'), --No se que poner en fk_tip_codigo de ninguna
+  (2,null,'Superficie de Sustentacion'),
+  (3,null,'Fuselaje'),
+  (4,null,'Grupo Motopropulsor'),
+  (5,null,'Superficie de Control'),
+  (6,null,'Alerones'),
+  (7,null,'Flaps'),
+  (8,null,'Spoilers'),
+  (9,null,'Slats'),
+  (10,null,'Estabilizadores'),
   --Falta tren de aterrizaje
-  (11,,'Instrumentos de Control'),
+  (11,null,'Instrumentos de Control'),
   --Elementos Internos: 
-  (12,,'Asientos'),
+  (12,null,'Asientos');
   --ETC
-  
+  /*
   INSERT INTO tip_mat(tip_mat_codigo,fk_mat_codigo,fk_tip_codigo,tip_mat_cantidad) VALUES --!!!!!!!!!!!!!!!!!!!!!!!!
   (),
   (),
   (),
   (),
   ();
-  
+  */
   INSERT INTO inventario(inv_codigo,fk_fab_codigo,inv_descripcion) VALUES
   (1,1,'Inventario de piezas para ensamblar el avion'),
   (2,2,'Contiene tantos elementos'),
@@ -2030,30 +2031,31 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (5,5,'Piezas');
   
   INSERT INTO pieza(pie_codigo,pie_fecha_estimada,pie_fecha_entregada,fk_fab_codigo,fk_inv_codigo,fk_aer_codigo,fk_tip_codigo,fk_pie_codigo) VALUES
-  (1,'05/05/2015','06/05/2015',3,3,1,1,?),
-  (2,'10/03/2014','07/03/2014',3,3,1,2,?),
-  (3,'09/09/2016','09/09/2016',5,5,1,3,?),
-  (4,'17/11/2015','16/11/2015',1,1,1,4,?), --Grupo motopropulsor esta compuesto por: Guiñada,Cabaceo y Alabeo .Pag16
-  (5,'23/01/2014','25/01/2014',3,3,1,5,?),--Alerones/flaps entre otros?
-  (6,'14/04/2015','16/04/2015',3,3,1,6,?),
-  (7,'10/10/2016','10/10/2016',3,3,2,7,?),
-  (8,'01/01/2017','31/12/2016',3,3,4,8,?),
-  (9,'02/02/2016','10/01/2016',3,3,5,9,?),
-  (10,'03/03/2016','03/03/2016',3,3,2,10,?), --6 tipos de colas
-  (11,'04/04/2015','04/05/2015',4,4,4,11,?),
-  (12,'05/05/2017','05/05/2017',2,2,5,12,?);
+  (1,'05/05/2015','06/05/2015',3,3,1,1,null),
+  (2,'10/03/2014','07/03/2014',3,3,1,2,null),
+  (3,'09/09/2016','09/09/2016',5,5,1,3,null),
+  (4,'11/17/2015','11/16/2015',1,1,1,4,null), --Grupo motopropulsor esta compuesto por: Guiñada,Cabaceo y Alabeo .Pag16
+  (5,'01/23/2014','01/25/2014',3,3,1,5,null),--Alerones/flaps entre otros?
+  (6,'04/14/2015','04/16/2015',3,3,1,6,null),
+  (7,'10/10/2016','10/10/2016',3,3,2,7,null),
+  (8,'01/01/2017','12/31/2016',3,3,4,8,null),
+  (9,'02/02/2016','10/01/2016',3,3,5,9,null),
+  (10,'03/03/2016','03/03/2016',3,3,2,10,null), --6 tipos de colas
+  (11,'04/04/2015','04/05/2015',4,4,4,11,null),
+  (12,'05/05/2017','05/05/2017',2,2,5,12,null);
   
+  /*
   INSERT INTO tip_mod(tip_mod_codigo,tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo) VALUES
   (1,),
-  
+  */
   INSERT INTO prueba(pru_codigo,pru_nombre,pru_descripcion) VALUES
  (1,'Control de calidad de materiales','Consiste en comprobar el nivel optimo del material'),
  (2,'Control de calidad de materiales por traslado','Comprueba que no hayan sufrido daños por traslado'),
  (3,'Control de calidad de la pieza','Comprueba el nivel optimo de la pieza ensamblada'),
  (4,'Prueba de control de ensamble','Comprueba que el ensamblaje se haya hecho satisfactoriamente'),
- (5,'Control de calidad de piezas por traslado','Comprueba que no hayan sufrido daños por traslado'),
-  
+ (5,'Control de calidad de piezas por traslado','Comprueba que no hayan sufrido daños por traslado');
+  /*
   INSERT INTO pru_mat(pru_mat_codigo,pru_mat_fecha_realizacion,fk_pru_codigo,fk_mat_codigo) VALUES
   ();
-
+*/
  

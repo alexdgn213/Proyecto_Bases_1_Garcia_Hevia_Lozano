@@ -25,9 +25,9 @@ public class ConectorDB {
             try {
                 Class.forName("org.postgresql.Driver");
                 conexion = DriverManager.getConnection(urlDatabase,  "alex", "123456");
-                System.out.println("La conexión se realizo sin problemas! =) ");
+                System.out.println("La conexión se realizo sin problemas");
             } catch (Exception e) {
-                System.out.println("Ocurrio un error : "+e.getMessage());
+                System.out.print(e.toString());
             }
             
     }
@@ -36,7 +36,7 @@ public class ConectorDB {
         if(conexion!=null) try {
             conexion.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ConectorDB.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.print(ex.toString());
         }
     }
 
