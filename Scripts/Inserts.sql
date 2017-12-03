@@ -1642,7 +1642,7 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (35,'Empuje unitario'); 
  
  INSERT INTO mod_car (mod_car_valor,fk_mod_codigo,fk_car_codigo) VALUES
- (179,1,1); --CAPACIDADES ( hay clase densa,alta densa, estandar... varios tipos de clases, 
+ (179,1,1); --CAPACIDADES ( hay clase densa,alta densa, estandar... varios tipos de clases, no entiendo como llenarlas
  (189,5,1);
  (118,
  
@@ -2014,13 +2014,6 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   --Elementos Internos: 
   (12,,'Asientos'),
   --ETC
-  
-  --ESTO DE ABAJO NO
-  (1, 'Catia la Mar', 1344),
-(2, 'Valencia', 115),
-(3, 'Maracay', 61),
-(4,	'Guatire', 1014),
-(5, 'Planta de Colon', 343);
   
   INSERT INTO tip_mat(tip_mat_codigo,fk_mat_codigo,fk_tip_codigo,tip_mat_cantidad) VALUES --!!!!!!!!!!!!!!!!!!!!!!!!
   (),
