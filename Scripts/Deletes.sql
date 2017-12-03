@@ -1,5 +1,7 @@
 --Deben ir al reves de los creates
 -- Faltan vaciar las secuencias
+delete from usuario;
+delete from rol;
 delete from pru_mat_est;
 delete from pru_pie_est;
 delete from estatus;

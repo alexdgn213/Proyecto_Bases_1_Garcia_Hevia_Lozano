@@ -2058,4 +2058,12 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   INSERT INTO pru_mat(pru_mat_codigo,pru_mat_fecha_realizacion,fk_pru_codigo,fk_mat_codigo) VALUES
   ();
 */
+INSERT INTO rol(rol_nombre,rol_descripcion) VALUES
+	('SuperUsuario','Posee todos los permisos');
+    
+INSERT INTO usuario(usu_nombre,usu_clave,fk_rol_codigo) VALUES
+	('alex','123456',1),
+    ('marco','123456',1),
+    ('vero','123456',1),
+    ('anak','123456',1);
  

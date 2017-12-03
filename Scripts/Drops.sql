@@ -1,4 +1,6 @@
 --Deben ir al reves de los creates
+drop table usuario;
+drop table rol;
 drop table pru_mat_est;
 drop table pru_pie_est;
 drop table estatus;

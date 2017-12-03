@@ -360,4 +360,21 @@ create table pru_mat_est
 	 references estatus(est_codigo)
 );
 
+create table rol
+(
+	 rol_codigo serial not null,
+	 rol_nombre varchar(30) not null unique,
+	 rol_descripcion varchar(60) not null,
+	 constraint pk_rol_codigo primary key(rol_codigo)
+);
 
+create table usuario
+(
+	 usu_codigo serial not null,
+	 usu_nombre varchar(30) not null unique,
+	 usu_clave varchar(30) not null,
+	 fk_rol_codigo int not null,
+	 constraint pk_usu_codigo primary key(usu_codigo),
+	 constraint fk_rol_codigo foreign key (fk_rol_codigo)
+	 references Rol(rol_codigo)
+);
