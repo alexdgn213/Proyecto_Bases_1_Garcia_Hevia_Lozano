@@ -15,7 +15,7 @@ create table lugar
 
 create table fabrica
 (
-	fab_codigo int not null,
+	fab_codigo serial not null,
 	fab_nombre varchar(30),
 	fk_lug_codigo int not null, 
 	constraint pk_fabrica primary key(fab_codigo),
@@ -26,7 +26,7 @@ create table fabrica
 
 create table zona
 (
-	zon_codigo int not null,
+	zon_codigo serial not null,
 	zon_nombre varchar(100) not null,
 	zon_descripcion varchar(100),
 	fk_fab_codigo int not null,
@@ -129,7 +129,7 @@ create table modelo_aeronave
 
 create table caracteristica
 (
-	car_codigo int not null,
+	car_codigo serial not null,
 	car_nombre varchar(80) not null,
 	constraint pk_caracteristica primary key(car_codigo)
 );
@@ -150,7 +150,7 @@ create table mod_car
 
 create table aeronave
 (
-	aer_codigo int not null,
+	aer_codigo serial not null,
 	aer_fecha_compra date not null,
 	fk_cli_rif int not null,
 	fk_mod_codigo int not null,
@@ -172,7 +172,7 @@ create table material
 
 create table mat_pro
 (
-	mat_pro_codigo int not null,
+	mat_pro_codigo serial not null,
 	mat_pro_precio int not null,
 	mat_pro_fecha_compra date not null,
 	mat_pro_cantidad int not null,
@@ -201,7 +201,7 @@ create table ensamblaje
 
 create table tipo_pieza
 (
-	tip_codigo int not null,
+	tip_codigo serial not null,
     fk_tip_codigo int,
     tip_tiempo_fabricacion int not null,--Numero de dias u horas
 	tip_nombre varchar(30) not null,
@@ -215,7 +215,7 @@ create table tipo_pieza
 
 create table inventario
 (
-	inv_codigo int not null,
+	inv_codigo serial not null,
     fk_fab_codigo int not null,
     inv_descripcion varchar(60) not null,
 	constraint pk_inventario primary key(inv_codigo),
@@ -225,7 +225,7 @@ create table inventario
 
 create table pieza
 (
-	pie_codigo int not null,
+	pie_codigo serial not null,
 	pie_fecha_estimada date,
 	pie_fecha_entregada date,
     fk_inv_codigo int,
@@ -245,7 +245,7 @@ create table pieza
 
 create table solicitud
 (
-	sol_codigo int not null,
+	sol_codigo serial not null,
 	sol_cantidad int not null,
 	sol_completada int not null, --estatus=1 =realizada, 0=pending
 	sol_descripcion varchar(100) not null,
@@ -267,7 +267,7 @@ create table solicitud
 
 create table tip_mod
 (
-	tip_mod_codigo int not null,
+	tip_mod_codigo serial not null,
 	tip_mod_cantidad int not null,
     fk_mod_codigo int not null,
     fk_tip_codigo int not null,
@@ -280,7 +280,7 @@ create table tip_mod
 
 create table prueba
 (
-	pru_codigo int not null,
+	pru_codigo serial not null,
 	pru_nombre varchar(60) not null,
 	pru_descripcion varchar(90) not null,
 	constraint pk_prueba primary key(pru_codigo)
@@ -300,7 +300,7 @@ create table tip_pru
 
 create table pru_pie
 (
-	pru_pie_codigo int not null,
+	pru_pie_codigo serial not null,
 	pru_pie_fecha_realizacion date,
     fk_pru_codigo int not null,
     fk_pie_codigo int not null,
@@ -313,7 +313,7 @@ create table pru_pie
 
 create table mat_inv
 (
-	mat_inv_codigo int not null,
+	mat_inv_codigo serial not null,
 	mat_inv_cantidad int,
     fk_mat_codigo int not null,
     fk_inv_codigo int not null,
@@ -326,7 +326,7 @@ create table mat_inv
 
 create table pru_mat_inv
 (
-		pru_mat_inv_codigo int not null,
+		pru_mat_inv_codigo serial not null,
 		pru_mat_inv_fecha_realizacion date,
     	fk_pru_codigo int not null,
     	fk_mat_codigo int not null,
@@ -341,7 +341,7 @@ create table pru_mat_inv
 
 create table per_pru_pie
 (
-	 per_pru_pie_codigo int not null,
+	 per_pru_pie_codigo serial not null,
 	 per_pru_pie_encargado int ,--1 es el encargado
      fk_per_ci int not null,
      fk_pru_codigo int not null,
@@ -408,7 +408,7 @@ create table tip_mat
 
 create table pru_aer
 (
-	pru_aer_codigo int not null,
+	pru_aer_codigo serial not null,
 	pru_aer_fecha_realizacion date,
     fk_pru_codigo int not null,
     fk_aer_codigo int not null,
@@ -451,7 +451,7 @@ create table pago
 
 create table estatus
 (	
-	 est_codigo int not null,
+	 est_codigo serial not null,
 	 est_nombre varchar(30) not null,
 	 fk_ens_codigo int,
 	 fk_pru_pie_codigo int,
