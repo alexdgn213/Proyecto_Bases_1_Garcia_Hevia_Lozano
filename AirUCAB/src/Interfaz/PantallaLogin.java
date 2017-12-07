@@ -7,22 +7,22 @@ package Interfaz;
 
 import Adaptadores.ConectorDB;
 import Dominio.Usuario;
-import java.awt.BorderLayout;
 
 /**
  *
  * @author alexd
  */
 public class PantallaLogin extends javax.swing.JFrame {
+    ConectorDB conector;
+    
 
     /**
-     * Creates new form PantallaLogin
+     * Creates new form PruebaLogin
      */
     public PantallaLogin() {
         initComponents();
-        PanelLogin panelLogin = new PanelLogin();
-        this.add(panelLogin,BorderLayout.CENTER);
-        this.pack();
+        conector = new ConectorDB();
+        conector.conectar();
     }
 
     /**
@@ -34,24 +34,114 @@ public class PantallaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(421, 269));
-        setSize(new java.awt.Dimension(1000, 1000));
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
+        bAcceder = new javax.swing.JButton();
+        tfUsuario = new javax.swing.JTextField();
+        tfClave = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setOpaque(false);
+
+        jLabel1.setForeground(new java.awt.Color(84, 110, 122));
+        jLabel1.setText("Usuario:");
+        jLabel1.setToolTipText("");
+
+        bAcceder.setBackground(new java.awt.Color(255, 255, 255));
+        bAcceder.setText("Acceder");
+        bAcceder.setMargin(new java.awt.Insets(14, 14, 14, 14));
+        bAcceder.setMaximumSize(new java.awt.Dimension(421, 269));
+        bAcceder.setMinimumSize(new java.awt.Dimension(421, 269));
+        bAcceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAccederActionPerformed(evt);
+            }
+        });
+
+        tfUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfUsuarioActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setForeground(new java.awt.Color(84, 110, 122));
+        jLabel2.setText("Clave:");
+        jLabel2.setToolTipText("");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Fondo)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfUsuario)
+                            .addComponent(tfClave, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(bAcceder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 232, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(Fondo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfClave, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(bAcceder, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 260));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/FondoLogin.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAccederActionPerformed
+        String usuario = tfUsuario.getText();
+        String clave = tfClave.getText();
+        Usuario usuarioActual = Usuario.loguearUsuario(conector, usuario);
+        if(usuarioActual!=null){
+            System.out.println("Usuario Encontrado");
+            if(usuarioActual.getUsu_clave().equals(clave)){
+                System.out.println("Usuario Logueado");
+            }
+            else{
+                System.out.println("Clave Incorrecta");
+            }
+        }
+        else{
+            System.out.println("Usuario no encontrado");
+        }
+    }//GEN-LAST:event_bAccederActionPerformed
+
+    private void tfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,6 +169,7 @@ public class PantallaLogin extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PantallaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -89,5 +180,13 @@ public class PantallaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JButton bAcceder;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField tfClave;
+    private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
 }

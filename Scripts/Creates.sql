@@ -251,18 +251,17 @@ create table solicitud
 	sol_descripcion varchar(100) not null,
 	fk_fab_codigo1 int not null,
 	fk_fab_codigo2 int not null,
-	fk_pie_codigo int not null,
-    fk_inv_codigo int not null,
-	fk_mat_inv_codigo int not null,
+	fk_tip_codigo int,
+    fk_mat_codigo int,
 	constraint pk_solicitud primary key(sol_codigo,fk_fab_codigo1,fk_fab_codigo2),
 	constraint fk_fab_codigo1 foreign key(fk_fab_codigo1)
 	references fabrica (fab_codigo),
 	constraint fk_fab_codigo2 foreign key(fk_fab_codigo2)
 	references fabrica (fab_codigo),
-	constraint fk_pie_codigo foreign key(fk_pie_codigo)
-	references pieza(pie_codigo),
-	constraint fk_inv_codigo foreign key(fk_inv_codigo)
-	references inventario(inv_codigo)
+	constraint fk_pie_codigo foreign key(fk_tip_codigo)
+	references tipo_pieza(tip_codigo),
+	constraint fk_inv_codigo foreign key(fk_mat_codigo)
+	references material(mat_codigo)
 );
 
 create table tip_mod
