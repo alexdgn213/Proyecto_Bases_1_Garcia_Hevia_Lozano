@@ -1585,23 +1585,48 @@ INSERT INTO informacion_contacto (inf_valor,inf_tipo,fk_pro_rif,fk_per_ci,fk_cli
 ('@aviancaAirlines', 'Instagram', NULL, NULL, 99090987, NULL);
 
 INSERT INTO modelo_aeronave (mod_nombre) VALUES
-('AU80'),
+('AU80'), --1
 ('AU80-2'), --Por sia cosa
 ('AU80-700'), -- Por si acaso
-('AU87A'),
-('AU801'),
-('AU802'),
-('AU802A'),
-('AU802B'),
-('AU802C'),
-('AU802D'),
-('AU802E'),
-('AU802F'),
-('AU747Plus'),
-('AU747Platinum'),
-('AU747Gold'),
-('AU747Silver'),
-('AU747SilverB');
+('AU87A'), 
+('AU801'),--5
+('AU802'),--6 Clases densas + basic por default del 6..12
+('AU802A'),--7
+('AU802B'),--8
+('AU802C'),--9
+('AU802D'),--10 BASIC + DENSA
+('AU802E'),--11
+('AU802F'),--12
+('AU747Plus'),--13 POR DEFAULT TODOS LOS AU747 13..17 son 2 clases y sin ER
+('AU747Platinum'),--14
+('AU747Gold'), --15
+('AU747Silver'),--16
+('AU747SilverB'),--17 es de 3 clases cuidado
+('AU802 STD'),--18 --clases estandar
+('AU802A STD'), --19
+('AU802B STD'),--20
+('AU802C STD'),--21
+('AU802E STD'),--22
+('AU802F STD'),--23
+('AU802F AD'),--24 Clases  ALTA DENSIDAD
+('AU802E 2Clases'),--25 2CLASES
+--TIPOS DE AU802D: el 10,26,27,28,29,30. 6 en total 
+('AU802D Basic STD'), --26Basic + estandar
+('AU802D ER'), --27 ER + densa
+('AU802D ER STD'),--28 ER + estandar
+('AU802D WL'),-- 29 WL +densa
+('AU802D WL STD'),--30 WL + estandar
+---------------------------------------
+--3 clases sin ER
+('AU747Plus 3Clases'),--31
+('AU747Platinum 3Clases'), --32
+('AU747Gold 3Clases'),--33
+('AU747Silver 3Clases'),--34 
+--EL SILVERB es de 3 clases unicamente. su codigo es el 17
+--3 clases con ER solo el SILVER tiene ER
+('AU747Silver ER 3Clases '),--35
+--2 clases con ER
+('AU747Silver ER'); -- 36 con ER 2 clases, sin ER 2 clases esta arriba cod 16
 
 INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (1,'Capacidad'),
