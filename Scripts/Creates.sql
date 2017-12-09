@@ -483,4 +483,5 @@ create table estatus
     references aeronave(aer_codigo)
 );
 
+--
 

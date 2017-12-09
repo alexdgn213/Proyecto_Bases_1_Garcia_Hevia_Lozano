@@ -2209,3 +2209,4 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
   (),
   ();
 */
+--

@@ -34,7 +34,7 @@ drop table personal;
 drop table zona;
 drop table fabrica;
 drop table lugar;
-
+--
 
 
 

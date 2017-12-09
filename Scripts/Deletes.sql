@@ -67,7 +67,7 @@ delete from personal;
 delete from zona;
 delete from fabrica;
 delete from lugar;
-
+--
 
 
 
