@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 
 /**
@@ -136,6 +138,36 @@ public class Lugar {
     
     public static void llenarComboPaises(ConectorDB conector, JComboBox jCombo){
         AdaptadorSQLUI.llenarComboBox(jCombo,obtenerResultSet(conector,"SELECT lug_nombre FROM lugar WHERE lug_tipo='Pais'"));
+    }
+    
+    public static void llenarComboEstados(ConectorDB conector, JComboBox jCombo, String pais){
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT l1.lug_nombre FROM lugar l1, lugar l2 WHERE l1.fk_lug_codigo=l2.lug_codigo AND l1.lug_tipo ='Estado' AND l2.lug_nombre=? ORDER BY lug_nombre");
+            pst.setString(1, pais);
+            AdaptadorSQLUI.llenarComboBox(jCombo,pst.executeQuery());
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+    }
+    
+    public static void llenarComboMunicipios(ConectorDB conector, JComboBox jCombo, String estado){
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT l1.lug_nombre FROM lugar l1, lugar l2 WHERE l1.fk_lug_codigo=l2.lug_codigo AND l1.lug_tipo ='Municipio' AND l2.lug_nombre=? ORDER BY lug_nombre");
+            pst.setString(1, estado);
+            AdaptadorSQLUI.llenarComboBox(jCombo,pst.executeQuery());
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+    }
+    
+    public static void llenarComboParroquias(ConectorDB conector, JComboBox jCombo, String municipio){
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT l1.lug_nombre FROM lugar l1, lugar l2 WHERE l1.fk_lug_codigo=l2.lug_codigo AND l1.lug_tipo ='Parroquia' AND l2.lug_nombre=? ORDER BY lug_nombre");
+            pst.setString(1, municipio);
+            AdaptadorSQLUI.llenarComboBox(jCombo,pst.executeQuery());
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
     }
 
     public int getLug_codigo() {

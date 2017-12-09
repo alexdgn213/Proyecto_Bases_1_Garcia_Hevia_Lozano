@@ -47,11 +47,12 @@ public class AdaptadorSQLUI {
     public static void llenarComboBox(JComboBox jCombo, ResultSet rs) {
         try {
         jCombo.removeAllItems();
-        jCombo.addItem("Seleccione una opción..");
+        jCombo.addItem("Seleccione una opción...");
         while (rs.next()) {
             jCombo.addItem(rs.getString(1));
         }
         rs.close();
+        System.out.print("Pase");
        } catch (Exception ex) {
         ex.printStackTrace();
        }

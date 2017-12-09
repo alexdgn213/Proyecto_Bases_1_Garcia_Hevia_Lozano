@@ -31,6 +31,7 @@ public class PantallaLogin extends javax.swing.JFrame {
         jlClave.setVisible(false);
         conector = new ConectorDB();
         conector.conectar();
+        
     }
 
     /**
@@ -161,6 +162,7 @@ public class PantallaLogin extends javax.swing.JFrame {
         else{
             jlUsuario.setVisible(true); 
         }
+        acceder();
     }//GEN-LAST:event_bAccederActionPerformed
 
     private void tfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsuarioActionPerformed
