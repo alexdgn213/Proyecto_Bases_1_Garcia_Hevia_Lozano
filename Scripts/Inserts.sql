@@ -1525,13 +1525,13 @@ INSERT INTO zona (zon_codigo, zon_nombre, zon_descripcion, fk_fab_codigo) VALUES
 (5, 'zona de ensamble', 'zona donde se ensamblan las piezas', 3),
 (6, 'zona de certificacion de calidad', 'zona donde se verifica la calidad', 3);
 
-INSERT INTO personal (per_ci, per_nombre, per_apellido_1, per_apellido_2, per_fecha_inicio, per_titulacion, per_experiencia, fk_lug_codigo, fk_zon_codigo) VALUES
-(10000000, 'Alejandro', 'Rojas', 'Reyes', '01/03/2015', 'Ingeniero aeronautico', 'Recien graduado', 1348, 1),
-(20000000, 'Benito', 'Suarez', 'Ocando', '01/09/2015', 'Pintor', '7 años Toyota', 1348, 2),
-(11212123, 'Keysi', 'Sayago', 'Gomez', '01/03/2014', 'Tecnico superior en administracion', '2 años Plumrose', 476, 3),
-(11212312, 'Michelle', 'Gonzalez', 'Jraiche', '01/26/2006', 'Ingeniero mecánico', '4 años Vepica', 476, 5),
-(19080988, 'Victor', 'Manrique', 'Perez', '05/15/2008', 'Ingeniero en produccion', 'Recien graduado', 476, 6),
-(10909899, 'Jamileth', 'Granados', 'Sislema', '01/08/2015', 'Bachiller', '3 años Mcdonals', 474, 4);
+INSERT INTO personal (per_ci, per_nombre, per_apellido_1, per_apellido_2, per_fecha_inicio, per_titulacion, per_experiencia,per_fnac, fk_lug_codigo, fk_zon_codigo) VALUES
+(10000000, 'Alejandro', 'Rojas', 'Reyes', '01/03/2015', 'Ingeniero aeronautico', 'Recien graduado','03/05/1987', 1348, 1),
+(20000000, 'Benito', 'Suarez', 'Ocando', '01/09/2015', 'Pintor', '7 años Toyota','08/12/1985', 1348, 2),
+(11212123, 'Keysi', 'Sayago', 'Gomez', '01/03/2014', 'Tecnico superior en administracion', '2 años Plumrose','12/14/1990', 476, 3),
+(11212312, 'Michelle', 'Gonzalez', 'Jraiche', '01/26/2006', 'Ingeniero mecánico', '4 años Vepica','08/15/1977', 476, 5),
+(19080988, 'Victor', 'Manrique', 'Perez', '05/15/2008', 'Ingeniero en produccion', 'Recien graduado','10/05/1994', 476, 6),
+(10909899, 'Jamileth', 'Granados', 'Sislema', '01/08/2015', 'Bachiller', '3 años Mcdonals','03/10/1992', 474, 4);
 
 INSERT INTO beneficiario (ben_ci,ben_nombre,ben_apellido_1,ben_apellido_2,ben_parentesco,fk_lug_codigo,fk_per_ci) VALUES
 (16890891, 'Antonio', 'Rojas','Fernández','Hijo',1348,10000000),
@@ -2038,9 +2038,9 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   --Falta tren de aterrizaje
   (11,null,'Instrumentos de Control'),
   --Elementos Internos: 
-  (12,null,'Asientos');
+  (12,null,'Asientos'),
   (13,null,'Tren de Aterrizaje Fijo'),
-  (14,null,'Tren de Aterrizaje Retractil'),
+  (14,null,'Tren de Aterrizaje Retractil');
   
   --ETC
  
@@ -2074,13 +2074,14 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (4,1,'Enviar 4 gomas',1,2,4),
   (1,0,'Enviar una viga de hiero',3,1,6);
   
+  /*
   (1,'cobre'),
   (2,'metal'),
   (3,'plastico'),
   (4,'goma'),
   (5,'madera'),
   (6,'hierro');
-  
+  */
   INSERT INTO tip_mod(tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo) VALUES
   (2,1,1),
   (1,13,1),
@@ -2186,10 +2187,11 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
   (3,3,0,3,62323333),
   (4,4,0,6,90001234),
   (5,5,0,5,78900010);
-  
+  /*
   INSERT INTO estatus()VALUES
   (),
   (),
   (),
   (),
   ();
+*/
