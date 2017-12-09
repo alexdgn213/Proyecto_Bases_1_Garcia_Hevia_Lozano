@@ -1564,10 +1564,10 @@ INSERT INTO proveedor (pro_rif,pro_nombre,pro_monto_acreditado,pro_fecha_inicio,
 (98767657,'Los Cauchos de Alex',1000,'02/04/2013',201);
 
 INSERT INTO cliente (cli_rif,cli_nombre,cli_monto_acreditado,cli_fecha_inicio,fk_lug_codigo) VALUES
-(123336666,'Avior',2000000,'10/12/2010',78),
-(99090987,'Avianca',3000000,'10/01/2011',78),
-(123447677,'Aeropostal',3500000,'01/01/2011',80),
-(123336686,'Viasa',1000000,'01/06/2012',100),
+(123336666,'Avior',20000000,'10/12/2010',78),
+(99090987,'Avianca',30000000,'10/01/2011',78),
+(123447677,'Aeropostal',35000000,'01/01/2011',80),
+(123336686,'Viasa',10000000,'01/06/2012',100),
 (223399666,'Aserca Airlines',3500000,'08/15/2011',202),
 (523436896,'Laser',4500000,'10/15/2010',40),
 (98813312,'Venezolana',1500000,'04/15/2011',55),
@@ -1585,23 +1585,48 @@ INSERT INTO informacion_contacto (inf_valor,inf_tipo,fk_pro_rif,fk_per_ci,fk_cli
 ('@aviancaAirlines', 'Instagram', NULL, NULL, 99090987, NULL);
 
 INSERT INTO modelo_aeronave (mod_nombre) VALUES
-('AU80'),
+('AU80'), --1
 ('AU80-2'), --Por sia cosa
 ('AU80-700'), -- Por si acaso
-('AU87A'),
-('AU801'),
-('AU802'),
-('AU802A'),
-('AU802B'),
-('AU802C'),
-('AU802D'),
-('AU802E'),
-('AU802F'),
-('AU747Plus'),
-('AU747Platinum'),
-('AU747Gold'),
-('AU747Silver'),
-('AU747SilverB');
+('AU87A'), 
+('AU801'),--5
+('AU802'),--6 Clases densas + basic por default del 6..12
+('AU802A'),--7
+('AU802B'),--8
+('AU802C'),--9
+('AU802D'),--10 BASIC + DENSA
+('AU802E'),--11
+('AU802F'),--12
+('AU747Plus'),--13 POR DEFAULT TODOS LOS AU747 13..17 son 2 clases y sin ER
+('AU747Platinum'),--14
+('AU747Gold'), --15
+('AU747Silver'),--16
+('AU747SilverB'),--17 es de 3 clases cuidado
+('AU802 STD'),--18 --clases estandar
+('AU802A STD'), --19
+('AU802B STD'),--20
+('AU802C STD'),--21
+('AU802E STD'),--22
+('AU802F STD'),--23
+('AU802F AD'),--24 Clases  ALTA DENSIDAD
+('AU802E 2Clases'),--25 2CLASES
+--TIPOS DE AU802D: el 10,26,27,28,29,30. 6 en total 
+('AU802D Basic STD'), --26Basic + estandar
+('AU802D ER'), --27 ER + densa
+('AU802D ER STD'),--28 ER + estandar
+('AU802D WL'),-- 29 WL +densa
+('AU802D WL STD'),--30 WL + estandar
+---------------------------------------
+--3 clases sin ER
+('AU747Plus 3Clases'),--31
+('AU747Platinum 3Clases'), --32
+('AU747Gold 3Clases'),--33
+('AU747Silver 3Clases'),--34 
+--EL SILVERB es de 3 clases unicamente. su codigo es el 17
+--3 clases con ER solo el SILVER tiene ER
+('AU747Silver ER 3Clases '),--35
+--2 clases con ER
+('AU747Silver ER'); -- 36 con ER 2 clases, sin ER 2 clases esta arriba cod 16
 
 INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (1,'Capacidad'),
@@ -2001,10 +2026,10 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   
   INSERT INTO tipo_pieza(tip_codigo,fk_tip_codigo,tip_nombre) VALUES --fk_tip_codigo es para piezas compuestas por otra
   (1,null,'Ala'), --No se que poner en fk_tip_codigo de ninguna
-  (2,null,'Superficie de Sustentacion'),
+  (2,null,'Superficie de Sustentacion'), --ejemplo alas
   (3,null,'Fuselaje'),
   (4,null,'Grupo Motopropulsor'),
-  (5,null,'Superficie de Control'),
+  (5,null,'Superficie de Control'),--alerones,flaps entre otros
   (6,null,'Alerones'),
   (7,null,'Flaps'),
   (8,null,'Spoilers'),
@@ -2014,15 +2039,11 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (11,null,'Instrumentos de Control'),
   --Elementos Internos: 
   (12,null,'Asientos');
+  (13,null,'Tren de Aterrizaje Fijo'),
+  (14,null,'Tren de Aterrizaje Retractil'),
+  
   --ETC
-  /*
-  INSERT INTO tip_mat(tip_mat_codigo,fk_mat_codigo,fk_tip_codigo,tip_mat_cantidad) VALUES --!!!!!!!!!!!!!!!!!!!!!!!!
-  (),
-  (),
-  (),
-  (),
-  ();
-  */
+ 
   INSERT INTO inventario(inv_codigo,fk_fab_codigo,inv_descripcion) VALUES
   (1,1,'Inventario de piezas para ensamblar el avion'),
   (2,2,'Contiene tantos elementos'),
@@ -2042,28 +2063,133 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (9,'02/02/2016','10/01/2016',3,3,5,9,null),
   (10,'03/03/2016','03/03/2016',3,3,2,10,null), --6 tipos de colas
   (11,'04/04/2015','04/05/2015',4,4,4,11,null),
-  (12,'05/05/2017','05/05/2017',2,2,5,12,null);
+  (12,'05/05/2017','05/05/2017',2,2,5,12,null),
+  (13,'01/01/2016','02/01/2016',3,3,1,13,null),
+  (14,'09/09/2015','09/09/2015',3,3,2,14,null);
   
-  /*
-  INSERT INTO tip_mod(tip_mod_codigo,tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo) VALUES
-  (1,),
-  */
+  INSERT INTO solicitud(sol_cantidad,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2,fk_mat_codigo) VALUES
+  (10,1,'Enviar 10 unidades de cobre',1,2,1),
+  (20,0,'Enviar 20 unidades bloques de metal',3,2,2),
+  (30,1,'Enviar 30 tablas de madera',4,3,5),
+  (4,1,'Enviar 4 gomas',1,2,4),
+  (1,0,'Enviar una viga de hiero',3,1,6);
+  
+  (1,'cobre'),
+  (2,'metal'),
+  (3,'plastico'),
+  (4,'goma'),
+  (5,'madera'),
+  (6,'hierro');
+  
+  INSERT INTO tip_mod(tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo) VALUES
+  (2,1,1),
+  (1,13,1),
+  (2,9,1),
+  (1,6,2),
+  (1,6,3);
+  
   INSERT INTO prueba(pru_codigo,pru_nombre,pru_descripcion) VALUES
  (1,'Control de calidad de materiales','Consiste en comprobar el nivel optimo del material'),
  (2,'Control de calidad de materiales por traslado','Comprueba que no hayan sufrido daños por traslado'),
  (3,'Control de calidad de la pieza','Comprueba el nivel optimo de la pieza ensamblada'),
  (4,'Prueba de control de ensamble','Comprueba que el ensamblaje se haya hecho satisfactoriamente'),
  (5,'Control de calidad de piezas por traslado','Comprueba que no hayan sufrido daños por traslado');
-  /*
-  INSERT INTO pru_mat(pru_mat_codigo,pru_mat_fecha_realizacion,fk_pru_codigo,fk_mat_codigo) VALUES
-  ();
-*/
+ 
+ INSERT INTO tip_pru(fk_tip_codigo,fk_pru_codigo) VALUES
+ (1,4),
+ (2,4),
+ (3,4),
+ (6,4),
+ (7,4);
+ 
+ INSERT INTO pru_pie(pru_pie_fecha_realizacion,fk_pru_codigo,fk_pie_codigo) VALUES
+ ('02/07/2013',3,1),
+ ('06/08/2015',3,2),
+ ('11/10/2016',5,3),
+ ('10/11/2014',3,4),
+ ('05/06/2015',5,5);
+ 
+ INSERT INTO mat_inv(mat_inv_cantidad,fk_mat_codigo,fk_inv_codigo) VALUES
+ (200,1,1),
+ (350,2,4),
+ (500,3,3),
+ (30,4,2),
+ (96,5,5);
+  
+  INSERT INTO pru_mat_inv(pru_mat_inv_fecha_realizacion,fk_pru_codigo,fk_mat_codigo,fk_inv_codigo,fk_mat_inv_codigo) VALUES
+  ('08/08/2016',1,1,1,1),
+  ('09/09/2015',2,2,4,2),
+  ('10/10/2014',1,3,3,3),
+  ('02/03/2015',2,4,2,4),
+  ('04/04/2015',2,5,5,5);
+  
+  INSERT INTO per_pru_pie(per_pru_pie_encargado,fk_per_ci,fk_pru_codigo,fk_pie_codigo,fk_pru_pie_codigo)VALUES
+  (1,11212123,3,1,1),
+  (1,10000000,3,2,2),
+  (1,20000000,5,3,3),
+  (1,19080988,3,4,4),
+  (1,10909899,5,5,5);
+
 INSERT INTO rol(rol_nombre,rol_descripcion) VALUES
-	('SuperUsuario','Posee todos los permisos');
+	('SuperUsuario','Posee todos los permisos'),
+	('Usuario Normal','Permite ingresar a la base de datos'),
+	('Usuario +','Puede realizar mas consultas que el usuario normal'),
+	('Programador','Puede realizar operaciones en la base de datos pero se le limitan ciertas vistas'),
+	('Usuario VIP','Puede hacer mas operaciones que el Usuario+');
     
 INSERT INTO usuario(usu_nombre,usu_clave,fk_rol_codigo) VALUES
 	('alex','123456',1),
     ('marco','123456',1),
     ('vero','123456',1),
+    ('braulio','123456',1),
     ('anak','123456',1);
+    
+INSERT INTO privilegio(pri_accion,pri_descripcion)VALUES
+('Añadir','Permite añadir registros '),
+('Modificar','Permite modificar registros'),
+('Eliminar','Permite eliminar registros'),
+('Aña-Elim','Permite añadir y eliminar registros'),
+('Select','Permite hacer selects de la BD'),
+('Todo','Puede hacer todo'); 
+INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
+(1,6),
+(2,1),
+(3,2),
+(5,4),
+(4,5);
+
  
+  INSERT INTO tip_mat(tip_mat_cantidad,fk_tip_codigo,fk_mat_codigo) VALUES
+  (1000,1,2),
+  (300,7,1),
+  (75,3,6),
+  (906,2,2),
+  (200,5,3);
+  
+  INSERT INTO pru_aer(pru_aer_fecha_realizacion,fk_pru_codigo,fk_aer_codigo)VALUES
+  ('03/12/2015',4,5),
+  ('12/04/2014',4,4),
+  ('11/11/2015',4,3),
+  ('02/06/2017',4,2),
+  ('10/12/2017',4,1);
+  
+  INSERT INTO forma_pago(for_monto,for_efectivo,for_numero,for_banco,for_tipo_tarjeta,for_fecha_vencimiento,for_tipo)VALUES
+  (20000000,null,1234123443214321,'BNC','VISA','09/10/2020','Credito'),
+  (30000000,null,0987789009877890,'Provincial','VISA','01/01/2030','Credito'),
+  (35000000,null,5678876556788765,'Mercantil','VISA','02/10/2025','Debito'),
+  (10000000,null,1267762112677621,'Banesco','Master','06/10/2028','Debito'),
+  (3500000,null,9812218934566543,'Venezolan','Master','09/09/2035','Credito');
+
+  INSERT INTO pago(fk_for_codigo,fk_mat_pro_codigo,fk_aer_codigo,fk_mat_codigo,fk_pro_rif)VALUES
+  (1,1,0,1,71231233),
+  (2,2,0,2,81231123),
+  (3,3,0,3,62323333),
+  (4,4,0,6,90001234),
+  (5,5,0,5,78900010);
+  
+  INSERT INTO estatus()VALUES
+  (),
+  (),
+  (),
+  (),
+  ();

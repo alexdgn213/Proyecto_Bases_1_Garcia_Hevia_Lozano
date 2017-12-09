@@ -424,14 +424,14 @@ create table forma_pago
 	for_monto int not null,
 	for_efectivo int,
 	for_numero int,
-	for_bancoo varchar(30),
+	for_banco varchar(30),
 	for_tipo_tarjeta varchar(30),
-	for_fecha_vencimineto date,
+	for_fecha_vencimiento date,
 	for_tipo varchar(30),
 	constraint pk_for_codigo primary key(for_codigo)
 );
 
-create table pago
+create table pago --Falto fk_cli
 (
 	pag_codigo serial not null,
 	fk_for_codigo int not null,
@@ -439,6 +439,7 @@ create table pago
 	fk_aer_codigo int,
 	fk_mat_codigo int,
 	fk_pro_rif int,
+	--fk_cli_rif int,
 	constraint pk_pag_codigo primary key(pag_codigo,fk_for_codigo),
 	constraint fk_for_codigo foreign key(fk_for_codigo)
 	references forma_pago(for_codigo),
@@ -446,6 +447,8 @@ create table pago
 	references mat_pro(mat_pro_codigo,fk_mat_codigo,fk_pro_rif),
 	constraint fk_aer_codigo foreign key(fk_aer_codigo)
 	references aeronave(aer_codigo)
+	--constraint fk_cli_rif foreign key(fk_cli_rif),
+	--references cliente(cli_rif)
 );
 
 create table estatus
