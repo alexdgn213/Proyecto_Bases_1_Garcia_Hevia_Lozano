@@ -1564,10 +1564,10 @@ INSERT INTO proveedor (pro_rif,pro_nombre,pro_monto_acreditado,pro_fecha_inicio,
 (98767657,'Los Cauchos de Alex',1000,'02/04/2013',201);
 
 INSERT INTO cliente (cli_rif,cli_nombre,cli_monto_acreditado,cli_fecha_inicio,fk_lug_codigo) VALUES
-(123336666,'Avior',2000000,'10/12/2010',78),
-(99090987,'Avianca',3000000,'10/01/2011',78),
-(123447677,'Aeropostal',3500000,'01/01/2011',80),
-(123336686,'Viasa',1000000,'01/06/2012',100),
+(123336666,'Avior',20000000,'10/12/2010',78),
+(99090987,'Avianca',30000000,'10/01/2011',78),
+(123447677,'Aeropostal',35000000,'01/01/2011',80),
+(123336686,'Viasa',10000000,'01/06/2012',100),
 (223399666,'Aserca Airlines',3500000,'08/15/2011',202),
 (523436896,'Laser',4500000,'10/15/2010',40),
 (98813312,'Venezolana',1500000,'04/15/2011',55),
@@ -2167,6 +2167,20 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
   ('10/12/2017',4,1);
   
   INSERT INTO forma_pago(for_monto,for_efectivo,for_numero,for_banco,for_tipo_tarjeta,for_fecha_vencimiento,for_tipo)VALUES
+  (20000000,null,1234123443214321,'BNC','VISA','09/10/2020','Credito'),
+  (30000000,null,0987789009877890,'Provincial','VISA','01/01/2030','Credito'),
+  (35000000,null,5678876556788765,'Mercantil','VISA','02/10/2025','Debito'),
+  (10000000,null,1267762112677621,'Banesco','Master','06/10/2028','Debito'),
+  (3500000,null,9812218934566543,'Venezolan','Master','09/09/2035','Credito');
+
+  INSERT INTO pago(fk_for_codigo,fk_mat_pro_codigo,fk_aer_codigo,fk_mat_codigo,fk_pro_rif)VALUES
+  (1,1,0,1,71231233),
+  (2,2,0,2,81231123),
+  (3,3,0,3,62323333),
+  (4,4,0,6,90001234),
+  (5,5,0,5,78900010);
+  
+  INSERT INTO estatus()VALUES
   (),
   (),
   (),
