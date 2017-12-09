@@ -1533,8 +1533,8 @@ INSERT INTO personal (per_ci, per_nombre, per_apellido_1, per_apellido_2, per_fe
 (10000000, 'Alejandro', 'Rojas', 'Reyes', '01/03/2015', 'Ingeniero aeronautico', 'Recien graduado','03/05/1987', 1348, 1,1 ),
 (20000000, 'Benito', 'Suarez', 'Ocando', '01/09/2015', 'Pintor', '7 años Toyota','08/12/1985', 1348, 2,1),
 (11212123, 'Keysi', 'Sayago', 'Gomez', '01/03/2014', 'Tecnico superior en administracion', '2 años Plumrose','12/14/1990', 476, 3,2),
-(11212312, 'Michelle', 'Gonzalez', 'Jraiche', '01/26/2006', 'Ingeniero mecánico', '4 años Vepica','08/15/1977', 476, 5,3),
-(19080988, 'Victor', 'Manrique', 'Perez', '05/15/2008', 'Ingeniero en produccion', 'Recien graduado','10/05/1994', 476, 6,3),
+(11212312, 'Michelle', 'Gonzalez', 'Jraiche', '01/01/2006', 'Ingeniero mecánico', '4 años Vepica','08/15/1977', 476, 5,3),
+(19080988, 'Victor', 'Manrique', 'Perez', '05/01/2008', 'Ingeniero en produccion', 'Recien graduado','10/05/1994', 476, 6,3),
 (10909899, 'Jamileth', 'Granados', 'Sislema', '01/08/2015', 'Bachiller', '3 años Mcdonals','03/10/1992', 474, 4,3);
 
 INSERT INTO beneficiario (ben_ci,ben_nombre,ben_apellido_1,ben_apellido_2,ben_parentesco,fk_lug_codigo,fk_per_ci) VALUES
@@ -1572,11 +1572,11 @@ INSERT INTO cliente (cli_rif,cli_nombre,cli_monto_acreditado,cli_fecha_inicio,fk
 (99090987,'Avianca',30000000,'10/01/2011',78),
 (123447677,'Aeropostal',35000000,'01/01/2011',80),
 (123336686,'Viasa',10000000,'01/06/2012',100),
-(223399666,'Aserca Airlines',3500000,'08/15/2011',202),
-(523436896,'Laser',4500000,'10/15/2010',40),
-(98813312,'Venezolana',1500000,'04/15/2011',55),
+(223399666,'Aserca Airlines',3500000,'08/01/2011',202),
+(523436896,'Laser',4500000,'10/05/2010',40),
+(98813312,'Venezolana',1500000,'04/05/2011',55),
 (145536686,'Conviasa',3550000,'01/12/2012',71),
-(177738686,'Iberia',5600000,'04/15/2011',59),
+(177738686,'Iberia',5600000,'04/06/2011',59),
 (275638686,'Rutaca',7500000,'01/12/2011',78),
 (90812312,'Santa Barbara Airlines',3000000,'01/01/2011',1000),
 (12312333,'Mexicana de Aviacion',2500000,'01/12/2010',987);
@@ -2000,11 +2000,11 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (296,'kN',17,35);
   */
   INSERT INTO aeronave(aer_fecha_compra,fk_cli_rif,fk_mod_codigo) VALUES 
-  ('07/24/2017',123336666,13), -- con los fk de clientes arriba y los fk de los modelos de arriba
-  ('08/20/2016',99090987,1),
+  ('07/04/2017',123336666,13), -- con los fk de clientes arriba y los fk de los modelos de arriba
+  ('08/02/2016',99090987,1),
   ('03/02/2017',123447677,6),
   ('02/02/2015',123336686,8),
-  ('10/17/2016',223399666,12),
+  ('10/07/2016',223399666,12),
   ('10/12/2014',223399666,11);
   /*
   INSERT INTO solicitud(sol_codigo,sol_cantidad,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2) VALUES
@@ -2026,8 +2026,8 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (1,5000,'10/03/2011',15000,1,71231233),
   (2,10000,'05/10/2012',2375,2,81231123),
   (3,500,'07/08/2011',1000,3,62323333),
-  (4,1000,'12/24/2012',3450,6,90001234),
-  (5,2000,'10/16/2013',4010,5,78900010);
+  (4,1000,'12/04/2012',3450,6,90001234),
+  (5,2000,'10/06/2013',4010,5,78900010);
   
   INSERT INTO tipo_pieza(fk_tip_codigo,tip_tiempo_fabricacion,tip_nombre) VALUES --fk_tip_codigo es para piezas compuestas por otra
   (null,50,'Ala'), --No se que poner en fk_tip_codigo de ninguna
@@ -2056,10 +2056,10 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   INSERT INTO pieza(pie_fecha_estimada,pie_fecha_entregada,fk_inv_codigo,fk_aer_codigo,fk_tip_codigo,fk_pie_codigo) VALUES
   ('05/05/2015','06/05/2015',3,1,1,null),
   ('09/09/2016','09/09/2016',5,1,2,null),
-  ('11/17/2015','11/16/2015',1,1,3,null),
-  ('04/14/2015','04/16/2015',3,1,4,null),
+  ('11/07/2015','11/06/2015',1,1,3,null),
+  ('04/04/2015','04/06/2015',3,1,4,null),
   ('10/10/2016','10/10/2016',3,2,5,null),
-  ('01/01/2017','12/31/2016',3,4,6,null),
+  ('01/01/2017','12/03/2016',3,4,6,null),
   ('02/02/2016','10/01/2016',3,5,7,null),
   ('03/03/2016','03/03/2016',3,2,8,null),
   ('04/04/2015','04/05/2015',4,4,9,null),
