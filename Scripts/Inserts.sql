@@ -2196,11 +2196,11 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
   (3500000,null,9812218934566543,'Venezolan','Master','09/09/2035','Credito');
 
   INSERT INTO pago(fk_for_codigo,fk_mat_pro_codigo,fk_aer_codigo,fk_mat_codigo,fk_pro_rif)VALUES
-  (1,1,0,1,71231233),
-  (2,2,0,2,81231123),
-  (3,3,0,3,62323333),
-  (4,4,0,6,90001234),
-  (5,5,0,5,78900010);
+  (1,1,1,1,71231233),
+  (2,2,2,2,81231123),
+  (3,3,3,3,62323333),
+  (4,4,4,6,90001234),
+  (5,5,5,5,78900010);
   /*
   INSERT INTO estatus()VALUES
   (),
