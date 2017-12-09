@@ -1,5 +1,3 @@
-DELETE FROM Lugar;
-
 INSERT INTO Lugar(lug_codigo,lug_nombre, lug_tipo) VALUES
 (0,'Venezuela','Pais');
 
@@ -1675,9 +1673,6 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
  INSERT INTO mod_car (mod_car_valor,mod_car_descripcion,fk_mod_codigo,fk_car_codigo) VALUES
  (179,'Personas',1,1), --CAPACIDADES ( hay clase densa,alta densa, estandar... varios tipos de clases, no entiendo como llenarlas
  (189,'Personas',5,1),
-<<<<<<< HEAD
- --(118,
-=======
  (118,'Personas',6,1),
  (168,'Personas',7,1),
  (132,'Personas',8,1),
@@ -1707,7 +1702,6 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
  (366,'Personas',32,1),--AU747Platinum 3 clases
  (412,'Personas',33,1),--gold 3 clases
  (416,'Personas',34,1),--Silver 3 clases
->>>>>>> 71c30182fab9b03cdd3816e0c5a903288a4eed59
  
  
  (44.1,'metros',1,2), --Longitudes
