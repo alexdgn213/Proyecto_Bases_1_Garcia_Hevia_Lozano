@@ -1675,7 +1675,39 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
  INSERT INTO mod_car (mod_car_valor,mod_car_descripcion,fk_mod_codigo,fk_car_codigo) VALUES
  (179,'Personas',1,1), --CAPACIDADES ( hay clase densa,alta densa, estandar... varios tipos de clases, no entiendo como llenarlas
  (189,'Personas',5,1),
+<<<<<<< HEAD
  --(118,
+=======
+ (118,'Personas',6,1),
+ (168,'Personas',7,1),
+ (132,'Personas',8,1),
+ (132,'Personas',9,1),
+ (149,'Personas',10,1), -- AU802D BASIC + DENSA
+ (189,'Personas',11,1),
+ (204,'Personas',12,1),
+ (452,'Personas',13,1),
+ (452,'Personas',14,1),
+ (496,'Personas',15,1),
+ (524,'Personas',16,1),
+ (567,'Personas',17,1),
+ (104,'Personas',18,1),
+ (159,'Personas',19,1),
+ (123,'Personas',20,1),
+ (123,'Personas',21,1),
+ (175,'Personas',22,1),
+ (177,'Personas',23,1),
+ (215,'Personas',24,1),
+ (162,'Personas',25,1),
+ (140,'Personas',26,1), --AU802D BASIC + STD
+ (149,'Personas',27,1),--AU802D ER + densa
+ (140,'Personas',28,1),--AU802D ER + STD
+ (149,'Personas',29,1),--AU802D WL + DENSA
+ (140,'Personas',30,1),--AU802D WL + STD
+ (366,'Personas',31,1),--AU747PLUS 3 Clases
+ (366,'Personas',32,1),--AU747Platinum 3 clases
+ (412,'Personas',33,1),--gold 3 clases
+ (416,'Personas',34,1),--Silver 3 clases
+>>>>>>> 71c30182fab9b03cdd3816e0c5a903288a4eed59
  
  
  (44.1,'metros',1,2), --Longitudes
