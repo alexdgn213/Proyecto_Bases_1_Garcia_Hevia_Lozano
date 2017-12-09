@@ -115,11 +115,11 @@ public class Cliente {
     public static Cliente buscarPorCodigo(ConectorDB conector, int codigo){
         Cliente l = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT lug_codigo, lug_nombre , lug_tipo, fk_lug_codigo FROM lugar WHERE lug_codigo=?");
-            pst.setInt(1, codigo);
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT cli_rif,cli_nombre,cli_monto_acreditado,cli_fecha_inicio,fk_lug_codigo FROM cliente WHERE cli_rif=?");
+            pst.setInt(1, rif);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                l = new Cliente(rs.getInt("lug_codigo"),rs.getString("lug_nombre"),rs.getString("lug_tipo"),rs.getInt("fk_lug_codigo"));
+                l = new Cliente(rs.getInt("cli_rif"),rs.getString("cli_nombre"),rs.getInt("cli_monto_acreditado"),rs.getDate("cli_fecha_inicio"),rs.getInt("fk_lug_codigo"));
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
