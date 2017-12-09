@@ -58,6 +58,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        setSize(new java.awt.Dimension(1080, 715));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         fondoLateralExpandido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/BarraLateralExtendida.png"))); // NOI18N
@@ -214,7 +215,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void menuClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuClientesMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalClientes(conector);
+        nuevoPanel = new PrincipalClientes(conector,panelContenido);
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
         
@@ -230,11 +231,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalClientes(conector);
+        nuevoPanel = new PrincipalClientes(conector,panelContenido);
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
     }//GEN-LAST:event_jLabel4MouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Contenido;

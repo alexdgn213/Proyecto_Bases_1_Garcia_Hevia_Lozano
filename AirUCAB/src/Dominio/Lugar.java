@@ -5,12 +5,14 @@
  */
 package Dominio;
 
+import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.ConectorDB;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -76,11 +78,22 @@ public class Lugar {
         }
     }
     
+    public static ResultSet obtenerResultSet(ConectorDB conector, String query){
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return null;
+    }
+    
     public static List<Lugar> obtenerTodos(ConectorDB conector){
         List<Lugar> lugares = new ArrayList<Lugar>();
         try {
             PreparedStatement pst = conector.conexion.prepareStatement("SELECT lug_codigo, lug_nombre , lug_tipo, fk_lug_codigo FROM lugar");
-            ResultSet rs = pst.executeQuery();
+            ResultSet rs = obtenerResultSet(conector, "SELECT lug_codigo, lug_nombre , lug_tipo, fk_lug_codigo FROM lugar");
             while (rs.next()) {
                 Lugar l = new Lugar(rs.getInt("lug_codigo"),rs.getString("lug_nombre"),rs.getString("lug_tipo"),rs.getInt("fk_lug_codigo"));
                 lugares.add(l);
@@ -119,6 +132,10 @@ public class Lugar {
             System.out.print(ex.toString());
         }
         return l;
+    }
+    
+    public static void llenarComboPaises(ConectorDB conector, JComboBox jCombo){
+        AdaptadorSQLUI.llenarComboBox(jCombo,obtenerResultSet(conector,"SELECT lug_nombre FROM lugar WHERE lug_tipo='Pais'"));
     }
 
     public int getLug_codigo() {
