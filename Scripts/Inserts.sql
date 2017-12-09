@@ -1673,7 +1673,35 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
  INSERT INTO mod_car (mod_car_valor,mod_car_descripcion,fk_mod_codigo,fk_car_codigo) VALUES
  (179,'Personas',1,1), --CAPACIDADES ( hay clase densa,alta densa, estandar... varios tipos de clases, no entiendo como llenarlas
  (189,'Personas',5,1),
- --(118,
+ (118,'Personas',6,1),
+ (168,'Personas',7,1),
+ (132,'Personas',8,1),
+ (132,'Personas',9,1),
+ (149,'Personas',10,1), -- AU802D BASIC + DENSA
+ (189,'Personas',11,1),
+ (204,'Personas',12,1),
+ (452,'Personas',13,1),
+ (452,'Personas',14,1),
+ (496,'Personas',15,1),
+ (524,'Personas',16,1),
+ (567,'Personas',17,1),
+ (104,'Personas',18,1),
+ (159,'Personas',19,1),
+ (123,'Personas',20,1),
+ (123,'Personas',21,1),
+ (175,'Personas',22,1),
+ (177,'Personas',23,1),
+ (215,'Personas',24,1),
+ (162,'Personas',25,1),
+ (140,'Personas',26,1), --AU802D BASIC + STD
+ (149,'Personas',27,1),--AU802D ER + densa
+ (140,'Personas',28,1),--AU802D ER + STD
+ (149,'Personas',29,1),--AU802D WL + DENSA
+ (140,'Personas',30,1),--AU802D WL + STD
+ (366,'Personas',31,1),--AU747PLUS 3 Clases
+ (366,'Personas',32,1),--AU747Platinum 3 clases
+ (412,'Personas',33,1),--gold 3 clases
+ (416,'Personas',34,1);--Silver 3 clases
  
  
  (44.1,'metros',1,2), --Longitudes
@@ -1734,7 +1762,8 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
  (174000,'KG',14,5),
  (178100,'KG',15,5),
  (178750,'KG',16,5),-- sin ER (ver enunciado)
--- (184600,'KG',16,5), --con ER (ver enunciado)
+ (184600,'KG',35,5), --con ER con 3 clases
+ (184600,'KG',36,5), --con ER con 2 clases
  (186000,'KG',17,5),
   
   (116570,'KG',1,6), --Peso maximo al despegue
@@ -1743,15 +1772,18 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (68050,'KG',7,6),
   (60550,'KG',8,6),
   (66000,'KG',9,6),
-  (70000,'KG',10,6), --sin ER (ver enunciado
-  --(77500,'KG',10,6) con ER
+  (70000,'KG',10,6), --AU802D Basic + densa 
+  (70000,'KG',26,6), --AU802D Basic +STD
+  (77500,'KG',27,6),--AU802D ER + densa
+  (77500,'KG',28,6),--AU802D ER + STD
   (79000,'KG',11,6),
   (85100,'KG',12,6),
   (333400,'KG',13,6),
   (378000,'KG',14,6),
   (378000,'KG',15,6),
-  (397000,'KG',16,6), --sin ER 
-  --(413000,'KG',16,6), con ER
+  (397000,'KG',16,6), --AU747Silver  
+  (413000,'KG',35,6),--AU747Silver ER 3 clases
+  (413000,'KG',36,6),--AU747Silver ER 2 clases
   (440000,'KG',17,6),
   
   --(,,1,7), --Plantas Motrices == motorizacion??
@@ -1770,10 +1802,10 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (893,'km/h a 10500m',13,9),
   (893,'km/h a 10500m',14,9),
   (893,'km/h a 10500m',15,9),
-  (913,'km/h a 10500m',16,9), --sin ER
-  --(916,'km/h a 10500m',16,9), con ER
-  (916,'km/h a 10500m',16,9),
-  
+  (913,'km/h a 10500m',16,9), --Silver
+  (916,'km/h a 10500m',35,9),--Silver ER 3 clases
+  (916,'km/h a 10500m',36,9),--Silver ER 2 clases
+  (916,'km/h a 10500m',17,9),
   (1000,'km/h',1,10), --Velocidad maxima operativa Vno) solo esta
   
   (6820,'km',1,11), --Alcance solo estos
@@ -1807,20 +1839,24 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (14.9,'m/s',5,15), --Regimen de Ascenso
   
   (76,'cm',6,16),--Distancia entre asientos (1 clase, densa)
- -- (86,'cm',6,16),-- (1 clase, estandar)
+  (86,'cm',18,16),-- (1 clase, estandar)
   (76,'cm',7,16),--1 clase densa
-  --(81,'cm',7,16),
+  (81,'cm',19,16),
   (76,'cm',8,16),--1 clase densa
-  --(81,'cm',8,16),
+  (81,'cm',20,16),
   (76,'cm',9,16),--1 clase densa
-  --(81,'cm',9,16),
-  (76,'cm',10,16),--1 clase densa
-  --(81,'cm',10,16),
+  (81,'cm',21,16),
+  (76,'cm',10,16),--AU802D +BASIC + densa
+  (81,'cm',26,16),--AU802D Basic + STD
+  (76,'cm',27,16),--AU802D ER + Densa
+  (81,'cm',28,16), -- AU802D ER + STD
+  (76,'cm',29,16),--AU802D WL + densa
+  (81,'cm',30,16),--AU802D WL + STD
   (76,'cm',11,16),--1 clase densa
-  --(81,'cm',11,16),
-  (71,'cm',12,16), --1 clase, alta densidad
-  --(76,'cm',12,16), --1 clase, densa
-  --(81,'cm,12,16),--1 clase, estandar
+  (81,'cm',33,16),
+  (76,'cm',12,16), --1 clase, densa
+  (71,'cm',24,16), --1 clase,  alta densa
+  (81,'cm',23,16),--1 clase, estandar
   
   (43.7,'cm',6,17),--Ancho de los asientos
   (43.7,'cm',7,17),
@@ -1889,16 +1925,19 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (3190,'m',14,24),
   (3320,'m',15,24),
   (3018,'m',16,24),--sin ER
-  (3090,'m',16,24), --con ER
-  (3090,'m',17,24),
+  (3090,'m',35,24), --con ER
+  (3090,'m',36,24),--con ER
   
   (1860,'nmi',6,25), --Alcance con carga maxima
   (2165,'nmi',7,25),
   (2400,'nmi',8,25),
   (3050,'nmi',9,25),
-  (3365,'nmi',10,25), --Basic
-  (3900,'nmi',10,25),--WL 
-  (5375,'nmi',10,25), --ER
+  (3365,'nmi',10,25), --Basic + densa
+  (3365,'nmi',26,25), --Basic + STD
+  (5375,'nmi',27,25),--AU802D ER + DEnsa
+  (5375,'nmi',28,25), -- AU802D ER + 
+ -- (3900,'nmi',10,25),--WL 
+ -- (5375,'nmi',10,25), --ER
   (3060,'nmi',11,25),
   (2700,'nmi',12,25),--1 clase
   (3200,'nmi',12,25),--2 clases
