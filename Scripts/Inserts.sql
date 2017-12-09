@@ -1701,7 +1701,7 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
  (366,'Personas',31,1),--AU747PLUS 3 Clases
  (366,'Personas',32,1),--AU747Platinum 3 clases
  (412,'Personas',33,1),--gold 3 clases
- (416,'Personas',34,1);--Silver 3 clases
+ (416,'Personas',34,1),--Silver 3 clases
  
  
  (44.1,'metros',1,2), --Longitudes
