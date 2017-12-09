@@ -5,7 +5,7 @@
  */
 package Dominio;
 
-import Adaptadores.AdaptadorTabla;
+import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.ConectorDB;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -108,18 +108,18 @@ public class Cliente {
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
         ResultSet rs =obtenerResultSet(conector,"SELECT cli_rif as Rif,cli_nombre as nombre,cli_monto_acreditado as Monto_Acreditado,cli_fecha_inicio as Inicio_de_operaciones FROM cliente");
-        AdaptadorTabla.llenarTabla(jTable, rs);
+        AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
     /*
     public static Cliente buscarPorCodigo(ConectorDB conector, int codigo){
         Cliente l = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT lug_codigo, lug_nombre , lug_tipo, fk_lug_codigo FROM lugar WHERE lug_codigo=?");
-            pst.setInt(1, codigo);
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT cli_rif,cli_nombre,cli_monto_acreditado,cli_fecha_inicio,fk_lug_codigo FROM cliente WHERE cli_rif=?");
+            pst.setInt(1, rif);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                l = new Cliente(rs.getInt("lug_codigo"),rs.getString("lug_nombre"),rs.getString("lug_tipo"),rs.getInt("fk_lug_codigo"));
+                l = new Cliente(rs.getInt("cli_rif"),rs.getString("cli_nombre"),rs.getInt("cli_monto_acreditado"),rs.getDate("cli_fecha_inicio"),rs.getInt("fk_lug_codigo"));
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());

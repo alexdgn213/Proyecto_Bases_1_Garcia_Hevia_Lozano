@@ -7,6 +7,7 @@ package Adaptadores;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author alexd
  */
-public class AdaptadorTabla {
+public class AdaptadorSQLUI {
     
     public static void llenarTabla(JTable jTable, ResultSet rs) {
         try {
@@ -41,6 +42,18 @@ public class AdaptadorTabla {
        } catch (Exception ex) {
         ex.printStackTrace();
        }
+    }
     
+    public static void llenarComboBox(JComboBox jCombo, ResultSet rs) {
+        try {
+        jCombo.removeAllItems();
+        jCombo.addItem("Seleccione una opción..");
+        while (rs.next()) {
+            jCombo.addItem(rs.getString(1));
+        }
+        rs.close();
+       } catch (Exception ex) {
+        ex.printStackTrace();
+       }
     }
 }
