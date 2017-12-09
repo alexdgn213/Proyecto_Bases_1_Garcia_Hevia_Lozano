@@ -204,7 +204,7 @@ public class PantallaLogin extends javax.swing.JFrame {
     }
 
     private void acceder(){
-        PantallaPrincipal pantallaNueva = new PantallaPrincipal();
+        PantallaPrincipal pantallaNueva = new PantallaPrincipal(conector);
         this.dispose();
         pantallaNueva.setVisible(true);
         }
