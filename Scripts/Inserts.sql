@@ -1517,17 +1517,17 @@ INSERT INTO fabrica (fab_codigo, fab_nombre, fk_lug_codigo) VALUES
 (5, 'Planta de Colon', 343);
 
 --DELETE FROM zona;
-INSERT INTO zona (zon_codigo, zon_nombre, zon_descripcion, fk_fab_codigo) VALUES
-(1 , 'zona de ensamble principal de aviones', 'zona donde se ensamblan los aviones', 1),
-(2 , 'zona de pintura', 'zona donde se pintan los aviones', 1),
-(3, 'zona de acabado interior', 'zona donde se ensamblan los elementos del interior del avion', 2),
-(4, 'zona de despacho', 'zona donde se despachan' , 3),
-(5, 'zona de ensamble', 'zona donde se ensamblan las piezas', 3),
-(6, 'zona de certificacion de calidad', 'zona donde se verifica la calidad', 3),
-(7,'Zona de ensamble','Zona donde se ensamblan las piezas',5),
-(8,'Zona de ensamble','Zona donde se ensamblan las piezas',1),
-(9,'Zona de ensamble','Zona donde se ensamblan las piezas',2),
-(10,'Zona de ensamble','Zona donde se ensamblan las piezas',4);
+INSERT INTO zona (zon_nombre, zon_descripcion, fk_fab_codigo) VALUES
+('zona de ensamble principal de aviones', 'zona donde se ensamblan los aviones', 1),
+('zona de pintura', 'zona donde se pintan los aviones', 1),
+('zona de acabado interior', 'zona donde se ensamblan los elementos del interior del avion', 2),
+('zona de despacho', 'zona donde se despachan' , 3),
+('zona de ensamble', 'zona donde se ensamblan las piezas', 3),
+('zona de certificacion de calidad', 'zona donde se verifica la calidad', 3),
+('Zona de ensamble','Zona donde se ensamblan las piezas',5),
+('Zona de ensamble','Zona donde se ensamblan las piezas',1),
+('Zona de ensamble','Zona donde se ensamblan las piezas',2),
+('Zona de ensamble','Zona donde se ensamblan las piezas',4);
 
 INSERT INTO personal (per_ci, per_nombre, per_apellido_1, per_apellido_2, per_fecha_inicio, per_titulacion, per_experiencia,per_fnac, fk_lug_codigo, fk_zon_codigo,fk_fab_codigo) VALUES
 (10000000, 'Alejandro', 'Rojas', 'Reyes', '01/03/2015', 'Ingeniero aeronautico', 'Recien graduado','03/05/1987', 1348, 1,1 ),
