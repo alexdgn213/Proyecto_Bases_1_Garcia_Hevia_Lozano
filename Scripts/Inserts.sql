@@ -2043,14 +2043,7 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (14,null,'Tren de Aterrizaje Retractil'),
   
   --ETC
-  /*
-  INSERT INTO tip_mat(tip_mat_codigo,fk_mat_codigo,fk_tip_codigo,tip_mat_cantidad) VALUES --!!!!!!!!!!!!!!!!!!!!!!!!
-  (),
-  (),
-  (),
-  (),
-  ();
-  */
+ 
   INSERT INTO inventario(inv_codigo,fk_fab_codigo,inv_descripcion) VALUES
   (1,1,'Inventario de piezas para ensamblar el avion'),
   (2,2,'Contiene tantos elementos'),
@@ -2075,7 +2068,11 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (14,'09/09/2015','09/09/2015',3,3,2,14,null);
   
   INSERT INTO solicitud(sol_cantidad,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2,fk_mat_codigo) VALUES
-  
+  (),
+  (),
+  (),
+  (),
+  ();
   
   INSERT INTO tip_mod(tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo) VALUES
   (2,1,1),
@@ -2099,11 +2096,11 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
  (7,4);
  
  INSERT INTO pru_pie(pru_pie_fecha_realizacion,fk_pru_codigo,fk_pie_codigo) VALUES
- ('02/07/2013',3),
- ('06/08/2015',3),
- ('11/10/2016',5),
- ('10/11/2014',3),
- ('05/06/2015',5);
+ ('02/07/2013',3,1),
+ ('06/08/2015',3,2),
+ ('11/10/2016',5,3),
+ ('10/11/2014',3,4),
+ ('05/06/2015',5,5);
  
  INSERT INTO mat_inv(mat_inv_cantidad,fk_mat_codigo,fk_inv_codigo) VALUES
  (200,1,1),
@@ -2119,19 +2116,59 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   ('02/03/2015',2,4,2,4),
   ('04/04/2015',2,5,5,5);
   
-  INSERT INTO per_pru_pie()VALUES
-  (),
-  (),
-  (),
-  (),
-  ();
+  INSERT INTO per_pru_pie(per_pru_pie_encargado,fk_per_ci,fk_pru_codigo,fk_pie_codigo,fk_pru_pie_codigo)VALUES
+  (1,11212123,3,1,1),
+  (1,10000000,3,2,2),
+  (1,20000000,5,3,3),
+  (1,19080988,3,4,4),
+  (1,10909899,5,5,5);
 
 INSERT INTO rol(rol_nombre,rol_descripcion) VALUES
-	('SuperUsuario','Posee todos los permisos');
+	('SuperUsuario','Posee todos los permisos'),
+	('Usuario Normal','Permite ingresar a la base de datos'),
+	('Usuario +','Puede realizar mas consultas que el usuario normal'),
+	('Programador','Puede realizar operaciones en la base de datos pero se le limitan ciertas vistas'),
+	('Usuario VIP','Puede hacer mas operaciones que el Usuario+');
     
 INSERT INTO usuario(usu_nombre,usu_clave,fk_rol_codigo) VALUES
 	('alex','123456',1),
     ('marco','123456',1),
     ('vero','123456',1),
+    ('braulio','123456',1),
     ('anak','123456',1);
+    
+INSERT INTO privilegio(pri_accion,pri_descripcion)VALUES
+('Añadir','Permite añadir registros '),
+('Modificar','Permite modificar registros'),
+('Eliminar','Permite eliminar registros'),
+('Aña-Elim','Permite añadir y eliminar registros'),
+('Select','Permite hacer selects de la BD'),
+('Todo','Puede hacer todo'); 
+INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
+(1,6),
+(2,1),
+(3,2),
+(5,4),
+(4,5);
+
  
+  INSERT INTO tip_mat(tip_mat_cantidad,fk_tip_codigo,fk_mat_codigo) VALUES --!!FALTA!!
+  (1000,),
+  (300,),
+  (75,),
+  (90),
+  (200,);
+  
+  INSERT INTO pru_aer(pru_aer_fecha_realizacion,fk_pru_codigo,fk_aer_codigo)VALUES
+  ('03/12/2015',4,5),
+  ('12/04/2014',4,4),
+  ('11/11/2015',4,3),
+  ('02/06/2017',4,2),
+  ('10/12/2017',4,1);
+  
+  INSERT INTO forma_pago(for_monto,for_efectivo,for_numero,for_banco,for_tipo_tarjeta,for_fecha_vencimiento,for_tipo)VALUES
+  (),
+  (),
+  (),
+  (),
+  ();
