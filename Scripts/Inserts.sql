@@ -1532,8 +1532,8 @@ INSERT INTO zona (zon_nombre, zon_descripcion, fk_fab_codigo) VALUES
 INSERT INTO personal (per_ci, per_nombre, per_apellido_1, per_apellido_2, per_fecha_inicio, per_titulacion, per_experiencia,per_fnac, fk_lug_codigo, fk_zon_codigo,fk_fab_codigo) VALUES
 (10000000, 'Alejandro', 'Rojas', 'Reyes', '01/03/2015', 'Ingeniero aeronautico', 'Recien graduado','03/05/1987', 1348, 1,1 ),
 (20000000, 'Benito', 'Suarez', 'Ocando', '01/09/2015', 'Pintor', '7 años Toyota','08/12/1985', 1348, 2,1),
-(11212123, 'Keysi', 'Sayago', 'Gomez', '01/03/2014', 'Tecnico superior en administracion', '2 años Plumrose','12/14/1990', 476, 3,2),
-(11212312, 'Michelle', 'Gonzalez', 'Jraiche', '01/01/2006', 'Ingeniero mecánico', '4 años Vepica','08/15/1977', 476, 5,3),
+(11212123, 'Keysi', 'Sayago', 'Gomez', '01/03/2014', 'Tecnico superior en administracion', '2 años Plumrose','12/12/1990', 476, 3,2),
+(11212312, 'Michelle', 'Gonzalez', 'Jraiche', '01/01/2006', 'Ingeniero mecánico', '4 años Vepica','08/10/1977', 476, 5,3),
 (19080988, 'Victor', 'Manrique', 'Perez', '05/01/2008', 'Ingeniero en produccion', 'Recien graduado','10/05/1994', 476, 6,3),
 (10909899, 'Jamileth', 'Granados', 'Sislema', '01/08/2015', 'Bachiller', '3 años Mcdonals','03/10/1992', 474, 4,3);
 
