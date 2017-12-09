@@ -16,7 +16,7 @@ create table lugar
 create table fabrica
 (
 	fab_codigo serial not null,
-	fab_nombre varchar(30),
+	fab_nombre varchar(80),
 	fk_lug_codigo int not null, 
 	constraint pk_fabrica primary key(fab_codigo),
 	constraint fk_lugar foreign key(fk_lug_codigo)
@@ -31,7 +31,6 @@ create table zona
 	zon_descripcion varchar(100),
 	fk_fab_codigo int not null,
 	constraint pk_zona primary key (zon_codigo,fk_fab_codigo),
-	constraint u_zon_nombre unique(zon_nombre),
 	constraint fk_fab_codigo foreign key(fk_fab_codigo)
 	references fabrica(fab_codigo)
 );
@@ -39,7 +38,7 @@ create table zona
 create table personal
 (
 	per_ci int not null,
-	per_nombre varchar(30) not null,
+	per_nombre varchar(80) not null,
 	per_apellido_1 varchar(30) not null,
 	per_apellido_2 varchar(30) not null,
 	per_fecha_inicio date not null,
@@ -164,7 +163,7 @@ create table aeronave
 create table material
 (
 	mat_codigo serial not null,
-	mat_nombre varchar(30) not null,
+	mat_nombre varchar(80) not null,
 	mat_tiempo_estimado int not null, --Numero de dias
 	constraint pk_material primary key(mat_codigo)
 );
@@ -185,39 +184,24 @@ create table mat_pro
 	references proveedor(pro_rif)
 );
 
-create table ensamblaje
-(
-	ens_codigo serial not null,
-	ens_descripcion varchar(40) not null,
-	fk_zon_codigo int not null,
-    fk_fab_codigo int not null,
-	fk_pie_codigo int,
-	constraint pk_ens_codigo primary key(ens_codigo),
-	constraint fk_zon_codigo foreign key(fk_zon_codigo,fk_fab_codigo)
-	references zona(zon_codigo,fk_fab_codigo),
-	constraint fk_pie_codigo foreign key(fk_pie_codigo)
-	references aeronave(aer_codigo)
-);
+
 
 create table tipo_pieza
 (
 	tip_codigo serial not null,
     fk_tip_codigo int,
     tip_tiempo_fabricacion int not null,--Numero de dias u horas
-	tip_nombre varchar(30) not null,
-	fk_ens_codigo int not null,
+	tip_nombre varchar(80) not null,
 	constraint pk_tip_pieza primary key(tip_codigo),
 	constraint fk_tip_cod foreign key(fk_tip_codigo)
-	references tipo_pieza(tip_codigo),
-	constraint fk_ens_codigo foreign key(fk_ens_codigo)
-	references ensamblaje(ens_codigo)
+	references tipo_pieza(tip_codigo)
 );
 
 create table inventario
 (
 	inv_codigo serial not null,
     fk_fab_codigo int not null,
-    inv_descripcion varchar(60) not null,
+    inv_descripcion varchar(80) not null,
 	constraint pk_inventario primary key(inv_codigo),
 	constraint fk_fabrica foreign key(fk_fab_codigo)
 	references fabrica(fab_codigo)
@@ -241,6 +225,23 @@ create table pieza
 	references tipo_pieza(tip_codigo),
 	constraint fk_pieza foreign key(fk_pie_codigo)
 	references pieza(pie_codigo)
+);
+
+create table ensamblaje
+(
+	ens_codigo serial not null,
+	ens_descripcion varchar(80) not null,
+	fk_zon_codigo int not null,
+    fk_fab_codigo int not null,
+	fk_pie_codigo int,
+    fk_tip_codigo int,
+	constraint pk_ens_codigo primary key(ens_codigo),
+	constraint fk_zon_codigo foreign key(fk_zon_codigo,fk_fab_codigo)
+	references zona(zon_codigo,fk_fab_codigo),
+	constraint fk_pie_codigo foreign key(fk_pie_codigo)
+	references pieza(pie_codigo),
+    constraint fk_tip_codigo foreign key(fk_tip_codigo)
+    references tipo_pieza(tip_codigo)
 );
 
 create table solicitud
@@ -280,7 +281,7 @@ create table tip_mod
 create table prueba
 (
 	pru_codigo serial not null,
-	pru_nombre varchar(60) not null,
+	pru_nombre varchar(80) not null,
 	pru_descripcion varchar(90) not null,
 	constraint pk_prueba primary key(pru_codigo)
 );
@@ -356,8 +357,8 @@ create table per_pru_pie
 create table rol
 (
 	 rol_codigo serial not null,
-	 rol_nombre varchar(30) not null unique,
-	 rol_descripcion varchar(60) not null,
+	 rol_nombre varchar(80) not null unique,
+	 rol_descripcion varchar(80) not null,
 	 constraint pk_rol_codigo primary key(rol_codigo)
 );
 

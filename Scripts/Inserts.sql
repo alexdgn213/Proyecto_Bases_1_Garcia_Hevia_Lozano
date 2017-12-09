@@ -1523,15 +1523,19 @@ INSERT INTO zona (zon_codigo, zon_nombre, zon_descripcion, fk_fab_codigo) VALUES
 (3, 'zona de acabado interior', 'zona donde se ensamblan los elementos del interior del avion', 2),
 (4, 'zona de despacho', 'zona donde se despachan' , 3),
 (5, 'zona de ensamble', 'zona donde se ensamblan las piezas', 3),
-(6, 'zona de certificacion de calidad', 'zona donde se verifica la calidad', 3);
+(6, 'zona de certificacion de calidad', 'zona donde se verifica la calidad', 3),
+(7,'Zona de ensamble','Zona donde se ensamblan las piezas',5),
+(8,'Zona de ensamble','Zona donde se ensamblan las piezas',1),
+(9,'Zona de ensamble','Zona donde se ensamblan las piezas',2),
+(10,'Zona de ensamble','Zona donde se ensamblan las piezas',4);
 
-INSERT INTO personal (per_ci, per_nombre, per_apellido_1, per_apellido_2, per_fecha_inicio, per_titulacion, per_experiencia,per_fnac, fk_lug_codigo, fk_zon_codigo) VALUES
-(10000000, 'Alejandro', 'Rojas', 'Reyes', '01/03/2015', 'Ingeniero aeronautico', 'Recien graduado','03/05/1987', 1348, 1),
-(20000000, 'Benito', 'Suarez', 'Ocando', '01/09/2015', 'Pintor', '7 años Toyota','08/12/1985', 1348, 2),
-(11212123, 'Keysi', 'Sayago', 'Gomez', '01/03/2014', 'Tecnico superior en administracion', '2 años Plumrose','12/14/1990', 476, 3),
-(11212312, 'Michelle', 'Gonzalez', 'Jraiche', '01/26/2006', 'Ingeniero mecánico', '4 años Vepica','08/15/1977', 476, 5),
-(19080988, 'Victor', 'Manrique', 'Perez', '05/15/2008', 'Ingeniero en produccion', 'Recien graduado','10/05/1994', 476, 6),
-(10909899, 'Jamileth', 'Granados', 'Sislema', '01/08/2015', 'Bachiller', '3 años Mcdonals','03/10/1992', 474, 4);
+INSERT INTO personal (per_ci, per_nombre, per_apellido_1, per_apellido_2, per_fecha_inicio, per_titulacion, per_experiencia,per_fnac, fk_lug_codigo, fk_zon_codigo,fk_fab_codigo) VALUES
+(10000000, 'Alejandro', 'Rojas', 'Reyes', '01/03/2015', 'Ingeniero aeronautico', 'Recien graduado','03/05/1987', 1348, 1,1 ),
+(20000000, 'Benito', 'Suarez', 'Ocando', '01/09/2015', 'Pintor', '7 años Toyota','08/12/1985', 1348, 2,1),
+(11212123, 'Keysi', 'Sayago', 'Gomez', '01/03/2014', 'Tecnico superior en administracion', '2 años Plumrose','12/14/1990', 476, 3,2),
+(11212312, 'Michelle', 'Gonzalez', 'Jraiche', '01/26/2006', 'Ingeniero mecánico', '4 años Vepica','08/15/1977', 476, 5,3),
+(19080988, 'Victor', 'Manrique', 'Perez', '05/15/2008', 'Ingeniero en produccion', 'Recien graduado','10/05/1994', 476, 6,3),
+(10909899, 'Jamileth', 'Granados', 'Sislema', '01/08/2015', 'Bachiller', '3 años Mcdonals','03/10/1992', 474, 4,3);
 
 INSERT INTO beneficiario (ben_ci,ben_nombre,ben_apellido_1,ben_apellido_2,ben_parentesco,fk_lug_codigo,fk_per_ci) VALUES
 (16890891, 'Antonio', 'Rojas','Fernández','Hijo',1348,10000000),
@@ -1995,27 +1999,28 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (GE 276,'kN',16,35), -- CON ER
   (296,'kN',17,35);
   */
-  INSERT INTO aeronave(aer_codigo,aer_fecha_compra,fk_cli_rif,fk_mod_codigo) VALUES 
-  (1,'07/24/2017',123336666,13), -- con los fk de clientes arriba y los fk de los modelos de arriba
-  (2,'08/20/2016',99090987,1),
-  (3,'03/02/2017',123447677,6),
-  (4,'02/02/2015',123336686,8),
-  (5,'10/17/2016',223399666,12);
+  INSERT INTO aeronave(aer_fecha_compra,fk_cli_rif,fk_mod_codigo) VALUES 
+  ('07/24/2017',123336666,13), -- con los fk de clientes arriba y los fk de los modelos de arriba
+  ('08/20/2016',99090987,1),
+  ('03/02/2017',123447677,6),
+  ('02/02/2015',123336686,8),
+  ('10/17/2016',223399666,12),
+  ('10/12/2014',223399666,11);
+  /*
+  INSERT INTO solicitud(sol_codigo,sol_cantidad,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2) VALUES
+  (1,55,0,'Se despacharan 55 tornillos',3,2),
+  (2,1,1,'Se necesita llevar a zona de ensamblaje de avion principal',2,1),
+  (3,4,1,'Se requiere pintura',1,1),
+  (4,50,0,'Se Despacharan 50 cauchos',3,1),
+  (5,10,1,'Se necesita llevar las piezas internas a la zona de despacho',2,3);*/
   
-  INSERT INTO solicitud(sol_codigo,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2) VALUES
-  (1,0,'Se despacharan 55 tornillos',3,2),
-  (2,1,'Se necesita llevar a zona de ensamblaje de avion principal',2,1),
-  (3,1,'Se requiere pintura',1,1),
-  (4,0,'Se Despacharan 50 cauchos',3,1),
-  (5,1,'Se necesita llevar las piezas internas a la zona de despacho',2,3);
-  
-  INSERT INTO material(mat_codigo,mat_nombre) VALUES
-  (1,'cobre'),
-  (2,'metal'),
-  (3,'plastico'),
-  (4,'goma'),
-  (5,'madera'),
-  (6,'hierro');
+  INSERT INTO material(mat_codigo,mat_nombre,mat_tiempo_estimado) VALUES
+  (1,'cobre',20),
+  (2,'metal',10),
+  (3,'plastico',30),
+  (4,'goma',5),
+  (5,'madera',3),
+  (6,'hierro',10);
   
   INSERT INTO mat_pro(mat_pro_codigo,mat_pro_precio,mat_pro_fecha_compra,mat_pro_cantidad,fk_mat_codigo,fk_pro_rif) VALUES
   (1,5000,'10/03/2011',15000,1,71231233),
@@ -2024,24 +2029,21 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (4,1000,'12/24/2012',3450,6,90001234),
   (5,2000,'10/16/2013',4010,5,78900010);
   
-  INSERT INTO tipo_pieza(tip_codigo,fk_tip_codigo,tip_nombre) VALUES --fk_tip_codigo es para piezas compuestas por otra
-  (1,null,'Ala'), --No se que poner en fk_tip_codigo de ninguna
-  (2,null,'Superficie de Sustentacion'), --ejemplo alas
-  (3,null,'Fuselaje'),
-  (4,null,'Grupo Motopropulsor'),
-  (5,null,'Superficie de Control'),--alerones,flaps entre otros
-  (6,null,'Alerones'),
-  (7,null,'Flaps'),
-  (8,null,'Spoilers'),
-  (9,null,'Slats'),
-  (10,null,'Estabilizadores'),
-  --Falta tren de aterrizaje
-  (11,null,'Instrumentos de Control'),
+  INSERT INTO tipo_pieza(fk_tip_codigo,tip_tiempo_fabricacion,tip_nombre) VALUES --fk_tip_codigo es para piezas compuestas por otra
+  (null,50,'Ala'), --No se que poner en fk_tip_codigo de ninguna
+  (null,20,'Fuselaje'),
+  (null,15,'Grupo Motopropulsor'),
+  (null,24,'Alerones'),
+  (null,7,'Flaps'),
+  (null,10,'Spoilers'),
+  (null,5,'Slats'),
+  (null,8,'Estabilizadores'),
+  (null,4,'Instrumentos de Control'),
   --Elementos Internos: 
-  (12,null,'Asientos'),
-  (13,null,'Tren de Aterrizaje Fijo'),
-  (14,null,'Tren de Aterrizaje Retractil');
-  
+  (null,30,'Asientos'),
+  (null,10,'Tren de Aterrizaje Fijo'),
+  (null,10,'Tren de Aterrizaje Retractil');
+  --12 piezas
   --ETC
  
   INSERT INTO inventario(inv_codigo,fk_fab_codigo,inv_descripcion) VALUES
@@ -2051,21 +2053,33 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (4,4,'Contiene x cantidades de piezas'),
   (5,5,'Piezas');
   
-  INSERT INTO pieza(pie_codigo,pie_fecha_estimada,pie_fecha_entregada,fk_fab_codigo,fk_inv_codigo,fk_aer_codigo,fk_tip_codigo,fk_pie_codigo) VALUES
-  (1,'05/05/2015','06/05/2015',3,3,1,1,null),
-  (2,'10/03/2014','07/03/2014',3,3,1,2,null),
-  (3,'09/09/2016','09/09/2016',5,5,1,3,null),
-  (4,'11/17/2015','11/16/2015',1,1,1,4,null), --Grupo motopropulsor esta compuesto por: Guiñada,Cabaceo y Alabeo .Pag16
-  (5,'01/23/2014','01/25/2014',3,3,1,5,null),--Alerones/flaps entre otros?
-  (6,'04/14/2015','04/16/2015',3,3,1,6,null),
-  (7,'10/10/2016','10/10/2016',3,3,2,7,null),
-  (8,'01/01/2017','12/31/2016',3,3,4,8,null),
-  (9,'02/02/2016','10/01/2016',3,3,5,9,null),
-  (10,'03/03/2016','03/03/2016',3,3,2,10,null), --6 tipos de colas
-  (11,'04/04/2015','04/05/2015',4,4,4,11,null),
-  (12,'05/05/2017','05/05/2017',2,2,5,12,null),
-  (13,'01/01/2016','02/01/2016',3,3,1,13,null),
-  (14,'09/09/2015','09/09/2015',3,3,2,14,null);
+  INSERT INTO pieza(pie_fecha_estimada,pie_fecha_entregada,fk_inv_codigo,fk_aer_codigo,fk_tip_codigo,fk_pie_codigo) VALUES
+  ('05/05/2015','06/05/2015',3,1,1,null),
+  ('09/09/2016','09/09/2016',5,1,2,null),
+  ('11/17/2015','11/16/2015',1,1,3,null),
+  ('04/14/2015','04/16/2015',3,1,4,null),
+  ('10/10/2016','10/10/2016',3,2,5,null),
+  ('01/01/2017','12/31/2016',3,4,6,null),
+  ('02/02/2016','10/01/2016',3,5,7,null),
+  ('03/03/2016','03/03/2016',3,2,8,null),
+  ('04/04/2015','04/05/2015',4,4,9,null),
+  ('05/05/2017','05/05/2017',2,5,10,null),
+  ('01/01/2016','02/01/2016',3,1,11,null),
+  ('09/09/2015','09/09/2015',3,2,12,null);
+  
+  INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo) VALUES
+  ('Ensamblaje del Ala',5,3,1),
+  ('Ensamblaje del Fuselaje',7,5,2),
+  ('Ensamblaje del Grupo Motopropulsor',8,1,3),
+  ('Ensamblaje de Alerones',5,3,4),
+  ('Ensamblaje de Flaps',5,3,5),
+  ('Ensamblaje de Spoilers',5,3,6),
+  ('Ensamblaje de Flaps',5,3,7),
+  ('Ensamblaje de Estabilizadores',5,3,8),
+  ('Ensamblaje de Instrumentos de Control',10,4,9),
+  ('Creacion de Asientos',9,2,10),
+  ('Ensamblaje de Tren de Aterrizaje Fijo',5,3,11),
+  ('Ensamblaje de Tren de Aterrizaje Retractil',5,3,12);
   
   INSERT INTO solicitud(sol_cantidad,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2,fk_mat_codigo) VALUES
   (10,1,'Enviar 10 unidades de cobre',1,2,1),
