@@ -5,7 +5,7 @@
  */
 package Dominio;
 
-import Adaptadores.AdaptadorTabla;
+import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.ConectorDB;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -108,7 +108,7 @@ public class Proveedor {
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
         ResultSet rs =obtenerResultSet(conector,"SELECT pro_rif as Rif,pro_nombre as nombre,pro_monto_acreditado as Monto_Acreditado,pro_fecha_inicio as Inicio_de_operaciones FROM proveedor");
-        AdaptadorTabla.llenarTabla(jTable, rs);
+        AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
     /*
