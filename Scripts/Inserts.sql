@@ -2026,10 +2026,10 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   
   INSERT INTO tipo_pieza(tip_codigo,fk_tip_codigo,tip_nombre) VALUES --fk_tip_codigo es para piezas compuestas por otra
   (1,null,'Ala'), --No se que poner en fk_tip_codigo de ninguna
-  (2,null,'Superficie de Sustentacion'),
+  (2,null,'Superficie de Sustentacion'), --ejemplo alas
   (3,null,'Fuselaje'),
   (4,null,'Grupo Motopropulsor'),
-  (5,null,'Superficie de Control'),
+  (5,null,'Superficie de Control'),--alerones,flaps entre otros
   (6,null,'Alerones'),
   (7,null,'Flaps'),
   (8,null,'Spoilers'),
@@ -2039,6 +2039,9 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (11,null,'Instrumentos de Control'),
   --Elementos Internos: 
   (12,null,'Asientos');
+  (13,null,'Tren de Aterrizaje Fijo'),
+  (14,null,'Tren de Aterrizaje Retractil'),
+  
   --ETC
   /*
   INSERT INTO tip_mat(tip_mat_codigo,fk_mat_codigo,fk_tip_codigo,tip_mat_cantidad) VALUES --!!!!!!!!!!!!!!!!!!!!!!!!
@@ -2067,22 +2070,62 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (9,'02/02/2016','10/01/2016',3,3,5,9,null),
   (10,'03/03/2016','03/03/2016',3,3,2,10,null), --6 tipos de colas
   (11,'04/04/2015','04/05/2015',4,4,4,11,null),
-  (12,'05/05/2017','05/05/2017',2,2,5,12,null);
+  (12,'05/05/2017','05/05/2017',2,2,5,12,null),
+  (13,'01/01/2016','02/01/2016',3,3,1,13,null),
+  (14,'09/09/2015','09/09/2015',3,3,2,14,null);
   
-  /*
-  INSERT INTO tip_mod(tip_mod_codigo,tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo) VALUES
-  (1,),
-  */
+  INSERT INTO solicitud(sol_cantidad,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2,fk_mat_codigo) VALUES
+  
+  
+  INSERT INTO tip_mod(tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo) VALUES
+  (2,1,1),
+  (1,13,1),
+  (2,9,1),
+  (1,6,2),
+  (1,6,3);
+  
   INSERT INTO prueba(pru_codigo,pru_nombre,pru_descripcion) VALUES
  (1,'Control de calidad de materiales','Consiste en comprobar el nivel optimo del material'),
  (2,'Control de calidad de materiales por traslado','Comprueba que no hayan sufrido daños por traslado'),
  (3,'Control de calidad de la pieza','Comprueba el nivel optimo de la pieza ensamblada'),
  (4,'Prueba de control de ensamble','Comprueba que el ensamblaje se haya hecho satisfactoriamente'),
  (5,'Control de calidad de piezas por traslado','Comprueba que no hayan sufrido daños por traslado');
-  /*
-  INSERT INTO pru_mat(pru_mat_codigo,pru_mat_fecha_realizacion,fk_pru_codigo,fk_mat_codigo) VALUES
+ 
+ INSERT INTO tip_pru(fk_tip_codigo,fk_pru_codigo) VALUES
+ (1,4),
+ (2,4),
+ (3,4),
+ (6,4),
+ (7,4);
+ 
+ INSERT INTO pru_pie(pru_pie_fecha_realizacion,fk_pru_codigo,fk_pie_codigo) VALUES
+ ('02/07/2013',3),
+ ('06/08/2015',3),
+ ('11/10/2016',5),
+ ('10/11/2014',3),
+ ('05/06/2015',5);
+ 
+ INSERT INTO mat_inv(mat_inv_cantidad,fk_mat_codigo,fk_inv_codigo) VALUES
+ (200,1,1),
+ (350,2,4),
+ (500,3,3),
+ (30,4,2),
+ (96,5,5);
+  
+  INSERT INTO pru_mat_inv(pru_mat_inv_fecha_realizacion,fk_pru_codigo,fk_mat_codigo,fk_inv_codigo,fk_mat_inv_codigo) VALUES
+  ('08/08/2016',1,1,1,1),
+  ('09/09/2015',2,2,4,2),
+  ('10/10/2014',1,3,3,3),
+  ('02/03/2015',2,4,2,4),
+  ('04/04/2015',2,5,5,5);
+  
+  INSERT INTO per_pru_pie()VALUES
+  (),
+  (),
+  (),
+  (),
   ();
-*/
+
 INSERT INTO rol(rol_nombre,rol_descripcion) VALUES
 	('SuperUsuario','Posee todos los permisos');
     
