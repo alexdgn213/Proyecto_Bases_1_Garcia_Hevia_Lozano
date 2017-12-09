@@ -2068,11 +2068,18 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
   (14,'09/09/2015','09/09/2015',3,3,2,14,null);
   
   INSERT INTO solicitud(sol_cantidad,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2,fk_mat_codigo) VALUES
-  (),
-  (),
-  (),
-  (),
-  ();
+  (10,1,'Enviar 10 unidades de cobre',1,2,1),
+  (20,0,'Enviar 20 unidades bloques de metal',3,2,2),
+  (30,1,'Enviar 30 tablas de madera',4,3,5),
+  (4,1,'Enviar 4 gomas',1,2,4),
+  (1,0,'Enviar una viga de hiero',3,1,6);
+  
+  (1,'cobre'),
+  (2,'metal'),
+  (3,'plastico'),
+  (4,'goma'),
+  (5,'madera'),
+  (6,'hierro');
   
   INSERT INTO tip_mod(tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo) VALUES
   (2,1,1),
@@ -2152,12 +2159,12 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
 (4,5);
 
  
-  INSERT INTO tip_mat(tip_mat_cantidad,fk_tip_codigo,fk_mat_codigo) VALUES --!!FALTA!!
-  (1000,),
-  (300,),
-  (75,),
-  (90),
-  (200,);
+  INSERT INTO tip_mat(tip_mat_cantidad,fk_tip_codigo,fk_mat_codigo) VALUES
+  (1000,1,2),
+  (300,7,1),
+  (75,3,6),
+  (906,2,2),
+  (200,5,3);
   
   INSERT INTO pru_aer(pru_aer_fecha_realizacion,fk_pru_codigo,fk_aer_codigo)VALUES
   ('03/12/2015',4,5),
