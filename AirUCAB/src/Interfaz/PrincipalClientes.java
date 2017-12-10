@@ -128,14 +128,22 @@ public class PrincipalClientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,0);
+        DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,-1);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        // TODO add your handling code here:
+        int fila = tablaClientes.getSelectedRow();
+        if (fila>=0){
+            int id = (Integer) tablaClientes.getValueAt(fila, 0);
+            DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,id);
+            contenedor.removeAll();
+            contenedor.add(nuevoPanel);
+            contenedor.updateUI();   
+        }
+        
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed

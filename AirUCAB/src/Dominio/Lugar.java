@@ -160,10 +160,11 @@ public class Lugar {
         }
     }
     
-    public static void llenarComboParroquias(ConectorDB conector, JComboBox jCombo, String municipio){
+    public static void llenarComboParroquias(ConectorDB conector, JComboBox jCombo, String municipio, String estado){
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT l1.lug_nombre FROM lugar l1, lugar l2 WHERE l1.fk_lug_codigo=l2.lug_codigo AND l1.lug_tipo ='Parroquia' AND l2.lug_nombre=? ORDER BY lug_nombre");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT l1.lug_nombre FROM lugar l1, lugar l2, lugar l3 WHERE l1.fk_lug_codigo=l2.lug_codigo AND l2.fk_lug_codigo=l3.lug_codigo AND l1.lug_tipo ='Parroquia' AND l2.lug_nombre=? AND l3.lug_nombre=? ORDER BY lug_nombre");
             pst.setString(1, municipio);
+            pst.setString(2, estado);
             AdaptadorSQLUI.llenarComboBox(jCombo,pst.executeQuery());
         } catch (SQLException ex) {
             System.out.print(ex.toString());

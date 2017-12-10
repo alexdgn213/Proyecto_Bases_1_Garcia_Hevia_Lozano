@@ -7,6 +7,7 @@ package Interfaz;
 
 import Adaptadores.ConectorDB;
 import Dominio.Cliente;
+import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -29,6 +30,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             e.printStackTrace();
         } 
         initComponents();
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
         Contenido.setVisible(false);
     }
 
@@ -51,6 +53,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuProveedores = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         Contenido = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         panelContenido = new javax.swing.JPanel();
         fondoContenido = new javax.swing.JLabel();
         jlTitulo = new javax.swing.JLabel();
@@ -169,20 +172,27 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         Contenido.setOpaque(false);
         Contenido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setOpaque(false);
+
+        panelContenido.setBackground(new java.awt.Color(255, 255, 255));
         panelContenido.setOpaque(false);
+        panelContenido.setPreferredSize(new java.awt.Dimension(850, 500));
 
         javax.swing.GroupLayout panelContenidoLayout = new javax.swing.GroupLayout(panelContenido);
         panelContenido.setLayout(panelContenidoLayout);
         panelContenidoLayout.setHorizontalGroup(
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
+            .addGap(0, 868, Short.MAX_VALUE)
         );
         panelContenidoLayout.setVerticalGroup(
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGap(0, 598, Short.MAX_VALUE)
         );
 
-        Contenido.add(panelContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 850, 580));
+        jScrollPane1.setViewportView(panelContenido);
+
+        Contenido.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 600));
 
         fondoContenido.setBackground(new java.awt.Color(255, 255, 255));
         fondoContenido.setOpaque(true);
@@ -247,6 +257,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JPanel menuClientes;
     private javax.swing.JPanel menuInicio;

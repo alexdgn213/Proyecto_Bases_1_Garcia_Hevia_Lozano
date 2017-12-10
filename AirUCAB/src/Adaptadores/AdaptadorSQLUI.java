@@ -52,7 +52,6 @@ public class AdaptadorSQLUI {
             jCombo.addItem(rs.getString(1));
         }
         rs.close();
-        System.out.print("Pase");
        } catch (Exception ex) {
         ex.printStackTrace();
        }

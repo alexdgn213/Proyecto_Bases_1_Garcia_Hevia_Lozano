@@ -111,22 +111,22 @@ public class Cliente {
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
-    /*
-    public static Cliente buscarPorCodigo(ConectorDB conector, int codigo){
-        Cliente l = null;
+    
+    public static Cliente buscarPorCodigo(ConectorDB conector, int rif){
+        Cliente c = null;
         try {
             PreparedStatement pst = conector.conexion.prepareStatement("SELECT cli_rif,cli_nombre,cli_monto_acreditado,cli_fecha_inicio,fk_lug_codigo FROM cliente WHERE cli_rif=?");
             pst.setInt(1, rif);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                l = new Cliente(rs.getInt("cli_rif"),rs.getString("cli_nombre"),rs.getInt("cli_monto_acreditado"),rs.getDate("cli_fecha_inicio"),rs.getInt("fk_lug_codigo"));
+                c = new Cliente(rs.getInt("cli_rif"),rs.getString("cli_nombre"),rs.getInt("cli_monto_acreditado"),rs.getDate("cli_fecha_inicio"),rs.getInt("fk_lug_codigo"));
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
         }
-        return l;
+        return c;
     }
-    */
+    
     public int getCli_rif() {
         return cli_rif;
     }
