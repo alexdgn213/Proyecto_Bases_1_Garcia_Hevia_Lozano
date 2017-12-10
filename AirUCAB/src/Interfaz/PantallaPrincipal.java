@@ -30,7 +30,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             e.printStackTrace();
         } 
         initComponents();
-        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jScrollPane1.getViewport().setBackground(new Color(240,240,240));
         Contenido.setVisible(false);
     }
 
@@ -44,14 +44,17 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         LateralExpandido = new javax.swing.JPanel();
-        fondoLateralExpandido = new javax.swing.JLabel();
         panelLateralExtendido = new javax.swing.JPanel();
         menuInicio = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         menuClientes = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         menuProveedores = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        fondoLateralExpandido = new javax.swing.JLabel();
         Contenido = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         panelContenido = new javax.swing.JPanel();
@@ -64,8 +67,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1080, 715));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fondoLateralExpandido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/BarraLateralExtendida.png"))); // NOI18N
+        LateralExpandido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panelLateralExtendido.setOpaque(false);
+
+        menuInicio.setOpaque(false);
         menuInicio.setPreferredSize(new java.awt.Dimension(162, 30));
         menuInicio.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -90,6 +96,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
         menuInicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_home_black_24dp_1x.png"))); // NOI18N
+        menuInicio.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+
+        menuClientes.setOpaque(false);
         menuClientes.setPreferredSize(new java.awt.Dimension(162, 30));
         menuClientes.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -114,6 +124,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
         menuClientes.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_business_center_black_24dp_1x.png"))); // NOI18N
+        menuClientes.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 24, 24));
+
+        menuProveedores.setOpaque(false);
         menuProveedores.setPreferredSize(new java.awt.Dimension(162, 30));
         menuProveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -122,6 +136,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel3.setText("Proveedores");
         jLabel3.setToolTipText("");
         menuProveedores.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_local_shipping_black_24dp_1x.png"))); // NOI18N
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuProveedores.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
         javax.swing.GroupLayout panelLateralExtendidoLayout = new javax.swing.GroupLayout(panelLateralExtendido);
         panelLateralExtendido.setLayout(panelLateralExtendidoLayout);
@@ -144,30 +162,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addComponent(menuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(528, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout LateralExpandidoLayout = new javax.swing.GroupLayout(LateralExpandido);
-        LateralExpandido.setLayout(LateralExpandidoLayout);
-        LateralExpandidoLayout.setHorizontalGroup(
-            LateralExpandidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LateralExpandidoLayout.createSequentialGroup()
-                .addComponent(panelLateralExtendido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(fondoLateralExpandido)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        LateralExpandidoLayout.setVerticalGroup(
-            LateralExpandidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LateralExpandidoLayout.createSequentialGroup()
-                .addComponent(fondoLateralExpandido)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(LateralExpandidoLayout.createSequentialGroup()
-                .addComponent(panelLateralExtendido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        LateralExpandido.add(panelLateralExtendido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 661));
 
-        getContentPane().add(LateralExpandido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 43, 180, 672));
+        fondoLateralExpandido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/BarraLateralExtendida.png"))); // NOI18N
+        LateralExpandido.add(fondoLateralExpandido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(LateralExpandido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 43, 180, 667));
 
         Contenido.setOpaque(false);
         Contenido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -187,18 +190,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         );
         panelContenidoLayout.setVerticalGroup(
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
+            .addGap(0, 608, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(panelContenido);
 
-        Contenido.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 600));
+        Contenido.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 610));
 
-        fondoContenido.setBackground(new java.awt.Color(255, 255, 255));
+        fondoContenido.setBackground(new java.awt.Color(204, 204, 204));
         fondoContenido.setOpaque(true);
         Contenido.add(fondoContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 1000));
 
-        getContentPane().add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 870, 600));
+        getContentPane().add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 870, 610));
 
         jlTitulo.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         jlTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -257,6 +260,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JPanel menuClientes;

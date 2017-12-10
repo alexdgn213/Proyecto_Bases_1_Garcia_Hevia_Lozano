@@ -7,6 +7,7 @@ package Interfaz;
 
 import Adaptadores.ConectorDB;
 import Dominio.Cliente;
+import java.awt.Color;
 import javax.swing.JPanel;
 
 /**
@@ -26,6 +27,7 @@ public class PrincipalClientes extends javax.swing.JPanel {
         initComponents();
         this.setSize(850,580);
         Cliente.llenarTabla(conector, tablaClientes);
+        jScrollPane1.getViewport().setBackground(new Color(255,255,255));
     }
 
     /**
@@ -42,7 +44,6 @@ public class PrincipalClientes extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
-        jbEliminar = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(850, 580));
         setOpaque(false);
@@ -66,26 +67,24 @@ public class PrincipalClientes extends javax.swing.JPanel {
         jLabel1.setText("Lista de Clientes");
         jLabel1.setToolTipText("");
 
+        jbNuevo.setBackground(new java.awt.Color(255, 255, 255));
+        jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_add_black_48dp_1x.png"))); // NOI18N
         jbNuevo.setText("Nuevo");
+        jbNuevo.setContentAreaFilled(false);
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbNuevoActionPerformed(evt);
             }
         });
 
-        jbModificar.setText("Modificar");
+        jbModificar.setBackground(new java.awt.Color(255, 255, 255));
+        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_edit_black_48dp_1x.png"))); // NOI18N
+        jbModificar.setText("Editar");
         jbModificar.setToolTipText("");
+        jbModificar.setContentAreaFilled(false);
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbModificarActionPerformed(evt);
-            }
-        });
-
-        jbEliminar.setText("Eliminar");
-        jbEliminar.setToolTipText("");
-        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEliminarActionPerformed(evt);
             }
         });
 
@@ -94,36 +93,32 @@ public class PrincipalClientes extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(311, 311, 311))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 768, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(229, 229, 229)
-                .addComponent(jbNuevo)
-                .addGap(117, 117, 117)
-                .addComponent(jbModificar)
-                .addGap(107, 107, 107)
-                .addComponent(jbEliminar)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbNuevo)
+                            .addComponent(jbModificar))
+                        .addGap(34, 34, 34))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(jLabel1)
-                .addGap(139, 139, 139)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNuevo)
-                    .addComponent(jbModificar)
-                    .addComponent(jbEliminar))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addGap(109, 109, 109)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -146,15 +141,10 @@ public class PrincipalClientes extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jbModificarActionPerformed
 
-    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbEliminarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JTable tablaClientes;
