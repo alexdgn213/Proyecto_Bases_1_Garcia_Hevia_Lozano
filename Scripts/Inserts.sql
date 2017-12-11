@@ -1636,12 +1636,51 @@ INSERT INTO modelo_aeronave (mod_nombre) VALUES
 ('AU747Silver ER'); -- 36 con ER 2 clases, sin ER 2 clases esta arriba cod 16
 
 INSERT INTO motor(mot_modelo ,mot_marca,fk_mod_codigo) VALUES
-(JT8D-7,'Pratt & Whitney',6),
-(),
-(),
-(),
-();
-
+('JT8D-7','Pratt & Whitney',6),
+('56-3B-2','CFM International',7),
+('56-3B-1','CFM',8),
+('56-7B20','CFM',9),
+('56-7B26','CFM',10),
+('56-7B27','CFM',11),
+('56-7','CFM',12),
+('JT9D-7A','Pratt & Whitney',13),
+--('RB211-524B2','Rolls-Royce',13), EL OTRO MOTOR que puede usar
+('JT9D-7R4G2','Pratt & Whitney',14),
+--('CF6-50E2','GE',14),El otro motor que puede usar
+--('RB211-524D4','RR',14), El otro motor que puede usar
+('JT9D-7R4G2','Pratt & Whitney',15),
+--('CF6-80C2B1','GE',15), El otro que puede usar
+--('RB211-524D4','RR',15), El otro
+('4062','Pratt & Whitney',16),
+--('CF6-80C2B5F','GE',16), el otro
+--('RB211-524G/H','RR',16),
+('GEnx-2B67','GE',17),
+('JT8D-7','Pratt & Whitney',18),
+('56-3B-2','CFM International',19),
+('56-3B-1','CFM',20),
+('56-7B20','CFM',21),
+('56-7B27','CFM',22),
+('56-7','CFM',23),
+('56-7','CFM',24),
+('56-7B27','CFM',25),
+('56-7B26','CFM',26),
+('56-7B26','CFM',27),
+('56-7B26','CFM',28),
+('56-7B26','CFM',29),
+('56-7B26','CFM',30),
+('JT9D-7A','Pratt & Whitney',31),
+--('RB211-524B2','Rolls-Royce',31), EL OTRO MOTOR que puede usar
+('JT9D-7R4G2','Pratt & Whitney',32),
+--('CF6-50E2','GE',32),El otro motor que puede usar
+--('RB211-524D4','RR',32), El otro motor que puede usar
+('JT9D-7R4G2','Pratt & Whitney',33),
+--('CF6-80C2B1','GE',33), El otro que puede usar
+--('RB211-524D4','RR',33), El otro
+('4062','Pratt & Whitney',34),
+--('CF6-80C2B5F','GE',34), el otro
+--('RB211-524G/H','RR',34),
+('276 kN','GE',35),
+('276 kN','GE',36),
 
 INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (1,'Capacidad'),
@@ -1682,11 +1721,31 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (35,'Empuje unitario'); 
 
 INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codigo,fk_mot_codigo) VALUES
-(84.5,'kN',6,29,1),
+(84.5,'kN',6,29,1), --EMPUJES MAXIMOS --AU802
+(98,'kN',7,29,2), --AU802A
+(89,'kN',8,29,3), --AU802B
+(91.6,'kN',9,29,4), --AU802C
+(116,'kN',10,29,5), --AU802D
+(121.4,'kN',11,29,6), --AU802E
+(121.4,'kN',12,29,7), --AU802F
+(84.5,'kN',18,29,1), --AU802
+(98,'kN',19,29,2), --AU802A
+(89,'kN',20,29,3), --AU802B
+(91.6,'kN',21,29,4), --AU802C
+(121.4,'kN',22,29,6), --AU802E
+(121.4,'kN',23,29,7), --AU802F
+(121.4,'kN',24,29,7), --AU802F
+(121.4,'kN',25,29,6), --AU802E
+(116,'kN',26,29,5), --AU802D
+(116,'kN',27,29,5), --AU802D
+(116,'kN',28,29,5), --AU802D
+(116,'kN',29,29,5), --AU802D
+(116,'kN',30,29,5), --AU802D
+
+(17.21,'kN',6,30,1),--EMPUJES A VELOCIDAD CRUCERO
 (),
-(),
-(),
-();
+
+
 --
  
  INSERT INTO mod_car (mod_car_valor,mod_car_descripcion,fk_mod_codigo,fk_car_codigo) VALUES
