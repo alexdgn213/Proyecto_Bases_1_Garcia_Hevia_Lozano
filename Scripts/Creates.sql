@@ -119,11 +119,35 @@ create table informacion_contacto
 	references beneficiario(ben_ci)
 );
 
+
+
 create table modelo_aeronave
 (
 	mod_codigo serial not null,
 	mod_nombre varchar(30) not null,
 	constraint pk_modelo_aeronave primary key(mod_codigo)
+);
+
+create table motor
+(
+	mot_codigo serial not null,
+	mot_modelo varchar(50) not null,
+	mot_marca varchar(50) not null,
+	fk_mod_codigo int not null,
+	constraint pk_mot_codigo primary key(mot_codigo),
+	constraint fk_mod_codigo foreign key(fk_mod_codigo)
+	references modelo_aeronave(mod_codigo)
+);
+
+create table car_mot
+(
+	car_mot_codigo serial not null,
+	car_mot_valor real not null, --Lo cambiamos porque las medidas puedes ser: 44,1 
+	car_mot_descripcion varchar(100), --Se puso para determinar la medida ej: (cm, metros, etc)
+	fk_mot_codigo int not null,
+	constraint pk_car_mot_codigo primary key(car_mot_codigo)
+	constraint fk_mot_codigo foreign key(fk_mot_codigo)
+	references motor(mot_codigo)
 );
 
 create table caracteristica

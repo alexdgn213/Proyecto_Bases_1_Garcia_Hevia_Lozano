@@ -1589,6 +1589,8 @@ INSERT INTO informacion_contacto (inf_valor,inf_tipo,fk_pro_rif,fk_per_ci,fk_cli
 ('@CauchosAlex', 'Twitter', 98767657, NULL, NULL, NULL), 
 ('@aviancaAirlines', 'Instagram', NULL, NULL, 99090987, NULL);
 
+
+
 INSERT INTO modelo_aeronave (mod_nombre) VALUES
 ('AU80'), --1
 ('AU80-2'), --Por sia cosa
@@ -1632,6 +1634,20 @@ INSERT INTO modelo_aeronave (mod_nombre) VALUES
 ('AU747Silver ER 3Clases '),--35
 --2 clases con ER
 ('AU747Silver ER'); -- 36 con ER 2 clases, sin ER 2 clases esta arriba cod 16
+
+INSERT INTO motor(mot_modelo ,mot_marca,fk_mod_codigo) VALUES
+(),
+(),
+(),
+(),
+();
+
+INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mot_codigo) VALUES
+(),
+(),
+(),
+(),
+();
 
 INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (1,'Capacidad'),
