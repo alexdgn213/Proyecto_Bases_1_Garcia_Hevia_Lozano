@@ -111,12 +111,12 @@ public class Proveedor {
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
-    /*
+
     public static Proveedor buscarPorCodigo(ConectorDB conector, int codigo){
         Proveedor l = null;
         try {
             PreparedStatement pst = conector.conexion.prepareStatement("SELECT pro_rif,pro_nombre,pro_monto_acreditado,pro_fecha_inicio,fk_lug_codigo FROM proveedor WHERE pro_rif=?");
-            pst.setInt(1, rif);
+            pst.setInt(1, codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 l = new Proveedor(rs.getInt("pro_rif"),rs.getString("pro_nombre"),rs.getInt("pro_monto_acreditado"),rs.getDate("pro_fecha_inicio"),rs.getInt("fk_lug_codigo"));
@@ -126,7 +126,7 @@ public class Proveedor {
         }
         return l;
     }
-    */
+
 
     public int getPro_rif() {
         return pro_rif;
