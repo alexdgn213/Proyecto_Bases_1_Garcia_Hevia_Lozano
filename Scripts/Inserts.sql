@@ -1687,6 +1687,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
 (),
 (),
 ();
+--
  
  INSERT INTO mod_car (mod_car_valor,mod_car_descripcion,fk_mod_codigo,fk_car_codigo) VALUES
  (179,'Personas',1,1), --CAPACIDADES LISTAS
