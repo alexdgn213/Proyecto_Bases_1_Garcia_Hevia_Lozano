@@ -44,7 +44,7 @@ public class modelo_aeronave {
         try{
             String stm = "UPDATE modelo_aeronave SET mod_nombre = ? WHERE mod_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(5, mod_codigo);
+            pst.setInt(2, mod_codigo);
             pst.setString(1, mod_nombre);
             pst.executeUpdate();
             pst.close();

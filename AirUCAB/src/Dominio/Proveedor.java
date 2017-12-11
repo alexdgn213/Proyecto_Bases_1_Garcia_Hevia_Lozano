@@ -43,7 +43,7 @@ public class Proveedor {
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, pro_rif);
             pst.setString(2, pro_nombre);
-            pst.setInt(2,pro_monto_acreditado);
+            pst.setInt(3,pro_monto_acreditado);
             pst.setDate(4,pro_fecha_inicio);
             pst.setInt(5,fk_lug_codigo);
             pst.executeUpdate();
