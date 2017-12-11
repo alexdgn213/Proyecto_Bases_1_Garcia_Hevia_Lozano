@@ -99,7 +99,7 @@ public class Mat_pro {
     public static List<Mat_pro> obtenerTodos(ConectorDB conector){
         List<Mat_pro> compras = new ArrayList<Mat_pro>();
         try {
-            ResultSet rs = obtenerResultSet(conector,"SELECT mat_pro_codigo as codigo,mat_pro_precio as precio,mat_pro_fecha_compra as Fecha_Compra,mat_pro_cantidad as Cantidad,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Cliente FROM mat_pro");
+            ResultSet rs = obtenerResultSet(conector,"SELECT mat_pro_codigo as codigo,mat_pro_precio as precio,mat_pro_fecha_compra as Fecha_Compra,mat_pro_cantidad as Cantidad,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Proveedor FROM mat_pro");
             while (rs.next()) {
                 Mat_pro mp = new Mat_pro(rs.getInt("mat_pro_codigo"),rs.getInt("mat_pro_precio"),rs.getDate("mat_pro_fecha_compra"),rs.getInt("mat_pro_cantidad"),rs.getInt("fk_mat_codigo"),rs.getInt("fk_pro_rif"));
                 compras.add(mp);
@@ -111,7 +111,7 @@ public class Mat_pro {
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT mat_pro_codigo as Codigo,mat_pro_precio as Precio,mat_pro_fecha_compra as Fecha_Compra,mat_pro_cantidad as Cantidad,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Cliente FROM mat_pro");
+        ResultSet rs =obtenerResultSet(conector,"SELECT mat_pro_codigo as Codigo,mat_pro_precio as Precio,mat_pro_fecha_compra as Fecha_Compra,mat_pro_cantidad as Cantidad,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Proveedor FROM mat_pro");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }

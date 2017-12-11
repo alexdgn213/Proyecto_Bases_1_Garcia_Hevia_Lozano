@@ -169,7 +169,7 @@ create table material
 );
 
 
-create table mat_pro
+create table mat_pro 
 (
 	mat_pro_codigo serial not null,
 	mat_pro_precio int not null,
@@ -432,7 +432,7 @@ create table forma_pago
 	constraint pk_for_codigo primary key(for_codigo)
 );
 
-create table pago --Falto fk_cli
+create table pago -- FALTA fk_mat_pro
 (
 	pag_codigo serial not null,
 	fk_for_codigo int not null,
@@ -440,7 +440,8 @@ create table pago --Falto fk_cli
 	fk_aer_codigo int,
 	fk_mat_codigo int,
 	fk_pro_rif int,
-	--fk_cli_rif int,
+	fk_cli_rif int,
+	--fk_mat_pro int,
 	constraint pk_pag_codigo primary key(pag_codigo,fk_for_codigo),
 	constraint fk_for_codigo foreign key(fk_for_codigo)
 	references forma_pago(for_codigo),
@@ -448,8 +449,10 @@ create table pago --Falto fk_cli
 	references mat_pro(mat_pro_codigo,fk_mat_codigo,fk_pro_rif),
 	constraint fk_aer_codigo foreign key(fk_aer_codigo)
 	references aeronave(aer_codigo)
-	--constraint fk_cli_rif foreign key(fk_cli_rif),
-	--references cliente(cli_rif)
+	constraint fk_cli_rif foreign key(fk_cli_rif),
+	references cliente(cli_rif)
+--	constraint fk_mat_pro_codigo foreign key(fk_mat_pro_codigo)
+--	references mat_pro(mat_pro_codigo)
 );
 
 create table estatus
