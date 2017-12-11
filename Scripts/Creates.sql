@@ -139,6 +139,14 @@ create table motor
 	references modelo_aeronave(mod_codigo)
 );
 
+
+create table caracteristica
+(
+	car_codigo serial not null,
+	car_nombre varchar(80) not null,
+	constraint pk_caracteristica primary key(car_codigo)
+);
+
 create table car_mot
 (
 	car_mot_codigo serial not null,
@@ -154,13 +162,6 @@ create table car_mot
 	references caracteristica(car_codigo),
 	constraint fk_mot_codigo foreign key(fk_mot_codigo)
 	references motor(mot_codigo)
-);
-
-create table caracteristica
-(
-	car_codigo serial not null,
-	car_nombre varchar(80) not null,
-	constraint pk_caracteristica primary key(car_codigo)
 );
 
 create table mod_car
