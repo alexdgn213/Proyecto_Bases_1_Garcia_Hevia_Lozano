@@ -1636,18 +1636,12 @@ INSERT INTO modelo_aeronave (mod_nombre) VALUES
 ('AU747Silver ER'); -- 36 con ER 2 clases, sin ER 2 clases esta arriba cod 16
 
 INSERT INTO motor(mot_modelo ,mot_marca,fk_mod_codigo) VALUES
-(),
+(JT8D-7,'Pratt & Whitney',6),
 (),
 (),
 (),
 ();
 
-INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mot_codigo) VALUES
-(),
-(),
-(),
-(),
-();
 
 INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (1,'Capacidad'),
@@ -1686,6 +1680,13 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (33,'Autonomía con peso máximo al despegue'),
 (34,'Motorización'),
 (35,'Empuje unitario'); 
+
+INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codigo,fk_mot_codigo) VALUES
+(84.5,'kN',6,29,1),
+(),
+(),
+(),
+();
  
  INSERT INTO mod_car (mod_car_valor,mod_car_descripcion,fk_mod_codigo,fk_car_codigo) VALUES
  (179,'Personas',1,1), --CAPACIDADES LISTAS

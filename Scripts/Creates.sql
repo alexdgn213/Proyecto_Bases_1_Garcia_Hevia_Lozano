@@ -144,8 +144,14 @@ create table car_mot
 	car_mot_codigo serial not null,
 	car_mot_valor real not null, --Lo cambiamos porque las medidas puedes ser: 44,1 
 	car_mot_descripcion varchar(100), --Se puso para determinar la medida ej: (cm, metros, etc)
+	fk_mod_codigo int not null,
+	fk_car_codigo int not null,
 	fk_mot_codigo int not null,
 	constraint pk_car_mot_codigo primary key(car_mot_codigo)
+	constraint fk_mod_codigo foreign key(fk_mod_codigo)
+	references modelo(mod_codigo),
+	constraint fk_car_codigo foreign key(fk_car_codigo)
+	references caracteristica(car_codigo),
 	constraint fk_mot_codigo foreign key(fk_mot_codigo)
 	references motor(mot_codigo)
 );
