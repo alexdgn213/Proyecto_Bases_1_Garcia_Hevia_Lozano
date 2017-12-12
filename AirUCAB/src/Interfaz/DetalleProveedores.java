@@ -15,15 +15,15 @@ import javax.swing.JPanel;
  *
  * @author alexd
  */
-public class DetalleClientes extends javax.swing.JPanel {
+public class DetalleProveedores extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
-    Cliente c;
+    Proveedor p;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetalleClientes(ConectorDB conector,JPanel contenedor,int id) {
+    public DetalleProveedores(ConectorDB conector,JPanel contenedor,int id) {
         this.conector = conector;
         this.contenedor = contenedor;
         initComponents();
@@ -33,8 +33,8 @@ public class DetalleClientes extends javax.swing.JPanel {
         jlErrorRif.setVisible(false);
         jlErrorUbicacion.setVisible(false);
         this.setSize(850,600);
-        c = Cliente.buscarPorCodigo(conector, id);
-        if (c==null){
+        p = Proveedor.buscarPorCodigo(conector, id);
+        if (p==null){
             Lugar.llenarComboPaises(conector, jcbPais);
             Lugar.llenarComboEstados(conector, jcbEstado,"");
             Lugar.llenarComboMunicipios(conector, jcbMunicipio, "");
@@ -410,10 +410,10 @@ public class DetalleClientes extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void llenarDatosCliente() {
-        jtfRif.setText(String.valueOf(c.getCli_rif()));
+        jtfRif.setText(String.valueOf(p.getPro_rif()));
         jtfRif.setEnabled(false);
-        jtfNombre.setText(c.getCli_nombre());
-        jtfMontoAcreditado.setText(String.valueOf(c.getCli_monto_acreditado()));
-        jtfFechaInicio.setText(c.getCli_fecha_inicio().toString());
+        jtfNombre.setText(p.getPro_nombre());
+        jtfMontoAcreditado.setText(String.valueOf(p.getPro_monto_acreditado()));
+        jtfFechaInicio.setText(p.getPro_fecha_inicio().toString());
     }
 }
