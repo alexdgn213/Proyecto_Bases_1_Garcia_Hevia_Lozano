@@ -19,7 +19,7 @@ import javax.swing.JTable;
  * @author Veronica Hevia
  */
 public class Motor {
-    
+    /*
     int mot_codigo;
     String mot_modelo;
     String mot_marca;
@@ -118,5 +118,4 @@ public class Motor {
         return l;
     }
     */
-    
 }
