@@ -2349,7 +2349,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (978,'km/h',35,26),
   (978,'km/h',36,26),
   (978,'km/h',17,26),
-  (876,'km/h',18,26), --Velocidad Maxima
+  (876,'km/h',18,26), 
   (876,'km/h',19,26),
   (876,'km/h',20,26),
   (876,'km/h',21,26),
@@ -2368,7 +2368,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   
   --el ultimo no tiene? jajaj
   
-  (17860,'litros',6,27),--Máxima capacidad de combustible
+  (17860,'litros',6,27),--Máxima capacidad de combustible LISTOS
   (23170,'litros',7,27),
   (23800,'litros',8,27),
   (26020,'litros',9,27),
@@ -2383,8 +2383,24 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (241140,'litros',35,27),--con ER
   (241140,'litros',36,27),--con ER
   (243120,'litros',17,27),
+  (17860,'litros',18,27),
+  (23170,'litros',19,27),
+  (23800,'litros',20,27),
+  (26020,'litros',21,27),
+  (26020,'litros',22,27),
+  (29660,'litros',23,27),
+  (29660,'litros',24,27),
+  (26020,'litros',25,27),
+  (26020,'litros',26,27),
+  (26020,'litros',27,27),
+  (26020,'litros',28,27),
+  (26020,'litros',29,27),
+  (26020,'litros',30,27),
+  (183380,'litros',31,27),
+  (199160,'litros',32,27),
+  (199160,'litros',33,27),
   
-  (5300,'nmi',13,33), -- Autonomia con peso maximo al despegue
+  (5300,'nmi',13,33), -- Autonomia con peso maximo al despegue LISTOS
   (6850,'nmi',14,33),
   (6700,'nmi',15,33),
   (7260,'nmi',16,33), -- sin ER
@@ -2392,6 +2408,9 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (7670,'nmi',35,33), --Con ER
   (7670,'nmi',36,33), --Con ER
   (8000,'nmi',17,33);
+  (5300,'nmi',31,33),
+  (6850,'nmi',32,33),
+  (6700,'nmi',33,33),
   
   
   INSERT INTO aeronave(aer_fecha_compra,fk_cli_rif,fk_mod_codigo) VALUES 
