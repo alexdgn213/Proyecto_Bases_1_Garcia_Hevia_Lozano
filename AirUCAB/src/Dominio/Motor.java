@@ -19,13 +19,13 @@ import javax.swing.JTable;
  * @author Veronica Hevia
  */
 public class Motor {
-    
+    /*
     int mot_codigo;
     String mot_modelo;
     String mot_marca;
     int fk_mod_codigo;
     
-    public motor(int mot_codigo, String mot_modelo, String mot_marca, int fk_mod_codigo) {
+    public Motor(int mot_codigo, String mot_modelo, String mot_marca, int fk_mod_codigo) {
         this.mot_codigo = mot_codigo;
         this.mot_modelo = mot_modelo;
         this.mot_marca = mot_marca;
@@ -49,10 +49,12 @@ public class Motor {
     
     public void modificarEnDB(ConectorDB conector){
         try{
-            String stm = "UPDATE motor SET mot_codigo = ? WHERE mod_codigo=?";
+            String stm = "UPDATE motor SET mot_modelo = ?, mot_marca = ?, fk_mod_codigo = ? WHERE mod_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(2, mod_codigo);
-            pst.setString(1, mod_nombre);
+            pst.setInt(4, mot_codigo);
+            pst.setString(1, mot_modelo);
+            pst.setString(2, mot_marca);
+            pst.setInt(3, fk_mod_codigo);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -62,9 +64,9 @@ public class Motor {
     
     public void eliminarDeDB(ConectorDB conector){
         try{
-            String stm = "Delete from modelo_aeronave where mod_codigo=?";
+            String stm = "Delete from motor where mot_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(1, mod_codigo);
+            pst.setInt(1, mot_codigo);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -83,30 +85,30 @@ public class Motor {
         return null;
     }
     
-    public static List<modelo_aeronave> obtenerTodos(ConectorDB conector){
-        List<modelo_aeronave> modelos = new ArrayList<modelo_aeronave>();
+    public static List<Motor> obtenerTodos(ConectorDB conector){
+        List<Motor> motores = new ArrayList<Motor>();
         try {
-            ResultSet rs = obtenerResultSet(conector,"SELECT mod_codigo,mod_nombre FROM modelo_aeronave");
+            ResultSet rs = obtenerResultSet(conector,"SELECT mot_codigo,mot_modelo, mot_marca, fk_mod_codigo FROM Motor");
             while (rs.next()) {
-                modelo_aeronave m = new modelo_aeronave(rs.getInt("mod_codigo"),rs.getString("mod_nombre"));
-                modelos.add(m);
+                Motor m = new Motor(rs.getInt("mot_codigo"),rs.getString("mot_modelo"),rs.getString("mot_marca"),rs.getInt("fk_mod_codigo"));
+                motores.add(m);
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
         }
-        return modelos;
+        return motores;
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT mod_codigo as Modelo,mod_nombre as nombre FROM proveedor");
+        ResultSet rs =obtenerResultSet(conector,"SELECT mot_codigo as Motor,mot_modelo as Nombre, mot_marca as Marca, fk_mod_codigo as Modelo FROM motor");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
     /*
-    public static modelo_Aeronave buscarPorCodigo(ConectorDB conector, int codigo){
+    public static Motor buscarPorCodigo(ConectorDB conector, int codigo){
         Proveedor l = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT mod_codigo,mod_nombre FROM modelo_aeronave WHERE mod_codigo=?");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT mot_modelo, mot_marca, fk_mod_codigo FROM motor WHERE mot_codigo=?");
             pst.setInt(1, codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
@@ -118,5 +120,40 @@ public class Motor {
         return l;
     }
     */
+<<<<<<< HEAD
+
+    public void setMot_codigo(int mot_codigo) {
+        this.mot_codigo = mot_codigo;
+    }
+
+    public void setMot_modelo(String mot_modelo) {
+        this.mot_modelo = mot_modelo;
+    }
+
+    public void setMot_marca(String mot_marca) {
+        this.mot_marca = mot_marca;
+    }
+
+    public void setFk_mod_codigo(int fk_mod_codigo) {
+        this.fk_mod_codigo = fk_mod_codigo;
+    }
+
+    public int getMot_codigo() {
+        return mot_codigo;
+    }
+
+    public String getMot_modelo() {
+        return mot_modelo;
+    }
+
+    public String getMot_marca() {
+        return mot_marca;
+    }
+
+    public int getFk_mod_codigo() {
+        return fk_mod_codigo;
+    }
     
+=======
+>>>>>>> b165df8c073708ad6c81eeeab0722b57517718ac
 }

@@ -129,12 +129,22 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         menuProveedores.setOpaque(false);
         menuProveedores.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuProveedoresMouseClicked(evt);
+            }
+        });
         menuProveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(66, 66, 66));
         jLabel3.setText("Proveedores");
         jLabel3.setToolTipText("");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         menuProveedores.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_local_shipping_black_24dp_1x.png"))); // NOI18N
@@ -250,6 +260,22 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void menuProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProveedoresMouseClicked
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalProveedores(conector,panelContenido);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
+    }//GEN-LAST:event_menuProveedoresMouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalProveedores(conector,panelContenido);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Contenido;
