@@ -2064,7 +2064,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (6820,'km',1,11), --Alcance LISTOS **solo estos
   (4450,'km',5,11),
   
-  (7,'Tripulantes',5,12), -- Tripulacion
+  (7,'Tripulantes',5,12), -- Tripulacion LISTOS
   (6,'Pilot, copiloto y 4 auxiliares de vuelo',6,12), 
   (6,'Pilot, copiloto y 4 auxiliares de vuelo',7,12), 
   (6,'Pilot, copiloto y 4 auxiliares de vuelo',8,12), 
@@ -2079,7 +2079,27 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (2,'Pilot y copiloto',34,12),
   (2,'Pilot y copiloto',35,12),
   (2,'Pilot y copiloto',36,12),
-  (2,'Pilot y copiloto',17,12), 
+  (2,'Pilot y copiloto',17,12),
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',18,12), 
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',19,12), 
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',20,12), 
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',21,12), 
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',22,12), 
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',23,12),
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',24,12), 
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',25,12),
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',26,12),
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',27,12),
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',28,12),
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',29,12),
+  (6,'Pilot, copiloto y 4 auxiliares de vuelo',30,12),
+  (3,'Pilot, copiloto y 1 auxiliar de vuelo',31,12), 
+  (3,'Pilot, copiloto y 1 auxiliar de vuelo',32,12),
+  (3,'Pilot, copiloto y 1 auxiliar de vuelo',33,12),
+
+
+
+
   
   (153,'m^2',5,13),--Superficie Alar LISTAS 
   
