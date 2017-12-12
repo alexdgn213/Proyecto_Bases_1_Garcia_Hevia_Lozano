@@ -111,7 +111,7 @@ public class Mat_pro {
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT mat_pro_codigo as Codigo,mat_pro_precio as Precio,mat_pro_fecha_compra as Fecha_Compra,mat_pro_cantidad as Cantidad,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Proveedor  FROM mat_pro");
+        ResultSet rs =obtenerResultSet(conector,"SELECT mat_pro_codigo as Codigo,mat_pro_precio as Precio,mat_pro_fecha_compra as Fecha_Compra,mat_pro_cantidad as Cantidad,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Proveedor FROM mat_pro");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }

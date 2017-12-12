@@ -8,7 +8,6 @@ package Interfaz;
 import Adaptadores.ConectorDB;
 import Dominio.Cliente;
 import Dominio.Lugar;
-import Dominio.Proveedor;
 import javax.swing.JPanel;
 
 /**
@@ -27,11 +26,6 @@ public class DetalleClientes extends javax.swing.JPanel {
         this.conector = conector;
         this.contenedor = contenedor;
         initComponents();
-        jlErrorFecha.setVisible(false);
-        jlErrorMonto.setVisible(false);
-        jlErrorNombre.setVisible(false);
-        jlErrorRif.setVisible(false);
-        jlErrorUbicacion.setVisible(false);
         this.setSize(850,600);
         c = Cliente.buscarPorCodigo(conector, id);
         if (c==null){
@@ -78,11 +72,6 @@ public class DetalleClientes extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jlErrorRif = new javax.swing.JLabel();
-        jlErrorNombre = new javax.swing.JLabel();
-        jlErrorMonto = new javax.swing.JLabel();
-        jlErrorFecha = new javax.swing.JLabel();
-        jlErrorUbicacion = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(850, 580));
         setOpaque(false);
@@ -90,7 +79,7 @@ public class DetalleClientes extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel1.setText("Proveedor:");
+        jLabel1.setText("Cliente:");
         jLabel1.setToolTipText("");
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -176,31 +165,6 @@ public class DetalleClientes extends javax.swing.JPanel {
 
         jButton4.setText("Eliminar");
 
-        jlErrorRif.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jlErrorRif.setForeground(new java.awt.Color(255, 0, 0));
-        jlErrorRif.setText("Error en el rif");
-        jlErrorRif.setToolTipText("");
-
-        jlErrorNombre.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jlErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
-        jlErrorNombre.setText("Error en el rif");
-        jlErrorNombre.setToolTipText("");
-
-        jlErrorMonto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jlErrorMonto.setForeground(new java.awt.Color(255, 0, 0));
-        jlErrorMonto.setText("Error en el rif");
-        jlErrorMonto.setToolTipText("");
-
-        jlErrorFecha.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jlErrorFecha.setForeground(new java.awt.Color(255, 0, 0));
-        jlErrorFecha.setText("Error en el rif");
-        jlErrorFecha.setToolTipText("");
-
-        jlErrorUbicacion.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jlErrorUbicacion.setForeground(new java.awt.Color(255, 0, 0));
-        jlErrorUbicacion.setText("Error en el rif");
-        jlErrorUbicacion.setToolTipText("");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -234,36 +198,24 @@ public class DetalleClientes extends javax.swing.JPanel {
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlErrorUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfMontoAcreditado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlErrorMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtfRif, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlErrorRif, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlErrorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtfMontoAcreditado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jtfRif, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlErrorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtfFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -274,31 +226,21 @@ public class DetalleClientes extends javax.swing.JPanel {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfRif, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jlErrorRif)))
+                    .addComponent(jtfRif, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jlErrorNombre)))
+                    .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfMontoAcreditado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jlErrorMonto)))
+                    .addComponent(jtfMontoAcreditado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jlErrorFecha)))
+                    .addComponent(jtfFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlErrorUbicacion))
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,7 +262,7 @@ public class DetalleClientes extends javax.swing.JPanel {
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(0, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -398,11 +340,6 @@ public class DetalleClientes extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jcbMunicipio;
     private javax.swing.JComboBox<String> jcbPais;
     private javax.swing.JComboBox<String> jcbParroquia;
-    private javax.swing.JLabel jlErrorFecha;
-    private javax.swing.JLabel jlErrorMonto;
-    private javax.swing.JLabel jlErrorNombre;
-    private javax.swing.JLabel jlErrorRif;
-    private javax.swing.JLabel jlErrorUbicacion;
     private javax.swing.JTextField jtfFechaInicio;
     private javax.swing.JTextField jtfMontoAcreditado;
     private javax.swing.JTextField jtfNombre;
@@ -414,6 +351,5 @@ public class DetalleClientes extends javax.swing.JPanel {
         jtfRif.setEnabled(false);
         jtfNombre.setText(c.getCli_nombre());
         jtfMontoAcreditado.setText(String.valueOf(c.getCli_monto_acreditado()));
-        jtfFechaInicio.setText(c.getCli_fecha_inicio().toString());
     }
 }
