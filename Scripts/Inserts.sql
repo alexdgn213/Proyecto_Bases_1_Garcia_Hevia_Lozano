@@ -1721,7 +1721,7 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (35,'Empuje unitario'); 
 
 INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codigo,fk_mot_codigo) VALUES
-(84.5,'kN',6,29,1), --EMPUJES MAXIMOS --AU802
+(84.5,'kN',6,29,1), --EMPUJES MAXIMOS --AU802   LISTOS
 (98,'kN',7,29,2), --AU802A
 (89,'kN',8,29,3), --AU802B
 (91.6,'kN',9,29,4), --AU802C
@@ -1742,12 +1742,71 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
 (116,'kN',29,29,5), --AU802D
 (116,'kN',30,29,5), --AU802D
 
-(17.21,'kN',6,30,1),--EMPUJES A VELOCIDAD CRUCERO
-(),
+(17.21,'kN',6,30,1),--EMPUJES A VELOCIDAD CRUCERO LISTOS
+(21.92,'kN',7,30,2), 
+(21.80,'kN',8,30,3),
+(23.18,'kN',9,30,4),
+(24.38,'kN',10,30,5),
+(24.38,'kN',11,30,6),
+(24.38,'kN',12,30,7),
+(17.21,'kN',18,30,1),
+(21.92,'kN',19,30,2),
+(21.80,'kN',20,30,3),
+(23.18,'kN',21,30,4),
+(24.38,'kN',22,30,6),
+(24.38,'kN',23,30,7),
+(24.38,'kN',24,30,7),
+(24.38,'kN',25,30,6),
+(24.38,'kN',26,30,5),
+(24.38,'kN',27,30,5),
+(24.38,'kN',28,30,5),
+(24.38,'kN',29,30,5),
+(24.38,'kN',30,30,5),
 
-
---
+(1.12,'m',6,31,1),--Diametro de las alabes LISTOS
+(1.52,'m',7,31,2),
+(1.52,'m',8,31,3),
+(1.55,'m',9,31,4),
+(1.55,'m',10,31,5),
+(1.55,'m',11,31,6),
+(1.55,'m',12,31,7),
+(1.12,'m',18,31,1),
+(1.52,'m',19,31,2),
+(1.52,'m',20,31,3),
+(1.55,'m',21,31,4),
+(1.55,'m',22,31,6),
+(1.55,'m',23,31,7),
+(1.55,'m',24,31,7),
+(1.55,'m',25,31,6),
+(1.55,'m',26,31,5),
+(1.55,'m',27,31,5),
+(1.55,'m',28,31,5),
+(1.55,'m',29,31,5),
+(1.55,'m',30,31,5),
  
+ (3.20,'m',6,32,1),--Longitud del motor LISTOS
+ (2.36,'m',7,32,2),
+ (2.36,'m',8,32,3),
+ (2.51,'m',9,32,4),
+ (2.51,'m',10,32,5),
+ (2.51,'m',11,32,6),
+ (2.51,'m',12,32,7),
+ (3.20,'m',18,32,1),
+ (2.36,'m',19,32,2),
+ (2.36,'m',20,32,3),
+ (2.51,'m',21,32,4),
+ (2.51,'m',22,32,6),
+ (2.51,'m',23,32,7),
+ (2.51,'m',24,32,7),
+ (2.51,'m',25,32,6),
+ (2.51,'m',26,32,5),
+ (2.51,'m',27,32,5),
+ (2.51,'m',28,32,5),
+ (2.51,'m',29,32,5),
+ (2.51,'m',30,32,5),
+ 
+ (),--EMPUJE UNITARIO
+
  INSERT INTO mod_car (mod_car_valor,mod_car_descripcion,fk_mod_codigo,fk_car_codigo) VALUES
  (179,'Personas',1,1), --CAPACIDADES LISTAS
  (189,'Personas',5,1),
@@ -1964,7 +2023,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (75.6,'KN',1,8),-- Empuje Normal LISTOS   **solo estos lo tienen
   (77,'KN',5,8),
   
-  (907,'km/h a 1000m',5,9), --Velocidad Crucero
+  (907,'km/h a 1000m',5,9), --Velocidad Crucero LISTOS
   (780,'km/h',6,9),
   (780,'km/h',7,9),
   (780,'km/h',8,9),
@@ -1980,6 +2039,24 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (916,'km/h a 10500m',35,9),--Silver ER 3 clases
   (916,'km/h a 10500m',36,9),--Silver ER 2 clases
   (916,'km/h a 10500m',17,9),
+  (780,'km/h',18,9),
+  (780,'km/h',19,9),
+  (780,'km/h',20,9),
+  (828,'km/h',21,9),
+  (828,'km/h',22,9),
+  (823,'km/h',23,9),
+  (823,'km/h',24,9),
+  (828,'km/h',25,9),
+  (828,'km/h',26,9),
+  (828,'km/h',27,9),
+  (828,'km/h',28,9),
+  (828,'km/h',29,9),
+  (828,'km/h',30,9),
+  (893,'km/h a 10500m',31,9),
+  (893,'km/h a 10500m',32,9),
+  (893,'km/h a 10500m',33,9),
+  
+  
   
   
   (1000,'km/h',1,10), --Velocidad maxima operativa Vno) LISTAS **solo esta
@@ -2006,7 +2083,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   
   (153,'m^2',5,13),--Superficie Alar LISTAS 
   
-  (13000,'metros',5,14), --Techo de Servicio
+  (13000,'metros',5,14), --Techo de Servicio LISTOS
   (10700,'metros',6,14),
   (11300,'metros',7,14),
   (11300,'metros',8,14),
@@ -2014,6 +2091,19 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (12500,'metros',10,14),
   (12500,'metros',11,14),
   (12500,'metros',12,14),
+  (10700,'metros',18,14),
+  (11300,'metros',19,14),
+  (11300,'metros',20,14),
+  (12500,'metros',21,14),
+  (12500,'metros',22,14),
+  (12500,'metros',23,14),
+  (12500,'metros',24,14),
+  (12500,'metros',25,14),
+  (12500,'metros',26,14),
+  (12500,'metros',27,14),
+  (12500,'metros',28,14),
+  (12500,'metros',29,14),
+  (12500,'metros',30,14),
    
   (14.9,'m/s',5,15), --Regimen de Ascenso LISTOS
   
@@ -2037,63 +2127,166 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (71,'cm',24,16), --1 clase,  alta densa
   (81,'cm',23,16),--1 clase, estandar
   
-  (43.7,'cm',6,17),--Ancho de los asientos
+  (43.7,'cm',6,17),--Ancho de los asientos LISTOS
   (43.7,'cm',7,17),
   (43.7,'cm',8,17),
   (43.7,'cm',9,17),
   (43.7,'cm',10,17),
   (43.7,'cm',11,17),
   (43.7,'cm',12,17),
+  (43.7,'cm',18,17),
+  (43.7,'cm',19,17),
+  (43.7,'cm',20,17),
+  (43.7,'cm',21,17),
+  (43.7,'cm',22,17),
+  (43.7,'cm',23,17),
+  (43.7,'cm',24,17),
+  (43.7,'cm',25,17),
+  (43.7,'cm',26,17),
+  (43.7,'cm',27,17),
+  (43.7,'cm',28,17),
+  (43.7,'cm',29,17),
+  (43.7,'cm',30,17),
   
-  (25,'',6,18),--Flecha alar FALTA PONERLE EL SIMBOLO DE GRADO
+  
+  
+  (25,'',6,18),--Flecha alar FALTA PONERLE EL SIMBOLO DE GRADO    LISTOS
   (25,'',7,18),
   (25,'',8,18),
   (25.02,'',9,18),
   (25.02,'',10,18),
   (25.02,'',11,18),
   (25.02,'',12,18),
+  (25,'',18,18),
+  (25,'',19,18),
+  (25,'',20,18),
+  (25.02,'',21,18),
+  (25.02,'',22,18),
+  (25.02,'',23,18),
+  (25.02,'',24,18),
+  (25.02,'',25,18),
+  (25.02,'',26,18),
+  (25.02,'',27,18),
+  (25.02,'',28,18),
+  (25.02,'',29,18),
+  (25.02,'',30,18),
   
-  (3.76,'metros',6,19),--Ancho del Fuselaje
+  
+  
+  (3.76,'metros',6,19),--Ancho del Fuselaje LISTOS
   (3.76,'metros',7,19),
   (3.76,'metros',8,19),
   (3.76,'metros',9,19),
   (3.76,'metros',10,19),
   (3.76,'metros',11,19),
   (3.76,'metros',12,19),
+  (3.76,'metros',18,19),
+  (3.76,'metros',19,19),
+  (3.76,'metros',20,19),
+  (3.76,'metros',21,19),
+  (3.76,'metros',22,19),
+  (3.76,'metros',23,19),
+  (3.76,'metros',24,19),
+  (3.76,'metros',25,19),
+  (3.76,'metros',26,19),
+  (3.76,'metros',27,19),
+  (3.76,'metros',28,19),
+  (3.76,'metros',29,19),
+  (3.76,'metros',30,19),
   
-  (4.01,'m',6,20), --Alto del Fuselaje
+  
+  (4.01,'m',6,20), --Alto del Fuselaje LISTOS
   (4.01,'m',7,20),
   (4.01,'m',8,20),
   (4.01,'m',9,20),
   (4.01,'m',10,20),
   (4.01,'m',11,20),
   (4.01,'m',12,20),
+  (4.01,'m',18,20),
+  (4.01,'m',19,20),
+  (4.01,'m',20,20),
+  (4.01,'m',21,20),
+  (4.01,'m',22,20),
+  (4.01,'m',23,20),
+  (4.01,'m',24,20),
+  (4.01,'m',25,20),
+  (4.01,'m',26,20),
+  (4.01,'m',27,20),
+  (4.01,'m',28,20),
+  (4.01,'m',29,20),
+  (4.01,'m',30,20),
   
-  (2.20,'m',6,21), --Alto de la cabina
+  
+  (2.20,'m',6,21), --Alto de la cabina LISTOS
   (2.20,'m',7,21),
   (2.20,'m',8,21),
   (2.20,'m',9,21),
   (2.20,'m',10,21),
   (2.20,'m',11,21),
   (2.20,'m',12,21),
+  (2.20,'m',18,21),
+  (2.20,'m',19,21),
+  (2.20,'m',20,21),
+  (2.20,'m',21,21),
+  (2.20,'m',22,21),
+  (2.20,'m',23,21),
+  (2.20,'m',24,21),
+  (2.20,'m',25,21),
+  (2.20,'m',26,21),
+  (2.20,'m',27,21),
+  (2.20,'m',28,21),
+  (2.20,'m',29,21),
+  (2.20,'m',30,21),
   
-  (45000,'KG',6,22),--Peso de Aterrizaje maximo
+  
+  
+  
+  (45000,'KG',6,22),--Peso de Aterrizaje maximo LISTOS
   (56250,'KG',7,22),
   (50000,'KG',8,22),
   (55000,'KG',9,22),
   (58600,'KG',10,22),
   (66350,'KG',11,22),
   (66350,'KG',12,22),
+  (45000,'KG',18,22),
+  (56250,'KG',19,22),
+  (50000,'KG',20,22),
+  (55000,'KG',21,22),
+  (66350,'KG',22,22),
+  (66350,'KG',23,22),
+  (66350,'KG',24,22),
+  (66350,'KG',25,22),
+  (58600,'KG',26,22),
+  (58600,'KG',27,22),
+  (58600,'KG',28,22),
+  (58600,'KG',29,22),
+  (58600,'KG',30,22),
+
   
-  (18.4,'m^3',6,23), --Volumen de carga
+  (18.4,'m^3',6,23), --Volumen de carga LISTOS
   (38.9,'m^3',7,23),
   (23.3,'m^3',8,23),
   (21.4,'m^3',9,23),
   (27.3,'m^3',10,23),
   (45.1,'m^3',11,23),
   (52.5,'m^3',12,23),
+  (18.4,'m^3',18,23), 
+  (38.9,'m^3',19,23),
+  (23.3,'m^3',20,23),
+  (21.4,'m^3',21,23),
+  (45.1,'m^3',22,23),
+  (52.5,'m^3',23,23),
+  (52.5,'m^3',24,23),
+  (45.1,'m^3',25,23),
+  (27.3,'m^3',26,23),
+  (27.3,'m^3',27,23),
+  (27.3,'m^3',28,23),
+  (27.3,'m^3',29,23),
+  (27.3,'m^3',30,23),
+
   
-  (1990,'m',6,24),--Carrera de despegue con peso máximo
+  
+  (1990,'m',6,24),--Carrera de despegue con peso máximo LISTOS
   (2540,'m',7,24),
   (2470,'m',8,24),
   (2400,'m',9,24),
@@ -2107,6 +2300,25 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (3018,'m',34,24),
   (3090,'m',35,24), --con ER
   (3090,'m',36,24),--con ER
+  (3090,'m',17,24),
+  (1990,'m',18,24),
+  (2540,'m',19,24),
+  (2470,'m',20,24),
+  (2400,'m',21,24),
+  (2450,'m',22,24),
+  (2450,'m',23,24),
+  (2450,'m',24,24),
+  (2450,'m',25,24),
+  (2480,'m',26,24),
+  (2480,'m',27,24),
+  (2480,'m',28,24),
+  (2480,'m',29,24),
+  (2480,'m',30,24),
+  (3190,'m',31,24),
+  (3190,'m',32,24),
+  (3320,'m',33,24),
+  
+  
   
   (1860,'nmi',6,25), --Alcance con carga maxima
   (2165,'nmi',7,25),
@@ -2122,7 +2334,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (2700,'nmi',12,25),--1 clase
   (3200,'nmi',12,25),--2 clases
   
-  (876,'km/h',6,26), --Velocidad Maxima
+  (876,'km/h',6,26), --Velocidad Maxima LISTOS
   (876,'km/h',7,26),
   (876,'km/h',8,26),
   (876,'km/h',9,26),
@@ -2136,6 +2348,24 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (978,'km/h',34,26),
   (978,'km/h',35,26),
   (978,'km/h',36,26),
+  (978,'km/h',17,26),
+  (876,'km/h',18,26), --Velocidad Maxima
+  (876,'km/h',19,26),
+  (876,'km/h',20,26),
+  (876,'km/h',21,26),
+  (876,'km/h',22,26),
+  (876,'km/h',23,26),
+  (876,'km/h',24,26),
+  (876,'km/h',25,26),
+  (876,'km/h',26,26),
+  (876,'km/h',27,26),
+  (876,'km/h',28,26),
+  (876,'km/h',29,26),
+  (876,'km/h',30,26),
+  (945,'km/h',31,26),
+  (945,'km/h',32,26),
+  (945,'km/h',33,26),
+  
   --el ultimo no tiene? jajaj
   
   (17860,'litros',6,27),--Máxima capacidad de combustible
@@ -2153,46 +2383,6 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (241140,'litros',35,27),--con ER
   (241140,'litros',36,27),--con ER
   (243120,'litros',17,27),
-  /*
-  (Pratt & Whitney,'JT8D-7',6,28),--'Motores(x2)
-  (CFM,'International 56-3B-2',7,28),
-  (CFM,'56-3B-1',8,28),
-  (CFM,'56-7B20',9,28),
-  (CFM,'56-7B26',10,28),
-  (CFM,'56-7B27',11,28),
-  (CFM,'56-7',12,28),
-  */
-  (84.5,'kN',6,29), --Empuje Maximo(2)
-  (98,'kN',7,29),
-  (89,'kN',8,29),
-  (91.6,'kN',9,29),
-  (116,'kN',10,29),
-  (121.4,'kN',11,29),
-  (121.4,'kN',12,29),
-  
-  (17.21,'kN',6,30), -- Empuje a velocidad crucero x2
-  (21.92,'kN',7,30),
-  (21.80,'kN',8,30),
-  (23.18,'kN',9,30),
-  (24.38,'kN',10,30),
-  (24.38,'kN',11,30),
-  (24.38,'kN',12,30),
-  
-  (1.12,'m',6,31), -- Diametro de los alabes
-  (1.52,'m',7,31),
-  (1.52,'m',8,31),
-  (1.55,'m',9,31),
-  (1.55,'m',10,31),
-  (1.55,'m',11,31),
-  (1.55,'m',12,31),
-  
-  (3.20,'m',6,32),--Longitud del motor
-  (2.36,'m',7,32),
-  (2.36,'m',8,32),
-  (2.51,'m',9,32),
-  (2.51,'m',10,32),
-  (2.51,'m',11,32),
-  (2.51,'m',12,32),
   
   (5300,'nmi',13,33), -- Autonomia con peso maximo al despegue
   (6850,'nmi',14,33),
@@ -2203,29 +2393,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (7670,'nmi',36,33), --Con ER
   (8000,'nmi',17,33);
   
-  /*
-  (Pratt & Whitney,'JT9D-7A,Rolls-Royce,RB211-524B2',13,34),--Motorizacion(x4)
-  (PW JT9D-7R4G2,'GE CF6-50E2, RR RB211-524D4',14,34),
-  (PW JT9D-7R4G2,'GE CF6-80C2B1,RR RB211-524D4 ',15,34),
-  (P&W PW 4062,'GE CF6-80C2B5F,RR RB211-524G/H ',16,34),
-  --(GE CF6-80C2B5F,'',16,34), con ER
-  (GE GEnx-2B67,'',17,34),
-  */
-  /*
-  (PW 207,'kN',13,35),--Empuje Unitario
-  (RR 223,'kN',13,35), --el 2do del au747plus y asi vamos
-  (PW 244,'kN',14,35),
-  (GE 234,'kN',14,35),
-  (RR 236,'kN',14,35),
-  (PW 244,'kN',15,35),
-  (GE 247,'kN',15,35),
-  (RR 236,'kN',15,35),
-  (PW 282,'kN',16,35),
-  (GE 276,'kN',16,35),
-  (RR 265/270,'kN',16,35),
-  (GE 276,'kN',16,35), -- CON ER
-  (296,'kN',17,35);
-  */
+  
   INSERT INTO aeronave(aer_fecha_compra,fk_cli_rif,fk_mod_codigo) VALUES 
   ('07/04/2017',123336666,13), -- con los fk de clientes arriba y los fk de los modelos de arriba
   ('08/02/2016',99090987,1),
