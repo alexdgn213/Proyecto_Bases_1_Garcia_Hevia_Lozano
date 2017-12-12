@@ -19,36 +19,39 @@ import javax.swing.JTable;
  *
  * @author LAB_L11
  */
-public class Mat_pro {
+public class Lote_material {
     
-    int mat_pro_codigo;
-    int mat_pro_precio;
-    Date mat_pro_fecha_compra;
-    int mat_pro_cantidad;
+    int lot_codigo;
+    int lot_precio;
+    Date lot_fecha_compra;
+    int lot_cantidad;
     int fk_mat_codigo;
     int fk_pro_rif;
+    int fk_mat_pro_codigo;
 
-    public Mat_pro(int mat_pro_codigo, int mat_pro_precio, Date mat_pro_fecha_compra,int mat_pro_cantidad, int fk_mat_codigo, int fk_pro_rif) {
-        this.mat_pro_codigo = mat_pro_codigo;
-        this.mat_pro_precio = mat_pro_precio;
-        this.mat_pro_fecha_compra = mat_pro_fecha_compra;
-        this.mat_pro_cantidad=mat_pro_cantidad;
+    public Lote_material(int lot_codigo, int lot_precio, Date lot_fecha_compra,int lot_cantidad, int fk_mat_codigo, int fk_pro_rif, int fk_mat_pro_codigo) {
+        this.lot_codigo = lot_codigo;
+        this.lot_precio = lot_precio;
+        this.lot_fecha_compra = lot_fecha_compra;
+        this.lot_cantidad=lot_cantidad;
         this.fk_mat_codigo = fk_mat_codigo;
         this.fk_pro_rif = fk_pro_rif;
+        this.fk_mat_pro_codigo = fk_mat_pro_codigo;
     }
 
 
 
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO Mat_pro(mat_pro_codigo,mat_pro_precio,mat_pro_fecha_compra,mat_pro_cantidad,fk_mat_codigo,fk_pro_rif) VALUES(?,?,?,?,?,?)";
+            String stm = "INSERT INTO Lote_material(lot_codigo,lot_precio,lot_fecha_compra,lot_cantidad,fk_mat_codigo,fk_pro_rif,fk_mat_pro_codigo) VALUES(?,?,?,?,?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(1, mat_pro_codigo);
-            pst.setInt(2, mat_pro_precio);
-            pst.setDate(3,mat_pro_fecha_compra);
-            pst.setInt(4,mat_pro_cantidad);
+            pst.setInt(1, lot_codigo);
+            pst.setInt(2, lot_precio);
+            pst.setDate(3,lot_fecha_compra);
+            pst.setInt(4,lot_cantidad);
             pst.setInt(5,fk_mat_codigo);
             pst.setInt(6,fk_pro_rif);
+            pst.setInt(7,fk_mat_pro_codigo);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -58,14 +61,15 @@ public class Mat_pro {
     
     public void modificarEnDB(ConectorDB conector){
         try{
-            String stm = "UPDATE Mat_pro SET mat_pro_precio = ?, mat_pro_fecha_compra = ?,mat_pro_cantidad = ?,fk_mat_codigo = ?,fk_pro_rif=? WHERE mat_pro_codigo=?";
+            String stm = "UPDATE Lote_material SET lot_precio = ?, lot_fecha_compra = ?,lot_cantidad = ?,fk_mat_codigo = ?,fk_pro_rif=?,fk_mat_pro_codigo WHERE lot_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(6, mat_pro_codigo);
-            pst.setInt(1, mat_pro_precio);
-            pst.setDate(2,mat_pro_fecha_compra);
-            pst.setInt(3,mat_pro_cantidad);
+            pst.setInt(7, lot_codigo);
+            pst.setInt(1, lot_precio);
+            pst.setDate(2,lot_fecha_compra);
+            pst.setInt(3,lot_cantidad);
             pst.setInt(4,fk_mat_codigo);
             pst.setInt(5,fk_pro_rif);
+            pst.setInt(6,fk_mat_pro_codigo);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -75,9 +79,9 @@ public class Mat_pro {
     
     public void eliminarDeDB(ConectorDB conector){
         try{
-            String stm = "Delete from Mat_pro where mat_pro_codigo=?";
+            String stm = "Delete from Lote_material where lot_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(1, mat_pro_codigo);
+            pst.setInt(1, lot_codigo);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -96,22 +100,22 @@ public class Mat_pro {
         return null;
     }
     
-    public static List<Mat_pro> obtenerTodos(ConectorDB conector){
-        List<Mat_pro> compras = new ArrayList<Mat_pro>();
+    public static List<Lote_material> obtenerTodos(ConectorDB conector){
+        List<Lote_material> lotes = new ArrayList<Lote_material>();
         try {
-            ResultSet rs = obtenerResultSet(conector,"SELECT mat_pro_codigo as codigo,mat_pro_precio as precio,mat_pro_fecha_compra as Fecha_Compra,mat_pro_cantidad as Cantidad,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Proveedor FROM mat_pro");
+            ResultSet rs = obtenerResultSet(conector,"SELECT lot_codigo as codigo,lot_precio as precio,lot_fecha_compra as Fecha_Compra,lot_cantidad as Cantidad,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Proveedor,fk_mat_pro_codigo FROM mat_pro");
             while (rs.next()) {
-                Mat_pro mp = new Mat_pro(rs.getInt("mat_pro_codigo"),rs.getInt("mat_pro_precio"),rs.getDate("mat_pro_fecha_compra"),rs.getInt("mat_pro_cantidad"),rs.getInt("fk_mat_codigo"),rs.getInt("fk_pro_rif"));
-                compras.add(mp);
+                Lote_material l = new Lote_material(rs.getInt("lot_codigo"),rs.getInt("lot_precio"),rs.getDate("lot_fecha_compra"),rs.getInt("lot_cantidad"),rs.getInt("fk_mat_codigo"),rs.getInt("fk_pro_rif"),rs.getInt("fk_mat_pro_codigo"));
+                lotes.add(l);
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
         }
-        return compras;
+        return lotes;
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT mat_pro_codigo as Codigo,mat_pro_precio as Precio,mat_pro_fecha_compra as Fecha_Compra,mat_pro_cantidad as Cantidad,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Proveedor  FROM mat_pro");
+        ResultSet rs =obtenerResultSet(conector,"SELECT lot_codigo as Codigo,lot_precio as Precio,lot_fecha_compra as Fecha_Compra,lot_cantidad as Cantidad,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Proveedor,fk_mat_pro_codigo as Codigo_material  FROM lote_material");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
@@ -132,20 +136,20 @@ public class Mat_pro {
     }
     */
 
-    public void setMat_pro_codigo(int mat_pro_codigo) {
-        this.mat_pro_codigo = mat_pro_codigo;
+    public void setLot_codigo(int lot_codigo) {
+        this.lot_codigo = lot_codigo;
     }
 
-    public void setMat_pro_precio(int mat_pro_precio) {
-        this.mat_pro_precio = mat_pro_precio;
+    public void setLot_precio(int lot_precio) {
+        this.lot_precio = lot_precio;
     }
 
-    public void setMat_pro_fecha_compra(Date mat_pro_fecha_compra) {
-        this.mat_pro_fecha_compra = mat_pro_fecha_compra;
+    public void setLot_fecha_compra(Date lot_fecha_compra) {
+        this.lot_fecha_compra = lot_fecha_compra;
     }
 
-    public void setMat_pro_cantidad(int mat_pro_cantidad) {
-        this.mat_pro_cantidad = mat_pro_cantidad;
+    public void setLot_cantidad(int lot_cantidad) {
+        this.lot_cantidad = lot_cantidad;
     }
 
     public void setFk_mat_codigo(int fk_mat_codigo) {
@@ -156,20 +160,24 @@ public class Mat_pro {
         this.fk_pro_rif = fk_pro_rif;
     }
 
-    public int getMat_pro_codigo() {
-        return mat_pro_codigo;
+    public void setFk_mat_pro_codigo(int fk_mat_pro_codigo) {
+        this.fk_mat_pro_codigo = fk_mat_pro_codigo;
     }
 
-    public int getMat_pro_precio() {
-        return mat_pro_precio;
+    public int getLot_codigo() {
+        return lot_codigo;
     }
 
-    public Date getMat_pro_fecha_compra() {
-        return mat_pro_fecha_compra;
+    public int getLot_precio() {
+        return lot_precio;
     }
 
-    public int getMat_pro_cantidad() {
-        return mat_pro_cantidad;
+    public Date getLot_fecha_compra() {
+        return lot_fecha_compra;
+    }
+
+    public int getLot_cantidad() {
+        return lot_cantidad;
     }
 
     public int getFk_mat_codigo() {
@@ -179,5 +187,10 @@ public class Mat_pro {
     public int getFk_pro_rif() {
         return fk_pro_rif;
     }
+
+    public int getFk_mat_pro_codigo() {
+        return fk_mat_pro_codigo;
+    }
+
 }
 
