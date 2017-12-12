@@ -119,8 +119,6 @@ create table informacion_contacto
 	references beneficiario(ben_ci)
 );
 
-
-
 create table modelo_aeronave
 (
 	mod_codigo serial not null,
@@ -138,7 +136,6 @@ create table motor
 	constraint fk_mod_codigo foreign key(fk_mod_codigo)
 	references modelo_aeronave(mod_codigo)
 );
-
 
 create table caracteristica
 (
@@ -199,20 +196,36 @@ create table material
 	constraint pk_material primary key(mat_codigo)
 );
 
-
 create table mat_pro 
-(
-	mat_pro_codigo serial not null,
-	mat_pro_precio int not null,
-	mat_pro_fecha_compra date not null,
-	mat_pro_cantidad int not null,
-    fk_mat_codigo int not null,
-    fk_pro_rif int not null,
-	constraint pk_mat_pro primary key(mat_pro_codigo, fk_mat_codigo,fk_pro_rif),
+	(
+		mat_pro_codigo serial not null,
+		mat_pro_precio_actual int not null,
+		fk_mat_codigo int not null,
+		fk_pro_rif int not null,
+	constraint pk_mat_pro_codigo primary key(mat_pro_codigo),
 	constraint fk_mat_codigo foreign key(fk_mat_codigo)
 	references material(mat_codigo),
 	constraint fk_pro_rif foreign key(fk_pro_rif)
 	references proveedor(pro_rif)
+
+		)
+
+create table lote_material 
+(
+	lot_codigo serial not null,
+	lot_precio int not null,
+	lot_fecha_compra date not null,
+	lot_cantidad int not null,
+    fk_mat_codigo int not null,
+    fk_pro_rif int not null,
+    fk_mat_pro_codigo int not null,
+	constraint pk_lot_codigo primary key(lot_codigo),
+	constraint fk_mat_codigo foreign key(fk_mat_codigo)
+	references material(mat_codigo),
+	constraint fk_pro_rif foreign key(fk_pro_rif)
+	references proveedor(pro_rif),
+	constraint fk_mat_pro_codigo foreign key(fk_mat_pro_codigo)
+	references mat_pro(mat_pro_codigo)
 );
 
 
@@ -247,6 +260,7 @@ create table pieza
     fk_aer_codigo int,
     fk_tip_codigo int not null,
     fk_pie_codigo int,
+    fk_mot_codigo int,
 	constraint pk_pieza primary key(pie_codigo),
 	constraint fk_inv_codigo foreign key(fk_inv_codigo)
 	references inventario(inv_codigo),
@@ -255,7 +269,9 @@ create table pieza
 	constraint fk_tip_codigo foreign key(fk_tip_codigo)
 	references tipo_pieza(tip_codigo),
 	constraint fk_pieza foreign key(fk_pie_codigo)
-	references pieza(pie_codigo)
+	references pieza(pie_codigo),
+	constraint fk_mot_codigo foreign key(fk_mot_codigo)
+	references motor(mot_codigo)
 );
 
 create table ensamblaje

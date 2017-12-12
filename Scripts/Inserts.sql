@@ -2455,8 +2455,18 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (4,'goma',5),
   (5,'madera',3),
   (6,'hierro',10);
+
+  INSERT INTO mat_pro(mat_pro_precio_actual,fk_mat_codigo,fk_pro_rif)VALUES
+  (),
+  (),
+  (),
+  (),
+  ();
+
+
+
   
-  INSERT INTO mat_pro(mat_pro_codigo,mat_pro_precio,mat_pro_fecha_compra,mat_pro_cantidad,fk_mat_codigo,fk_pro_rif) VALUES
+  INSERT INTO lote_material(lot_codigo,lot_precio,lot_fecha_compra,lot_cantidad,fk_mat_codigo,fk_pro_rif,fk_mat_pro_codigo) VALUES
   (1,5000,'10/03/2011',15000,1,71231233),
   (2,10000,'05/10/2012',2375,2,81231123),
   (3,500,'07/08/2011',1000,3,62323333),
