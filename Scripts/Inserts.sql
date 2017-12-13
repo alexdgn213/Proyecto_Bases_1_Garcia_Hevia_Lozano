@@ -2517,7 +2517,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   (5000,'10/03/2011',15000,1,71231233,1,7),
   (10000,'05/10/2012',2375,2,81231123,2,8),
   (500,'07/08/2011',1000,3,62323333,3,6),
-  (1000,'12/04/2012',3450,6,90001234,4,10),
+  (1000,'12/04/2012',3450,4,90001234,4,10),
   (2000,'10/06/2013',4010,5,78900010,5,11);
   
   INSERT INTO tipo_pieza(fk_tip_codigo,tip_tiempo_fabricacion,tip_nombre) VALUES --fk_tip_codigo es para piezas compuestas por otra
@@ -2559,7 +2559,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   ('01/01/2016','02/01/2016',3,1,11,null,null),
   ('09/09/2015','09/09/2015',3,2,12,null,null);
   
-  INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_tip_codigo,fk_mot_codigo) VALUES
+  INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_mot_codigo) VALUES
   ('Ensamblaje del Ala',5,3,1,null),
   ('Ensamblaje del Fuselaje',7,5,2,null),
   ('Ensamblaje del Grupo Motopropulsor',8,1,3,null),
@@ -2652,12 +2652,12 @@ INSERT INTO usuario(usu_nombre,usu_clave,fk_rol_codigo) VALUES
 INSERT INTO privilegio(pri_accion,pri_descripcion,pri_nombre_clave)VALUES
 ('Añadir Clientes','Permite añadir registros de clientes','addcli'),
 ('Modificar Clientes','Permite modificar registros de clientes','modcli'),
-('Eliminar Clientes','Permite eliminar registros de clientes',delcli),
-('Select Clientes','Permite hacer selects de clientes',selcli),
+('Eliminar Clientes','Permite eliminar registros de clientes','delcli'),
+('Select Clientes','Permite hacer selects de clientes','selcli'),
 ('Añadir Aeronave','Permite añadir registros de aeronave','addaer');
 
 INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
-(1,6),
+(1,1),
 (2,1),
 (3,2),
 (5,4),
