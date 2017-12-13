@@ -1510,12 +1510,12 @@ INSERT INTO Lugar (lug_codigo, fk_lug_codigo, lug_nombre, lug_tipo) VALUES
 (1499, 360, 'Sucre (Catia)','Parroquia'),
 (1500, 360, '23 de enero','Parroquia');
 --DELETE FROM fabrica;
-INSERT INTO fabrica (fab_codigo, fab_nombre, fk_lug_codigo) VALUES
-(1, 'Catia la Mar', 1344),
-(2, 'Valencia', 115),
-(3, 'Maracay', 61),
-(4,	'Guatire', 1014),
-(5, 'Planta de Colon', 343);
+INSERT INTO fabrica (fab_nombre, fk_lug_codigo) VALUES
+('Catia la Mar', 1344),
+('Valencia', 115),
+('Maracay', 61),
+('Guatire', 1014),
+('Planta de Colon', 343);
 
 --DELETE FROM zona;
 INSERT INTO zona (zon_nombre, zon_descripcion, fk_fab_codigo) VALUES
@@ -1591,7 +1591,7 @@ INSERT INTO informacion_contacto (inf_valor,inf_tipo,fk_pro_rif,fk_per_ci,fk_cli
 
 
 
-INSERT INTO modelo_aeronave (mod_nombre) VALUES
+INSERT INTO modelo_aeronave (mod_nombre,mod_precio_compra) VALUES --FALTA AGREGARLES EL PRECIO
 ('AU80'), --1
 ('AU80-2'), --Por sia cosa
 ('AU80-700'), -- Por si acaso
@@ -1635,7 +1635,7 @@ INSERT INTO modelo_aeronave (mod_nombre) VALUES
 --2 clases con ER
 ('AU747Silver ER'); -- 36 con ER 2 clases, sin ER 2 clases esta arriba cod 16
 
-INSERT INTO motor(mot_modelo ,mot_marca,fk_mod_codigo) VALUES
+INSERT INTO motor(mot_modelo ,mot_marca,fk_mod_codigo) VALUES --Falta quitarle los fk_mod
 ('JT8D-7','Pratt & Whitney',6),
 ('56-3B-2','CFM International',7),
 ('56-3B-1','CFM',8),
@@ -1682,6 +1682,13 @@ INSERT INTO motor(mot_modelo ,mot_marca,fk_mod_codigo) VALUES
 ('276 kN','GE',35),
 ('276 kN','GE',36),
 
+INSERT INTO mot_mod(mot_mod_cantidad,fk_mot_codigo,fk_mod_codigo) VALUES
+(),
+(),
+(),
+(),
+();
+
 INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (1,'Capacidad'),
 (2,'Longitud'),
@@ -1720,7 +1727,7 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (34,'Motorización'),
 (35,'Empuje unitario'); 
 
-INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codigo,fk_mot_codigo) VALUES
+INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codigo,fk_mot_codigo) VALUES --DEBO quitar los FK-mod
 (84.5,'kN',6,29,1), --EMPUJES MAXIMOS --AU802   LISTOS
 (98,'kN',7,29,2), --AU802A
 (89,'kN',8,29,3), --AU802B
@@ -2430,23 +2437,23 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (8000,'nmi',17,33);
   (5300,'nmi',31,33),
   (6850,'nmi',32,33),
-  (6700,'nmi',33,33),
+  (6700,'nmi',33,33);
+  
+  INSERT INTO factura(fac_monto_total) VALUES
+  (),
+  (),
+  (),
+  (),
+  ();
   
   
-  INSERT INTO aeronave(aer_fecha_compra,fk_cli_rif,fk_mod_codigo) VALUES 
-  ('07/04/2017',123336666,13), -- con los fk de clientes arriba y los fk de los modelos de arriba
-  ('08/02/2016',99090987,1),
-  ('03/02/2017',123447677,6),
-  ('02/02/2015',123336686,8),
-  ('10/07/2016',223399666,12),
-  ('10/12/2014',223399666,11);
-  /*
-  INSERT INTO solicitud(sol_codigo,sol_cantidad,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2) VALUES
-  (1,55,0,'Se despacharan 55 tornillos',3,2),
-  (2,1,1,'Se necesita llevar a zona de ensamblaje de avion principal',2,1),
-  (3,4,1,'Se requiere pintura',1,1),
-  (4,50,0,'Se Despacharan 50 cauchos',3,1),
-  (5,10,1,'Se necesita llevar las piezas internas a la zona de despacho',2,3);*/
+  INSERT INTO aeronave(aer_fecha_compra,fk_cli_rif,fk_mod_codigo,fk_fac_codigo) VALUES --Faltan las FK-FAC
+  ('07/04/2017',123336666,13,), -- con los fk de clientes arriba y los fk de los modelos de arriba
+  ('08/02/2016',99090987,1,),
+  ('03/02/2017',123447677,6,),
+  ('02/02/2015',123336686,8,),
+  ('10/07/2016',223399666,12,),
+  ('10/12/2014',223399666,11,);
   
   INSERT INTO material(mat_codigo,mat_nombre,mat_tiempo_estimado) VALUES
   (1,'cobre',20),
@@ -2465,8 +2472,8 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
 
 
 
-  
-  INSERT INTO lote_material(lot_codigo,lot_precio,lot_fecha_compra,lot_cantidad,fk_mat_codigo,fk_pro_rif,fk_mat_pro_codigo) VALUES
+  --en lote_material FALTA fk_FAC
+  INSERT INTO lote_material(lot_codigo,lot_precio,lot_fecha_compra,lot_cantidad,fk_mat_codigo,fk_pro_rif,fk_mat_pro_codigo,fk_fac_codigo) VALUES
   (1,5000,'10/03/2011',15000,1,71231233),
   (2,10000,'05/10/2012',2375,2,81231123),
   (3,500,'07/08/2011',1000,3,62323333),
@@ -2497,49 +2504,45 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (4,4,'Contiene x cantidades de piezas'),
   (5,5,'Piezas');
   
-  INSERT INTO pieza(pie_fecha_estimada,pie_fecha_entregada,fk_inv_codigo,fk_aer_codigo,fk_tip_codigo,fk_pie_codigo) VALUES
-  ('05/05/2015','06/05/2015',3,1,1,null),
-  ('09/09/2016','09/09/2016',5,1,2,null),
-  ('11/07/2015','11/06/2015',1,1,3,null),
-  ('04/04/2015','04/06/2015',3,1,4,null),
-  ('10/10/2016','10/10/2016',3,2,5,null),
-  ('01/01/2017','12/03/2016',3,4,6,null),
-  ('02/02/2016','10/01/2016',3,5,7,null),
-  ('03/03/2016','03/03/2016',3,2,8,null),
-  ('04/04/2015','04/05/2015',4,4,9,null),
-  ('05/05/2017','05/05/2017',2,5,10,null),
-  ('01/01/2016','02/01/2016',3,1,11,null),
-  ('09/09/2015','09/09/2015',3,2,12,null);
+  --fk_mot_codigo
+  INSERT INTO pieza(pie_fecha_estimada,pie_fecha_entregada,fk_inv_codigo,fk_aer_codigo,fk_tip_codigo,fk_pie_codigo,fk_mot_codigo) VALUES
+  ('05/05/2015','06/05/2015',3,1,1,null,),
+  ('09/09/2016','09/09/2016',5,1,2,null,),
+  ('11/07/2015','11/06/2015',1,1,3,null,),
+  ('04/04/2015','04/06/2015',3,1,4,null,),
+  ('10/10/2016','10/10/2016',3,2,5,null,),
+  ('01/01/2017','12/03/2016',3,4,6,null,),
+  ('02/02/2016','10/01/2016',3,5,7,null,),
+  ('03/03/2016','03/03/2016',3,2,8,null,),
+  ('04/04/2015','04/05/2015',4,4,9,null,),
+  ('05/05/2017','05/05/2017',2,5,10,null,),
+  ('01/01/2016','02/01/2016',3,1,11,null,),
+  ('09/09/2015','09/09/2015',3,2,12,null,);
   
-  INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo) VALUES
-  ('Ensamblaje del Ala',5,3,1),
-  ('Ensamblaje del Fuselaje',7,5,2),
-  ('Ensamblaje del Grupo Motopropulsor',8,1,3),
-  ('Ensamblaje de Alerones',5,3,4),
-  ('Ensamblaje de Flaps',5,3,5),
-  ('Ensamblaje de Spoilers',5,3,6),
-  ('Ensamblaje de Flaps',5,3,7),
-  ('Ensamblaje de Estabilizadores',5,3,8),
-  ('Ensamblaje de Instrumentos de Control',10,4,9),
-  ('Creacion de Asientos',9,2,10),
-  ('Ensamblaje de Tren de Aterrizaje Fijo',5,3,11),
-  ('Ensamblaje de Tren de Aterrizaje Retractil',5,3,12);
+  --fk_mot_codigo
+  INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_tip_codigo,fk_mot_codigo) VALUES
+  ('Ensamblaje del Ala',5,3,1,),
+  ('Ensamblaje del Fuselaje',7,5,2,),
+  ('Ensamblaje del Grupo Motopropulsor',8,1,3,),
+  ('Ensamblaje de Alerones',5,3,4,),
+  ('Ensamblaje de Flaps',5,3,5,),
+  ('Ensamblaje de Spoilers',5,3,6,),
+  ('Ensamblaje de Flaps',5,3,7,),
+  ('Ensamblaje de Estabilizadores',5,3,8,),
+  ('Ensamblaje de Instrumentos de Control',10,4,9,),
+  ('Creacion de Asientos',9,2,10,),
+  ('Ensamblaje de Tren de Aterrizaje Fijo',5,3,11,),
+  ('Ensamblaje de Tren de Aterrizaje Retractil',5,3,12,);
   
-  INSERT INTO solicitud(sol_cantidad,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2,fk_mat_codigo) VALUES
+  
+  --fk_tip,fk_mot
+  INSERT INTO solicitud(sol_cantidad,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2,fk_mat_codigo,fk_tip_codigo,fk_mot_codigo) VALUES
   (10,1,'Enviar 10 unidades de cobre',1,2,1),
   (20,0,'Enviar 20 unidades bloques de metal',3,2,2),
   (30,1,'Enviar 30 tablas de madera',4,3,5),
   (4,1,'Enviar 4 gomas',1,2,4),
   (1,0,'Enviar una viga de hiero',3,1,6);
-  
-  /*
-  (1,'cobre'),
-  (2,'metal'),
-  (3,'plastico'),
-  (4,'goma'),
-  (5,'madera'),
-  (6,'hierro');
-  */
+ 
   INSERT INTO tip_mod(tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo) VALUES
   (2,1,1),
   (1,13,1),
@@ -2547,12 +2550,12 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (1,6,2),
   (1,6,3);
   
-  INSERT INTO prueba(pru_codigo,pru_nombre,pru_descripcion) VALUES
- (1,'Control de calidad de materiales','Consiste en comprobar el nivel optimo del material'),
- (2,'Control de calidad de materiales por traslado','Comprueba que no hayan sufrido daños por traslado'),
- (3,'Control de calidad de la pieza','Comprueba el nivel optimo de la pieza ensamblada'),
- (4,'Prueba de control de ensamble','Comprueba que el ensamblaje se haya hecho satisfactoriamente'),
- (5,'Control de calidad de piezas por traslado','Comprueba que no hayan sufrido daños por traslado');
+  INSERT INTO prueba(pru_nombre,pru_descripcion) VALUES
+ ('Control de calidad de materiales','Consiste en comprobar el nivel optimo del material'),
+ ('Control de calidad de materiales por traslado','Comprueba que no hayan sufrido daños por traslado'),
+ ('Control de calidad de la pieza','Comprueba el nivel optimo de la pieza ensamblada'),
+ ('Prueba de control de ensamble','Comprueba que el ensamblaje se haya hecho satisfactoriamente'),
+ ('Control de calidad de piezas por traslado','Comprueba que no hayan sufrido daños por traslado');
  
  INSERT INTO tip_pru(fk_tip_codigo,fk_pru_codigo) VALUES
  (1,4),
@@ -2575,13 +2578,16 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
  (30,4,2),
  (96,5,5);
   
-  INSERT INTO pru_mat_inv(pru_mat_inv_fecha_realizacion,fk_pru_codigo,fk_mat_codigo,fk_inv_codigo,fk_mat_inv_codigo) VALUES
-  ('08/08/2016',1,1,1,1),
-  ('09/09/2015',2,2,4,2),
-  ('10/10/2014',1,3,3,3),
-  ('02/03/2015',2,4,2,4),
-  ('04/04/2015',2,5,5,5);
   
+  --REVISAR
+  INSERT INTO pru_lot(pru_lot_fecha_realizacion,fk_pru_codigo,fk_lot_codigo) VALUES
+  ('08/08/2016',1,1),
+  ('09/09/2015',2,2),
+  ('10/10/2014',1,3),
+  ('02/03/2015',2,4),
+  ('04/04/2015',2,5);
+  
+  --QUE VA en per_pru_pie_encargado? en teoria 1 es el encargado, 0 no es no?
   INSERT INTO per_pru_pie(per_pru_pie_encargado,fk_per_ci,fk_pru_codigo,fk_pie_codigo,fk_pru_pie_codigo)VALUES
   (1,11212123,3,1,1),
   (1,10000000,3,2,2),
@@ -2603,13 +2609,15 @@ INSERT INTO usuario(usu_nombre,usu_clave,fk_rol_codigo) VALUES
     ('braulio','123456',1),
     ('anak','123456',1);
     
-INSERT INTO privilegio(pri_accion,pri_descripcion)VALUES
-('Añadir','Permite añadir registros '),
-('Modificar','Permite modificar registros'),
-('Eliminar','Permite eliminar registros'),
-('Aña-Elim','Permite añadir y eliminar registros'),
-('Select','Permite hacer selects de la BD'),
-('Todo','Puede hacer todo'); 
+    --Falta añadir los pri_nombre_clave
+INSERT INTO privilegio(pri_accion,pri_descripcion,pri_nombre_clave)VALUES
+('Añadir','Permite añadir registros ',),
+('Modificar','Permite modificar registros',),
+('Eliminar','Permite eliminar registros',),
+('Aña-Elim','Permite añadir y eliminar registros',),
+('Select','Permite hacer selects de la BD',),
+('Todo','Puede hacer todo',); 
+
 INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
 (1,6),
 (2,1),
@@ -2632,19 +2640,14 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
   ('02/06/2017',4,2),
   ('10/12/2017',4,1);
   
-  INSERT INTO forma_pago(for_monto,for_efectivo,for_numero,for_banco,for_tipo_tarjeta,for_fecha_vencimiento,for_tipo)VALUES
-  (20000000,null,1234123443214321,'BNC','VISA','09/10/2020','Credito'),
-  (30000000,null,0987789009877890,'Provincial','VISA','01/01/2030','Credito'),
-  (35000000,null,5678876556788765,'Mercantil','VISA','02/10/2025','Debito'),
-  (10000000,null,1267762112677621,'Banesco','Master','06/10/2028','Debito'),
-  (3500000,null,9812218934566543,'Venezolan','Master','09/09/2035','Credito');
-
-  INSERT INTO pago(fk_for_codigo,fk_mat_pro_codigo,fk_aer_codigo,fk_mat_codigo,fk_pro_rif)VALUES
-  (1,1,1,1,71231233),
-  (2,2,2,2,81231123),
-  (3,3,3,3,62323333),
-  (4,4,4,6,90001234),
-  (5,5,5,5,78900010);
+  --FALTA fk_fac_codigo
+  INSERT INTO forma_pago(for_monto,for_efectivo,for_numero,for_banco,for_tipo_tarjeta,for_fecha_vencimiento,for_tipo,fk_fac_codigo)VALUES
+  (20000000,null,1234123443214321,'BNC','VISA','09/10/2020','Credito',),
+  (30000000,null,0987789009877890,'Provincial','VISA','01/01/2030','Credito',),
+  (35000000,null,5678876556788765,'Mercantil','VISA','02/10/2025','Debito',),
+  (10000000,null,1267762112677621,'Banesco','Master','06/10/2028','Debito',),
+  (3500000,null,9812218934566543,'Venezolan','Master','09/09/2035','Credito',);
+  
   /*
   INSERT INTO estatus()VALUES
   (),
