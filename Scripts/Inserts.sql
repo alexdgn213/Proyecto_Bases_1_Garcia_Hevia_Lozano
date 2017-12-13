@@ -1509,6 +1509,7 @@ INSERT INTO Lugar (lug_codigo, fk_lug_codigo, lug_nombre, lug_tipo) VALUES
 (1498, 360, 'Santa Teresa','Parroquia'),
 (1499, 360, 'Sucre (Catia)','Parroquia'),
 (1500, 360, '23 de enero','Parroquia');
+
 --DELETE FROM fabrica;
 INSERT INTO fabrica (fab_nombre, fk_lug_codigo) VALUES
 ('Catia la Mar', 1344),
@@ -1591,103 +1592,129 @@ INSERT INTO informacion_contacto (inf_valor,inf_tipo,fk_pro_rif,fk_per_ci,fk_cli
 
 
 
-INSERT INTO modelo_aeronave (mod_nombre,mod_precio_compra) VALUES --FALTA AGREGARLES EL PRECIO
-('AU80'), --1
-('AU80-2'), --Por sia cosa
-('AU80-700'), -- Por si acaso
-('AU87A'), 
-('AU801'),--5
-('AU802'),--6 Clases densas + basic por default del 6..12
-('AU802A'),--7
-('AU802B'),--8
-('AU802C'),--9
-('AU802D'),--10 BASIC + DENSA
-('AU802E'),--11
-('AU802F'),--12
-('AU747Plus'),--13 POR DEFAULT TODOS LOS AU747 13..17 son 2 clases y sin ER
-('AU747Platinum'),--14
-('AU747Gold'), --15
-('AU747Silver'),--16
-('AU747SilverB'),--17 es de 3 clases cuidado
-('AU802 STD'),--18 --clases estandar
-('AU802A STD'), --19
-('AU802B STD'),--20
-('AU802C STD'),--21
-('AU802E STD'),--22
-('AU802F STD'),--23
-('AU802F AD'),--24 Clases  ALTA DENSIDAD
-('AU802E 2Clases'),--25 2CLASES
+INSERT INTO modelo_aeronave (mod_nombre,mod_precio_compra) VALUES 
+('AU80',10000000), --1
+('AU80-2',10000000), --Por sia cosa
+('AU80-700',10000000), -- Por si acaso
+('AU87A',10000000), 
+('AU801',12000000),--5
+('AU802',14000000),--6 Clases densas + basic por default del 6..12
+('AU802A',14500000),--7
+('AU802B',14800000),--8
+('AU802C',14850000),--9
+('AU802D',16000000),--10 BASIC + DENSA
+('AU802E',15000000),--11
+('AU802F',15500000),--12
+('AU747Plus',20000000),--13 POR DEFAULT TODOS LOS AU747 13..17 son 2 clases y sin ER
+('AU747Platinum',21000000),--14
+('AU747Gold',21500000), --15
+('AU747Silver',22000000),--16
+('AU747SilverB',22000000),--17 es de 3 clases cuidado
+('AU802 STD',14000000),--18 --clases estandar
+('AU802A STD',14500000), --19
+('AU802B STD',14800000),--20
+('AU802C STD',14850000),--21
+('AU802E STD',15000000),--22
+('AU802F STD',15500000),--23
+('AU802F AD',15500000),--24 Clases  ALTA DENSIDAD
+('AU802E 2Clases',15000000),--25 2CLASES
 --TIPOS DE AU802D: el 10,26,27,28,29,30. 6 en total 
-('AU802D Basic STD'), --26Basic + estandar
-('AU802D ER'), --27 ER + densa
-('AU802D ER STD'),--28 ER + estandar
-('AU802D WL'),-- 29 WL +densa
-('AU802D WL STD'),--30 WL + estandar
+('AU802D Basic STD',16000000), --26Basic + estandar
+('AU802D ER',17000000), --27 ER + densa
+('AU802D ER STD',16500000),--28 ER + estandar
+('AU802D WL',18000000),-- 29 WL +densa
+('AU802D WL STD',17500000),--30 WL + estandar
 ---------------------------------------
 --3 clases sin ER
-('AU747Plus 3Clases'),--31
-('AU747Platinum 3Clases'), --32
-('AU747Gold 3Clases'),--33
-('AU747Silver 3Clases'),--34 
+('AU747Plus 3Clases',20000000),--31
+('AU747Platinum 3Clases',21000000), --32
+('AU747Gold 3Clases',21500000),--33
+('AU747Silver 3Clases',22000000),--34 
 --EL SILVERB es de 3 clases unicamente. su codigo es el 17
 --3 clases con ER solo el SILVER tiene ER
-('AU747Silver ER 3Clases '),--35
+('AU747Silver ER 3Clases',23000000),--35
 --2 clases con ER
-('AU747Silver ER'); -- 36 con ER 2 clases, sin ER 2 clases esta arriba cod 16
+('AU747Silver ER',22500000); -- 36 con ER 2 clases, sin ER 2 clases esta arriba cod 16
 
-INSERT INTO motor(mot_modelo ,mot_marca,fk_mod_codigo) VALUES --Falta quitarle los fk_mod
-('JT8D-7','Pratt & Whitney',6),
-('56-3B-2','CFM International',7),
-('56-3B-1','CFM',8),
-('56-7B20','CFM',9),
-('56-7B26','CFM',10),
-('56-7B27','CFM',11),
-('56-7','CFM',12),
-('JT9D-7A','Pratt & Whitney',13),
---('RB211-524B2','Rolls-Royce',13), EL OTRO MOTOR que puede usar
-('JT9D-7R4G2','Pratt & Whitney',14),
---('CF6-50E2','GE',14),El otro motor que puede usar
---('RB211-524D4','RR',14), El otro motor que puede usar
-('JT9D-7R4G2','Pratt & Whitney',15),
---('CF6-80C2B1','GE',15), El otro que puede usar
---('RB211-524D4','RR',15), El otro
-('4062','Pratt & Whitney',16),
---('CF6-80C2B5F','GE',16), el otro
---('RB211-524G/H','RR',16),
-('GEnx-2B67','GE',17),
-('JT8D-7','Pratt & Whitney',18),
-('56-3B-2','CFM International',19),
-('56-3B-1','CFM',20),
-('56-7B20','CFM',21),
-('56-7B27','CFM',22),
-('56-7','CFM',23),
-('56-7','CFM',24),
-('56-7B27','CFM',25),
-('56-7B26','CFM',26),
-('56-7B26','CFM',27),
-('56-7B26','CFM',28),
-('56-7B26','CFM',29),
-('56-7B26','CFM',30),
-('JT9D-7A','Pratt & Whitney',31),
---('RB211-524B2','Rolls-Royce',31), EL OTRO MOTOR que puede usar
-('JT9D-7R4G2','Pratt & Whitney',32),
---('CF6-50E2','GE',32),El otro motor que puede usar
---('RB211-524D4','RR',32), El otro motor que puede usar
-('JT9D-7R4G2','Pratt & Whitney',33),
---('CF6-80C2B1','GE',33), El otro que puede usar
---('RB211-524D4','RR',33), El otro
-('4062','Pratt & Whitney',34),
---('CF6-80C2B5F','GE',34), el otro
---('RB211-524G/H','RR',34),
-('276 kN','GE',35),
-('276 kN','GE',36),
+INSERT INTO motor(mot_modelo ,mot_marca) VALUES 
+('JT8D-7','Pratt & Whitney'),--AU802
+('56-3B-2','CFM International'),--AU802A
+('56-3B-1','CFM'),--AU802B
+('56-7B20','CFM'),--AU802C
+('56-7B26','CFM'),--AU802D
+('56-7B27','CFM'),--AU802E
+('56-7','CFM'),--AU802F
+('JT9D-7A','Pratt & Whitney'),--AU747plus
+--('RB211-524B2','Rolls-Royce'), EL OTRO MOTOR que puede usar
+('JT9D-7R4G2','Pratt & Whitney'),--AU747Platinum
+--('CF6-50E2','GE'),El otro motor que puede usar
+--('RB211-524D4','RR'), El otro motor que puede usar
+('JT9D-7R4G2','Pratt & Whitney'),--AU747Gold
+--('CF6-80C2B1','GE'), El otro que puede usar
+--('RB211-524D4','RR'), El otro
+('4062','Pratt & Whitney'),--AU747Silver
+--('CF6-80C2B5F','GE'), el otro
+--('RB211-524G/H','RR'),
+('GEnx-2B67','GE'), --AU747SilverB
+('JT8D-7','Pratt & Whitney'),--AU802STD
+('56-3B-2','CFM International'),--AU802ASTD
+('56-3B-1','CFM'),--AU802BSTD
+('56-7B20','CFM'),--AU802CSTD
+('56-7B27','CFM'),--AU802ESTD
+('56-7','CFM'),--AU802FSTD
+('56-7','CFM'),--AU802F AD
+('56-7B27','CFM'),--AU802E 2clases
+('56-7B26','CFM'),-- AU802D Basic STD
+('56-7B26','CFM'),-- AU802D ER + densa
+('56-7B26','CFM'),-- AU802D ER + STD 
+('56-7B26','CFM'),--AU802D WL + densa
+('56-7B26','CFM'),--AU802D WL + STD
+('JT9D-7A','Pratt & Whitney'),--AU747Plus 3Clases
+--('RB211-524B2','Rolls-Royce'), EL OTRO MOTOR que puede usar
+('JT9D-7R4G2','Pratt & Whitney'),--AU747Platinum 3Clases
+--('CF6-50E2','GE'),El otro motor que puede usar
+--('RB211-524D4','RR'), El otro motor que puede usar
+('JT9D-7R4G2','Pratt & Whitney'),--AU747Gold 3Clases
+--('CF6-80C2B1','GE'), El otro que puede usar
+--('RB211-524D4','RR'), El otro
+('4062','Pratt & Whitney'),--AU747Silver 3Clases
+--('CF6-80C2B5F','GE'), el otro
+--('RB211-524G/H','RR'),
+('CF6-80C2B5F','GE'),--AU747Silver ER 3Clases
+('CF6-80C2B5F','GE'),--AU747Silver ER
 
 INSERT INTO mot_mod(mot_mod_cantidad,fk_mot_codigo,fk_mod_codigo) VALUES
-(),
-(),
-(),
-(),
-();
+(2,1,6),
+(2,2,7),
+(2,3,8),
+(2,4,9),
+(2,5,10),
+(2,6,11),
+(2,7,12),
+(4,8,13),
+(4,9,14),
+(4,10,15),
+(4,11,16),
+(4,12,17),
+(2,1,18),
+(2,2,19),
+(2,3,20),
+(2,4,21),
+(2,6,22),
+(2,7,23),
+(2,7,24),
+(2,6,25),
+(2,5,26),
+(2,5,27),
+(2,5,28),
+(2,5,29),
+(2,5,30),
+(4,8,31),
+(4,9,32),
+(4,10,33),
+(4,11,34),
+(4,30,35),
+(4,31,36),
 
 INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (1,'Capacidad'),
@@ -1727,90 +1754,90 @@ INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (34,'Motorización'),
 (35,'Empuje unitario'); 
 
-INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codigo,fk_mot_codigo) VALUES --DEBO quitar los FK-mod
-(84.5,'kN',6,29,1), --EMPUJES MAXIMOS --AU802   LISTOS
-(98,'kN',7,29,2), --AU802A
-(89,'kN',8,29,3), --AU802B
-(91.6,'kN',9,29,4), --AU802C
-(116,'kN',10,29,5), --AU802D
-(121.4,'kN',11,29,6), --AU802E
-(121.4,'kN',12,29,7), --AU802F
-(84.5,'kN',18,29,1), --AU802
-(98,'kN',19,29,2), --AU802A
-(89,'kN',20,29,3), --AU802B
-(91.6,'kN',21,29,4), --AU802C
-(121.4,'kN',22,29,6), --AU802E
-(121.4,'kN',23,29,7), --AU802F
-(121.4,'kN',24,29,7), --AU802F
-(121.4,'kN',25,29,6), --AU802E
-(116,'kN',26,29,5), --AU802D
-(116,'kN',27,29,5), --AU802D
-(116,'kN',28,29,5), --AU802D
-(116,'kN',29,29,5), --AU802D
-(116,'kN',30,29,5), --AU802D
+INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codigo) VALUES 
+(84.5,'kN',29,1), --EMPUJES MAXIMOS --AU802   LISTOS
+(98,'kN',29,2), --AU802A
+(89,'kN',29,3), --AU802B
+(91.6,'kN',29,4), --AU802C
+(116,'kN',29,5), --AU802D
+(121.4,'kN',29,6), --AU802E
+(121.4,'kN',29,7), --AU802F
+(84.5,'kN',29,1), --AU802
+(98,'kN',29,2), --AU802A
+(89,'kN',29,3), --AU802B
+(91.6,'kN',29,4), --AU802C
+(121.4,'kN',29,6), --AU802E
+(121.4,'kN',29,7), --AU802F
+(121.4,'kN',29,7), --AU802F
+(121.4,'kN',29,6), --AU802E
+(116,'kN',29,5), --AU802D
+(116,'kN',29,5), --AU802D
+(116,'kN',29,5), --AU802D
+(116,'kN',29,5), --AU802D
+(116,'kN',29,5), --AU802D
 
-(17.21,'kN',6,30,1),--EMPUJES A VELOCIDAD CRUCERO LISTOS
-(21.92,'kN',7,30,2), 
-(21.80,'kN',8,30,3),
-(23.18,'kN',9,30,4),
-(24.38,'kN',10,30,5),
-(24.38,'kN',11,30,6),
-(24.38,'kN',12,30,7),
-(17.21,'kN',18,30,1),
-(21.92,'kN',19,30,2),
-(21.80,'kN',20,30,3),
-(23.18,'kN',21,30,4),
-(24.38,'kN',22,30,6),
-(24.38,'kN',23,30,7),
-(24.38,'kN',24,30,7),
-(24.38,'kN',25,30,6),
-(24.38,'kN',26,30,5),
-(24.38,'kN',27,30,5),
-(24.38,'kN',28,30,5),
-(24.38,'kN',29,30,5),
-(24.38,'kN',30,30,5),
+(17.21,'kN',30,1),--EMPUJES A VELOCIDAD CRUCERO LISTOS
+(21.92,'kN',30,2), 
+(21.80,'kN',30,3),
+(23.18,'kN',30,4),
+(24.38,'kN',30,5),
+(24.38,'kN',30,6),
+(24.38,'kN',30,7),
+(17.21,'kN',30,1),
+(21.92,'kN',30,2),
+(21.80,'kN',30,3),
+(23.18,'kN',30,4),
+(24.38,'kN',30,6),
+(24.38,'kN',30,7),
+(24.38,'kN',30,7),
+(24.38,'kN',30,6),
+(24.38,'kN',30,5),
+(24.38,'kN',30,5),
+(24.38,'kN',30,5),
+(24.38,'kN',30,5),
+(24.38,'kN',30,5),
 
-(1.12,'m',6,31,1),--Diametro de las alabes LISTOS
-(1.52,'m',7,31,2),
-(1.52,'m',8,31,3),
-(1.55,'m',9,31,4),
-(1.55,'m',10,31,5),
-(1.55,'m',11,31,6),
-(1.55,'m',12,31,7),
-(1.12,'m',18,31,1),
-(1.52,'m',19,31,2),
-(1.52,'m',20,31,3),
-(1.55,'m',21,31,4),
-(1.55,'m',22,31,6),
-(1.55,'m',23,31,7),
-(1.55,'m',24,31,7),
-(1.55,'m',25,31,6),
-(1.55,'m',26,31,5),
-(1.55,'m',27,31,5),
-(1.55,'m',28,31,5),
-(1.55,'m',29,31,5),
-(1.55,'m',30,31,5),
+(1.12,'m',31,1),--Diametro de las alabes LISTOS
+(1.52,'m',31,2),
+(1.52,'m',31,3),
+(1.55,'m',31,4),
+(1.55,'m',31,5),
+(1.55,'m',31,6),
+(1.55,'m',31,7),
+(1.12,'m',31,1),
+(1.52,'m',31,2),
+(1.52,'m',31,3),
+(1.55,'m',31,4),
+(1.55,'m',31,6),
+(1.55,'m',31,7),
+(1.55,'m',31,7),
+(1.55,'m',31,6),
+(1.55,'m',31,5),
+(1.55,'m',31,5),
+(1.55,'m',31,5),
+(1.55,'m',31,5),
+(1.55,'m',31,5),
  
- (3.20,'m',6,32,1),--Longitud del motor LISTOS
- (2.36,'m',7,32,2),
- (2.36,'m',8,32,3),
- (2.51,'m',9,32,4),
- (2.51,'m',10,32,5),
- (2.51,'m',11,32,6),
- (2.51,'m',12,32,7),
- (3.20,'m',18,32,1),
- (2.36,'m',19,32,2),
- (2.36,'m',20,32,3),
- (2.51,'m',21,32,4),
- (2.51,'m',22,32,6),
- (2.51,'m',23,32,7),
- (2.51,'m',24,32,7),
- (2.51,'m',25,32,6),
- (2.51,'m',26,32,5),
- (2.51,'m',27,32,5),
- (2.51,'m',28,32,5),
- (2.51,'m',29,32,5),
- (2.51,'m',30,32,5),
+ (3.20,'m',32,1),--Longitud del motor LISTOS
+ (2.36,'m',32,2),
+ (2.36,'m',32,3),
+ (2.51,'m',32,4),
+ (2.51,'m',32,5),
+ (2.51,'m',32,6),
+ (2.51,'m',32,7),
+ (3.20,'m',32,1),
+ (2.36,'m',32,2),
+ (2.36,'m',32,3),
+ (2.51,'m',32,4),
+ (2.51,'m',32,6),
+ (2.51,'m',32,7),
+ (2.51,'m',32,7),
+ (2.51,'m',32,6),
+ (2.51,'m',32,5),
+ (2.51,'m',32,5),
+ (2.51,'m',32,5),
+ (2.51,'m',32,5),
+ (2.51,'m',32,5),
  
  (),--EMPUJE UNITARIO
 
@@ -2440,20 +2467,26 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (6700,'nmi',33,33);
   
   INSERT INTO factura(fac_monto_total) VALUES
-  (),
-  (),
-  (),
-  (),
-  ();
+  (20000000),
+  (10000000),
+  (14000000),
+  (14800000),
+  (15500000),
+  (15000000),
+  (5000),
+  (10000),
+  (500),
+  (1000),
+  (2000);
   
   
   INSERT INTO aeronave(aer_fecha_compra,fk_cli_rif,fk_mod_codigo,fk_fac_codigo) VALUES --Faltan las FK-FAC
-  ('07/04/2017',123336666,13,), -- con los fk de clientes arriba y los fk de los modelos de arriba
-  ('08/02/2016',99090987,1,),
-  ('03/02/2017',123447677,6,),
-  ('02/02/2015',123336686,8,),
-  ('10/07/2016',223399666,12,),
-  ('10/12/2014',223399666,11,);
+  ('07/04/2017',123336666,13,1),
+  ('08/02/2016',99090987,1,2),
+  ('03/02/2017',123447677,6,3),
+  ('02/02/2015',123336686,8,4),
+  ('10/07/2016',223399666,12,5),
+  ('10/12/2014',223399666,11,6);
   
   INSERT INTO material(mat_codigo,mat_nombre,mat_tiempo_estimado) VALUES
   (1,'cobre',20),
@@ -2464,21 +2497,18 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (6,'hierro',10);
 
   INSERT INTO mat_pro(mat_pro_precio_actual,fk_mat_codigo,fk_pro_rif)VALUES
-  (),
-  (),
-  (),
-  (),
-  ();
+  (3,1),
+  (0.2375,2),
+  (2,3),
+  (3.45,4),
+  (2.005,5);
 
-
-
-  --en lote_material FALTA fk_FAC
-  INSERT INTO lote_material(lot_codigo,lot_precio,lot_fecha_compra,lot_cantidad,fk_mat_codigo,fk_pro_rif,fk_mat_pro_codigo,fk_fac_codigo) VALUES
-  (1,5000,'10/03/2011',15000,1,71231233),
-  (2,10000,'05/10/2012',2375,2,81231123),
-  (3,500,'07/08/2011',1000,3,62323333),
-  (4,1000,'12/04/2012',3450,6,90001234),
-  (5,2000,'10/06/2013',4010,5,78900010);
+  INSERT INTO lote_material(lot_precio,lot_fecha_compra,lot_cantidad,fk_mat_codigo,fk_pro_rif,fk_mat_pro_codigo,fk_fac_codigo) VALUES
+  (5000,'10/03/2011',15000,1,71231233,1,7),
+  (10000,'05/10/2012',2375,2,81231123,2,8),
+  (500,'07/08/2011',1000,3,62323333,3,9),
+  (1000,'12/04/2012',3450,6,90001234,4,10),
+  (2000,'10/06/2013',4010,5,78900010,5,11);
   
   INSERT INTO tipo_pieza(fk_tip_codigo,tip_tiempo_fabricacion,tip_nombre) VALUES --fk_tip_codigo es para piezas compuestas por otra
   (null,50,'Ala'), --No se que poner en fk_tip_codigo de ninguna
@@ -2504,44 +2534,44 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_mod_codigo,fk_car_codig
   (4,4,'Contiene x cantidades de piezas'),
   (5,5,'Piezas');
   
-  --fk_mot_codigo
+  --REVISAR ESTOS INSERTS CON EL GRUPO- los NULLS
   INSERT INTO pieza(pie_fecha_estimada,pie_fecha_entregada,fk_inv_codigo,fk_aer_codigo,fk_tip_codigo,fk_pie_codigo,fk_mot_codigo) VALUES
-  ('05/05/2015','06/05/2015',3,1,1,null,),
-  ('09/09/2016','09/09/2016',5,1,2,null,),
-  ('11/07/2015','11/06/2015',1,1,3,null,),
-  ('04/04/2015','04/06/2015',3,1,4,null,),
-  ('10/10/2016','10/10/2016',3,2,5,null,),
-  ('01/01/2017','12/03/2016',3,4,6,null,),
-  ('02/02/2016','10/01/2016',3,5,7,null,),
-  ('03/03/2016','03/03/2016',3,2,8,null,),
-  ('04/04/2015','04/05/2015',4,4,9,null,),
-  ('05/05/2017','05/05/2017',2,5,10,null,),
-  ('01/01/2016','02/01/2016',3,1,11,null,),
-  ('09/09/2015','09/09/2015',3,2,12,null,);
+  ('05/05/2015','06/05/2015',3,1,1,null,null),
+  ('09/09/2016','09/09/2016',5,1,2,null,null),
+  ('11/07/2015','11/06/2015',1,1,3,null,null),
+  ('04/04/2015','04/06/2015',3,1,4,null,null),
+  ('10/10/2016','10/10/2016',3,2,5,null,null),
+  ('01/01/2017','12/03/2016',3,4,6,null,null),
+  ('02/02/2016','10/01/2016',3,5,7,null,null),
+  ('03/03/2016','03/03/2016',3,2,8,null,null),
+  ('04/04/2015','04/05/2015',4,4,9,null,null),
+  ('05/05/2017','05/05/2017',2,5,10,null,null),
+  ('01/01/2016','02/01/2016',3,1,11,null,null),
+  ('09/09/2015','09/09/2015',3,2,12,null,null);
   
-  --fk_mot_codigo
   INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_tip_codigo,fk_mot_codigo) VALUES
-  ('Ensamblaje del Ala',5,3,1,),
-  ('Ensamblaje del Fuselaje',7,5,2,),
-  ('Ensamblaje del Grupo Motopropulsor',8,1,3,),
-  ('Ensamblaje de Alerones',5,3,4,),
-  ('Ensamblaje de Flaps',5,3,5,),
-  ('Ensamblaje de Spoilers',5,3,6,),
-  ('Ensamblaje de Flaps',5,3,7,),
-  ('Ensamblaje de Estabilizadores',5,3,8,),
-  ('Ensamblaje de Instrumentos de Control',10,4,9,),
-  ('Creacion de Asientos',9,2,10,),
-  ('Ensamblaje de Tren de Aterrizaje Fijo',5,3,11,),
-  ('Ensamblaje de Tren de Aterrizaje Retractil',5,3,12,);
+  ('Ensamblaje del Ala',5,3,1,null),
+  ('Ensamblaje del Fuselaje',7,5,2,null),
+  ('Ensamblaje del Grupo Motopropulsor',8,1,3,null),
+  ('Ensamblaje de Alerones',5,3,4,null),
+  ('Ensamblaje de Flaps',5,3,5,null),
+  ('Ensamblaje de Spoilers',5,3,6,null),
+  ('Ensamblaje de Flaps',5,3,7,null),
+  ('Ensamblaje de Estabilizadores',5,3,8,null),
+  ('Ensamblaje de Instrumentos de Control',10,4,9,null),
+  ('Creacion de Asientos',9,2,10,null),
+  ('Ensamblaje de Tren de Aterrizaje Fijo',5,3,11,null),
+  ('Ensamblaje de Tren de Aterrizaje Retractil',5,3,12,null);
+  
+  --ENSAMBLAJES DE TODOS LOS MOTORES.... aqui 
   
   
-  --fk_tip,fk_mot
   INSERT INTO solicitud(sol_cantidad,sol_completada,sol_descripcion,fk_fab_codigo1,fk_fab_codigo2,fk_mat_codigo,fk_tip_codigo,fk_mot_codigo) VALUES
-  (10,1,'Enviar 10 unidades de cobre',1,2,1),
-  (20,0,'Enviar 20 unidades bloques de metal',3,2,2),
-  (30,1,'Enviar 30 tablas de madera',4,3,5),
-  (4,1,'Enviar 4 gomas',1,2,4),
-  (1,0,'Enviar una viga de hiero',3,1,6);
+  (10,1,'Enviar 10 unidades de cobre',1,2,1,null,null),
+  (20,0,'Enviar 20 unidades bloques de metal',3,2,2,null,null),
+  (30,1,'Enviar 30 tablas de madera',4,3,5,null,null),
+  (4,1,'Enviar 4 gomas',1,2,4,null,null),
+  (1,0,'Enviar una viga de hiero',3,1,6,null,null);
  
   INSERT INTO tip_mod(tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo) VALUES
   (2,1,1),
@@ -2603,20 +2633,18 @@ INSERT INTO rol(rol_nombre,rol_descripcion) VALUES
 	('Usuario VIP','Puede hacer mas operaciones que el Usuario+');
     
 INSERT INTO usuario(usu_nombre,usu_clave,fk_rol_codigo) VALUES
-	('alex','123456',1),
+    ('alex','123456',1),
     ('marco','123456',1),
     ('vero','123456',1),
     ('braulio','123456',1),
     ('anak','123456',1);
-    
-    --Falta añadir los pri_nombre_clave
+   
 INSERT INTO privilegio(pri_accion,pri_descripcion,pri_nombre_clave)VALUES
-('Añadir','Permite añadir registros ',),
-('Modificar','Permite modificar registros',),
-('Eliminar','Permite eliminar registros',),
-('Aña-Elim','Permite añadir y eliminar registros',),
-('Select','Permite hacer selects de la BD',),
-('Todo','Puede hacer todo',); 
+('Añadir Clientes','Permite añadir registros de clientes','addcli'),
+('Modificar Clientes','Permite modificar registros de clientes','modcli'),
+('Eliminar Clientes','Permite eliminar registros de clientes',delcli),
+('Select Clientes','Permite hacer selects de clientes',selcli),
+('Añadir Aeronave','Permite añadir registros de aeronave','addaer');
 
 INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
 (1,6),
@@ -2640,13 +2668,12 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
   ('02/06/2017',4,2),
   ('10/12/2017',4,1);
   
-  --FALTA fk_fac_codigo
   INSERT INTO forma_pago(for_monto,for_efectivo,for_numero,for_banco,for_tipo_tarjeta,for_fecha_vencimiento,for_tipo,fk_fac_codigo)VALUES
-  (20000000,null,1234123443214321,'BNC','VISA','09/10/2020','Credito',),
-  (30000000,null,0987789009877890,'Provincial','VISA','01/01/2030','Credito',),
-  (35000000,null,5678876556788765,'Mercantil','VISA','02/10/2025','Debito',),
-  (10000000,null,1267762112677621,'Banesco','Master','06/10/2028','Debito',),
-  (3500000,null,9812218934566543,'Venezolan','Master','09/09/2035','Credito',);
+  (20000000,null,1234123443214321,'BNC','VISA','09/10/2020','Credito',1),
+  (10000000,null,0987789009877890,'Provincial','VISA','01/01/2030','Credito',2),
+  (14000000,null,5678876556788765,'Mercantil','VISA','02/10/2025','Debito',3),
+  (14800000,null,1267762112677621,'Banesco','Master','06/10/2028','Debito',4),
+  (15500000,null,9812218934566543,'Venezolan','Master','09/09/2035','Credito',5);
   
   /*
   INSERT INTO estatus()VALUES
