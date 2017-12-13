@@ -23,7 +23,6 @@ create table fabrica
 	references lugar (lug_codigo)
 );
 
-
 create table zona
 (
 	zon_codigo serial not null,
@@ -39,8 +38,8 @@ create table personal
 (
 	per_ci int not null,
 	per_nombre varchar(80) not null,
-	per_apellido_1 varchar(30) not null,
-	per_apellido_2 varchar(30) not null,
+	per_apellido_1 varchar(50) not null,
+	per_apellido_2 varchar(50) not null,
 	per_fecha_inicio date not null,
 	per_titulacion varchar(80) not null,
 	per_experiencia varchar(100) not null,
@@ -48,23 +47,23 @@ create table personal
 	fk_lug_codigo int not null,
 	fk_zon_codigo int not null,
     fk_fab_codigo int not null,
-    fk_zon_codigo_2 int,
-    fk_fab_codigo_2 int,
+    fk_zon_codigo2 int not null,
+    fk_fab_codigo2 int not null,
 	constraint pk_personal primary key(per_ci),
 	constraint fk_lugar foreign key(fk_lug_codigo)
 	references lugar(lug_codigo),
 	constraint fk_zon_codigo foreign key(fk_zon_codigo,fk_fab_codigo)
 	references zona(zon_codigo,fk_fab_codigo),
-    constraint fk_zon_codigo_2 foreign key(fk_zon_codigo_2,fk_fab_codigo_2)
+    constraint fk_zon_codigo2 foreign key(fk_zon_codigo2,fk_fab_codigo2)
 	references zona(zon_codigo,fk_fab_codigo)
 );
 
 create table beneficiario
 (
 	ben_ci int not null,
-	ben_nombre varchar(30) not null,
-	ben_apellido_1 varchar(30) not null,
-	ben_apellido_2 varchar(30) not null,
+	ben_nombre varchar(50) not null,
+	ben_apellido_1 varchar(50) not null,
+	ben_apellido_2 varchar(50) not null,
 	ben_parentesco varchar(30),
 	fk_lug_codigo int not null,
 	fk_per_ci int not null,
@@ -72,13 +71,14 @@ create table beneficiario
 	constraint fk_lugar foreign key(fk_lug_codigo)
 	references lugar(lug_codigo),
 	constraint fk_personal foreign key(fk_per_ci)
-	references personal(per_ci)
+	references personal(per_ci),
+	constraint check_ben_parentesco check(ben_parentesco in('Madre','Padre','Hijo','Hija','Esposo','Esposa'))
 );
 
 create table proveedor
 (
 	pro_rif int not null,
-	pro_nombre varchar(30) not null,
+	pro_nombre varchar(50) not null,
 	pro_monto_acreditado int not null,
 	pro_fecha_inicio date not null,
 	fk_lug_codigo int not null,
@@ -141,7 +141,11 @@ create table mot_mod
 	mot_mod_cantidad int not null,
 	fk_mot_codigo int not null,
 	fk_mod_codigo int not null,
-	constraint pk_mot_mod_codigo primary key(mot_mod_codigo,fk_mot_codigo,fk_mod_codigo)
+	constraint pk_mot_mod_codigo primary key(mot_mod_codigo,fk_mot_codigo,fk_mod_codigo),
+	constraint fk_mot_codigo foreign key(fk_mot_codigo)
+	references motor(mot_codigo),
+	constraint fk_mod_codigo foreign key(fk_mod_codigo)
+	references modelo_aeronave(mod_codigo)
 );
 
 create table caracteristica
@@ -158,7 +162,7 @@ create table car_mot
 	car_mot_descripcion varchar(100), --Se puso para determinar la medida ej: (cm, metros, etc)
 	fk_car_codigo int not null,
 	fk_mot_codigo int not null,
-	constraint pk_car_mot_codigo primary key(car_mot_codigo)
+	constraint pk_car_mot_codigo primary key(car_mot_codigo,fk_car_codigo,fk_mot_codigo),
 	constraint fk_car_codigo foreign key(fk_car_codigo)
 	references caracteristica(car_codigo),
 	constraint fk_mot_codigo foreign key(fk_mot_codigo)
@@ -180,11 +184,11 @@ create table mod_car
 );
 
 create table factura
-	(
-		fac_codigo serial int not null,
-		fac_monto_total int not null,
-		constraint pk_fac_codigo primary key(fac_codigo)
-		)
+(
+	fac_codigo serial not null,
+	fac_monto_total int not null,
+	constraint pk_fac_codigo primary key(fac_codigo)
+);
 
 create table aeronave
 (
@@ -212,18 +216,17 @@ create table material
 );
 
 create table mat_pro 
-	(
-		mat_pro_codigo serial not null,
-		mat_pro_precio_actual int not null,
-		fk_mat_codigo int not null,
-		fk_pro_rif int not null,
-	constraint pk_mat_pro_codigo primary key(mat_pro_codigo)
+(
+	mat_pro_codigo serial not null,
+	mat_pro_precio_actual int not null,
+	fk_mat_codigo int not null,
+	fk_pro_rif int not null,
+	constraint pk_mat_pro_codigo primary key(mat_pro_codigo,fk_mat_codigo,fk_pro_rif),
 	constraint fk_mat_codigo foreign key(fk_mat_codigo)
 	references material(mat_codigo),
 	constraint fk_pro_rif foreign key(fk_pro_rif)
 	references proveedor(pro_rif)
-
-		)
+);
 
 create table lote_material 
 (
@@ -237,10 +240,10 @@ create table lote_material
     fk_fac_codigo int not null,
 	constraint pk_lot_codigo primary key(lot_codigo),
 	constraint fk_mat_pro_codigo foreign key(fk_mat_pro_codigo,fk_pro_rif,fk_mat_codigo)
-	references mat_pro(mat_pro_codigo)
+	references mat_pro(mat_pro_codigo,fk_pro_rif,fk_mat_codigo),
+	constraint fk_fac_codigo foreign key(fk_fac_codigo)
+	references factura(fac_codigo)
 );
-
-
 
 create table tipo_pieza
 (
@@ -276,7 +279,7 @@ create table pieza
 	constraint pk_pieza primary key(pie_codigo),
 	constraint fk_inv_codigo foreign key(fk_inv_codigo)
 	references inventario(inv_codigo),
-	constraint fk_aeronave foreign key(fk_aer_codigo)
+	constraint fk_aer_codigo foreign key(fk_aer_codigo)
 	references aeronave(aer_codigo),
 	constraint fk_tip_codigo foreign key(fk_tip_codigo)
 	references tipo_pieza(tip_codigo),
@@ -310,7 +313,7 @@ create table solicitud
 (
 	sol_codigo serial not null,
 	sol_cantidad int not null,
-	sol_completada int not null, --estatus=1 =realizada, 0=pending
+	sol_completada int not null, --1=realizada, 0=pending
 	sol_descripcion varchar(100) not null,
 	fk_fab_codigo1 int not null,
 	fk_fab_codigo2 int not null,
@@ -327,7 +330,8 @@ create table solicitud
 	constraint fk_mat_codigo foreign key(fk_mat_codigo)
 	references material(mat_codigo),
 	constraint fk_mot_codigo foreign key(fk_mot_codigo)
-	references motor(mot_codigo)
+	references motor(mot_codigo),
+	constraint check_sol_completada check(sol_completada in(0,1))
 );
 
 create table tip_mod
@@ -336,7 +340,7 @@ create table tip_mod
 	tip_mod_cantidad int not null,
     fk_mod_codigo int not null,
     fk_tip_codigo int not null,
-	constraint pk_tip_mod primary key(tip_mod_codigo),
+	constraint pk_tip_mod primary key(tip_mod_codigo,fk_tip_codigo,fk_mod_codigo),
 	constraint fk_mod_codigo foreign key(fk_mod_codigo)
 	references modelo_aeronave(mod_codigo),
 	constraint fk_tip_codigo foreign key(fk_tip_codigo)
@@ -352,16 +356,16 @@ create table prueba
 );
 
 create table tip_pru 
-	(
-		tip_pru_codigo serial not null,
-		fk_tip_codigo int not null,
-		fk_pru_codigo int not null,
-		constraint pk_tip_pru_codigo primary key(tip_pru_codigo,fk_pru_codigo,fk_tip_codigo),
-		constraint fk_tip_codigo foreign key(fk_tip_codigo)
-		references tipo_pieza(tip_codigo)
-		constraint fk_pru_codigo foreign key(fk_pru_codigo)
-		references prueba(pru_codigo)
-		);
+(
+	tip_pru_codigo serial not null,
+	fk_tip_codigo int not null,
+	fk_pru_codigo int not null,
+	constraint pk_tip_pru_codigo primary key(tip_pru_codigo,fk_pru_codigo,fk_tip_codigo),
+	constraint fk_tip_codigo foreign key(fk_tip_codigo)
+	references tipo_pieza(tip_codigo),
+	constraint fk_pru_codigo foreign key(fk_pru_codigo)
+	references prueba(pru_codigo)
+);
 
 create table pru_pie
 (
@@ -391,50 +395,50 @@ create table mat_inv
 
 create table pru_lot
 (
-		pru_lot_codigo serial not null,
-		pru_lot_fecha_realizacion date,
-    	fk_pru_codigo int not null,
-    	fk_lot_codigo int not null,
-		constraint pk_pru_lot_codigo primary key(pru_lot_codigo,fk_pru_codigo,fk_lot_codigo),
-		constraint fk_pru_codigo foreign key(fk_pru_codigo)
-		references prueba(pru_codigo),
-		constraint fk_lot_codigo foreign key(fk_lot_codigo)
-		references lote_material(lot_codigo)
+	pru_lot_codigo serial not null,
+	pru_lot_fecha_realizacion date,
+	fk_pru_codigo int not null,
+	fk_lot_codigo int not null,
+	constraint pk_pru_lot_codigo primary key(pru_lot_codigo,fk_pru_codigo,fk_lot_codigo),
+	constraint fk_pru_codigo foreign key(fk_pru_codigo)
+	references prueba(pru_codigo),
+	constraint fk_lot_codigo foreign key(fk_lot_codigo)
+	references lote_material(lot_codigo)
 );
 
 create table per_pru_pie
 (
-	 per_pru_pie_codigo serial not null,
-	 per_pru_pie_encargado int ,--1 es el encargado
-     fk_per_ci int not null,
-     fk_pru_codigo int not null,
-     fk_pie_codigo int not null,
-     fk_pru_pie_codigo int not null,
-	 constraint pk_per_pru_pie primary key(per_pru_pie_codigo,fk_per_ci,fk_pru_codigo,fk_pie_codigo,fk_pru_pie_codigo),
-	 constraint fk_personal foreign key(fk_per_ci)
-	 references personal(per_ci),
-	 constraint fk_pru_pie_codigo foreign key(fk_pru_pie_codigo,fk_pie_codigo,fk_pru_codigo)
-	 references pru_pie(pru_pie_codigo,fk_pie_codigo,fk_pru_codigo)
+	per_pru_pie_codigo serial not null,
+	per_pru_pie_encargado int ,--1 es el encargado
+	fk_per_ci int not null,
+	fk_pru_codigo int not null,
+	fk_pie_codigo int not null,
+	fk_pru_pie_codigo int not null,
+	constraint pk_per_pru_pie primary key(per_pru_pie_codigo,fk_per_ci,fk_pru_codigo,fk_pie_codigo,fk_pru_pie_codigo),
+	constraint fk_personal foreign key(fk_per_ci)
+	references personal(per_ci),
+	constraint fk_pru_pie_codigo foreign key(fk_pru_pie_codigo,fk_pie_codigo,fk_pru_codigo)
+	references pru_pie(pru_pie_codigo,fk_pie_codigo,fk_pru_codigo),
+	constraint check_per_pru_pie_encargado check(per_pru_pie_encargado in(0,1))
 );
-
 
 create table rol
 (
-	 rol_codigo serial not null,
-	 rol_nombre varchar(80) not null unique,
-	 rol_descripcion varchar(80) not null,
-	 constraint pk_rol_codigo primary key(rol_codigo)
+	rol_codigo serial not null,
+	rol_nombre varchar(80) not null unique,
+	rol_descripcion varchar(80) not null,
+	constraint pk_rol_codigo primary key(rol_codigo)
 );
 
 create table usuario
 (
-	 usu_codigo serial not null,
-	 usu_nombre varchar(30) not null unique,
-	 usu_clave varchar(30) not null,
-	 fk_rol_codigo int not null,
-	 constraint pk_usu_codigo primary key(usu_codigo),
-	 constraint fk_rol_codigo foreign key (fk_rol_codigo)
-	 references Rol(rol_codigo)
+	usu_codigo serial not null,
+	usu_nombre varchar(30) not null unique,
+	usu_clave varchar(30) not null,
+	fk_rol_codigo int not null,
+	constraint pk_usu_codigo primary key(usu_codigo),
+	constraint fk_rol_codigo foreign key (fk_rol_codigo)
+	references Rol(rol_codigo)
 );
 
 create table privilegio
@@ -497,7 +501,9 @@ create table forma_pago
 	fk_fac_codigo int not null,
 	constraint pk_for_codigo primary key(for_codigo),
 	constraint fk_fac_codigo foreign key(fk_fac_codigo)
-	references factura(fac_codigo)
+	references factura(fac_codigo),
+	constraint check_for_efectivo check(for_efectivo in(0,1)),
+	constraint check_for_tipo check(for_tipo in('Debito','Credito'))
 );
 
 create table estatus
@@ -522,7 +528,7 @@ create table estatus
 	 constraint fk_pru_aer_codigo foreign key(fk_pru_aer_codigo,fk_aer_codigo,fk_pru_codigo)
 	 references pru_aer(pru_aer_codigo,fk_aer_codigo,fk_pru_codigo),
 	 constraint fk_pru_lot_codigo foreign key(fk_pru_lot_codigo,fk_pru_codigo,fk_lot_codigo)
-	 references pru_lot(pru_lot_codigo,fk_pru_codigo,fk_lot_codigo),
+	 references pru_lot(pru_lot_codigo,fk_pru_codigo,fk_lot_codigo)
 );
 
 --
