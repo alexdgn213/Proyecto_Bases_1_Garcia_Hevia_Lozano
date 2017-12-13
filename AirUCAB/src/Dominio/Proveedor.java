@@ -132,6 +132,21 @@ public class Proveedor {
         }
         return l;
     }
+    
+    public static Proveedor buscarPorNombre(ConectorDB conector, String nombre){
+        Proveedor l = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT pro_rif,pro_nombre,pro_monto_acreditado,pro_fecha_inicio,fk_lug_codigo FROM proveedor WHERE pro_nombre=?");
+            pst.setString(1, nombre);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                l = new Proveedor(rs.getInt("pro_rif"),rs.getString("pro_nombre"),rs.getInt("pro_monto_acreditado"),rs.getDate("pro_fecha_inicio"),rs.getInt("fk_lug_codigo"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return l;
+    }
 
 
     public int getPro_rif() {
