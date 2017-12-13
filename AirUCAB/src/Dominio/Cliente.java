@@ -71,7 +71,7 @@ public class Cliente {
     
     public void eliminarDeDB(ConectorDB conector){
         try{
-            String stm = "Delete from CLiente where cli_rif=?";
+            String stm = "Delete from Cliente where cli_rif=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, cli_rif);
             pst.executeUpdate();
