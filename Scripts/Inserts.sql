@@ -2161,7 +2161,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
    
   (14.9,'m/s',5,15), --Regimen de Ascenso LISTOS
   
-  (76,'cm',6,16),--Distancia entre asientos (1 clase, densa)
+  (76,'cm',6,16),--Distancia entre asientos (1 clase, densa) LISTOS
   (86,'cm',18,16),-- (1 clase, estandar)
   (76,'cm',7,16),--1 clase densa
   (81,'cm',19,16),
@@ -2169,6 +2169,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   (81,'cm',20,16),
   (76,'cm',9,16),--1 clase densa
   (81,'cm',21,16),
+  (81,'cm',22,16),
   (76,'cm',10,16),--AU802D +BASIC + densa
   (81,'cm',26,16),--AU802D Basic + STD
   (76,'cm',27,16),--AU802D ER + Densa
@@ -2176,10 +2177,10 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   (76,'cm',29,16),--AU802D WL + densa
   (81,'cm',30,16),--AU802D WL + STD
   (76,'cm',11,16),--1 clase densa
-  (81,'cm',33,16),
   (76,'cm',12,16), --1 clase, densa
   (71,'cm',24,16), --1 clase,  alta densa
   (81,'cm',23,16),--1 clase, estandar
+  (76,'cm',25,16),
   
   (43.7,'cm',6,17),--Ancho de los asientos LISTOS
   (43.7,'cm',7,17),
@@ -2374,7 +2375,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   
   
   
-  (1860,'nmi',6,25), --Alcance con carga maxima
+  (1860,'nmi',6,25), --Alcance con carga maxima LISTOS
   (2165,'nmi',7,25),
   (2400,'nmi',8,25),
   (3050,'nmi',9,25),
@@ -2382,11 +2383,20 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   (3365,'nmi',26,25), --Basic + STD
   (5375,'nmi',27,25),--AU802D ER + DEnsa
   (5375,'nmi',28,25), -- AU802D ER + 
- -- (3900,'nmi',10,25),--WL 
- -- (5375,'nmi',10,25), --ER
+  (3900,'nmi',29,25),
+  (3900,'nmi',30,25),
   (3060,'nmi',11,25),
   (2700,'nmi',12,25),--1 clase
-  (3200,'nmi',12,25),--2 clases
+  --(3200,'nmi',12,25),--2 clases
+  (1860,'nmi',18,25),
+  (2165,'nmi',19,25),
+  (2400,'nmi',20,25),
+  (3050,'nmi',21,25),
+  (3060,'nmi',22,25),
+  (2700,'nmi',23,25),
+  (2700,'nmi',24,25),
+  (3060,'nmi',25,25),
+  
   
   (876,'km/h',6,26), --Velocidad Maxima LISTOS
   (876,'km/h',7,26),
