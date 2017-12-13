@@ -451,11 +451,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalComprar(conector,panelContenido);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void menuComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuComprarMouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalComprar(conector,panelContenido);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_menuComprarMouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked

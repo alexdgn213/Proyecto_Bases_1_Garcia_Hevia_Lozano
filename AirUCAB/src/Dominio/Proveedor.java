@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 /**
@@ -110,6 +111,11 @@ public class Proveedor {
         ResultSet rs =obtenerResultSet(conector,"SELECT pro_rif as Rif,pro_nombre as nombre,pro_monto_acreditado as Monto_Acreditado,pro_fecha_inicio as Inicio_de_operaciones FROM proveedor");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
+    }
+    
+    public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
+        ResultSet rs =obtenerResultSet(conector,"SELECT pro_nombre as nombre FROM proveedor");
+        AdaptadorSQLUI.llenarComboBox(jCombo, rs);
     }
 
     public static Proveedor buscarPorCodigo(ConectorDB conector, int codigo){
