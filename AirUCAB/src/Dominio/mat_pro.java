@@ -104,9 +104,34 @@ public class mat_pro {
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
         ResultSet rs =obtenerResultSet(conector,"SELECT mat_pro_codigo as Codigo,mat_pro_precio_actual as Precio,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Proveedor FROM mat_pro");
-        AdaptadorSQLUI.llenarTabla(jTable, rs);
-        
+        AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
+    
+    public static void llenarTablaDeProveedor(ConectorDB conector, JTable jTable, int pro_rif){
+         try{
+            String stm = "SELECT mat_pro_codigo as Codigo, mat_nombre as nombre,mat_pro_precio_actual as Precio FROM mat_pro, material WHERE fk_mat_codigo=mat_codigo AND fk_pro_rif=?";
+            PreparedStatement pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, pro_rif);
+            ResultSet rs = pst.executeQuery();
+            AdaptadorSQLUI.llenarTabla(jTable, rs);
+            pst.close();
+        }catch (SQLException ex){
+           System.out.print(ex.toString());
+        };
+    }
+     
+public static void llenarTablaMaterialesDeProveedor(ConectorDB conector, JTable jTable, int pro_rif){
+         try{
+            String stm = "SELECT mat_codigo as codigo, mat_nombre as nombre,mat_pro_precio_actual as Precio FROM mat_pro, material WHERE fk_mat_codigo=mat_codigo AND fk_pro_rif=?";
+            PreparedStatement pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, pro_rif);
+            ResultSet rs = pst.executeQuery();
+            AdaptadorSQLUI.llenarTabla(jTable, rs);
+            pst.close();
+        }catch (SQLException ex){
+           System.out.print(ex.toString());
+        };    
+}
     /*
     public static Mat_pro buscarPorCodigo(ConectorDB conector, int codigo){
         Mat_pro l = null;
