@@ -48,8 +48,8 @@ create table personal
 	fk_lug_codigo int not null,
 	fk_zon_codigo int not null,
     fk_fab_codigo int not null,
-    fk_zon_codigo2 int not null,
-    fk_fab_codigo2 int not null,
+    fk_zon_codigo2 int,
+    fk_fab_codigo2 int,
 	constraint pk_personal primary key(per_ci),
 	constraint fk_lugar foreign key(fk_lug_codigo)
 	references lugar(lug_codigo),

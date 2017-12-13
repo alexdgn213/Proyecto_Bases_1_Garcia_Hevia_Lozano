@@ -1681,7 +1681,7 @@ INSERT INTO motor(mot_modelo ,mot_marca) VALUES
 --('CF6-80C2B5F','GE'), el otro
 --('RB211-524G/H','RR'),
 ('CF6-80C2B5F','GE'),--AU747Silver ER 3Clases
-('CF6-80C2B5F','GE'),--AU747Silver ER
+('CF6-80C2B5F','GE');--AU747Silver ER
 
 INSERT INTO mot_mod(mot_mod_cantidad,fk_mot_codigo,fk_mod_codigo) VALUES
 (2,1,6),
@@ -1714,7 +1714,7 @@ INSERT INTO mot_mod(mot_mod_cantidad,fk_mot_codigo,fk_mod_codigo) VALUES
 (4,10,33),
 (4,11,34),
 (4,30,35),
-(4,31,36),
+(4,31,36);
 
 INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
 (1,'Capacidad'),
@@ -1837,9 +1837,9 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
  (2.51,'m',32,5),
  (2.51,'m',32,5),
  (2.51,'m',32,5),
- (2.51,'m',32,5),
+ (2.51,'m',32,5);
  
- (),--EMPUJE UNITARIO
+ --(),--EMPUJE UNITARIO
 
  INSERT INTO mod_car (mod_car_valor,mod_car_descripcion,fk_mod_codigo,fk_car_codigo) VALUES
  (179,'Personas',1,1), --CAPACIDADES LISTAS
@@ -2471,7 +2471,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   (7260,'nmi',34,33), -- sin ER
   (7670,'nmi',35,33), --Con ER
   (7670,'nmi',36,33), --Con ER
-  (8000,'nmi',17,33);
+  (8000,'nmi',17,33),
   (5300,'nmi',31,33),
   (6850,'nmi',32,33),
   (6700,'nmi',33,33);
@@ -2490,13 +2490,13 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   (2000);
   
   
-  INSERT INTO aeronave(aer_fecha_compra,fk_cli_rif,fk_mod_codigo,fk_fac_codigo) VALUES --Faltan las FK-FAC
-  ('07/04/2017',123336666,13,1),
-  ('08/02/2016',99090987,1,2),
-  ('03/02/2017',123447677,6,3),
-  ('02/02/2015',123336686,8,4),
-  ('10/07/2016',223399666,12,5),
-  ('10/12/2014',223399666,11,6);
+  INSERT INTO aeronave(aer_fecha_compra,aer_precio_compra,fk_cli_rif,fk_mod_codigo,fk_fac_codigo) VALUES --Faltan las FK-FAC
+  ('07/04/2017',100000,123336666,13,1),
+  ('08/02/2016',200000,99090987,1,2),
+  ('03/02/2017',300000,123447677,6,3),
+  ('02/02/2015',200000,123336686,8,4),
+  ('10/07/2016',100000,223399666,12,5),
+  ('10/12/2014',400000,223399666,11,6);
   
   INSERT INTO material(mat_codigo,mat_nombre,mat_tiempo_estimado) VALUES
   (1,'cobre',20),
@@ -2507,16 +2507,16 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   (6,'hierro',10);
 
   INSERT INTO mat_pro(mat_pro_precio_actual,fk_mat_codigo,fk_pro_rif)VALUES
-  (3,1),
-  (0.2375,2),
-  (2,3),
-  (3.45,4),
-  (2.005,5);
+  (3,1,71231233),
+  (0.2375,2,81231123),
+  (2,3,62323333),
+  (3.45,4,90001234),
+  (2.005,5,78900010);
 
   INSERT INTO lote_material(lot_precio,lot_fecha_compra,lot_cantidad,fk_mat_codigo,fk_pro_rif,fk_mat_pro_codigo,fk_fac_codigo) VALUES
   (5000,'10/03/2011',15000,1,71231233,1,7),
   (10000,'05/10/2012',2375,2,81231123,2,8),
-  (500,'07/08/2011',1000,3,62323333,3,9),
+  (500,'07/08/2011',1000,3,62323333,3,6),
   (1000,'12/04/2012',3450,6,90001234,4,10),
   (2000,'10/06/2013',4010,5,78900010,5,11);
   
