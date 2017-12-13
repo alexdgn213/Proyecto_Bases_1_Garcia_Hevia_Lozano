@@ -566,5 +566,35 @@ public class DetalleProveedores extends javax.swing.JPanel {
         jtfNombre.setText(p.getPro_nombre());
         jtfMontoAcreditado.setText(String.valueOf(p.getPro_monto_acreditado()));
         jtfFechaInicio.setText(p.getPro_fecha_inicio().toString());
+        cargarDireccion();
     }
+    
+    private void cargarDireccion(){
+        for(Lugar l :Lugar.obtenerDireccion(conector, p.getFk_lug_codigo())){
+            if (l.getLug_tipo()=="Pais"){
+                jcbPais.removeAllItems();
+                jcbPais.addItem("Seleccione una opción...");
+                jcbPais.addItem(l.getLug_nombre());
+                jcbPais.setSelectedItem(l);
+                
+            }
+            else if (l.getLug_tipo()=="Estado"){
+                jcbEstado.removeAllItems();
+                jcbEstado.addItem(l.getLug_nombre());
+                jcbEstado.setSelectedItem(0);   
+            }
+            else if (l.getLug_tipo()=="Estado"){
+                jcbMunicipio.removeAllItems();
+                jcbMunicipio.addItem(l.getLug_nombre());
+                jcbMunicipio.setSelectedItem(0);   
+            }
+            else if (l.getLug_tipo()=="Parroquia"){
+                jcbParroquia.removeAllItems();
+                jcbParroquia.addItem(l.getLug_nombre());
+                jcbParroquia.setSelectedItem(0);   
+            }
+        }
+        
+    }
+
 }
