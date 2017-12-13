@@ -364,6 +364,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setOpaque(false);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(852, 610));
 
         panelContenido.setBackground(new java.awt.Color(255, 255, 255));
         panelContenido.setOpaque(false);
@@ -382,7 +383,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(panelContenido);
 
-        Contenido.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 610));
+        Contenido.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, -1));
 
         fondoContenido.setBackground(new java.awt.Color(204, 204, 204));
         fondoContenido.setOpaque(true);
