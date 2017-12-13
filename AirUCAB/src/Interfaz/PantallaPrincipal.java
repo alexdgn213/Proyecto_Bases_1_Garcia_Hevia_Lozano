@@ -483,11 +483,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuInventarioMouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void menuAvionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuAvionesMouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_menuAvionesMouseClicked
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked

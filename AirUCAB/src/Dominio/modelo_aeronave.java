@@ -91,7 +91,7 @@ public class modelo_aeronave {
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT mod_codigo as Modelo,mod_nombre as nombre FROM proveedor");
+        ResultSet rs =obtenerResultSet(conector,"SELECT mod_codigo as Codigo,mod_nombre as nombre FROM modelo_aeronave");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }

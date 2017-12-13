@@ -7,6 +7,7 @@ package Interfaz;
 
 import Adaptadores.ConectorDB;
 import Dominio.Cliente;
+import Dominio.Informacion_contacto;
 import Dominio.Lugar;
 import Dominio.Proveedor;
 import java.awt.Color;
@@ -507,6 +508,7 @@ public class DetalleClientes extends javax.swing.JPanel {
         jtfNombre.setText(c.getCli_nombre());
         jtfMontoAcreditado.setText(String.valueOf(c.getCli_monto_acreditado()));
         jtfFechaInicio.setText(c.getCli_fecha_inicio().toString());
+        Informacion_contacto.llenarTablaInformacionCliente(conector, jTable2, c.getCli_rif());
         cargarDireccion();
     }
     

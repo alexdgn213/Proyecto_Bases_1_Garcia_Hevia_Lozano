@@ -7,6 +7,7 @@ package Interfaz;
 
 import Adaptadores.ConectorDB;
 import Dominio.Cliente;
+import Dominio.Informacion_contacto;
 import Dominio.Lugar;
 import Dominio.Proveedor;
 import Dominio.mat_pro;
@@ -570,6 +571,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         jtfFechaInicio.setText(p.getPro_fecha_inicio().toString());
         cargarDireccion();
         mat_pro.llenarTablaDeProveedor(conector, jTable1, p.getPro_rif());
+        Informacion_contacto.llenarTablaInformacionProveedor(conector, jTable2, p.getPro_rif());
     }
     
        private void cargarDireccion(){

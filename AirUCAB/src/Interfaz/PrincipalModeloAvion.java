@@ -7,6 +7,8 @@ package Interfaz;
 
 import Adaptadores.ConectorDB;
 import Dominio.Cliente;
+import Dominio.Proveedor;
+import Dominio.modelo_aeronave;
 import java.awt.Color;
 import javax.swing.JPanel;
 
@@ -14,19 +16,19 @@ import javax.swing.JPanel;
  *
  * @author alexd
  */
-public class PrincipalClientes extends javax.swing.JPanel {
+public class PrincipalModeloAvion extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public PrincipalClientes(ConectorDB conector,JPanel contenedor) {
+    public PrincipalModeloAvion(ConectorDB conector,JPanel contenedor) {
         this.conector = conector;
         this.contenedor = contenedor;
         initComponents();
         this.setSize(850,580);
-        Cliente.llenarTabla(conector, tablaClientes);
+        modelo_aeronave.llenarTabla(conector, tablaModelos);
         jScrollPane1.getViewport().setBackground(new Color(255,255,255));
     }
 
@@ -40,7 +42,7 @@ public class PrincipalClientes extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaClientes = new javax.swing.JTable();
+        tablaModelos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
@@ -49,7 +51,7 @@ public class PrincipalClientes extends javax.swing.JPanel {
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(850, 580));
 
-        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tablaModelos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -60,11 +62,11 @@ public class PrincipalClientes extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tablaClientes);
+        jScrollPane1.setViewportView(tablaModelos);
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel1.setText("Lista de Clientes");
+        jLabel1.setText("Lista de Modelos");
         jLabel1.setToolTipText("");
 
         jbNuevo.setBackground(new java.awt.Color(255, 255, 255));
@@ -122,22 +124,21 @@ public class PrincipalClientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,-1);
+        DetalleProveedores nuevoPanel = new DetalleProveedores(conector,contenedor,-1);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        int fila = tablaClientes.getSelectedRow();
+        int fila = tablaModelos.getSelectedRow();
         if (fila>=0){
-            int id = (Integer) tablaClientes.getValueAt(fila, 0);
-            DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,id);
+            int id = (Integer) tablaModelos.getValueAt(fila, 0);
+            DetalleProveedores nuevoPanel = new DetalleProveedores(conector,contenedor,id);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();   
         }
-        
     }//GEN-LAST:event_jbModificarActionPerformed
 
 
@@ -146,6 +147,6 @@ public class PrincipalClientes extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
-    private javax.swing.JTable tablaClientes;
+    private javax.swing.JTable tablaModelos;
     // End of variables declaration//GEN-END:variables
 }
