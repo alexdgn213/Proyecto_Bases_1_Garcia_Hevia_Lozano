@@ -9,6 +9,7 @@ import Adaptadores.ConectorDB;
 import Dominio.Cliente;
 import Dominio.Lugar;
 import Dominio.Proveedor;
+import Dominio.mat_pro;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JPanel;
@@ -568,6 +569,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         jtfMontoAcreditado.setText(String.valueOf(p.getPro_monto_acreditado()));
         jtfFechaInicio.setText(p.getPro_fecha_inicio().toString());
         cargarDireccion();
+        mat_pro.llenarTablaDeProveedor(conector, jTable1, p.getPro_rif());
     }
     
        private void cargarDireccion(){
