@@ -116,8 +116,17 @@ public class Informacion_contacto {
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
         ResultSet rs =obtenerResultSet(conector,"SELECT inf_codigo as Codigo,inf_valor as Valor,inf_tipo as Tipo,fk_pro_rif as Rif_Proveedor,fk_per_ci as CI_personal,fk_cli_rif as Rif_Cliente,fk_ben_ci as CI_Beneficiario FROM Informacion_contacto");
-        AdaptadorSQLUI.llenarTabla(jTable, rs);
-        
+        AdaptadorSQLUI.llenarTabla(jTable, rs); 
+    }
+    
+    public static void llenarTablaInformacionProveedor(ConectorDB conector, JTable jTable,int pro_rif){
+        ResultSet rs =obtenerResultSet(conector,"SELECT inf_tipo as Tipo,inf_valor as Valor FROM Informacion_contacto WHERE fk_pro_rif="+String.valueOf(pro_rif));
+        AdaptadorSQLUI.llenarTabla(jTable, rs); 
+    }
+    
+    public static void llenarTablaInformacionCliente(ConectorDB conector, JTable jTable,int cli_rif){
+        ResultSet rs =obtenerResultSet(conector,"SELECT inf_tipo as Tipo,inf_valor as Valor FROM Informacion_contacto WHERE fk_cli_rif="+String.valueOf(cli_rif));
+        AdaptadorSQLUI.llenarTabla(jTable, rs); 
     }
     
     public static Informacion_contacto buscarPorCodigo(ConectorDB conector, int codigo){
