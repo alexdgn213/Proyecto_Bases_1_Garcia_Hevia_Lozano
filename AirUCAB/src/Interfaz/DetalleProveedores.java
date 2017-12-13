@@ -10,6 +10,7 @@ import Dominio.Cliente;
 import Dominio.Lugar;
 import Dominio.Proveedor;
 import java.awt.Color;
+import java.util.List;
 import javax.swing.JPanel;
 
 /**
@@ -569,26 +570,27 @@ public class DetalleProveedores extends javax.swing.JPanel {
         cargarDireccion();
     }
     
-    private void cargarDireccion(){
-        for(Lugar l :Lugar.obtenerDireccion(conector, p.getFk_lug_codigo())){
-            if (l.getLug_tipo()=="Pais"){
+       private void cargarDireccion(){
+        List<Lugar> direccion = Lugar.obtenerDireccion(conector, p.getFk_lug_codigo());
+        for(Lugar l : direccion){
+            System.out.print(l.getLug_nombre()+l.getLug_tipo());
+            if (l.getLug_tipo().equals("Pais")){
                 jcbPais.removeAllItems();
-                jcbPais.addItem("Seleccione una opción...");
                 jcbPais.addItem(l.getLug_nombre());
-                jcbPais.setSelectedItem(l);
-                
+                jcbPais.addItem("Seleccione una opción...");
+                jcbPais.setSelectedItem(0);
             }
-            else if (l.getLug_tipo()=="Estado"){
+            else if (l.getLug_tipo().equals("Estado")){
                 jcbEstado.removeAllItems();
                 jcbEstado.addItem(l.getLug_nombre());
                 jcbEstado.setSelectedItem(0);   
             }
-            else if (l.getLug_tipo()=="Estado"){
+            else if (l.getLug_tipo().equals("Municipio")){
                 jcbMunicipio.removeAllItems();
                 jcbMunicipio.addItem(l.getLug_nombre());
                 jcbMunicipio.setSelectedItem(0);   
             }
-            else if (l.getLug_tipo()=="Parroquia"){
+            else if (l.getLug_tipo().equals("Parroquia")){
                 jcbParroquia.removeAllItems();
                 jcbParroquia.addItem(l.getLug_nombre());
                 jcbParroquia.setSelectedItem(0);   

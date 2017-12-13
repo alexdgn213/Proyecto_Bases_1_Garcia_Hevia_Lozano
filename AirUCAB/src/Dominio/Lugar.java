@@ -172,24 +172,26 @@ public class Lugar {
     }
     
     public static List<Lugar> obtenerDireccion(ConectorDB conector, int idParroquia){
-        ArrayList<Lugar> direccion = null;
+        List<Lugar> direccion = new ArrayList<Lugar>();
         try {
             PreparedStatement pst = conector.conexion.prepareStatement("SELECT l1.lug_codigo as c1, l1.lug_nombre as n1, l1.lug_tipo as t1, l1.fk_lug_codigo as f1,"
                     +" l2.lug_codigo as c2, l2.lug_nombre as n2, l2.lug_tipo as t2, l2.fk_lug_codigo as f2,"
                     +" l3.lug_codigo as c3, l3.lug_nombre as n3, l3.lug_tipo as t3, l3.fk_lug_codigo as f3,"
-                    +" l4.lug_codigo as c4, l4.lug_nombre as n4, l4.lug_tipo as t4, l4.fk_lug_codigo as f4,"
-                    + "WHERE l1.lug_codigo = l2.fk_lug_codigo AND l2.lug_codigo = l3.fk_lug_codigo AND l3.lug_codigo = l3.fk_lug_codigo AND l4.lug_codigo = ?");
+                    +" l4.lug_codigo as c4, l4.lug_nombre as n4, l4.lug_tipo as t4, l4.fk_lug_codigo as f4"
+                    +" FROM lugar l1, lugar l2, lugar l3, lugar l4"
+                    +" WHERE l1.lug_codigo = l2.fk_lug_codigo AND l2.lug_codigo = l3.fk_lug_codigo AND l3.lug_codigo = l4.fk_lug_codigo AND l4.lug_codigo = ?");
             pst.setInt(1, idParroquia);
+            System.out.print("Pase de aqui: "+pst);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                Lugar l1 = new Lugar(rs.getInt("c1"),rs.getString("n1"),rs.getString("t1"),rs.getInt("f1"));
+                Lugar l1 = new Lugar(rs.getInt("c1"),rs.getString("n1"),rs.getString("t1"),0);
                 Lugar l2 = new Lugar(rs.getInt("c2"),rs.getString("n2"),rs.getString("t2"),rs.getInt("f2"));
                 Lugar l3 = new Lugar(rs.getInt("c3"),rs.getString("n3"),rs.getString("t3"),rs.getInt("f3"));
                 Lugar l4 = new Lugar(rs.getInt("c4"),rs.getString("n4"),rs.getString("t4"),rs.getInt("f4"));
                 direccion.add(l1);
                 direccion.add(l2);
                 direccion.add(l3);
-                direccion.add(l3);
+                direccion.add(l4);
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
