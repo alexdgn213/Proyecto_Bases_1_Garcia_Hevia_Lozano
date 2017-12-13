@@ -9,6 +9,7 @@ import Adaptadores.ConectorDB;
 import Dominio.Cliente;
 import Dominio.Lugar;
 import Dominio.Proveedor;
+import java.util.List;
 import javax.swing.JPanel;
 
 /**
@@ -415,5 +416,34 @@ public class DetalleClientes extends javax.swing.JPanel {
         jtfNombre.setText(c.getCli_nombre());
         jtfMontoAcreditado.setText(String.valueOf(c.getCli_monto_acreditado()));
         jtfFechaInicio.setText(c.getCli_fecha_inicio().toString());
+        cargarDireccion();
+    }
+    
+    private void cargarDireccion(){
+        for(Lugar l :Lugar.obtenerDireccion(conector, c.getFk_lug_codigo())){
+            if (l.getLug_tipo()=="Pais"){
+                jcbPais.removeAllItems();
+                jcbPais.addItem("Seleccione una opción...");
+                jcbPais.addItem(l.getLug_nombre());
+                jcbPais.setSelectedItem(l);
+                
+            }
+            else if (l.getLug_tipo()=="Estado"){
+                jcbEstado.removeAllItems();
+                jcbEstado.addItem(l.getLug_nombre());
+                jcbEstado.setSelectedItem(0);   
+            }
+            else if (l.getLug_tipo()=="Estado"){
+                jcbMunicipio.removeAllItems();
+                jcbMunicipio.addItem(l.getLug_nombre());
+                jcbMunicipio.setSelectedItem(0);   
+            }
+            else if (l.getLug_tipo()=="Parroquia"){
+                jcbParroquia.removeAllItems();
+                jcbParroquia.addItem(l.getLug_nombre());
+                jcbParroquia.setSelectedItem(0);   
+            }
+        }
+        
     }
 }

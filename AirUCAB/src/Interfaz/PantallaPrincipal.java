@@ -30,7 +30,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             e.printStackTrace();
         } 
         initComponents();
-        jScrollPane1.getViewport().setBackground(new Color(240,240,240));
         Contenido.setVisible(false);
     }
 
@@ -74,7 +73,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         fondoLateralExpandido = new javax.swing.JLabel();
         Contenido = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         panelContenido = new javax.swing.JPanel();
         fondoContenido = new javax.swing.JLabel();
         jlTitulo = new javax.swing.JLabel();
@@ -362,32 +360,29 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         Contenido.setOpaque(false);
         Contenido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(852, 610));
-
         panelContenido.setBackground(new java.awt.Color(255, 255, 255));
+        panelContenido.setMaximumSize(new java.awt.Dimension(870, 610));
+        panelContenido.setMinimumSize(new java.awt.Dimension(870, 610));
         panelContenido.setOpaque(false);
-        panelContenido.setPreferredSize(new java.awt.Dimension(850, 500));
+        panelContenido.setPreferredSize(new java.awt.Dimension(870, 610));
 
         javax.swing.GroupLayout panelContenidoLayout = new javax.swing.GroupLayout(panelContenido);
         panelContenido.setLayout(panelContenidoLayout);
         panelContenidoLayout.setHorizontalGroup(
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 868, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
         panelContenidoLayout.setVerticalGroup(
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 608, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(panelContenido);
+        Contenido.add(panelContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        Contenido.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, -1));
-
-        fondoContenido.setBackground(new java.awt.Color(204, 204, 204));
+        fondoContenido.setMaximumSize(new java.awt.Dimension(870, 610));
+        fondoContenido.setMinimumSize(new java.awt.Dimension(870, 610));
         fondoContenido.setOpaque(true);
-        Contenido.add(fondoContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 1000));
+        Contenido.add(fondoContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 610));
 
         getContentPane().add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 870, 610));
 
@@ -520,7 +515,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JPanel menuAviones;
     private javax.swing.JPanel menuClientes;

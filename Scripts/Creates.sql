@@ -9,7 +9,8 @@ create table lugar
 	fk_lug_codigo int,
 	constraint pk_lugar primary key(lug_codigo),
 	constraint fk_lugar foreign key(lug_codigo)
-	references lugar(lug_codigo)
+	references lugar(lug_codigo),
+	constraint check_lug_tipo check(lug_tipo in ('Pais','Estado','Municipio','Parroquia'))
 );
 
 
