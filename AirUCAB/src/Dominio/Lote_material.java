@@ -28,6 +28,7 @@ public class Lote_material {
     int fk_mat_codigo;
     int fk_pro_rif;
     int fk_mat_pro_codigo;
+    int fk_fac_codigo;
 
     public Lote_material(int lot_codigo, int lot_precio, Date lot_fecha_compra,int lot_cantidad, int fk_mat_codigo, int fk_pro_rif, int fk_mat_pro_codigo) {
         this.lot_codigo = lot_codigo;
@@ -52,15 +53,15 @@ public class Lote_material {
 
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO Lote_material(lot_codigo,lot_precio,lot_fecha_compra,lot_cantidad,fk_mat_codigo,fk_pro_rif,fk_mat_pro_codigo) VALUES(?,?,?,?,?,?,?)";
+            String stm = "INSERT INTO Lote_material(lot_precio,lot_fecha_compra,lot_cantidad,fk_mat_codigo,fk_pro_rif,fk_mat_pro_codigo,fk_fac_codigo) VALUES(?,?,?,?,?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(1, lot_codigo);
-            pst.setInt(2, lot_precio);
-            pst.setDate(3,lot_fecha_compra);
-            pst.setInt(4,lot_cantidad);
-            pst.setInt(5,fk_mat_codigo);
-            pst.setInt(6,fk_pro_rif);
-            pst.setInt(7,fk_mat_pro_codigo);
+            pst.setInt(1, lot_precio);
+            pst.setDate(2,lot_fecha_compra);
+            pst.setInt(3,lot_cantidad);
+            pst.setInt(4,fk_mat_codigo);
+            pst.setInt(5,fk_pro_rif);
+            pst.setInt(6,fk_mat_pro_codigo);
+            pst.setInt(7, fk_fac_codigo);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -184,6 +185,16 @@ public class Lote_material {
     public int getFk_mat_pro_codigo() {
         return fk_mat_pro_codigo;
     }
+
+    public int getFk_fac_codigo() {
+        return fk_fac_codigo;
+    }
+
+    public void setFk_fac_codigo(int fk_fac_codigo) {
+        this.fk_fac_codigo = fk_fac_codigo;
+    }
+    
+    
 
 }
 

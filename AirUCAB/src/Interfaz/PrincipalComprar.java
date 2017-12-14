@@ -9,6 +9,7 @@ import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.ConectorDB;
 import Adaptadores.MensajeUI;
 import Dominio.Cliente;
+import Dominio.Factura;
 import Dominio.Lote_material;
 import Dominio.Proveedor;
 import Dominio.mat_pro;
@@ -32,6 +33,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
     int lock;
     JPanel panelMensaje;
     List<Lote_material> compras;
+    int montoTotal;
 
     /**
      * Creates new form PrincipalClientes
@@ -372,13 +374,17 @@ public class PrincipalComprar extends javax.swing.JPanel {
     }
     
     public void comprar(){
+        Factura f = new Factura(montoTotal);
+        f.agregarADB(conector);
         for(Lote_material l : compras){
+            l.setFk_fac_codigo(f.getFac_codigo());
             l.agregarADB(conector);
         }
     }
     
     private void actualizarTabla() {
         try {
+            montoTotal = 0;
         int lleno = 0;
         //Para establecer el modelo al JTable
         DefaultTableModel modelo = new DefaultTableModel();
@@ -393,6 +399,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
             fila[0] = l.getFk_mat_codigo();
             fila[1] = l.getLot_cantidad();
             fila[2] = l.getLot_precio();
+            montoTotal+=l.getLot_precio();
             modelo.addRow(fila);
            }
         if(lleno==1) tablaCompras.setModel(modelo);

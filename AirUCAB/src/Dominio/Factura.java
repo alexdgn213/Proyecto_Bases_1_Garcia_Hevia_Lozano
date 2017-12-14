@@ -26,11 +26,18 @@ public class Factura{
     int fac_monto_total;
     Date fac_fecha;
 
-    public Factura(int fac_codigo,int fac_monto_total) {
-        this.fac_codigo = fac_codigo;
+    public Factura(int fac_monto_total) {
         this.fac_monto_total = fac_monto_total;
         this.fac_fecha = Date.valueOf(LocalDate.now());
     }
+
+    public Factura(int fac_codigo, int fac_monto_total, Date fac_fecha) {
+        this.fac_codigo = fac_codigo;
+        this.fac_monto_total = fac_monto_total;
+        this.fac_fecha = fac_fecha;
+    }
+    
+    
 
 
 
@@ -93,9 +100,9 @@ public class Factura{
     public static List<Factura> obtenerTodos(ConectorDB conector){
         List<Factura> facturas = new ArrayList<Factura>();
         try {
-            ResultSet rs = obtenerResultSet(conector,"SELECT fac_codigo,fac_monto_total FROM factura");
+            ResultSet rs = obtenerResultSet(conector,"SELECT fac_codigo,fac_monto_total, fac_fecha FROM factura");
             while (rs.next()) {
-                Factura f = new Factura(rs.getInt("fac_codigo"),rs.getInt("fac_monto_total"));
+                Factura f = new Factura(rs.getInt("fac_codigo"),rs.getInt("fac_monto_total"),rs.getDate("fac_fecha"));
                 facturas.add(f);
             }
         } catch (SQLException ex) {
@@ -113,11 +120,11 @@ public class Factura{
     public static Factura buscarPorCodigo(ConectorDB conector, int codigo){
         Factura f = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT fac_codigo,fac_monto_total FROM factura WHERE fac_codigo=?");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT fac_codigo,fac_monto_total, fac_fecha FROM factura WHERE fac_codigo=?");
             pst.setInt(1, codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                f = new Factura(rs.getInt("fac_codigo"),rs.getInt("fac_monto_total"));
+                f = new Factura(rs.getInt("fac_codigo"),rs.getInt("fac_monto_total"),rs.getDate("fac_fecha"));
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
