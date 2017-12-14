@@ -181,7 +181,6 @@ public class Lugar {
                     +" FROM lugar l1, lugar l2, lugar l3, lugar l4"
                     +" WHERE l1.lug_codigo = l2.fk_lug_codigo AND l2.lug_codigo = l3.fk_lug_codigo AND l3.lug_codigo = l4.fk_lug_codigo AND l4.lug_codigo = ?");
             pst.setInt(1, idParroquia);
-            System.out.print("Pase de aqui: "+pst);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 Lugar l1 = new Lugar(rs.getInt("c1"),rs.getString("n1"),rs.getString("t1"),0);

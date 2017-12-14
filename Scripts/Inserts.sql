@@ -1551,35 +1551,35 @@ INSERT INTO proveedor (pro_rif,pro_nombre,pro_monto_acreditado,pro_fecha_inicio,
 (71231233,'Ferretotal',400000,'01/02/2010',382),
 (90001234,'Hierros de Venezuela',600000,'01/11/2011',1003),
 (81231123,'MetalesBE',800000,'01/03/2007',975),
-(100000000,'PizzaHut',10000,'01/04/2007',10),
-(51231233,'Adecos4ever',300000,'01/02/2010',30),
-(121222222,'4ever71',2000000,'02/03/2011',45),
-(98787781,'HundundKatze',1000000,'01/06/2012',97),
-(200000000,'Ornitorrinco y Herreria',500000,'01/10/2013',150),
+(100000000,'PizzaHut',10000,'01/04/2007',1250),
+(51231233,'Adecos4ever',300000,'01/02/2010',430),
+(121222222,'4ever71',2000000,'02/03/2011',745),
+(98787781,'HundundKatze',1000000,'01/06/2012',597),
+(200000000,'Ornitorrinco y Herreria',500000,'01/10/2013',1150),
 (140101233,'PhineasyFerb Inc',35000,'10/11/2015',650),
 (56701233,'ElectroLux',17500,'11/11/2011',766),
-(69191200,'Las Chicas Super Ensambladoras',180090,'12/12/2016',34),
-(78900010,'Los Repuestos de Mickey',1000500,'03/10/2015',43),
-(123233244,'El Señor de los Tornillos',97500,'04/08/2010',87),
-(103307782,'HP y los asientos filosofales',30000,'03/05/2011',97),
-(178880988,'The tool games',50000,'01/01/2012',102),
-(34564567,'The Controlix',10000,'01/09/2013',120),
-(122342123,'Edson y Agregados',15000,'01/10/2014',201),
-(201321231,'Las Hevias',23520,'02/10/2015',301),
-(12343564,'Los Lozanos',12000,'01/11/2016',303),
-(98767657,'Los Cauchos de Alex',1000,'02/04/2013',201);
+(69191200,'Las Chicas Super Ensambladoras',180090,'12/12/2016',534),
+(78900010,'Los Repuestos de Mickey',1000500,'03/10/2015',443),
+(123233244,'El Señor de los Tornillos',97500,'04/08/2010',687),
+(103307782,'HP y los asientos filosofales',30000,'03/05/2011',497),
+(178880988,'The tool games',50000,'01/01/2012',1402),
+(34564567,'The Controlix',10000,'01/09/2013',1220),
+(122342123,'Edson y Agregados',15000,'01/10/2014',1201),
+(201321231,'Las Hevias',23520,'02/10/2015',401),
+(12343564,'Los Lozanos',12000,'01/11/2016',1303),
+(98767657,'Los Cauchos de Alex',1000,'02/04/2013',1201);
 
 INSERT INTO cliente (cli_rif,cli_nombre,cli_monto_acreditado,cli_fecha_inicio,fk_lug_codigo) VALUES
-(123336666,'Avior',20000000,'10/12/2010',78),
-(99090987,'Avianca',30000000,'10/01/2011',78),
-(123447677,'Aeropostal',35000000,'01/01/2011',80),
-(123336686,'Viasa',10000000,'01/06/2012',100),
-(223399666,'Aserca Airlines',3500000,'08/01/2011',202),
-(523436896,'Laser',4500000,'10/05/2010',40),
-(98813312,'Venezolana',1500000,'04/05/2011',55),
-(145536686,'Conviasa',3550000,'01/12/2012',71),
-(177738686,'Iberia',5600000,'04/06/2011',59),
-(275638686,'Rutaca',7500000,'01/12/2011',78),
+(123336666,'Avior',20000000,'10/12/2010',478),
+(99090987,'Avianca',30000000,'10/01/2011',578),
+(123447677,'Aeropostal',35000000,'01/01/2011',480),
+(123336686,'Viasa',10000000,'01/06/2012',1200),
+(223399666,'Aserca Airlines',3500000,'08/01/2011',3202),
+(523436896,'Laser',4500000,'10/05/2010',440),
+(98813312,'Venezolana',1500000,'04/05/2011',555),
+(145536686,'Conviasa',3550000,'01/12/2012',671),
+(177738686,'Iberia',5600000,'04/06/2011',459),
+(275638686,'Rutaca',7500000,'01/12/2011',878),
 (90812312,'Santa Barbara Airlines',3000000,'01/01/2011',1000),
 (12312333,'Mexicana de Aviacion',2500000,'01/12/2010',987);
 
@@ -2549,7 +2549,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   (3.45,4,90001234),--Hierros de Venezuela
   (2.005,5,78900010),--Los Repuestos de Mickey
   (2,3,71231233),--Ferretotal x2
-  (2.5,1,81231123)--MetalesBE x2
+  (2.5,1,81231123),--MetalesBE x2
   (1,4,62323333),--SIDOR x2
   (4,6,90001234),--Hierros de Venezuela x2
   (1.2,4,78900010),--Los Repuestos de Mickey x2
@@ -2595,7 +2595,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   (10,'11/11/2011',5,3,71231233,6,12),
   (20,'10/10/2011',8,1,81231123,7,13),
   (4,'01/01/2011',4,4,62323333,8,14),
-  (16,'02/02/2012',4,4,90001234,9,15),
+  (16,'02/02/2012',4,4,90001234,4,15),
   (6,'10/09/2009',5,4,78900010,10,16),
   (10,'02/03/2013',1,1,100000000,11,17),
   (4,'04/03/2014',1,2,100000000,12,18),
@@ -2772,7 +2772,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   ('01/02/2011',1,39),
   ('03/02/2012',1,40),
   ('02/03/2014',1,41),
-  ('01/01/2011',1,42),
+  ('01/01/2011',1,42);
   
   --QUE VA en per_pru_pie_encargado? en teoria 1 es el encargado, 0 no es no?
   INSERT INTO per_pru_pie(per_pru_pie_encargado,fk_per_ci,fk_pru_codigo,fk_pie_codigo,fk_pru_pie_codigo)VALUES

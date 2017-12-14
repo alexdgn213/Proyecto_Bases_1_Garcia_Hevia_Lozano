@@ -123,7 +123,7 @@ public class PrincipalModeloAvion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        DetalleProveedores nuevoPanel = new DetalleProveedores(conector,contenedor,-1);
+        DetalleModeloAvion nuevoPanel = new DetalleModeloAvion(conector,contenedor,-1);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -133,7 +133,7 @@ public class PrincipalModeloAvion extends javax.swing.JPanel {
         int fila = tablaModelos.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaModelos.getValueAt(fila, 0);
-            DetalleProveedores nuevoPanel = new DetalleProveedores(conector,contenedor,id);
+            DetalleModeloAvion nuevoPanel = new DetalleModeloAvion(conector,contenedor,id);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();   
