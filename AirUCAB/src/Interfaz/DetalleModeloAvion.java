@@ -103,7 +103,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel1.setText("Proveedor:");
+        jLabel1.setText("Modelo Avion:");
         jLabel1.setToolTipText("");
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N

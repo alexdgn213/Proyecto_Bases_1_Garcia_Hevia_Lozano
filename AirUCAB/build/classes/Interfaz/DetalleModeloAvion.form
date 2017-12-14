@@ -224,7 +224,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="42" green="42" red="42" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Proveedor:"/>
+                <Property name="text" type="java.lang.String" value="Modelo Avion:"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
