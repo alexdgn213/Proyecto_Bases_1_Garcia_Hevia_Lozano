@@ -31,6 +31,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         } 
         initComponents();
         Contenido.setVisible(false);
+        panelMensaje.setVisible(false);
     }
 
     /**
@@ -42,6 +43,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelMensaje = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         LateralExpandido = new javax.swing.JPanel();
         panelLateralExtendido = new javax.swing.JPanel();
         menuInicio = new javax.swing.JPanel();
@@ -82,6 +86,32 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(1080, 715));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_check_black_24dp_1x.png"))); // NOI18N
+
+        jLabel22.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel22.setText("sfd");
+
+        javax.swing.GroupLayout panelMensajeLayout = new javax.swing.GroupLayout(panelMensaje);
+        panelMensaje.setLayout(panelMensajeLayout);
+        panelMensajeLayout.setHorizontalGroup(
+            panelMensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMensajeLayout.createSequentialGroup()
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel22)
+                .addContainerGap(541, Short.MAX_VALUE))
+        );
+        panelMensajeLayout.setVerticalGroup(
+            panelMensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMensajeLayout.createSequentialGroup()
+                .addGroup(panelMensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(panelMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 685, 600, 24));
 
         LateralExpandido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -388,12 +418,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jlTitulo.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         jlTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jlTitulo.setText("Inicio");
+        jlTitulo.setText("Sistema de Ensamble de Aviones");
         jlTitulo.setToolTipText("");
         getContentPane().add(jlTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/FondoPrincipal.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 710));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 710));
         jLabel2.getAccessibleContext().setAccessibleName("Fondo");
         jLabel2.getAccessibleContext().setAccessibleDescription("");
 
@@ -411,7 +441,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void menuClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuClientesMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalClientes(conector,panelContenido);
+        nuevoPanel = new PrincipalClientes(conector,panelContenido,panelMensaje);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -428,7 +458,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalClientes(conector,panelContenido);
+        nuevoPanel = new PrincipalClientes(conector,panelContenido,panelMensaje);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -436,7 +466,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void menuProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProveedoresMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalProveedores(conector,panelContenido);
+        nuevoPanel = new PrincipalProveedores(conector,panelContenido,panelMensaje);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -444,7 +474,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalProveedores(conector,panelContenido);
+        nuevoPanel = new PrincipalProveedores(conector,panelContenido,panelMensaje);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -452,7 +482,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalComprar(conector,panelContenido);
+        nuevoPanel = new PrincipalComprar(conector,panelContenido,panelMensaje);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -460,7 +490,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void menuComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuComprarMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalComprar(conector,panelContenido);
+        nuevoPanel = new PrincipalComprar(conector,panelContenido,panelMensaje);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -484,7 +514,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido);
+        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido,panelMensaje);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -492,7 +522,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void menuAvionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuAvionesMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido);
+        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido,panelMensaje);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -524,6 +554,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -542,5 +574,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel menuVender;
     private javax.swing.JPanel panelContenido;
     private javax.swing.JPanel panelLateralExtendido;
+    private javax.swing.JPanel panelMensaje;
     // End of variables declaration//GEN-END:variables
+  
+
 }

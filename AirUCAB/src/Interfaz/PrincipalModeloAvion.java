@@ -20,13 +20,15 @@ import javax.swing.JPanel;
 public class PrincipalModeloAvion extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
+    JPanel panelMensaje;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public PrincipalModeloAvion(ConectorDB conector,JPanel contenedor) {
+    public PrincipalModeloAvion(ConectorDB conector,JPanel contenedor,JPanel panelMensaje) {
         this.conector = conector;
         this.contenedor = contenedor;
+        this.panelMensaje = panelMensaje;
         initComponents();
         this.setSize(850,580);
         modelo_aeronave.llenarTabla(conector, tablaModelos);
@@ -123,7 +125,7 @@ public class PrincipalModeloAvion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        DetalleModeloAvion nuevoPanel = new DetalleModeloAvion(conector,contenedor,-1);
+        DetalleModeloAvion nuevoPanel = new DetalleModeloAvion(conector,contenedor,-1,panelMensaje);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -133,7 +135,7 @@ public class PrincipalModeloAvion extends javax.swing.JPanel {
         int fila = tablaModelos.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaModelos.getValueAt(fila, 0);
-            DetalleModeloAvion nuevoPanel = new DetalleModeloAvion(conector,contenedor,id);
+            DetalleModeloAvion nuevoPanel = new DetalleModeloAvion(conector,contenedor,id,panelMensaje);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();   

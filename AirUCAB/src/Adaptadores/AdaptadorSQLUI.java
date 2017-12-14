@@ -20,6 +20,7 @@ public class AdaptadorSQLUI {
     
     public static Color fondoTablas = new Color(255,255,255);
     public static Color fondoScrolls = new Color(240,240,240);
+    public static Color fondoExito = new Color(102,255,102);
     
     public static void llenarTabla(JTable jTable, ResultSet rs) {
         try {

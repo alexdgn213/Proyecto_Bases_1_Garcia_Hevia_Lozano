@@ -23,14 +23,16 @@ import javax.swing.JPanel;
 public class DetalleProveedores extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
+    JPanel panelMensaje;
     Proveedor p;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetalleProveedores(ConectorDB conector,JPanel contenedor,int id) {
+    public DetalleProveedores(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje) {
         this.conector = conector;
         this.contenedor = contenedor;
+        this.panelMensaje = panelMensaje;
         initComponents();
         jlErrorFecha.setVisible(false);
         jlErrorMonto.setVisible(false);
@@ -504,7 +506,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbMunicipioActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        PrincipalProveedores nuevoPanel = new PrincipalProveedores(conector,contenedor);
+        PrincipalProveedores nuevoPanel = new PrincipalProveedores(conector,contenedor,panelMensaje);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();  

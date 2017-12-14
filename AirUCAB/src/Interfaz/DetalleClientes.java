@@ -7,6 +7,7 @@ package Interfaz;
 
 import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.ConectorDB;
+import Adaptadores.MensajeUI;
 import Dominio.Cliente;
 import Dominio.Informacion_contacto;
 import Dominio.Lugar;
@@ -24,13 +25,15 @@ public class DetalleClientes extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
     Cliente c;
+    JPanel panelMensaje;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetalleClientes(ConectorDB conector,JPanel contenedor,int id) {
+    public DetalleClientes(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje) {
         this.conector = conector;
         this.contenedor = contenedor;
+        this.panelMensaje = panelMensaje;
         initComponents();
         jlErrorFecha.setVisible(false);
         jlErrorMonto.setVisible(false);
@@ -233,6 +236,11 @@ public class DetalleClientes extends javax.swing.JPanel {
         botonEliminar.setMinimumSize(new java.awt.Dimension(69, 48));
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_check_black_48dp_1x.png"))); // NOI18N
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_close_black_48dp_1x.png"))); // NOI18N
         botonCancelar.setToolTipText("");
@@ -454,11 +462,15 @@ public class DetalleClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbParroquiaActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        PrincipalProveedores nuevoPanel = new PrincipalProveedores(conector,contenedor);
+        PrincipalProveedores nuevoPanel = new PrincipalProveedores(conector,contenedor,panelMensaje);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        new Thread(new MensajeUI(panelMensaje,"Cliente agregado exitosamente",1)).start();
+    }//GEN-LAST:event_botonGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

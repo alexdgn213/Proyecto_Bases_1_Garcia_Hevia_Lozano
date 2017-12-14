@@ -531,6 +531,9 @@
                   <Image iconType="3" name="/Interfaz/Imagenes/ic_check_black_48dp_1x.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGuardarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botonCancelar">
               <Properties>

@@ -12,6 +12,7 @@ import Dominio.Informacion_contacto;
 import Dominio.Lugar;
 import Dominio.Proveedor;
 import Dominio.mat_pro;
+import Dominio.modelo_aeronave;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JPanel;
@@ -23,14 +24,16 @@ import javax.swing.JPanel;
 public class DetalleModeloAvion extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
-    Proveedor p;
+    modelo_aeronave m;
+    JPanel panelMensaje;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetalleModeloAvion(ConectorDB conector,JPanel contenedor,int id) {
+    public DetalleModeloAvion(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje) {
         this.conector = conector;
         this.contenedor = contenedor;
+        this.panelMensaje = panelMensaje;
         initComponents();
         jlErrorNombre.setVisible(false);
         jlErrorRif.setVisible(false);
@@ -38,8 +41,8 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
         jScrollPane3.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
         this.setSize(870, 610);
-        p = Proveedor.buscarPorCodigo(conector, id);
-        if (p==null){
+        m = modelo_aeronave.buscarPorCodigo(conector, id);
+        if (m==null){
          
         }
         else{
@@ -343,7 +346,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        PrincipalModeloAvion nuevoPanel = new PrincipalModeloAvion(conector,contenedor);
+        PrincipalModeloAvion nuevoPanel = new PrincipalModeloAvion(conector,contenedor,panelMensaje);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -384,11 +387,9 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void llenarDatosCliente() {
-        jtfRif.setText(String.valueOf(p.getPro_rif()));
+        jtfRif.setText(String.valueOf(m.getMod_nombre()));
         jtfRif.setEnabled(false);
-        jtfNombre.setText(p.getPro_nombre());
-        mat_pro.llenarTablaMaterialesDeProveedor(conector, jTable1, p.getPro_rif());
-        Informacion_contacto.llenarTablaInformacionProveedor(conector, jTable2, p.getPro_rif());
+        jtfNombre.setText(String.valueOf(m.getMod_precio_compra()));
     }
 
 }

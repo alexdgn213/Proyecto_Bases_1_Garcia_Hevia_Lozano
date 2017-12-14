@@ -22,13 +22,15 @@ public class PrincipalComprar extends javax.swing.JPanel {
     JPanel contenedor;
     Proveedor p;
     int lock;
+    JPanel panelMensaje;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public PrincipalComprar(ConectorDB conector,JPanel contenedor) {
+    public PrincipalComprar(ConectorDB conector,JPanel contenedor,JPanel panelMensaje) {
         this.conector = conector;
         this.contenedor = contenedor;
+        this.panelMensaje = panelMensaje;
         initComponents();
         this.setSize(850,580);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
@@ -245,7 +247,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,-1);
+        DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,-1,panelMensaje);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -255,7 +257,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
         int fila = tablaClientes.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaClientes.getValueAt(fila, 0);
-            DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,id);
+            DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,id,panelMensaje);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();   

@@ -19,13 +19,15 @@ import javax.swing.JPanel;
 public class PrincipalProveedores extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
+    JPanel panelMensaje;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public PrincipalProveedores(ConectorDB conector,JPanel contenedor) {
+    public PrincipalProveedores(ConectorDB conector,JPanel contenedor,JPanel panelMensaje) {
         this.conector = conector;
         this.contenedor = contenedor;
+        this.panelMensaje = panelMensaje;
         initComponents();
         this.setSize(850,580);
         Proveedor.llenarTabla(conector, tablaProveedores);
@@ -122,7 +124,7 @@ public class PrincipalProveedores extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        DetalleProveedores nuevoPanel = new DetalleProveedores(conector,contenedor,-1);
+        DetalleProveedores nuevoPanel = new DetalleProveedores(conector,contenedor,-1,panelMensaje);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -132,7 +134,7 @@ public class PrincipalProveedores extends javax.swing.JPanel {
         int fila = tablaProveedores.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaProveedores.getValueAt(fila, 0);
-            DetalleProveedores nuevoPanel = new DetalleProveedores(conector,contenedor,id);
+            DetalleProveedores nuevoPanel = new DetalleProveedores(conector,contenedor,id,panelMensaje);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();   

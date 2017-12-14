@@ -39,8 +39,6 @@ public class Lote_material {
         this.fk_mat_pro_codigo = fk_mat_pro_codigo;
     }
 
-
-
     public void agregarADB(ConectorDB conector){
         try{
             String stm = "INSERT INTO Lote_material(lot_codigo,lot_precio,lot_fecha_compra,lot_cantidad,fk_mat_codigo,fk_pro_rif,fk_mat_pro_codigo) VALUES(?,?,?,?,?,?,?)";
@@ -119,22 +117,6 @@ public class Lote_material {
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
-    /*
-    public static Mat_pro buscarPorCodigo(ConectorDB conector, int codigo){
-        Mat_pro l = null;
-        try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT lot_codigo as codigo,lot_precio as precio,lot_fecha_compra as Fecha_Compra,lot_cantidad as Cantidad,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Cliente,fk_mat_pro_codigo as Codigo_Oferta_proveedor FROM lote_material WHERE lot_codigo=?");
-            pst.setInt(1, codigo);
-            ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
-                l = new Mat_pro(rs.getInt("lot_codigo"),rs.getInt("lot_precio"),rs.getDate("lot_fecha_compra"),rs.getInt("lot_cantidad"),rs.getInt("fk_mat_codigo"),rs.getInt("fk_pro_rif"),rs.getInt("fk_mat_pro_codigo");
-            }
-        } catch (SQLException ex) {
-            System.out.print(ex.toString());
-        }
-        return l;
-    }
-    */
 
     public void setLot_codigo(int lot_codigo) {
         this.lot_codigo = lot_codigo;

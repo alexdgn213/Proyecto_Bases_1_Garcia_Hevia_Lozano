@@ -21,18 +21,21 @@ import javax.swing.JTable;
 public class modelo_aeronave {
     int mod_codigo;
     String mod_nombre;
+    int mod_precio_compra;
     
-    public modelo_aeronave(int mod_codigo, String mod_nombre) {
+    public modelo_aeronave(int mod_codigo, String mod_nombre, int mod_precio_compra) {
         this.mod_codigo = mod_codigo;
         this.mod_nombre = mod_nombre;
+        this.mod_precio_compra = mod_precio_compra;
     }
     
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO modelo_aeronave(mod_codigo,mod_nombre) VALUES(?,?)";
+            String stm = "INSERT INTO modelo_aeronave(mod_codigo,mod_nombre,mod_precio_compra) VALUES(?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, mod_codigo);
             pst.setString(2, mod_nombre);
+            pst.setInt(1, mod_precio_compra);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -42,10 +45,11 @@ public class modelo_aeronave {
     
     public void modificarEnDB(ConectorDB conector){
         try{
-            String stm = "UPDATE modelo_aeronave SET mod_nombre = ? WHERE mod_codigo=?";
+            String stm = "UPDATE modelo_aeronave SET mod_nombre = ?, mod_precio_compra=? WHERE mod_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(2, mod_codigo);
+            pst.setInt(3, mod_codigo);
             pst.setString(1, mod_nombre);
+            pst.setInt(2, mod_precio_compra);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -79,9 +83,9 @@ public class modelo_aeronave {
     public static List<modelo_aeronave> obtenerTodos(ConectorDB conector){
         List<modelo_aeronave> modelos = new ArrayList<modelo_aeronave>();
         try {
-            ResultSet rs = obtenerResultSet(conector,"SELECT mod_codigo,mod_nombre FROM modelo_aeronave");
+            ResultSet rs = obtenerResultSet(conector,"SELECT mod_codigo,mod_nombre,mod_precio_compra FROM modelo_aeronave");
             while (rs.next()) {
-                modelo_aeronave m = new modelo_aeronave(rs.getInt("mod_codigo"),rs.getString("mod_nombre"));
+                modelo_aeronave m = new modelo_aeronave(rs.getInt("mod_codigo"),rs.getString("mod_nombre"),rs.getInt("mod_precio_compra"));
                 modelos.add(m);
             }
         } catch (SQLException ex) {
@@ -91,24 +95,50 @@ public class modelo_aeronave {
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT mod_codigo as Codigo,mod_nombre as nombre FROM modelo_aeronave");
+        ResultSet rs =obtenerResultSet(conector,"SELECT mod_codigo as Codigo,mod_nombre as nombre,mod_precio_compra as precio  FROM modelo_aeronave");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
-    /*
-    public static modelo_Aeronave buscarPorCodigo(ConectorDB conector, int codigo){
-        Proveedor l = null;
+    
+    public static modelo_aeronave buscarPorCodigo(ConectorDB conector, int codigo){
+        modelo_aeronave m = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT mod_codigo,mod_nombre FROM modelo_aeronave WHERE mod_codigo=?");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT mod_codigo,mod_nombre,mod_precio_compra FROM modelo_aeronave WHERE mod_codigo=?");
             pst.setInt(1, codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                l = new Proveedor(rs.getInt("mod_codigo"),rs.getString("mod_nombre"));
+                m = new modelo_aeronave(rs.getInt("mod_codigo"),rs.getString("mod_nombre"),rs.getInt("mod_precio_compra"));
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
         }
-        return l;
+        return m;
     }
-    */
+
+    public int getMod_codigo() {
+        return mod_codigo;
+    }
+
+    public void setMod_codigo(int mod_codigo) {
+        this.mod_codigo = mod_codigo;
+    }
+
+    public String getMod_nombre() {
+        return mod_nombre;
+    }
+
+    public void setMod_nombre(String mod_nombre) {
+        this.mod_nombre = mod_nombre;
+    }
+
+    public int getMod_precio_compra() {
+        return mod_precio_compra;
+    }
+
+    public void setMod_precio_compra(int mod_precio_compra) {
+        this.mod_precio_compra = mod_precio_compra;
+    }
+    
+    
+    
 }
