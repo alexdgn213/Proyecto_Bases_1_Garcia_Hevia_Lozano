@@ -188,6 +188,7 @@ create table factura
 (
 	fac_codigo serial not null,
 	fac_monto_total int not null,
+	fac_fecha date not null,
 	constraint pk_fac_codigo primary key(fac_codigo)
 );
 
