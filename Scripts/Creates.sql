@@ -79,7 +79,7 @@ create table beneficiario
 create table proveedor
 (
 	pro_rif int not null,
-	pro_nombre varchar(50) not null,
+	pro_nombre varchar(50) unique not null,
 	pro_monto_acreditado int not null,
 	pro_fecha_inicio date not null,
 	fk_lug_codigo int not null,
@@ -91,7 +91,7 @@ create table proveedor
 create table cliente
 (
 	cli_rif int not null,
-	cli_nombre varchar(30) not null,
+	cli_nombre varchar(30) unique not null,
 	cli_monto_acreditado int not null,
 	cli_fecha_inicio date not null,
 	fk_lug_codigo int not null,
@@ -123,7 +123,7 @@ create table informacion_contacto
 create table modelo_aeronave
 (
 	mod_codigo serial not null,
-	mod_nombre varchar(30) not null,
+	mod_nombre varchar(30) unique not null,
 	mod_precio_compra int not null,
 	constraint pk_modelo_aeronave primary key(mod_codigo)
 );
