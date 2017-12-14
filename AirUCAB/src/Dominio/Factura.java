@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import javax.swing.JTable;
 
 /**
@@ -23,21 +24,30 @@ public class Factura{
     
     int fac_codigo;
     int fac_monto_total;
+    Date fac_fecha;
 
     public Factura(int fac_codigo,int fac_monto_total) {
         this.fac_codigo = fac_codigo;
         this.fac_monto_total = fac_monto_total;
+        this.fac_fecha = Date.valueOf(LocalDate.now());
     }
 
 
 
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO Factura(fac_codigo,fac_monto_total) VALUES(?,?)";
+            String stm = "INSERT INTO Factura(fac_monto_total,fac_fecha) VALUES(?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(1, fac_codigo);
-            pst.setInt(2, fac_monto_total);
-            pst.executeUpdate();
+            pst.setInt(1, fac_monto_total);
+            pst.setDate(2, fac_fecha);
+            stm = "SELECT TOP 1 fac_codigo FROM factura WHERE fac_monto_total=? AND fac_fecha=?";
+            pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, fac_monto_total);
+            pst.setDate(2, fac_fecha);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                this.fac_codigo = rs.getInt("fac_codigo");
+            }
             pst.close();
         }catch (SQLException ex){
            System.out.print(ex.toString());
