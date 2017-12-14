@@ -5,6 +5,7 @@
  */
 package Adaptadores;
 
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import javax.swing.JComboBox;
@@ -17,8 +18,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AdaptadorSQLUI {
     
+    public static Color fondoTablas = new Color(255,255,255);
+    public static Color fondoScrolls = new Color(240,240,240);
+    
     public static void llenarTabla(JTable jTable, ResultSet rs) {
         try {
+        int lleno = 0;
         //Para establecer el modelo al JTable
         DefaultTableModel modelo = new DefaultTableModel();
         //Obteniendo la informacion de las columnas que estan siendo consultadas
@@ -31,6 +36,7 @@ public class AdaptadorSQLUI {
         }
         //Creando las filas para el JTable
         while (rs.next()) {
+         lleno=1;
          Object[] fila = new Object[cantidadColumnas];
          for (int i = 0; i < cantidadColumnas; i++) {
            fila[i]=rs.getObject(i+1);
@@ -38,7 +44,12 @@ public class AdaptadorSQLUI {
          modelo.addRow(fila);
         }
         rs.close();
-        jTable.setModel(modelo);
+        if(lleno==1) jTable.setModel(modelo);
+        else{
+            modelo = new DefaultTableModel();
+            modelo.addColumn("Esta Tabla esta Vacia");
+            jTable.setModel(modelo);
+        }
        } catch (Exception ex) {
         ex.printStackTrace();
        }

@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.ConectorDB;
 import Dominio.Cliente;
 import Dominio.Proveedor;
@@ -29,7 +30,7 @@ public class PrincipalModeloAvion extends javax.swing.JPanel {
         initComponents();
         this.setSize(850,580);
         modelo_aeronave.llenarTabla(conector, tablaModelos);
-        jScrollPane1.getViewport().setBackground(new Color(255,255,255));
+        jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
     }
 
     /**
@@ -71,7 +72,6 @@ public class PrincipalModeloAvion extends javax.swing.JPanel {
 
         jbNuevo.setBackground(new java.awt.Color(255, 255, 255));
         jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_add_black_48dp_1x.png"))); // NOI18N
-        jbNuevo.setText("Nuevo");
         jbNuevo.setContentAreaFilled(false);
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +81,6 @@ public class PrincipalModeloAvion extends javax.swing.JPanel {
 
         jbModificar.setBackground(new java.awt.Color(255, 255, 255));
         jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_edit_black_48dp_1x.png"))); // NOI18N
-        jbModificar.setText("Editar");
         jbModificar.setToolTipText("");
         jbModificar.setContentAreaFilled(false);
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,13 +94,13 @@ public class PrincipalModeloAvion extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(89, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbNuevo)
-                    .addComponent(jbModificar))
-                .addGap(34, 34, 34))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(67, 67, 67))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)

@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.ConectorDB;
 import Dominio.Cliente;
 import Dominio.Proveedor;
@@ -30,7 +31,8 @@ public class PrincipalComprar extends javax.swing.JPanel {
         this.contenedor = contenedor;
         initComponents();
         this.setSize(850,580);
-        jScrollPane1.getViewport().setBackground(new Color(255,255,255));
+        jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
+        jScrollPane2.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
         lock=1;
         Proveedor.llenarComboBox(conector, jcbProveedor);
         lock=0;
