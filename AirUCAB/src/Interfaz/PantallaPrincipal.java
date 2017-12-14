@@ -483,7 +483,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalComprar(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalComprar(conector,Contenido,panelMensaje);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -491,7 +491,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void menuComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuComprarMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalComprar(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalComprar(conector,Contenido,panelMensaje);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();

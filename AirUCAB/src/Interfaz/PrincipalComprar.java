@@ -68,7 +68,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
         jcbProveedor = new javax.swing.JComboBox<>();
         panelComprar = new javax.swing.JPanel();
         jbNuevo = new javax.swing.JButton();
-        jbModificar = new javax.swing.JButton();
+        jbEliminat = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCompras = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -111,13 +111,13 @@ public class PrincipalComprar extends javax.swing.JPanel {
             }
         });
 
-        jbModificar.setBackground(new java.awt.Color(255, 255, 255));
-        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_edit_black_48dp_1x.png"))); // NOI18N
-        jbModificar.setToolTipText("");
-        jbModificar.setContentAreaFilled(false);
-        jbModificar.addActionListener(new java.awt.event.ActionListener() {
+        jbEliminat.setBackground(new java.awt.Color(255, 255, 255));
+        jbEliminat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_48dp_1x.png"))); // NOI18N
+        jbEliminat.setToolTipText("");
+        jbEliminat.setContentAreaFilled(false);
+        jbEliminat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbModificarActionPerformed(evt);
+                jbEliminatActionPerformed(evt);
             }
         });
 
@@ -198,7 +198,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelComprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbEliminat, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(96, 96, 96))
         );
         panelComprarLayout.setVerticalGroup(
@@ -225,7 +225,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
                         .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(panelComprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbEliminat, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(130, 130, 130))
         );
@@ -294,31 +294,27 @@ public class PrincipalComprar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-          int fila = tablaMateriales.getSelectedRow();
+        int fila = tablaMateriales.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaMateriales.getValueAt(fila, 0);
             int cantidad = Integer.parseInt(jtfcantidad.getText());
             int codigoCompra= (Integer)tablaMateriales.getValueAt(fila,3);
             int precio=(Integer)tablaMateriales.getValueAt(fila,2);
             Lote_material l = new Lote_material(precio*cantidad,Date.valueOf(LocalDate.now()),cantidad,id,p.getPro_rif(),codigoCompra);
-            compras.add(l);
-            actualizarTabla();
+            añadirAFactura(l);
         }
         
         
     }//GEN-LAST:event_jbNuevoActionPerformed
 
-    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+    private void jbEliminatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminatActionPerformed
         int fila = tablaCompras.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaCompras.getValueAt(fila, 0);
-            DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,id,panelMensaje);
-            contenedor.removeAll();
-            contenedor.add(nuevoPanel);
-            contenedor.updateUI();   
+            borrarDeFactura(id); 
         }
         
-    }//GEN-LAST:event_jbModificarActionPerformed
+    }//GEN-LAST:event_jbEliminatActionPerformed
 
     private void jcbProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProveedorActionPerformed
         if(lock==0){
@@ -330,10 +326,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbProveedorActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        PrincipalProveedores nuevoPanel = new PrincipalProveedores(conector,contenedor,panelMensaje);
-        contenedor.removeAll();
-        contenedor.add(nuevoPanel);
-        contenedor.updateUI();
+        contenedor.setVisible(false);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void jtfcantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfcantidadActionPerformed
@@ -342,7 +335,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         comprar();
-        new Thread(new MensajeUI(panelMensaje,"Se han generado la factura y las pruebas.",1)).start();
+        contenedor.setVisible(false);
     }//GEN-LAST:event_botonGuardarActionPerformed
 
 
@@ -357,7 +350,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton jbModificar;
+    private javax.swing.JButton jbEliminat;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JComboBox<String> jcbProveedor;
     private javax.swing.JTextField jtfcantidad;
@@ -380,6 +373,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
             l.setFk_fac_codigo(f.getFac_codigo());
             l.agregarADB(conector);
         }
+        new Thread(new MensajeUI(panelMensaje,"Se han generado la factura y las pruebas.",1)).start();
     }
     
     private void actualizarTabla() {
@@ -411,5 +405,29 @@ public class PrincipalComprar extends javax.swing.JPanel {
        } catch (Exception ex) {
         ex.printStackTrace();
        }
+    }
+
+    private void añadirAFactura(Lote_material l) {
+        int nuevo = 1;
+        for(Lote_material lote: compras){
+            if (lote.getFk_mat_codigo()==l.getFk_mat_codigo()){
+                lote.setLot_cantidad(l.getLot_cantidad());
+                lote.setLot_precio(l.getLot_precio());
+                nuevo=0;
+            }
+        }
+        if(nuevo==1) compras.add(l);
+        actualizarTabla();
+    }
+    
+    private void borrarDeFactura(int codigo) {
+        Lote_material loteBorrar= null;
+        for(Lote_material lote: compras){
+            if (lote.getFk_mat_codigo()==codigo){
+                loteBorrar = lote;
+            }
+        }
+        if(loteBorrar!=null) compras.remove(loteBorrar);
+        actualizarTabla();
     }
 }

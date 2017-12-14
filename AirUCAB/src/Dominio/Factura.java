@@ -47,16 +47,19 @@ public class Factura{
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, fac_monto_total);
             pst.setDate(2, fac_fecha);
-            stm = "SELECT TOP 1 fac_codigo FROM factura WHERE fac_monto_total=? AND fac_fecha=?";
+            pst.execute();
+            stm = "SELECT fac_codigo FROM factura WHERE fac_monto_total=? AND fac_fecha=?";
             pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, fac_monto_total);
             pst.setDate(2, fac_fecha);
             ResultSet rs = pst.executeQuery();
+            System.out.println("Ya cree");
             while (rs.next()) {
                 this.fac_codigo = rs.getInt("fac_codigo");
+                System.out.println(rs.getInt("fac_codigo"));
             }
             pst.close();
-        }catch (SQLException ex){
+        }catch (Exception ex){
            System.out.print(ex.toString());
         }
     }

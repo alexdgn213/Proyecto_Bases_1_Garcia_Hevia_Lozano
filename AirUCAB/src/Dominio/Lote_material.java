@@ -38,6 +38,7 @@ public class Lote_material {
         this.fk_mat_codigo = fk_mat_codigo;
         this.fk_pro_rif = fk_pro_rif;
         this.fk_mat_pro_codigo = fk_mat_pro_codigo;
+        this.fk_fac_codigo = 0;
     }
 
     public Lote_material(int lot_precio, Date lot_fecha_compra, int lot_cantidad, int fk_mat_codigo, int fk_pro_rif, int fk_mat_pro_codigo) {
@@ -47,6 +48,7 @@ public class Lote_material {
         this.fk_mat_codigo = fk_mat_codigo;
         this.fk_pro_rif = fk_pro_rif;
         this.fk_mat_pro_codigo = fk_mat_pro_codigo;
+        this.fk_fac_codigo = 0;
     }
     
     
