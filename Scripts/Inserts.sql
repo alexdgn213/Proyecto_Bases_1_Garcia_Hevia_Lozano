@@ -1,5 +1,3 @@
-DELETE FROM Lugar;
-
 INSERT INTO Lugar(lug_codigo,lug_nombre, lug_tipo) VALUES
 (0,'Venezuela','Pais');
 

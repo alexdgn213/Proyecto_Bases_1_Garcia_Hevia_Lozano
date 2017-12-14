@@ -291,6 +291,15 @@ create table pieza
 	references motor(mot_codigo)
 );
 
+
+
+create table estatus
+(	
+	 est_codigo serial not null,
+	 est_nombre varchar(30) not null,
+	 constraint pk_est_codigo primary key(est_codigo)
+);
+
 create table ensamblaje
 (
 	ens_codigo serial not null,
@@ -300,6 +309,7 @@ create table ensamblaje
 	fk_pie_codigo int,
     fk_tip_codigo int,
     fk_mot_codigo int,
+    fk_est_codigo int,
 	constraint pk_ens_codigo primary key(ens_codigo),
 	constraint fk_zon_codigo foreign key(fk_zon_codigo,fk_fab_codigo)
 	references zona(zon_codigo,fk_fab_codigo),
@@ -308,7 +318,9 @@ create table ensamblaje
     constraint fk_tip_codigo foreign key(fk_tip_codigo)
     references tipo_pieza(tip_codigo),
     constraint fk_mot_codigo foreign key(fk_mot_codigo)
-    references motor(mot_codigo)
+    references motor(mot_codigo),
+    constraint fk_est_codigo foreign key(fk_est_codigo)
+	references estatus(est_codigo)
 );
 
 create table solicitud
@@ -375,11 +387,14 @@ create table pru_pie
 	pru_pie_fecha_realizacion date,
     fk_pru_codigo int not null,
     fk_pie_codigo int not null,
+    fk_est_codigo int,
 	constraint pk_pru_pie primary key(pru_pie_codigo,fk_pru_codigo,fk_pie_codigo),
 	constraint fk_pru_codigo foreign key(fk_pru_codigo)
 	references prueba(pru_codigo),
 	constraint fk_pie_codigo foreign key(fk_pie_codigo)
-	references pieza(pie_codigo)
+	references pieza(pie_codigo),
+	constraint fk_est_codigo foreign key(fk_est_codigo)
+	references estatus(est_codigo)
 );
 
 create table mat_inv
@@ -401,11 +416,14 @@ create table pru_lot
 	pru_lot_fecha_realizacion date,
 	fk_pru_codigo int not null,
 	fk_lot_codigo int not null,
+	fk_est_codigo int,
 	constraint pk_pru_lot_codigo primary key(pru_lot_codigo,fk_pru_codigo,fk_lot_codigo),
 	constraint fk_pru_codigo foreign key(fk_pru_codigo)
 	references prueba(pru_codigo),
 	constraint fk_lot_codigo foreign key(fk_lot_codigo)
-	references lote_material(lot_codigo)
+	references lote_material(lot_codigo),
+	constraint fk_est_codigo foreign key(fk_est_codigo)
+	references estatus(est_codigo)
 );
 
 create table per_pru_pie
@@ -422,6 +440,53 @@ create table per_pru_pie
 	constraint fk_pru_pie_codigo foreign key(fk_pru_pie_codigo,fk_pie_codigo,fk_pru_codigo)
 	references pru_pie(pru_pie_codigo,fk_pie_codigo,fk_pru_codigo),
 	constraint check_per_pru_pie_encargado check(per_pru_pie_encargado in(0,1))
+);
+
+create table tip_mat
+(
+	tip_mat_codigo serial not null,
+	tip_mat_cantidad int not null,
+	fk_tip_codigo int not null,
+	fk_mat_codigo int not null,
+	constraint pk_tip_mat_codigo primary key(tip_mat_codigo, fk_tip_codigo, fk_mat_codigo),
+	constraint fk_tip_codigo foreign key(fk_tip_codigo)
+	references tipo_pieza(tip_codigo),
+	constraint fk_mat_codigo foreign key(fk_mat_codigo)
+	references material(mat_codigo)	
+);
+
+create table pru_aer
+(
+	pru_aer_codigo serial not null,
+	pru_aer_fecha_realizacion date,
+    fk_pru_codigo int not null,
+    fk_aer_codigo int not null,
+    fk_est_codigo int,
+	constraint pk_pru_aer primary key(pru_aer_codigo,fk_pru_codigo,fk_aer_codigo),
+	constraint fk_pru_codigo foreign key(fk_pru_codigo)
+	references prueba(pru_codigo),
+	constraint fk_aer_codigo foreign key(fk_aer_codigo)
+	references aeronave(aer_codigo),
+	constraint fk_est_codigo foreign key(fk_est_codigo)
+	references estatus(est_codigo)
+);
+
+create table forma_pago
+(
+	for_codigo serial not null,
+	for_monto int not null,
+	for_efectivo int,
+	for_numero bigint,
+	for_banco varchar(30),
+	for_tipo_tarjeta varchar(30),
+	for_fecha_vencimiento date,
+	for_tipo varchar(30),
+	fk_fac_codigo int not null,
+	constraint pk_for_codigo primary key(for_codigo),
+	constraint fk_fac_codigo foreign key(fk_fac_codigo)
+	references factura(fac_codigo),
+	constraint check_for_efectivo check(for_efectivo in(0,1)),
+	constraint check_for_tipo check(for_tipo in('Debito','Credito'))
 );
 
 create table rol
@@ -462,75 +527,6 @@ create table rol_pri
 	references rol(rol_codigo),
 	constraint fk_pri_codigo foreign key(fk_pri_codigo)
 	references privilegio(pri_codigo)	
-);
-
-create table tip_mat
-(
-	tip_mat_codigo serial not null,
-	tip_mat_cantidad int not null,
-	fk_tip_codigo int not null,
-	fk_mat_codigo int not null,
-	constraint pk_tip_mat_codigo primary key(tip_mat_codigo, fk_tip_codigo, fk_mat_codigo),
-	constraint fk_tip_codigo foreign key(fk_tip_codigo)
-	references tipo_pieza(tip_codigo),
-	constraint fk_mat_codigo foreign key(fk_mat_codigo)
-	references material(mat_codigo)	
-);
-
-create table pru_aer
-(
-	pru_aer_codigo serial not null,
-	pru_aer_fecha_realizacion date,
-    fk_pru_codigo int not null,
-    fk_aer_codigo int not null,
-	constraint pk_pru_aer primary key(pru_aer_codigo,fk_pru_codigo,fk_aer_codigo),
-	constraint fk_pru_codigo foreign key(fk_pru_codigo)
-	references prueba(pru_codigo),
-	constraint fk_aer_codigo foreign key(fk_aer_codigo)
-	references aeronave(aer_codigo)
-);
-
-create table forma_pago
-(
-	for_codigo serial not null,
-	for_monto int not null,
-	for_efectivo int,
-	for_numero bigint,
-	for_banco varchar(30),
-	for_tipo_tarjeta varchar(30),
-	for_fecha_vencimiento date,
-	for_tipo varchar(30),
-	fk_fac_codigo int not null,
-	constraint pk_for_codigo primary key(for_codigo),
-	constraint fk_fac_codigo foreign key(fk_fac_codigo)
-	references factura(fac_codigo),
-	constraint check_for_efectivo check(for_efectivo in(0,1)),
-	constraint check_for_tipo check(for_tipo in('Debito','Credito'))
-);
-
-create table estatus
-(	
-	 est_codigo serial not null,
-	 est_nombre varchar(30) not null,
-	 est_fecha_inicio date not null,
-	 est_fecha_final date,
-	 fk_ens_codigo int,
-	 fk_pru_pie_codigo int,
-	 fk_pru_codigo int,
-	 fk_pie_codigo int,
-	 fk_pru_aer_codigo int,
-	 fk_aer_codigo int,
-	 fk_lot_codigo int,
-	 fk_pru_lot_codigo int,
-	 constraint pk_est_codigo primary key(est_codigo),
-	 constraint fk_ens_codigo foreign key(fk_ens_codigo)
-	 references ensamblaje(ens_codigo),
-	 constraint fk_pru_pie_codigo foreign key(fk_pru_pie_codigo,fk_pru_codigo,fk_pie_codigo)
-	 references pru_pie(pru_pie_codigo,fk_pru_codigo,fk_pie_codigo),
-	 constraint fk_pru_aer_codigo foreign key(fk_pru_aer_codigo,fk_aer_codigo,fk_pru_codigo)
-	 references pru_aer(pru_aer_codigo,fk_aer_codigo,fk_pru_codigo),
-	 constraint fk_pru_lot_codigo foreign key(fk_pru_lot_codigo,fk_pru_codigo,fk_lot_codigo)
-	 references pru_lot(pru_lot_codigo,fk_pru_codigo,fk_lot_codigo)
 );
 
 --

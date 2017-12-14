@@ -1,12 +1,11 @@
 --Deben ir al reves de los creates
-drop table estatus;
-drop table forma_pago;
-drop table pru_aer;
-drop table tip_mat;
 drop table rol_pri;
 drop table privilegio;
 drop table usuario;
 drop table rol;
+drop table forma_pago;
+drop table pru_aer;
+drop table tip_mat;
 drop table per_pru_pie;
 drop table pru_lot;
 drop table mat_inv;
@@ -16,6 +15,7 @@ drop table prueba;
 drop table tip_mod;
 drop table solicitud;
 drop table ensamblaje;
+drop table estatus;
 drop table pieza;
 drop table inventario;
 drop table tipo_pieza;
