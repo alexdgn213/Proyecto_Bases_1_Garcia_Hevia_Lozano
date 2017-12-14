@@ -39,6 +39,17 @@ public class Lote_material {
         this.fk_mat_pro_codigo = fk_mat_pro_codigo;
     }
 
+    public Lote_material(int lot_precio, Date lot_fecha_compra, int lot_cantidad, int fk_mat_codigo, int fk_pro_rif, int fk_mat_pro_codigo) {
+        this.lot_precio = lot_precio;
+        this.lot_fecha_compra = lot_fecha_compra;
+        this.lot_cantidad = lot_cantidad;
+        this.fk_mat_codigo = fk_mat_codigo;
+        this.fk_pro_rif = fk_pro_rif;
+        this.fk_mat_pro_codigo = fk_mat_pro_codigo;
+    }
+    
+    
+
     public void agregarADB(ConectorDB conector){
         try{
             String stm = "INSERT INTO Lote_material(lot_codigo,lot_precio,lot_fecha_compra,lot_cantidad,fk_mat_codigo,fk_pro_rif,fk_mat_pro_codigo) VALUES(?,?,?,?,?,?,?)";

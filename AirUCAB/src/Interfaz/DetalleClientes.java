@@ -462,7 +462,7 @@ public class DetalleClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbParroquiaActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        PrincipalProveedores nuevoPanel = new PrincipalProveedores(conector,contenedor,panelMensaje);
+        PrincipalClientes nuevoPanel = new PrincipalClientes(conector,contenedor,panelMensaje);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();

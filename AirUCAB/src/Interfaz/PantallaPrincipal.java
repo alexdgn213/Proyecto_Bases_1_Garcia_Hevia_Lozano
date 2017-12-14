@@ -97,10 +97,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         panelMensajeLayout.setHorizontalGroup(
             panelMensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMensajeLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel22)
-                .addContainerGap(541, Short.MAX_VALUE))
+                .addContainerGap(533, Short.MAX_VALUE))
         );
         panelMensajeLayout.setVerticalGroup(
             panelMensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
