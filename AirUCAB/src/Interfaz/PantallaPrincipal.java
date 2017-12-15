@@ -51,33 +51,36 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuInicio = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        menuClientes = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        menuProveedores = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        menuModeloAviones = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        menuAviones = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        menuLotes = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        menuInventario = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         menuComprar = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         menuVender = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        menuInventario = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        menuAviones = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         menuFactura = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        menuInventario1 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        menuClientes = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        menuProveedores = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         fondoLateralExpandido = new javax.swing.JLabel();
         Contenido = new javax.swing.JPanel();
         panelContenido = new javax.swing.JPanel();
@@ -149,6 +152,183 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_home_black_24dp_1x.png"))); // NOI18N
         menuInicio.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
+        jLabel16.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel16.setOpaque(true);
+
+        menuModeloAviones.setOpaque(false);
+        menuModeloAviones.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuModeloAviones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuModeloAvionesMouseClicked(evt);
+            }
+        });
+        menuModeloAviones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel25.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel25.setText("Modelos de Avion");
+        jLabel25.setToolTipText("");
+        jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel25MouseClicked(evt);
+            }
+        });
+        menuModeloAviones.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_widgets_black_24dp_1x.png"))); // NOI18N
+        jLabel26.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuModeloAviones.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+
+        menuAviones.setOpaque(false);
+        menuAviones.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuAviones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuAvionesMouseClicked(evt);
+            }
+        });
+        menuAviones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel14.setText("Aviones");
+        jLabel14.setToolTipText("");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        menuAviones.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/avion.png"))); // NOI18N
+        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuAviones.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+
+        menuLotes.setOpaque(false);
+        menuLotes.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuLotes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuLotesMouseClicked(evt);
+            }
+        });
+        menuLotes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel23.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel23.setText("Lotes");
+        jLabel23.setToolTipText("");
+        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel23MouseClicked(evt);
+            }
+        });
+        menuLotes.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_crop_square_black_24dp_1x.png"))); // NOI18N
+        jLabel24.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuLotes.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+
+        menuInventario.setOpaque(false);
+        menuInventario.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuInventarioMouseClicked(evt);
+            }
+        });
+        menuInventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel12.setText("Inventario");
+        jLabel12.setToolTipText("");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        menuInventario.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_inbox_black_24dp_1x.png"))); // NOI18N
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuInventario.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+
+        jLabel17.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel17.setOpaque(true);
+
+        menuComprar.setOpaque(false);
+        menuComprar.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuComprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuComprarMouseClicked(evt);
+            }
+        });
+        menuComprar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel8.setText("Comprar Materiales");
+        jLabel8.setToolTipText("");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        menuComprar.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_local_shipping_black_24dp_1x.png"))); // NOI18N
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuComprar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+
+        menuVender.setOpaque(false);
+        menuVender.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuVender.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuVenderMouseClicked(evt);
+            }
+        });
+        menuVender.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel10.setText("Vender Avion");
+        jLabel10.setToolTipText("");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+        menuVender.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_flight_land_black_24dp_1x.png"))); // NOI18N
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuVender.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+
+        menuFactura.setOpaque(false);
+        menuFactura.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuFactura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuFacturaMouseClicked(evt);
+            }
+        });
+        menuFactura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel19.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel19.setText("Facturas");
+        jLabel19.setToolTipText("");
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+        });
+        menuFactura.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_attach_money_black_24dp_1x.png"))); // NOI18N
+        jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuFactura.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+
+        jLabel18.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel18.setOpaque(true);
+
         menuClientes.setOpaque(false);
         menuClientes.setPreferredSize(new java.awt.Dimension(162, 30));
         menuClientes.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -201,170 +381,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuProveedores.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
-        menuComprar.setOpaque(false);
-        menuComprar.setPreferredSize(new java.awt.Dimension(162, 30));
-        menuComprar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuComprarMouseClicked(evt);
-            }
-        });
-        menuComprar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel8.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel8.setText("Comprar Materiales");
-        jLabel8.setToolTipText("");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
-            }
-        });
-        menuComprar.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_local_shipping_black_24dp_1x.png"))); // NOI18N
-        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuComprar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
-
-        menuVender.setOpaque(false);
-        menuVender.setPreferredSize(new java.awt.Dimension(162, 30));
-        menuVender.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuVenderMouseClicked(evt);
-            }
-        });
-        menuVender.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel10.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel10.setText("Vender Avion");
-        jLabel10.setToolTipText("");
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel10MouseClicked(evt);
-            }
-        });
-        menuVender.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_flight_land_black_24dp_1x.png"))); // NOI18N
-        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuVender.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
-
-        menuInventario.setOpaque(false);
-        menuInventario.setPreferredSize(new java.awt.Dimension(162, 30));
-        menuInventario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuInventarioMouseClicked(evt);
-            }
-        });
-        menuInventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel12.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel12.setText("Inventario");
-        jLabel12.setToolTipText("");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
-            }
-        });
-        menuInventario.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_inbox_black_24dp_1x.png"))); // NOI18N
-        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuInventario.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
-
-        menuAviones.setOpaque(false);
-        menuAviones.setPreferredSize(new java.awt.Dimension(162, 30));
-        menuAviones.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuAvionesMouseClicked(evt);
-            }
-        });
-        menuAviones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel14.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel14.setText("Aviones");
-        jLabel14.setToolTipText("");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
-            }
-        });
-        menuAviones.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/avion.png"))); // NOI18N
-        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuAviones.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
-
-        jLabel16.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel16.setOpaque(true);
-
-        jLabel17.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel17.setOpaque(true);
-
-        jLabel18.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel18.setOpaque(true);
-
-        menuFactura.setOpaque(false);
-        menuFactura.setPreferredSize(new java.awt.Dimension(162, 30));
-        menuFactura.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuFacturaMouseClicked(evt);
-            }
-        });
-        menuFactura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel19.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel19.setText("Facturas");
-        jLabel19.setToolTipText("");
-        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel19MouseClicked(evt);
-            }
-        });
-        menuFactura.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
-
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_attach_money_black_24dp_1x.png"))); // NOI18N
-        jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuFactura.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
-
-        menuInventario1.setOpaque(false);
-        menuInventario1.setPreferredSize(new java.awt.Dimension(162, 30));
-        menuInventario1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuInventario1MouseClicked(evt);
-            }
-        });
-        menuInventario1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel23.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel23.setText("Lotes");
-        jLabel23.setToolTipText("");
-        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel23MouseClicked(evt);
-            }
-        });
-        menuInventario1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
-
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_inbox_black_24dp_1x.png"))); // NOI18N
-        jLabel24.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuInventario1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
-
         javax.swing.GroupLayout panelLateralExtendidoLayout = new javax.swing.GroupLayout(panelLateralExtendido);
         panelLateralExtendido.setLayout(panelLateralExtendidoLayout);
         panelLateralExtendidoLayout.setHorizontalGroup(
             panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menuInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuInventario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
                 .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,6 +393,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                     .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(menuAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(menuLotes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(menuInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(menuComprar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(menuVender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -380,18 +402,26 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                             .addComponent(menuProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(menuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 43, Short.MAX_VALUE))
+            .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuModeloAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLateralExtendidoLayout.setVerticalGroup(
             panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap()
                 .addComponent(menuInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(menuModeloAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuInventario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menuLotes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -408,7 +438,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addComponent(menuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
 
         LateralExpandido.add(panelLateralExtendido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 661));
@@ -544,19 +574,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuInventarioMouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        Contenido.setVisible(true);
-        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido,panelMensaje);
-        panelContenido.removeAll();
-        panelContenido.add(nuevoPanel);
-        panelContenido.updateUI();
+       
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void menuAvionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuAvionesMouseClicked
-        Contenido.setVisible(true);
-        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido,panelMensaje);
-        panelContenido.removeAll();
-        panelContenido.add(nuevoPanel);
-        panelContenido.updateUI();
+        
     }//GEN-LAST:event_menuAvionesMouseClicked
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
@@ -575,13 +597,29 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         panelContenido.updateUI();
     }//GEN-LAST:event_jLabel23MouseClicked
 
-    private void menuInventario1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuInventario1MouseClicked
+    private void menuLotesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuLotesMouseClicked
         Contenido.setVisible(true);
         nuevoPanel = new PrincipalLotes(conector,panelContenido,panelMensaje);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
-    }//GEN-LAST:event_menuInventario1MouseClicked
+    }//GEN-LAST:event_menuLotesMouseClicked
+
+    private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
+    }//GEN-LAST:event_jLabel25MouseClicked
+
+    private void menuModeloAvionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuModeloAvionesMouseClicked
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
+    }//GEN-LAST:event_menuModeloAvionesMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Contenido;
@@ -605,6 +643,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -619,7 +659,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel menuFactura;
     private javax.swing.JPanel menuInicio;
     private javax.swing.JPanel menuInventario;
-    private javax.swing.JPanel menuInventario1;
+    private javax.swing.JPanel menuLotes;
+    private javax.swing.JPanel menuModeloAviones;
     private javax.swing.JPanel menuProveedores;
     private javax.swing.JPanel menuVender;
     private javax.swing.JPanel panelContenido;
