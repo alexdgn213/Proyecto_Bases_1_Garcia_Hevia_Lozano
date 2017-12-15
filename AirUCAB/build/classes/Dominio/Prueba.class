@@ -92,7 +92,7 @@ public class Prueba {
         } catch (SQLException ex) {
             System.out.print(ex.toString());
         }
-        return lotes;
+        return pruebas;
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
