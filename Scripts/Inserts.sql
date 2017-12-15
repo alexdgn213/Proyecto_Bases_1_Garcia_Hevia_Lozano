@@ -2667,19 +2667,19 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   ('01/01/2016','02/01/2016',3,1,11,null,null),
   ('09/09/2015','09/09/2015',3,2,12,null,null);
   
-  INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_mot_codigo) VALUES
-  ('Ensamblaje del Ala',5,3,1,null),
-  ('Ensamblaje del Fuselaje',7,5,2,null),
-  ('Ensamblaje del Grupo Motopropulsor',8,1,3,null),
-  ('Ensamblaje de Alerones',5,3,4,null),
-  ('Ensamblaje de Flaps',5,3,5,null),
-  ('Ensamblaje de Spoilers',5,3,6,null),
-  ('Ensamblaje de Flaps',5,3,7,null),
-  ('Ensamblaje de Estabilizadores',5,3,8,null),
-  ('Ensamblaje de Instrumentos de Control',10,4,9,null),
-  ('Creacion de Asientos',9,2,10,null),
-  ('Ensamblaje de Tren de Aterrizaje Fijo',5,3,11,null),
-  ('Ensamblaje de Tren de Aterrizaje Retractil',5,3,12,null);
+  INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_mot_codigo,fk_est_codigo) VALUES
+  ('Ensamblaje del Ala',5,3,1,null,1),
+  ('Ensamblaje del Fuselaje',7,5,2,null,1),
+  ('Ensamblaje del Grupo Motopropulsor',8,1,3,null,1),
+  ('Ensamblaje de Alerones',5,3,4,null,1),
+  ('Ensamblaje de Flaps',5,3,5,null,1),
+  ('Ensamblaje de Spoilers',5,3,6,null,1),
+  ('Ensamblaje de Flaps',5,3,7,null,1),
+  ('Ensamblaje de Estabilizadores',5,3,8,null,1),
+  ('Ensamblaje de Instrumentos de Control',10,4,9,null,1),
+  ('Creacion de Asientos',9,2,10,null,1),
+  ('Ensamblaje de Tren de Aterrizaje Fijo',5,3,11,null,1),
+  ('Ensamblaje de Tren de Aterrizaje Retractil',5,3,12,null,1);
   
   --ENSAMBLAJES DE TODOS LOS MOTORES.... aqui 
   
@@ -2712,12 +2712,12 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
  (6,4),
  (7,4);
  
- INSERT INTO pru_pie(pru_pie_fecha_realizacion,fk_pru_codigo,fk_pie_codigo) VALUES
- ('02/07/2013',3,1),
- ('06/08/2015',3,2),
- ('11/10/2016',5,3),
- ('10/11/2014',3,4),
- ('05/06/2015',5,5);
+ INSERT INTO pru_pie(pru_pie_fecha_realizacion,fk_pru_codigo,fk_pie_codigo,fk_est_codigo) VALUES
+ ('02/07/2013',3,1,1),
+ ('06/08/2015',3,2,1),
+ ('11/10/2016',5,3,1),
+ ('10/11/2014',3,4,1),
+ ('05/06/2015',5,5,1);
  
  INSERT INTO mat_inv(mat_inv_cantidad,fk_mat_codigo,fk_inv_codigo) VALUES
  (200,1,1),
@@ -2728,49 +2728,49 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   
   
   --REVISAR
-  INSERT INTO pru_lot(pru_lot_fecha_realizacion,fk_pru_codigo,fk_lot_codigo) VALUES
-  ('10/04/2011',1,1),
-  ('09/10/2012',2,2),
-  ('10/10/2011',1,3),
-  ('12/05/2012',2,4),
-  ('11/06/2013',2,5),
-  ('11/12/2011',1,6),
-  ('10/10/2011',1,7),
-  ('02/01/2011',1,8),
-  ('02/02/2012',1,9),
-  ('10/10/2009',1,10),
-  ('03/03/2013',1,11),
-  ('05/03/2014',1,12),
-  ('12/12/2010',1,13),
-  ('09/08/2011',1,14),
-  ('05/05/2015',1,15),
-  ('05/07/2016',1,16),
-  ('01/08/2014',1,17),
-  ('03/06/2017',1,18),
-  ('10/09/2011',1,19),
-  ('07/09/2011',1,20),
-  ('06/07/2016',1,21),
-  ('01/02/2013',1,22),
-  ('03/04/2015',1,23),
-  ('01/02/2011',1,24),
-  ('02/09/2010',1,25),
-  ('03/03/2013',1,26),
-  ('10/06/2016',1,27),
-  ('07/03/2014',1,28),
-  ('06/05/2015',1,29),
-  ('10/09/2010',1,30),
-  ('02/02/2011',1,31),
-  ('12/12/2012',1,32),
-  ('05/07/2014',1,33),
-  ('07/08/2012',1,34),
-  ('09/09/2010',1,35),
-  ('06/06/2015',1,36),
-  ('09/05/2015',1,37),
-  ('02/01/2011',1,38),
-  ('01/02/2011',1,39),
-  ('03/02/2012',1,40),
-  ('02/03/2014',1,41),
-  ('01/01/2011',1,42);
+  INSERT INTO pru_lot(pru_lot_fecha_realizacion,fk_pru_codigo,fk_lot_codigo,fk_est_codigo) VALUES
+  ('10/04/2011',1,1,1),
+  ('09/10/2012',2,2,1),
+  ('10/10/2011',1,3,1),
+  ('12/05/2012',2,4,1),
+  ('11/06/2013',2,5,1),
+  ('11/12/2011',1,6,1),
+  ('10/10/2011',1,7,1),
+  ('02/01/2011',1,8,1),
+  ('02/02/2012',1,9,1),
+  ('10/10/2009',1,10,1),
+  ('03/03/2013',1,11,1),
+  ('05/03/2014',1,12,1),
+  ('12/12/2010',1,13,1),
+  ('09/08/2011',1,14,1),
+  ('05/05/2015',1,15,1),
+  ('05/07/2016',1,16,1),
+  ('01/08/2014',1,17,1),
+  ('03/06/2017',1,18,1),
+  ('10/09/2011',1,19,1),
+  ('07/09/2011',1,20,1),
+  ('06/07/2016',1,21,1),
+  ('01/02/2013',1,22,1),
+  ('03/04/2015',1,23,1),
+  ('01/02/2011',1,24,1),
+  ('02/09/2010',1,25,1),
+  ('03/03/2013',1,26,1),
+  ('10/06/2016',1,27,1),
+  ('07/03/2014',1,28,1),
+  ('06/05/2015',1,29,1),
+  ('10/09/2010',1,30,1),
+  ('02/02/2011',1,31,1),
+  ('12/12/2012',1,32,1),
+  ('05/07/2014',1,33,1),
+  ('07/08/2012',1,34,1),
+  ('09/09/2010',1,35,1),
+  ('06/06/2015',1,36,1),
+  ('09/05/2015',1,37,1),
+  ('02/01/2011',1,38,1),
+  ('01/02/2011',1,39,1),
+  ('03/02/2012',1,40,1),
+  ('02/03/2014',1,41,1),
+  ('01/01/2011',1,42,1);
   
   --QUE VA en per_pru_pie_encargado? en teoria 1 es el encargado, 0 no es no?
   INSERT INTO per_pru_pie(per_pru_pie_encargado,fk_per_ci,fk_pru_codigo,fk_pie_codigo,fk_pru_pie_codigo)VALUES
@@ -2816,12 +2816,12 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
   (906,2,2),
   (200,5,3);
   
-  INSERT INTO pru_aer(pru_aer_fecha_realizacion,fk_pru_codigo,fk_aer_codigo)VALUES
-  ('03/12/2015',4,5),
-  ('12/04/2014',4,4),
-  ('11/11/2015',4,3),
-  ('02/06/2017',4,2),
-  ('10/12/2017',4,1);
+  INSERT INTO pru_aer(pru_aer_fecha_realizacion,fk_pru_codigo,fk_aer_codigo,fk_est)VALUES
+  ('03/12/2015',4,5,1),
+  ('12/04/2014',4,4,1),
+  ('11/11/2015',4,3,1),
+  ('02/06/2017',4,2,1),
+  ('10/12/2017',4,1,1);
   
   INSERT INTO forma_pago(for_monto,for_efectivo,for_numero,for_banco,for_tipo_tarjeta,for_fecha_vencimiento,for_tipo,fk_fac_codigo)VALUES
   (20000000,null,1234123443214321,'BNC','VISA','09/10/2020','Credito',1),
@@ -2830,12 +2830,12 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
   (14800000,null,1267762112677621,'Banesco','Master','06/10/2028','Debito',4),
   (15500000,null,9812218934566543,'Venezolan','Master','09/09/2035','Credito',5);
   
-  /*
-  INSERT INTO estatus()VALUES
-  (),
-  (),
-  (),
-  (),
-  ();
-*/
+  
+  INSERT INTO estatus(est_nombre)VALUES
+  ("Finalizado"),
+  ("En Curso"),
+  ("En Espera"),
+  ("Cancelado"),
+  ("No Iniciado");
+
 --
