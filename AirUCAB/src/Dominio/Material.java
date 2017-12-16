@@ -128,6 +128,21 @@ public class Material {
         }
         return m;
     }
+    
+    public static Material buscarPorCodigo(ConectorDB conector, int codigo){
+        Material m = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT mat_codigo, mat_nombre, mat_tiempo_estimado FROM Material WHERE mat_codigo=?");
+            pst.setInt(1, codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                m = new Material(rs.getInt("mat_codigo"),rs.getString("mat_nombre"),rs.getInt("mat_tiempo_estimado"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return m;
+    }
 
     public void setMat_codigo(int mat_codigo) {
         this.mat_codigo = mat_codigo;

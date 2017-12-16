@@ -555,12 +555,12 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel21" min="-2" pref="150" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jtfTipo" max="32767" attributes="0"/>
+                                              <Component id="jtfValor" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel23" min="-2" pref="150" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jtfValor" min="-2" pref="117" max="-2" attributes="0"/>
+                                              <Component id="jtfTipo" min="-2" pref="117" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -595,13 +595,13 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel23" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="jtfValor" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jtfTipo" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="jlErrorInformacionTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel21" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="jtfTipo" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jtfValor" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="jlErrorInformacionValor" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="67" max="32767" attributes="0"/>
@@ -666,6 +666,9 @@
                           </Table>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable2MouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -716,9 +719,12 @@
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfValor">
-                </Component>
                 <Component class="javax.swing.JTextField" name="jtfTipo">
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfValor">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfValorActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlErrorInformacionTipo">
                   <Properties>
@@ -771,6 +777,9 @@
                           </Table>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

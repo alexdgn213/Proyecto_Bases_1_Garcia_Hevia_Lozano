@@ -111,8 +111,8 @@ public class DetalleProveedores extends javax.swing.JPanel {
         bAddInf1 = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jtfValor = new javax.swing.JTextField();
         jtfTipo = new javax.swing.JTextField();
+        jtfValor = new javax.swing.JTextField();
         jlErrorInformacionTipo = new javax.swing.JLabel();
         jlErrorInformacionValor = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -278,6 +278,11 @@ public class DetalleProveedores extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable2);
 
         jLabel22.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -306,6 +311,12 @@ public class DetalleProveedores extends javax.swing.JPanel {
         jLabel21.setText("Valor:");
         jLabel21.setToolTipText("");
 
+        jtfValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfValorActionPerformed(evt);
+            }
+        });
+
         jlErrorInformacionTipo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jlErrorInformacionTipo.setForeground(new java.awt.Color(255, 0, 0));
         jlErrorInformacionTipo.setText("Error en el rif");
@@ -331,6 +342,11 @@ public class DetalleProveedores extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel26.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -416,11 +432,11 @@ public class DetalleProveedores extends javax.swing.JPanel {
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jtfTipo))
+                                    .addComponent(jtfValor))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jtfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jtfTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(18, 18, 18)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jlErrorInformacionTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -445,12 +461,12 @@ public class DetalleProveedores extends javax.swing.JPanel {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jlErrorInformacionTipo))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtfTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jlErrorInformacionValor))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -751,6 +767,32 @@ public class DetalleProveedores extends javax.swing.JPanel {
             mat_pro.llenarTablaMaterialesDeProveedor(conector, jTable1, p.getPro_rif());
         }
     }//GEN-LAST:event_bDelMaterialActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        int fila = jTable2.getSelectedRow();
+        if (fila>=0){
+            int id = (Integer) jTable2.getValueAt(fila, 0);
+            Informacion_contacto i = Informacion_contacto.buscarPorCodigo(conector, id);
+            jtfTipo.setText(i.getInf_valor());
+            jtfValor.setText(i.getInf_tipo());
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jtfValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfValorActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int fila = jTable1.getSelectedRow();
+        if (fila>=0){
+            int id = (Integer) jTable1.getValueAt(fila, 0);
+            mat_pro mp = mat_pro.buscarPorCodigo(conector, id);
+            jtfPrecio.setText(String.valueOf(mp.getMat_pro_precio_actual()));
+            Material m = Material.buscarPorCodigo(conector, mp.getFk_mat_codigo());
+            Object o = m.getMat_nombre();
+            jcbMateriales.setSelectedItem(o);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
