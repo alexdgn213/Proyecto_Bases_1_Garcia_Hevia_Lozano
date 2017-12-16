@@ -6,6 +6,7 @@
 package Interfaz;
 
 import Adaptadores.AdaptadorSQLUI;
+import Adaptadores.Comprobador;
 import Adaptadores.ConectorDB;
 import Dominio.Cliente;
 import Dominio.Informacion_contacto;
@@ -68,8 +69,8 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jpanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jtfRif = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
+        jtfPrecio = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         botonGuardar = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
@@ -94,19 +95,19 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField3 = new javax.swing.JTextField();
+        jtfValor = new javax.swing.JTextField();
         jlErrorCaracteristicaValor = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField4 = new javax.swing.JTextField();
+        jtfPiezaValor = new javax.swing.JTextField();
         jlErrorPiezaCantidad = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
-        jTextField5 = new javax.swing.JTextField();
+        jtfMotor = new javax.swing.JTextField();
         jlErrorMotorCantidad = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
 
@@ -135,6 +136,11 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jLabel3.setToolTipText("");
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_check_black_48dp_1x.png"))); // NOI18N
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_close_black_48dp_1x.png"))); // NOI18N
         botonCancelar.setToolTipText("");
@@ -293,14 +299,14 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                             .addGroup(jpanelLayout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jtfRif, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jlErrorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jpanelLayout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jlErrorPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -332,7 +338,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                                     .addGroup(jpanelLayout.createSequentialGroup()
                                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField3))
+                                        .addComponent(jtfValor))
                                     .addGroup(jpanelLayout.createSequentialGroup()
                                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -353,14 +359,14 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                                     .addGroup(jpanelLayout.createSequentialGroup()
                                         .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField5))
+                                        .addComponent(jtfMotor))
                                     .addGroup(jpanelLayout.createSequentialGroup()
                                         .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(23, 23, 23)
                                 .addComponent(jlErrorMotorCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addGroup(jpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -376,7 +382,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                             .addGroup(jpanelLayout.createSequentialGroup()
                                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField4))
+                                .addComponent(jtfPiezaValor))
                             .addGroup(jpanelLayout.createSequentialGroup()
                                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -396,13 +402,13 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                         .addGroup(jpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jtfRif, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jlErrorNombre)))
                         .addGap(18, 18, 18)
                         .addGroup(jpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jlErrorPrecio)))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -429,7 +435,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlErrorCaracteristicaValor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -448,7 +454,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfPiezaValor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlErrorPiezaCantidad))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -469,9 +475,9 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfMotor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlErrorMotorCantidad))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         bAddMaterial.getAccessibleContext().setAccessibleDescription("");
@@ -486,7 +492,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 969, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1248, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -496,6 +502,23 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        jlErrorNombre.setVisible(false);
+        jlErrorPrecio.setVisible(false);
+        jlErrorCaracteristicaValor.setVisible(false);
+        jlErrorPiezaCantidad.setVisible(false);
+        jlErrorMotorCantidad.setVisible(false);
+        
+        if( Comprobador.ComprobarString(jtfNombre, jlErrorNombre) &&
+        Comprobador.ComprobarInt(jtfPrecio, jlErrorPrecio) &&
+        Comprobador.ComprobarInt(jtfValor, jlErrorCaracteristicaValor) &&
+        Comprobador.ComprobarInt(jtfPiezaValor, jlErrorPiezaCantidad)  &&
+        Comprobador.ComprobarInt(jtfMotor, jlErrorMotorCantidad)){
+            if(m==null){
+            }
+        }
+    }//GEN-LAST:event_botonGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -531,25 +554,25 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel jlErrorCaracteristicaValor;
     private javax.swing.JLabel jlErrorMotorCantidad;
     private javax.swing.JLabel jlErrorNombre;
     private javax.swing.JLabel jlErrorPiezaCantidad;
     private javax.swing.JLabel jlErrorPrecio;
     private javax.swing.JPanel jpanel;
+    private javax.swing.JTextField jtfMotor;
     private javax.swing.JTextField jtfNombre;
-    private javax.swing.JTextField jtfRif;
+    private javax.swing.JTextField jtfPiezaValor;
+    private javax.swing.JTextField jtfPrecio;
+    private javax.swing.JTextField jtfValor;
     private javax.swing.JTable tablaCaracteristicas;
     private javax.swing.JTable tablaMotores;
     // End of variables declaration//GEN-END:variables
 
     private void llenarDatosModelo() {
-        jtfRif.setText(String.valueOf(m.getMod_nombre()));
-        jtfRif.setEnabled(false);
-        jtfNombre.setText(String.valueOf(m.getMod_precio_compra()));
+        jtfNombre.setText(String.valueOf(m.getMod_nombre()));
+        jtfNombre.setEnabled(false);
+        jtfPrecio.setText(String.valueOf(m.getMod_precio_compra()));
         Mod_car.llenarTablaDeModelo(conector, tablaCaracteristicas, m.getMod_codigo());
         Mot_mod.llenarTablaDeModelo(conector, tablaMotores, m.getMod_codigo());
     }

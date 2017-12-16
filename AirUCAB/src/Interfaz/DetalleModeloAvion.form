@@ -33,7 +33,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jScrollPane2" alignment="0" pref="969" max="32767" attributes="0"/>
+          <Component id="jScrollPane2" alignment="0" pref="1248" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -75,7 +75,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel2" min="-2" pref="210" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jtfRif" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="jtfNombre" min="-2" pref="150" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jlErrorNombre" min="-2" pref="200" max="-2" attributes="0"/>
                                   </Group>
@@ -83,7 +83,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel3" min="-2" pref="210" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jtfNombre" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="jtfPrecio" min="-2" pref="150" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jlErrorPrecio" min="-2" pref="200" max="-2" attributes="0"/>
                                   </Group>
@@ -125,7 +125,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel25" min="-2" pref="150" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jTextField3" max="32767" attributes="0"/>
+                                              <Component id="jtfValor" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel24" min="-2" pref="150" max="-2" attributes="0"/>
@@ -152,7 +152,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel31" min="-2" pref="150" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jTextField5" max="32767" attributes="0"/>
+                                              <Component id="jtfMotor" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel30" min="-2" pref="150" max="-2" attributes="0"/>
@@ -166,7 +166,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="70" max="32767" attributes="0"/>
+                      <EmptySpace pref="87" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="botonGuardar" alignment="1" min="-2" pref="48" max="-2" attributes="0"/>
                           <Component id="botonCancelar" alignment="1" min="-2" pref="48" max="-2" attributes="0"/>
@@ -184,7 +184,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel28" min="-2" pref="150" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jTextField4" max="32767" attributes="0"/>
+                                      <Component id="jtfPiezaValor" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel27" min="-2" pref="150" max="-2" attributes="0"/>
@@ -211,7 +211,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel2" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="jtfRif" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="jtfNombre" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="jlErrorNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -219,7 +219,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel3" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="jtfNombre" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="jtfPrecio" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="jlErrorPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -255,7 +255,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel25" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jtfValor" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jlErrorCaracteristicaValor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -278,7 +278,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel28" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jTextField4" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jtfPiezaValor" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jlErrorPiezaCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -304,10 +304,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel31" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jTextField5" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jtfMotor" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jlErrorMotorCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="166" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -334,9 +334,9 @@
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtfRif">
-            </Component>
             <Component class="javax.swing.JTextField" name="jtfNombre">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtfPrecio">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -353,6 +353,9 @@
                   <Image iconType="3" name="/Interfaz/Imagenes/ic_check_black_48dp_1x.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGuardarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botonCancelar">
               <Properties>
@@ -570,7 +573,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="jtfValor">
             </Component>
             <Component class="javax.swing.JLabel" name="jlErrorCaracteristicaValor">
               <Properties>
@@ -626,7 +629,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="jtfPiezaValor">
             </Component>
             <Component class="javax.swing.JLabel" name="jlErrorPiezaCantidad">
               <Properties>
@@ -682,7 +685,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField5">
+            <Component class="javax.swing.JTextField" name="jtfMotor">
             </Component>
             <Component class="javax.swing.JLabel" name="jlErrorMotorCantidad">
               <Properties>
