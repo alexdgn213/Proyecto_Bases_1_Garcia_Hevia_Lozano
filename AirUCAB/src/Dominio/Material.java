@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 /**
@@ -100,22 +101,33 @@ public class Material {
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
-    /*
-    public static Motor buscarPorCodigo(ConectorDB conector, int codigo){
-        Proveedor l = null;
+    
+    public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
+        PreparedStatement pst;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT mat_nombre, mat_tiempo_estido FROM Material WHERE mat_codigo=?");
-            pst.setInt(1, codigo);
+            pst = conector.conexion.prepareStatement("SELECT mat_nombre from material");
+            ResultSet rs = pst.executeQuery();
+            AdaptadorSQLUI.llenarComboBox(jCombo, rs);
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        
+    }
+    
+    public static Material buscarPorNombre(ConectorDB conector, String nombre){
+        Material m = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT mat_codigo, mat_nombre, mat_tiempo_estimado FROM Material WHERE mat_nombre=?");
+            pst.setString(1, nombre);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                l = new Motor(rs.getInt("mat_codigo"),rs.getString("mat_nombre"),rs.getInt("mat_tiempo_estimado"));
+                m = new Material(rs.getInt("mat_codigo"),rs.getString("mat_nombre"),rs.getInt("mat_tiempo_estimado"));
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
         }
-        return l;
+        return m;
     }
-    */
 
     public void setMat_codigo(int mat_codigo) {
         this.mat_codigo = mat_codigo;

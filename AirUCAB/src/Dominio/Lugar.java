@@ -198,6 +198,27 @@ public class Lugar {
         return direccion;
     }
 
+    public static int fkDireccion(ConectorDB conector, String pais, String estado, String municipio, String parroquia){
+        int fk = -1;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT l4.lug_codigo as codigo"
+                    +" FROM lugar l1, lugar l2, lugar l3, lugar l4"
+                    +" WHERE l1.lug_codigo = l2.fk_lug_codigo AND l2.lug_codigo = l3.fk_lug_codigo AND l3.lug_codigo = l4.fk_lug_codigo"
+                    +" AND l1.lug_nombre = ? AND l2.lug_nombre = ? AND l3.lug_nombre = ? AND l4.lug_nombre = ?");
+            pst.setString(1, pais);
+            pst.setString(2, estado);
+            pst.setString(3, municipio);
+            pst.setString(4, parroquia);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                fk = rs.getInt("codigo");
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return fk;
+    }
+
     public int getLug_codigo() {
         return lug_codigo;
     }

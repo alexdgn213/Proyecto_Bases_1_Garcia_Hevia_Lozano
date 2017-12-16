@@ -71,6 +71,8 @@ public class Proveedor {
     }
     
     public void eliminarDeDB(ConectorDB conector){
+        Informacion_contacto.eliminarDeProveedor(conector,pro_rif);
+        mat_pro.eliminarDeProveedor(conector,pro_rif);
         try{
             String stm = "Delete from Proveedor where pro_rif=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);

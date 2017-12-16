@@ -43,7 +43,7 @@ public class Cliente {
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, cli_rif);
             pst.setString(2, cli_nombre);
-            pst.setInt(2,cli_monto_acreditado);
+            pst.setInt(3,cli_monto_acreditado);
             pst.setDate(4,cli_fecha_inicio);
             pst.setInt(5,fk_lug_codigo);
             pst.executeUpdate();
@@ -70,6 +70,7 @@ public class Cliente {
     }
     
     public void eliminarDeDB(ConectorDB conector){
+        Informacion_contacto.eliminarDeCliente(conector,cli_rif);
         try{
             String stm = "Delete from Cliente where cli_rif=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);

@@ -13,6 +13,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 /**
@@ -33,16 +36,22 @@ public class mat_pro {
         this.fk_pro_rif = fk_pro_rif;
     }
 
+    public mat_pro(int mat_pro_precio_actual, int fk_mat_codigo, int fk_pro_rif) {
+        this.mat_pro_precio_actual = mat_pro_precio_actual;
+        this.fk_mat_codigo = fk_mat_codigo;
+        this.fk_pro_rif = fk_pro_rif;
+    }
+
+    
 
 
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO mat_pro(mat_pro_codigo,mat_pro_precio_actual,fk_mat_codigo,fk_pro_rif) VALUES(?,?,?,?)";
+            String stm = "INSERT INTO mat_pro(mat_pro_precio_actual,fk_mat_codigo,fk_pro_rif) VALUES(?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(1, mat_pro_codigo);
-            pst.setInt(2, mat_pro_precio_actual);
-            pst.setInt(3,fk_mat_codigo);
-            pst.setInt(4,fk_pro_rif);
+            pst.setInt(1, mat_pro_precio_actual);
+            pst.setInt(2,fk_mat_codigo);
+            pst.setInt(3,fk_pro_rif);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -107,10 +116,21 @@ public class mat_pro {
         AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
     
-   
+    public static void eliminarDeProveedor(ConectorDB conector, int rif){
+        try{
+            String stm = "Delete from mat_pro where fk_pro_rif=?";
+            PreparedStatement pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, rif);
+            pst.executeUpdate();
+            pst.close();
+        }catch (SQLException ex){
+           System.out.print(ex.toString());
+        }
+    }
+      
 public static void llenarTablaMaterialesDeProveedor(ConectorDB conector, JTable jTable, int pro_rif){
          try{
-            String stm = "SELECT mat_codigo as codigo, mat_nombre as nombre,mat_pro_precio_actual as Precio,mat_pro_codigo as Codigo_Compra FROM mat_pro, material WHERE fk_mat_codigo=mat_codigo AND fk_pro_rif=?";
+            String stm = "SELECT mat_pro_codigo as codigo, mat_nombre as nombre,mat_pro_precio_actual as Precio,mat_pro_codigo as Codigo_Compra FROM mat_pro, material WHERE fk_mat_codigo=mat_codigo AND fk_pro_rif=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, pro_rif);
             ResultSet rs = pst.executeQuery();
@@ -120,6 +140,43 @@ public static void llenarTablaMaterialesDeProveedor(ConectorDB conector, JTable 
            System.out.print(ex.toString());
         };    
 }
+
+    public static mat_pro relacionDada(ConectorDB conector, int pro_rif, int mat_codigo){
+       mat_pro respuesta = null; 
+        try{
+            String stm = "SELECT mat_pro_codigo, mat_pro_precio_actual, fk_mat_codigo, fk_mat_codigo, fk_pro_rif FROM mat_pro WHERE fk_mat_codigo=? AND fk_pro_rif=?";
+            PreparedStatement pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, mat_codigo);
+            pst.setInt(2, pro_rif);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                respuesta = new mat_pro(rs.getInt("mat_pro_codigo"),rs.getInt("mat_pro_precio_actual"),rs.getInt("fk_mat_codigo"),rs.getInt("fk_pro_rif"));
+            }
+            pst.close();
+        }catch (SQLException ex){
+           System.out.print(ex.toString());
+        };
+        return respuesta;
+    }
+    
+    public static mat_pro buscarPorCodigo(ConectorDB conector, int codigo){
+       mat_pro respuesta = null; 
+        try{
+            String stm = "SELECT mat_pro_codigo, mat_pro_precio_actual, fk_mat_codigo, fk_mat_codigo, fk_pro_rif FROM mat_pro WHERE mat_pro_codigo=?";
+            PreparedStatement pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, codigo);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                respuesta = new mat_pro(rs.getInt("mat_pro_codigo"),rs.getInt("mat_pro_precio_actual"),rs.getInt("fk_mat_codigo"),rs.getInt("fk_pro_rif"));
+            }
+            pst.close();
+        }catch (SQLException ex){
+           System.out.print(ex.toString());
+        };
+        return respuesta;
+    }
+
+
     /*
     public static Mat_pro buscarPorCodigo(ConectorDB conector, int codigo){
         Mat_pro l = null;
