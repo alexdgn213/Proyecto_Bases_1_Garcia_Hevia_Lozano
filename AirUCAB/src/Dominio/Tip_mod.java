@@ -19,33 +19,30 @@ import javax.swing.JTable;
  *
  * @author LAB_L11
  */
-public class Mod_car {
+public class Tip_mod {
     
-    int mod_car_codigo;
-    int mod_car_valor;
-    String mod_car_descripcion;
+    int tip_mod_codigo;
+    int tip_mod_cantidad;
     int fk_mod_codigo;
-    int fk_car_codigo;
+    int fk_tip_codigo;
 
-    public Mod_car(int mod_car_codigo, int mod_car_valor,String mod_car_descripcion, int fk_mod_codigo, int fk_car_codigo) {
-        this.mod_car_codigo = mod_car_codigo;
-        this.mod_car_valor = mod_car_valor;
-        this.mod_car_descripcion=mod_car_descripcion;
-        this.fk_mod_codigo = fk_mod_codigo;
-        this.fk_car_codigo = fk_car_codigo;
+    public Tip_mod(int tip_mod_codigo, int tip_mod_cantidad,int fk_mod_codigo, int fk_tip_codigo) {
+        this.tip_mod_codigo = tip_mod_codigo;
+        this.tip_mod_cantidad = tip_mod_cantidad;
+        this.fk_mod_codigo=fk_mod_codigo;
+        this.fk_tip_codigo = fk_tip_codigo;
     }
 
 
 
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO mod_car(mod_car_codigo,mod_car_valor,mod_car_descripcion,fk_mod_codigo,fk_car_codigo) VALUES(?,?,?,?,?)";
+            String stm = "INSERT INTO tip_mod(tip_mod_codigo,tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo) VALUES(?,?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(1, mod_car_codigo);
-            pst.setInt(2, mod_car_valor);
-            pst.setString(3,mod_car_descripcion);
-            pst.setInt(4,fk_mod_codigo);
-            pst.setInt(5,fk_car_codigo);
+            pst.setInt(1, tip_mod_codigo);
+            pst.setInt(2, tip_mod_cantidad);
+            pst.setInt(3,fk_mod_codigo);
+            pst.setInt(4,fk_tip_codigo);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -55,13 +52,12 @@ public class Mod_car {
     
     public void modificarEnDB(ConectorDB conector){
         try{
-            String stm = "UPDATE mod_car SET mod_car_valor = ?,mod_car_descripcion = ?,fk_mod_codigo = ?,fk_car_codigo=? WHERE mod_car_codigo=?";
+            String stm = "UPDATE tip_mod SET tip_mod_cantidad = ?,fk_mod_codigo = ?,fk_tip_codigo=? WHERE tip_mod_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(5, mod_car_codigo);
-            pst.setInt(1, mod_car_valor);
-            pst.setString(2,mod_car_descripcion);
-            pst.setInt(3,fk_car_codigo);
-            pst.setInt(4,fk_mod_codigo);
+            pst.setInt(4, tip_mod_codigo);
+            pst.setInt(1, tip_mod_cantidad);
+            pst.setInt(2,fk_mod_codigo);
+            pst.setInt(3,fk_tip_codigo);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -71,9 +67,9 @@ public class Mod_car {
     
     public void eliminarDeDB(ConectorDB conector){
         try{
-            String stm = "Delete from mod_car where mod_car_codigo=?";
+            String stm = "Delete from tip_mod where tip_mod_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(1, mod_car_codigo);
+            pst.setInt(1, tip_mod_codigo);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -92,27 +88,27 @@ public class Mod_car {
         return null;
     }
 
-    public static List<Mod_car> obtenerTodos(ConectorDB conector){
-        List<Mod_car> mc = new ArrayList<Mod_car>();
+    public static List<Tip_mod> obtenerTodos(ConectorDB conector){
+        List<Tip_mod> tm = new ArrayList<Tip_mod>();
         try {
-            ResultSet rs = obtenerResultSet(conector,"SELECT mod_car_codigo as codigo,mod_car_valor as valor,mod_car_descripcion,fk_mod_codigo as Codigo_Modelo_Aeronave,fk_car_codigo as Codigo_Caracteristica FROM mod_car");
+            ResultSet rs = obtenerResultSet(conector,"SELECT tip_mod_codigo as codigo,tip_mod_cantidad as cantidad,fk_mod_codigo as Codigo_Modelo_Aeronave,fk_tip_codigo as Codigo_Tipo_Pieza FROM tip_mod");
             while (rs.next()) {
-                Mod_car l = new Mod_car(rs.getInt("mod_car_codigo"),rs.getInt("mod_car_valor"),rs.getString("mod_car_descripcion"),rs.getInt("fk_mod_codigo"),rs.getInt("fk_car_codigo"));
-                mc.add(l);
+                Tip_mod l = new Tip_mod(rs.getInt("tip_mod_codigo"),rs.getInt("tip_mod_cantidad"),rs.getInt("fk_mod_codigo"),rs.getInt("fk_tip_codigo"));
+                tm.add(l);
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
         }
-        return mc;
+        return tm;
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT mod_car_codigo as Codigo,mod_car_valor as Valor,mod_car_descripcion,fk_mod_codigo as Codigo_Modelo_Aeronave,fk_car_codigo as Codigo_Caracteristica FROM mod_car");
+        ResultSet rs =obtenerResultSet(conector,"SELECT tip_mod_codigo as Codigo,tip_mod_cantidad as Cantidad,fk_mod_codigo as Codigo_Modelo_Aeronave,fk_tip_codigo as Codigo_Tipo_Pieza FROM tip_mod");
         AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
     
     public static void llenarTablaDeModelo(ConectorDB conector, JTable jTable, int id){
-        ResultSet rs =obtenerResultSet(conector,"SELECT mod_car_codigo as Codigo,car_nombre as Caracteristica ,mod_car_valor as Valor,mod_car_descripcion as Descripcion FROM mod_car, caracteristica where fk_car_codigo=car_codigo AND fk_mod_codigo="+String.valueOf(id));
+        ResultSet rs =obtenerResultSet(conector,"SELECT tip_mod_codigo as Codigo,tip_mod_cantidad as Cantidad ,fk_mod_codigo as Codigo_Modelo_Aeronave,fk_tip_codigo as Codigo_Tipo_Pieza FROM tip_mod where fk_mod_codigo=mod_codigo AND fk_tip_codigo="+String.valueOf(id));
         AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
   
@@ -133,4 +129,3 @@ public class Mod_car {
         return l;
     }
     */
-
