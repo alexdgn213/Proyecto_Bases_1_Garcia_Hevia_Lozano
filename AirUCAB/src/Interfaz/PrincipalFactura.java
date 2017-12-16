@@ -32,7 +32,8 @@ public class PrincipalFactura extends javax.swing.JPanel {
         this.panelMensaje = panelMensaje;
         initComponents();
         this.setSize(850,580);
-        Factura.llenarTablaFacturasCompra(conector, tablaModelos);
+        Factura.llenarTablaFacturasCompra(conector, tablaCompras);
+        Factura.llenarTablaFacturasVenta(conector, tablaVentas);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
     }
 
@@ -46,18 +47,20 @@ public class PrincipalFactura extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaModelos = new javax.swing.JTable();
+        tablaCompras = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jbModificar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tablaModelos1 = new javax.swing.JTable();
+        tablaVentas = new javax.swing.JTable();
         jbModificar1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(850, 580));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(850, 580));
 
-        tablaModelos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -68,7 +71,7 @@ public class PrincipalFactura extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tablaModelos);
+        jScrollPane1.setViewportView(tablaCompras);
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(66, 66, 66));
@@ -76,7 +79,7 @@ public class PrincipalFactura extends javax.swing.JPanel {
         jLabel1.setToolTipText("");
 
         jbModificar.setBackground(new java.awt.Color(255, 255, 255));
-        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_edit_black_48dp_1x.png"))); // NOI18N
+        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_search_black_24dp_2x.png"))); // NOI18N
         jbModificar.setToolTipText("");
         jbModificar.setContentAreaFilled(false);
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +88,7 @@ public class PrincipalFactura extends javax.swing.JPanel {
             }
         });
 
-        tablaModelos1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -96,10 +99,10 @@ public class PrincipalFactura extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tablaModelos1);
+        jScrollPane2.setViewportView(tablaVentas);
 
         jbModificar1.setBackground(new java.awt.Color(255, 255, 255));
-        jbModificar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_edit_black_48dp_1x.png"))); // NOI18N
+        jbModificar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_search_black_24dp_2x.png"))); // NOI18N
         jbModificar1.setToolTipText("");
         jbModificar1.setContentAreaFilled(false);
         jbModificar1.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +110,16 @@ public class PrincipalFactura extends javax.swing.JPanel {
                 jbModificar1ActionPerformed(evt);
             }
         });
+
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel2.setText("Ventas:");
+        jLabel2.setToolTipText("");
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel3.setText("Compras:");
+        jLabel3.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -127,7 +140,9 @@ public class PrincipalFactura extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -135,26 +150,38 @@ public class PrincipalFactura extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jLabel3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbModificar1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jbModificar1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        int fila = tablaModelos.getSelectedRow();
+        int fila = tablaCompras.getSelectedRow();
         if (fila>=0){
-            int id = (Integer) tablaModelos.getValueAt(fila, 0);
-            DetalleFactura nuevoPanel = new DetalleFactura(conector,contenedor,id,panelMensaje);
-            contenedor.removeAll();
-            contenedor.add(nuevoPanel);
-            contenedor.updateUI();   
+            int id = (Integer) tablaCompras.getValueAt(fila, 0);
+            String proveedor = (String) tablaCompras.getValueAt(fila, 3);
+            String fecha = (String) tablaCompras.getValueAt(fila, 3);
+            //DetalleFacturaCompra nuevoPanel = new DetalleFacturaCompra(conector,contenedor,id,proveedor,fecha,panelMensaje);
+            //contenedor.removeAll();
+            //contenedor.add(nuevoPanel);
+            //contenedor.updateUI();   
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
@@ -165,11 +192,13 @@ public class PrincipalFactura extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbModificar1;
-    private javax.swing.JTable tablaModelos;
-    private javax.swing.JTable tablaModelos1;
+    private javax.swing.JTable tablaCompras;
+    private javax.swing.JTable tablaVentas;
     // End of variables declaration//GEN-END:variables
 }

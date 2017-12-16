@@ -10,6 +10,7 @@ import Adaptadores.ConectorDB;
 import Adaptadores.MensajeUI;
 import Dominio.Cliente;
 import Dominio.Estatus;
+import Dominio.Factura;
 import Dominio.Informacion_contacto;
 import Dominio.Lote_material;
 import Dominio.Lugar;
@@ -27,30 +28,30 @@ import javax.swing.JPanel;
  *
  * @author alexd
  */
-public class DetalleFactura extends javax.swing.JPanel {
+public class DetalleFacturaCompra extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
-    Lote_material l;
+    Factura f;
     JPanel panelMensaje;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetalleFactura(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje) {
+    public DetalleFacturaCompra(ConectorDB conector,JPanel contenedor,int id, String proveedor, String fecha,JPanel panelMensaje) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
         initComponents();
         jScrollPane2.getViewport().setBackground(AdaptadorSQLUI.fondoScrolls);
         jScrollPane3.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
+        jtfCodigo.setEnabled(false);
+        jtfProveedor.setEnabled(false);
+        jtfProveedor.setText(proveedor);
+        jtfFechaCompra.setEnabled(false);
+        jtfFechaCompra.setText(fecha);
+        jtfPrecioTotal.setEnabled(false);
         this.setSize(870, 610);
-        l = Lote_material.buscarPorCodigo(conector, id);
-        if (l==null){
-            panelInformacion.setVisible(false);
-        }
-        else{
-            llenarDatosLote();    
-        }
+        f = Factura.buscarPorCodigo(conector, id);
     }
 
     /**
@@ -66,15 +67,15 @@ public class DetalleFactura extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jtCodigo = new javax.swing.JTextField();
-        jtfProveedores = new javax.swing.JTextField();
+        jtfCodigo = new javax.swing.JTextField();
+        jtfProveedor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jtfFechaCompra = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         panelInformacion = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tablaMateriales = new javax.swing.JTable();
+        tablaItems = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jtfPrecioTotal = new javax.swing.JTextField();
         botonVolver = new javax.swing.JButton();
@@ -100,9 +101,9 @@ public class DetalleFactura extends javax.swing.JPanel {
         jLabel2.setText("Codigo:");
         jLabel2.setToolTipText("");
 
-        jtfProveedores.addActionListener(new java.awt.event.ActionListener() {
+        jtfProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfProveedoresActionPerformed(evt);
+                jtfProveedorActionPerformed(evt);
             }
         });
 
@@ -124,7 +125,7 @@ public class DetalleFactura extends javax.swing.JPanel {
         jLabel8.setText("Materiales:");
         jLabel8.setToolTipText("");
 
-        tablaMateriales.setModel(new javax.swing.table.DefaultTableModel(
+        tablaItems.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -135,12 +136,12 @@ public class DetalleFactura extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablaMateriales.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaItems.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaMaterialesMouseClicked(evt);
+                tablaItemsMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tablaMateriales);
+        jScrollPane3.setViewportView(tablaItems);
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel7.setText("Precio Total:");
@@ -192,33 +193,29 @@ public class DetalleFactura extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(187, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 167, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jtfFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(296, 296, 296))
+                                .addComponent(jtfProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jtfProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(panelInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panelInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(87, 87, 87))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,21 +224,21 @@ public class DetalleFactura extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(panelInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -258,14 +255,14 @@ public class DetalleFactura extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tablaMaterialesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMaterialesMouseClicked
+    private void tablaItemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaItemsMouseClicked
         
-        int fila = tablaMateriales.getSelectedRow();
+        int fila = tablaItems.getSelectedRow();
         if (fila>=0){
-            int id = (Integer) tablaMateriales.getValueAt(fila, 0);
+            int id = (Integer) tablaItems.getValueAt(fila, 0);
             pru_lot pl = pru_lot.buscarPorCodigo(conector, id);
         }
-    }//GEN-LAST:event_tablaMaterialesMouseClicked
+    }//GEN-LAST:event_tablaItemsMouseClicked
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         PrincipalLotes nuevoPanel = new PrincipalLotes(conector,contenedor,panelMensaje);
@@ -274,9 +271,9 @@ public class DetalleFactura extends javax.swing.JPanel {
         contenedor.updateUI();    
     }//GEN-LAST:event_botonVolverActionPerformed
 
-    private void jtfProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfProveedoresActionPerformed
+    private void jtfProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfProveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfProveedoresActionPerformed
+    }//GEN-LAST:event_jtfProveedorActionPerformed
 
     private void jtfFechaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfFechaCompraActionPerformed
         // TODO add your handling code here:
@@ -294,28 +291,26 @@ public class DetalleFactura extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jtCodigo;
+    private javax.swing.JTextField jtfCodigo;
     private javax.swing.JTextField jtfFechaCompra;
     private javax.swing.JTextField jtfPrecioTotal;
-    private javax.swing.JTextField jtfProveedores;
+    private javax.swing.JTextField jtfProveedor;
     private javax.swing.JPanel panelInformacion;
-    private javax.swing.JTable tablaMateriales;
+    private javax.swing.JTable tablaItems;
     // End of variables declaration//GEN-END:variables
 
-    private void llenarDatosLote() {
-        jtCodigo.setText(String.valueOf(l.getLot_codigo()));
-        jtCodigo.setEnabled(false);
-        Material m = Material.buscarPorCodigo(conector, l.getFk_mat_codigo());
-        Proveedor p = Proveedor.buscarPorCodigo(conector, l.getFk_pro_rif());
-        jtfProveedores.setText(m.getMat_nombre());
-        jtfProveedores.setEnabled(false);
-        jtfFechaCompra.setText(p.getPro_nombre());
-        jtfFechaCompra.setEnabled(false);
-        jtfFechaCompra.setText(l.getLot_fecha_compra().toString());
-        jtfFechaCompra.setEnabled(false);
-        jtfPrecioTotal.setText(String.valueOf(l.getLot_precio()));
+    private void llenarDatosFactura() {
+        jtfCodigo.setText(String.valueOf(f.getFac_codigo()));
+        jtfCodigo.setEnabled(false);
+        //jtfProveedor.setText(m.getMat_nombre());
+        //jtfProveedor.setEnabled(false);
+        //jtfFechaCompra.setText(f.getFac_fecha_compra());
+        //jtfFechaCompra.setEnabled(false);
+        //jtfFechaCompra.setText(l.getLot_fecha_compra().toString());
+        //jtfFechaCompra.setEnabled(false);
+        jtfPrecioTotal.setText(String.valueOf(f.getFac_monto_total()));
         jtfPrecioTotal.setEnabled(false);
-        pru_lot.llenarTablaLote(conector, tablaMateriales, l.getLot_codigo());
+        Lote_material.llenarTablaDeFactura(conector, tablaItems, f.getFac_codigo());
         
     }
     

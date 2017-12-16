@@ -126,7 +126,7 @@ public class Factura{
         ResultSet rs =obtenerResultSet(conector,"SELECT fac_codigo as Codigo, min(aer_fecha_compra) as Fecha,fac_monto_total as Monto_Total, cli_nombre as Cliente"
                 + " FROM factura, aeronave, cliente"
                 + " WHERE fac_codigo=fk_fac_codigo AND fk_cli_rif=cli_rif"
-                + " GROUP BY fac_codigo ,fac_monto_total , pro_nombre"
+                + " GROUP BY fac_codigo ,fac_monto_total , cli_nombre"
                 + " ORDER by fac_codigo");
         AdaptadorSQLUI.llenarTabla(jTable, rs);     
     }
