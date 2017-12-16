@@ -26,7 +26,8 @@ public class Comprobador{
         Matcher mat = pat.matcher(dat);
         if(!mat.matches()||(dat.length()==0)){
             error.setText("Debe ingresar un número");
-            dato.setText(""); 
+            dato.setText("");
+            error.setVisible(true);
             return false;
         }
     return true;
@@ -39,6 +40,7 @@ public class Comprobador{
         if(!mat.matches()||(dat.length()==0)){
             error.setText("Texto no válido");
             dato.setText(""); 
+            error.setVisible(true);
             return false;
         }
     return true;
@@ -48,13 +50,19 @@ public class Comprobador{
         String pattern = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String dat = dato.getText();
-        try {
-            simpleDateFormat.parse(dat);
-            return true;
-        } catch (ParseException ex) {
-            error.setText("Formato no válido");
-            dato.setText("");
-            return false;
+        if (!(dat.length()==0)){
+            try {
+               simpleDateFormat.parse(dat);
+                return true;
+            } catch (ParseException ex) {
+                error.setText("Formato no válido");
+                dato.setText("");
+                error.setVisible(true);
+                return false;
+            }
+        }else{ 
+            error.setVisible(true);
+            return false;  
         }
     }
 }
