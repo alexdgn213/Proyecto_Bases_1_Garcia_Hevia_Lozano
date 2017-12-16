@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 /**
@@ -113,11 +114,38 @@ public class Cliente {
         
     }
     
+    public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
+        PreparedStatement pst;
+        try {
+            pst = conector.conexion.prepareStatement("SELECT cli_nombre from cliente");
+            ResultSet rs = pst.executeQuery();
+            AdaptadorSQLUI.llenarComboBox(jCombo, rs);
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        
+    }
+    
     public static Cliente buscarPorCodigo(ConectorDB conector, int rif){
         Cliente c = null;
         try {
             PreparedStatement pst = conector.conexion.prepareStatement("SELECT cli_rif,cli_nombre,cli_monto_acreditado,cli_fecha_inicio,fk_lug_codigo FROM cliente WHERE cli_rif=?");
             pst.setInt(1, rif);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                c = new Cliente(rs.getInt("cli_rif"),rs.getString("cli_nombre"),rs.getInt("cli_monto_acreditado"),rs.getDate("cli_fecha_inicio"),rs.getInt("fk_lug_codigo"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return c;
+    }
+    
+    public static Cliente buscarPorNombre(ConectorDB conector, String nombre){
+        Cliente c = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT cli_rif,cli_nombre,cli_monto_acreditado,cli_fecha_inicio,fk_lug_codigo FROM cliente WHERE cli_nombre=?");
+            pst.setString(1, nombre);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 c = new Cliente(rs.getInt("cli_rif"),rs.getString("cli_nombre"),rs.getInt("cli_monto_acreditado"),rs.getDate("cli_fecha_inicio"),rs.getInt("fk_lug_codigo"));

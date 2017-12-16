@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 /**
@@ -94,6 +95,18 @@ public class modelo_aeronave {
         return modelos;
     }
     
+    public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
+        PreparedStatement pst;
+        try {
+            pst = conector.conexion.prepareStatement("SELECT mod_nombre from modelo_aeronave");
+            ResultSet rs = pst.executeQuery();
+            AdaptadorSQLUI.llenarComboBox(jCombo, rs);
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        
+    }
+    
     public static void llenarTabla(ConectorDB conector, JTable jTable){
         ResultSet rs =obtenerResultSet(conector,"SELECT mod_codigo as Codigo,mod_nombre as nombre,mod_precio_compra as precio  FROM modelo_aeronave");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
@@ -105,6 +118,21 @@ public class modelo_aeronave {
         try {
             PreparedStatement pst = conector.conexion.prepareStatement("SELECT mod_codigo,mod_nombre,mod_precio_compra FROM modelo_aeronave WHERE mod_codigo=?");
             pst.setInt(1, codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                m = new modelo_aeronave(rs.getInt("mod_codigo"),rs.getString("mod_nombre"),rs.getInt("mod_precio_compra"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return m;
+    }
+    
+    public static modelo_aeronave buscarPorNombre(ConectorDB conector, String nombre){
+        modelo_aeronave m = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT mod_codigo,mod_nombre,mod_precio_compra FROM modelo_aeronave WHERE mod_nombre=?");
+            pst.setString(1, nombre);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 m = new modelo_aeronave(rs.getInt("mod_codigo"),rs.getString("mod_nombre"),rs.getInt("mod_precio_compra"));
