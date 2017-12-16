@@ -363,6 +363,11 @@ public class DetalleProveedores extends javax.swing.JPanel {
         jLabel25.setToolTipText("");
 
         jcbMateriales.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbMateriales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMaterialesActionPerformed(evt);
+            }
+        });
 
         jlErrorMaterialPrecio.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jlErrorMaterialPrecio.setForeground(new java.awt.Color(255, 0, 0));
@@ -811,6 +816,10 @@ public class DetalleProveedores extends javax.swing.JPanel {
             jcbMateriales.setSelectedItem(o);
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jcbMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMaterialesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbMaterialesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

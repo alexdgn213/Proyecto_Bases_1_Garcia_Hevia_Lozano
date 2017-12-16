@@ -578,12 +578,13 @@ public class DetalleClientes extends javax.swing.JPanel {
         jlErrorNombre.setVisible(false);
         jlErrorMonto.setVisible(false);
         jlErrorFecha.setVisible(false);
-        int fk_lugar = Lugar.fkDireccion(conector,jcbPais.getSelectedItem().toString(),jcbEstado.getSelectedItem().toString() , jcbMunicipio.getSelectedItem().toString(), jcbParroquia.getSelectedItem().toString());
-        if( Comprobador.ComprobarInt(jtfRif, jlErrorRif) &&
-        Comprobador.ComprobarString(jtfNombre, jlErrorNombre) &&
-        Comprobador.ComprobarInt(jtfMontoAcreditado, jlErrorMonto) &&
-        Comprobador.ComprobarDate(jtfFechaInicio, jlErrorFecha)){
+        boolean A = Comprobador.ComprobarInt(jtfRif, jlErrorRif);
+        boolean B = Comprobador.ComprobarString(jtfNombre, jlErrorNombre);
+        boolean C = Comprobador.ComprobarInt(jtfMontoAcreditado, jlErrorMonto);
+        boolean D = Comprobador.ComprobarDate(jtfFechaInicio, jlErrorFecha);
         
+        int fk_lugar = Lugar.fkDireccion(conector,jcbPais.getSelectedItem().toString(),jcbEstado.getSelectedItem().toString() , jcbMunicipio.getSelectedItem().toString(), jcbParroquia.getSelectedItem().toString());
+        if( A && B && C && D){
         if (c==null){
            Cliente c = new Cliente(Integer.parseInt(jtfRif.getText()),jtfNombre.getText(),Integer.parseInt(jtfMontoAcreditado.getText()),Date.valueOf(jtfFechaInicio.getText()),fk_lugar);
            c.agregarADB(conector);
