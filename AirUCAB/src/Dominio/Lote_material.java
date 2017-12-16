@@ -166,6 +166,23 @@ public class Lote_material {
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
+    
+    public static void llenarTablaPendientes(ConectorDB conector, JTable jTable){
+        ResultSet rs =obtenerResultSet(conector,"SELECT l.lot_codigo as Codigo,l.lot_precio as Precio,l.lot_fecha_compra as Fecha_Compra,l.lot_cantidad as Cantidad,m.mat_nombre as Material,p.pro_nombre as Proveedor "
+                + " FROM lote_material l, material m, proveedor p"
+                + " WHERE l.fk_pro_rif=p.pro_rif AND l.fk_mat_codigo=m.mat_codigo"
+                + " AND exists(Select pru_lot_codigo from pru_lot where fk_lot_codigo= l.lot_codigo AND fk_est_codigo<4)");
+        AdaptadorSQLUI.llenarTabla(jTable, rs);
+    }
+    
+    public static void llenarTablaFinalizados(ConectorDB conector, JTable jTable){
+        ResultSet rs =obtenerResultSet(conector,"SELECT l.lot_codigo as Codigo,l.lot_precio as Precio,l.lot_fecha_compra as Fecha_Compra,l.lot_cantidad as Cantidad,m.mat_nombre as Material,p.pro_nombre as Proveedor "
+                + " FROM lote_material l, material m, proveedor p"
+                + " WHERE l.fk_pro_rif=p.pro_rif AND l.fk_mat_codigo=m.mat_codigo"
+                + " AND not exists(Select pru_lot_codigo from pru_lot where fk_lot_codigo= l.lot_codigo AND fk_est_codigo<4)");
+        AdaptadorSQLUI.llenarTabla(jTable, rs);
+    }
+    
 
     public void setLot_codigo(int lot_codigo) {
         this.lot_codigo = lot_codigo;
