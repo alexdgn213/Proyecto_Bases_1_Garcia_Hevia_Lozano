@@ -108,7 +108,7 @@ public class Tip_mod {
     }
     
     public static void llenarTablaDeModelo(ConectorDB conector, JTable jTable, int id){
-        ResultSet rs =obtenerResultSet(conector,"SELECT tip_mod_codigo as Codigo,tip_mod_cantidad as Cantidad ,fk_mod_codigo as Codigo_Modelo_Aeronave,fk_tip_codigo as Codigo_Tipo_Pieza FROM tip_mod where fk_mod_codigo=mod_codigo AND fk_tip_codigo="+String.valueOf(id));
+        ResultSet rs =obtenerResultSet(conector,"SELECT tm.tip_mod_codigo as Codigo, t.tip_nombre as Pieza,tm.tip_mod_cantidad as Cantidad  FROM tip_mod tm, tipo_pieza t where tm.fk_tip_codigo=t.tip_codigo AND fk_mod_codigo="+String.valueOf(id));
         AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
   

@@ -29,14 +29,19 @@ public class modelo_aeronave {
         this.mod_nombre = mod_nombre;
         this.mod_precio_compra = mod_precio_compra;
     }
+
+    public modelo_aeronave(String mod_nombre, int mod_precio_compra) {
+        this.mod_nombre = mod_nombre;
+        this.mod_precio_compra = mod_precio_compra;
+    }
+    
     
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO modelo_aeronave(mod_codigo,mod_nombre,mod_precio_compra) VALUES(?,?,?)";
+            String stm = "INSERT INTO modelo_aeronave(mod_nombre,mod_precio_compra) VALUES(?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(1, mod_codigo);
-            pst.setString(2, mod_nombre);
-            pst.setInt(1, mod_precio_compra);
+            pst.setString(1, mod_nombre);
+            pst.setInt(2, mod_precio_compra);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
