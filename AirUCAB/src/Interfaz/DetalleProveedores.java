@@ -6,6 +6,7 @@
 package Interfaz;
 
 import Adaptadores.AdaptadorSQLUI;
+import Adaptadores.Comprobador;
 import Adaptadores.ConectorDB;
 import Adaptadores.MensajeUI;
 import Dominio.Cliente;
@@ -630,7 +631,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1091, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -690,7 +691,21 @@ public class DetalleProveedores extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbPaisItemStateChanged
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        jlErrorRif.setVisible(false);
+        jlErrorNombre.setVisible(false);
+        jlErrorMonto.setVisible(false);
+        jlErrorFecha.setVisible(false);
+        jlErrorInformacionTipo.setVisible(false);
+        jlErrorInformacionValor.setVisible(false);
+        jlErrorMaterialPrecio.setVisible(false);
         int fk_lugar = Lugar.fkDireccion(conector,jcbPais.getSelectedItem().toString(),jcbEstado.getSelectedItem().toString() , jcbMunicipio.getSelectedItem().toString(), jcbParroquia.getSelectedItem().toString());
+        if( Comprobador.ComprobarInt(jtfRif, jlErrorRif) &&
+        Comprobador.ComprobarString(jtfNombre, jlErrorNombre) &&
+        Comprobador.ComprobarInt(jtfMontoAcreditado, jlErrorMonto) &&
+        Comprobador.ComprobarDate(jtfFechaInicio, jlErrorFecha) &&
+        Comprobador.ComprobarString(jtfTipo, jlErrorInformacionTipo) &&
+        Comprobador.ComprobarInt(jtfValor, jlErrorInformacionValor) &&
+        Comprobador.ComprobarInt(jtfPrecio, jlErrorMaterialPrecio) ){
         if (p==null){
            Proveedor p = new Proveedor(Integer.parseInt(jtfRif.getText()),jtfNombre.getText(),Integer.parseInt(jtfMontoAcreditado.getText()),Date.valueOf(jtfFechaInicio.getText()),fk_lugar);
            p.agregarADB(conector);
@@ -709,6 +724,9 @@ public class DetalleProveedores extends javax.swing.JPanel {
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
+        } else{
+            new Thread(new MensajeUI(panelMensaje,"Los datos ingresados no son correctos",0)).start();
+        }
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
