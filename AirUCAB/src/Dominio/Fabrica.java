@@ -138,7 +138,7 @@ public class Fabrica {
         }
         
     }
-/*
+
     public int getFab_codigo() {
         return fab_codigo;
     }
@@ -161,5 +161,5 @@ public class Fabrica {
 
     public void setFk_lug_codigo(int fk_lug_codigo) {
         this.fk_lug_codigo = fk_lug_codigo;
-    }*/
+    }
 }
