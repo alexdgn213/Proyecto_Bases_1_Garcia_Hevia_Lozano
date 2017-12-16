@@ -8,6 +8,7 @@ package Interfaz;
 import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.ConectorDB;
 import Adaptadores.MensajeUI;
+import Dominio.Aeronave;
 import Dominio.Cliente;
 import Dominio.Estatus;
 import Dominio.Factura;
@@ -28,7 +29,7 @@ import javax.swing.JPanel;
  *
  * @author alexd
  */
-public class DetalleFacturaCompra extends javax.swing.JPanel {
+public class DetalleFacturaVenta extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
     Factura f;
@@ -37,7 +38,7 @@ public class DetalleFacturaCompra extends javax.swing.JPanel {
     /**
      * Creates new form PrincipalClientes
      */
-    public DetalleFacturaCompra(ConectorDB conector,JPanel contenedor,int id, String proveedor, String fecha,JPanel panelMensaje) {
+    public DetalleFacturaVenta(ConectorDB conector,JPanel contenedor,int id, String proveedor, String fecha,JPanel panelMensaje) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
@@ -110,7 +111,7 @@ public class DetalleFacturaCompra extends javax.swing.JPanel {
         });
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel3.setText("Proveedor:");
+        jLabel3.setText("Cliente:");
         jLabel3.setToolTipText("");
 
         jtfFechaCompra.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +125,7 @@ public class DetalleFacturaCompra extends javax.swing.JPanel {
         jLabel4.setToolTipText("");
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel8.setText("Materiales:");
+        jLabel8.setText("Aviones:");
         jLabel8.setToolTipText("");
 
         tablaItems.setModel(new javax.swing.table.DefaultTableModel(
@@ -206,17 +207,16 @@ public class DetalleFacturaCompra extends javax.swing.JPanel {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jtfFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtfProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(panelInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jtfProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(panelInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(87, 87, 87))
         );
         jPanel1Layout.setVerticalGroup(
@@ -258,7 +258,7 @@ public class DetalleFacturaCompra extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablaItemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaItemsMouseClicked
-
+        
     }//GEN-LAST:event_tablaItemsMouseClicked
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
@@ -307,7 +307,7 @@ public class DetalleFacturaCompra extends javax.swing.JPanel {
         //jtfFechaCompra.setEnabled(false);
         jtfPrecioTotal.setText(String.valueOf(f.getFac_monto_total()));
         jtfPrecioTotal.setEnabled(false);
-        Lote_material.llenarTablaDeFactura(conector, tablaItems, f.getFac_codigo());
+        Aeronave.llenarTablaDeFactura(conector, tablaItems, f.getFac_codigo());
         
     }
     

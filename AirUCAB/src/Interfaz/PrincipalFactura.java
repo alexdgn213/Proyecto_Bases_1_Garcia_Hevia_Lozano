@@ -177,16 +177,25 @@ public class PrincipalFactura extends javax.swing.JPanel {
         if (fila>=0){
             int id = (Integer) tablaCompras.getValueAt(fila, 0);
             String proveedor = (String) tablaCompras.getValueAt(fila, 3);
-            String fecha = (String) tablaCompras.getValueAt(fila, 3);
-            //DetalleFacturaCompra nuevoPanel = new DetalleFacturaCompra(conector,contenedor,id,proveedor,fecha,panelMensaje);
-            //contenedor.removeAll();
-            //contenedor.add(nuevoPanel);
-            //contenedor.updateUI();   
+            String fecha = tablaCompras.getValueAt(fila, 1).toString();
+            DetalleFacturaCompra nuevoPanel = new DetalleFacturaCompra(conector,contenedor,id,proveedor,fecha,panelMensaje);
+            contenedor.removeAll();
+            contenedor.add(nuevoPanel);
+            contenedor.updateUI();   
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificar1ActionPerformed
-        // TODO add your handling code here:
+        int fila = tablaVentas.getSelectedRow();
+        if (fila>=0){
+            int id = (Integer) tablaVentas.getValueAt(fila, 0);
+            String proveedor = (String) tablaVentas.getValueAt(fila, 3);
+            String fecha = tablaVentas.getValueAt(fila, 1).toString();
+            DetalleFacturaVenta nuevoPanel = new DetalleFacturaVenta(conector,contenedor,id,proveedor,fecha,panelMensaje);
+            contenedor.removeAll();
+            contenedor.add(nuevoPanel);
+            contenedor.updateUI();   
+        }
     }//GEN-LAST:event_jbModificar1ActionPerformed
 
 

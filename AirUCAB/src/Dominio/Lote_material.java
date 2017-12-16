@@ -185,7 +185,7 @@ public class Lote_material {
     
 
     public static void llenarTablaDeFactura(ConectorDB conector, JTable jTable, int id){
-        ResultSet rs =obtenerResultSet(conector,"SELECT l.lot_codigo as Codigo,p.pro_nombre as Proveedor,m.mat_nombre as Material,l.lot_precio as Precio,l.lot_cantidad as Cantidad "
+        ResultSet rs =obtenerResultSet(conector,"SELECT l.lot_codigo as Codigo,m.mat_nombre as Material,l.lot_precio as Precio,l.lot_cantidad as Cantidad "
                 + " FROM lote_material l, material m, proveedor p"
                 + " WHERE l.fk_pro_rif=p.pro_rif AND l.fk_mat_codigo=m.mat_codigo"
                 + " AND fk_fac_codigo="+String.valueOf(id));
