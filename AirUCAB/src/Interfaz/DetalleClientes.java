@@ -6,6 +6,7 @@
 package Interfaz;
 
 import Adaptadores.AdaptadorSQLUI;
+import Adaptadores.Comprobador;
 import Adaptadores.ConectorDB;
 import Adaptadores.MensajeUI;
 import Dominio.Cliente;
@@ -573,7 +574,16 @@ public class DetalleClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        jlErrorRif.setVisible(false);
+        jlErrorNombre.setVisible(false);
+        jlErrorMonto.setVisible(false);
+        jlErrorFecha.setVisible(false);
         int fk_lugar = Lugar.fkDireccion(conector,jcbPais.getSelectedItem().toString(),jcbEstado.getSelectedItem().toString() , jcbMunicipio.getSelectedItem().toString(), jcbParroquia.getSelectedItem().toString());
+        if( Comprobador.ComprobarInt(jtfRif, jlErrorRif) &&
+        Comprobador.ComprobarString(jtfNombre, jlErrorNombre) &&
+        Comprobador.ComprobarInt(jtfMontoAcreditado, jlErrorMonto) &&
+        Comprobador.ComprobarDate(jtfFechaInicio, jlErrorFecha)){
+        
         if (c==null){
            Cliente c = new Cliente(Integer.parseInt(jtfRif.getText()),jtfNombre.getText(),Integer.parseInt(jtfMontoAcreditado.getText()),Date.valueOf(jtfFechaInicio.getText()),fk_lugar);
            c.agregarADB(conector);
@@ -592,6 +602,9 @@ public class DetalleClientes extends javax.swing.JPanel {
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
+        }else{
+            new Thread(new MensajeUI(panelMensaje,"Los datos ingresados no son correctos",0)).start();
+        }
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
