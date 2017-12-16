@@ -296,7 +296,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
             }
         });
 
-        bAddInf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_add_black_24dp_1x.png"))); // NOI18N
+        bAddInf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
         bAddInf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAddInf1ActionPerformed(evt);
@@ -368,7 +368,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         jlErrorMaterialPrecio.setText("Error en el rif");
         jlErrorMaterialPrecio.setToolTipText("");
 
-        bAddMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_add_black_24dp_1x.png"))); // NOI18N
+        bAddMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
         bAddMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAddMaterialActionPerformed(evt);
@@ -630,7 +630,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1142, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1091, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

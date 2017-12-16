@@ -121,7 +121,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Interfaz/Imagenes/ic_edit_black_48dp_1x.png"/>
+          <Image iconType="3" name="/Interfaz/Imagenes/ic_search_black_24dp_2x.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -181,7 +181,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Interfaz/Imagenes/ic_edit_black_48dp_1x.png"/>
+          <Image iconType="3" name="/Interfaz/Imagenes/ic_search_black_24dp_2x.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
