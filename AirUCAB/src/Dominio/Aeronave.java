@@ -103,7 +103,8 @@ public class Aeronave {
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT aer_codigo as Codigo,fk_cli_rif as RIF_cliente,aer_fecha_compra as Fecha_de_compra, fk_mod_codigo as Modelo FROM aeronave");
+        ResultSet rs =obtenerResultSet(conector,"SELECT aer_codigo as Codigo, cli_nombre as Cliente,aer_fecha_compra as Fecha_de_compra, mod_nombre as Modelo FROM aeronave,cliente,modelo_aeronave "
+                + " WHERE fk_cli_rif=cli_rif AND fk_mod_codigo=mod_codigo");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
     }
     
@@ -114,6 +115,7 @@ public class Aeronave {
                 + " AND fk_fac_codigo="+String.valueOf(id));
         AdaptadorSQLUI.llenarTabla(jTable, rs);
     }
+
     /*
     public static Aeronave buscarPorCodigo(ConectorDB conector, int codigo){
         Aeronave l = null;
