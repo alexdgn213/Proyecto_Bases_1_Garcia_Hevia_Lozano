@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 /**
@@ -23,14 +24,14 @@ import javax.swing.JTable;
 public class Estatus{
     
     int est_codigo;
-    String est_nombre
+    String est_nombre;
 
-    public Factura(String est_nombre) {
+    public Estatus(String est_nombre) {
         this.est_nombre = est_nombre;
     }
 
-    public Factura(int fac_codigo, String est_nombre) {
-        this.fac_codigo = fac_codigo;
+    public Estatus(int est_codigo, String est_nombre) {
+        this.est_codigo = est_codigo;
         this.est_nombre =est_nombre ;
     }
     
@@ -61,7 +62,7 @@ public class Estatus{
             String stm = "UPDATE Estatus SET est_nombre = ? WHERE est_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(2, est_codigo);
-            pst.setInt(1, est_nombre);
+            pst.setString(1, est_nombre);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -112,6 +113,12 @@ public class Estatus{
         
     }
     
+    public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
+        ResultSet rs =obtenerResultSet(conector,"SELECT est_nombre as Nombre FROM estatus");
+        AdaptadorSQLUI.llenarComboBox(jCombo, rs);
+        
+    }
+    
     public static Estatus buscarPorCodigo(ConectorDB conector, int codigo){
         Estatus e = null;
         try {
@@ -126,3 +133,5 @@ public class Estatus{
         }
         return e;
     }
+    
+}

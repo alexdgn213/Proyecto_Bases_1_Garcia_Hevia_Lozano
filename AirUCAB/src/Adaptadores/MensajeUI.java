@@ -22,7 +22,12 @@ public class MensajeUI implements Runnable{
         if(tipo==1){
             mensajeError.setBackground(AdaptadorSQLUI.fondoExito);
         }
+        if(tipo==0){
+            mensajeError.setBackground(AdaptadorSQLUI.fondoError);
+        }
         JLabel texto = (JLabel)mensajeError.getComponent(1);
+        JLabel imagen = (JLabel)mensajeError.getComponent(0);
+        imagen.setVisible(false);
         texto.setText(mensaje);
     }
     

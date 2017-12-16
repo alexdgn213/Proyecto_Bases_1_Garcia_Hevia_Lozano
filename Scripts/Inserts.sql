@@ -2667,6 +2667,13 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   ('01/01/2016','02/01/2016',3,1,11,null,null),
   ('09/09/2015','09/09/2015',3,2,12,null,null);
   
+	insert into Estatus(est_nombre) Values
+	(1,'No Iniciado'),
+	(2,'En Espera'),
+	(3,'En Curso'),
+	(4,'Finalizado'),
+	(5,'Cancelado');
+
   INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_mot_codigo,fk_est_codigo) VALUES
   ('Ensamblaje del Ala',5,3,1,null,1),
   ('Ensamblaje del Fuselaje',7,5,2,null,1),

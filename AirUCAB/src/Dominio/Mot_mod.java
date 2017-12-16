@@ -33,7 +33,7 @@ public class Mot_mod{
         this.fk_mod_codigo = fk_mod_codigo;
     }
 
-    public Factura(int mot_mod_codigo,int mot_mod_cantidad,int fk_mot_codigo,int fk_mod_codigo) {
+    public Mot_mod(int mot_mod_codigo,int mot_mod_cantidad,int fk_mot_codigo,int fk_mod_codigo) {
         this.mot_mod_codigo = mot_mod_codigo;
         this.mot_mod_cantidad = mot_mod_cantidad;
         this.fk_mot_codigo = fk_mot_codigo;
@@ -70,7 +70,7 @@ public class Mot_mod{
         try{
             String stm = "UPDATE Mot_mod SET mot_mod_cantidad=?,fk_mot_codigo=?,fk_mod_codigo=? WHERE mot_mod_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(4, fac_codigo);
+            pst.setInt(4, mot_mod_codigo);
             pst.setInt(1, mot_mod_cantidad);
             pst.setInt(2, fk_mot_codigo);
             pst.setInt(3, fk_mod_codigo);
@@ -138,3 +138,5 @@ public class Mot_mod{
         }
         return mm;
     }
+
+}

@@ -8,6 +8,7 @@ package Interfaz;
 import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.ConectorDB;
 import Dominio.Cliente;
+import Dominio.Informacion_contacto;
 import Dominio.Lote_material;
 import java.awt.Color;
 import javax.swing.JPanel;
@@ -45,7 +46,6 @@ public class PrincipalLotes extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaLotes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(850, 580));
@@ -70,15 +70,6 @@ public class PrincipalLotes extends javax.swing.JPanel {
         jLabel1.setText("Lista de Lotes Pendientes");
         jLabel1.setToolTipText("");
 
-        jbNuevo.setBackground(new java.awt.Color(255, 255, 255));
-        jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_add_black_48dp_1x.png"))); // NOI18N
-        jbNuevo.setContentAreaFilled(false);
-        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbNuevoActionPerformed(evt);
-            }
-        });
-
         jbModificar.setBackground(new java.awt.Color(255, 255, 255));
         jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_edit_black_48dp_1x.png"))); // NOI18N
         jbModificar.setToolTipText("");
@@ -97,9 +88,7 @@ public class PrincipalLotes extends javax.swing.JPanel {
                 .addContainerGap(89, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -113,24 +102,21 @@ public class PrincipalLotes extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(150, 150, 150)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,-1,panelMensaje);
-        contenedor.removeAll();
-        contenedor.add(nuevoPanel);
-        contenedor.updateUI();
-    }//GEN-LAST:event_jbNuevoActionPerformed
-
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-       
+        int fila = tablaLotes.getSelectedRow();
+        if (fila>=0){
+            int id = (Integer) tablaLotes.getValueAt(fila, 0);
+            DetalleLote nuevoPanel = new DetalleLote(conector,contenedor,id,panelMensaje);
+            contenedor.removeAll();
+            contenedor.add(nuevoPanel);
+            contenedor.updateUI();
+        }
     }//GEN-LAST:event_jbModificarActionPerformed
 
 
@@ -138,7 +124,6 @@ public class PrincipalLotes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbModificar;
-    private javax.swing.JButton jbNuevo;
     private javax.swing.JTable tablaLotes;
     // End of variables declaration//GEN-END:variables
 }

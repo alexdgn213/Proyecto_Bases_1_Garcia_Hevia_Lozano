@@ -53,7 +53,6 @@ public class Factura{
             pst.setInt(1, fac_monto_total);
             pst.setDate(2, fac_fecha);
             ResultSet rs = pst.executeQuery();
-            System.out.println("Ya cree");
             while (rs.next()) {
                 this.fac_codigo = rs.getInt("fac_codigo");
                 System.out.println(rs.getInt("fac_codigo"));

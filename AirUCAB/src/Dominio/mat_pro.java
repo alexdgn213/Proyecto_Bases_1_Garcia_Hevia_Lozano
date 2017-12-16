@@ -130,7 +130,7 @@ public class mat_pro {
       
 public static void llenarTablaMaterialesDeProveedor(ConectorDB conector, JTable jTable, int pro_rif){
          try{
-            String stm = "SELECT mat_pro_codigo as codigo, mat_nombre as nombre,mat_pro_precio_actual as Precio,mat_pro_codigo as Codigo_Compra FROM mat_pro, material WHERE fk_mat_codigo=mat_codigo AND fk_pro_rif=?";
+            String stm = "SELECT mat_codigo as codigo, mat_nombre as nombre,mat_pro_precio_actual as Precio,mat_pro_codigo as Codigo_Compra FROM mat_pro, material WHERE fk_mat_codigo=mat_codigo AND fk_pro_rif=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, pro_rif);
             ResultSet rs = pst.executeQuery();

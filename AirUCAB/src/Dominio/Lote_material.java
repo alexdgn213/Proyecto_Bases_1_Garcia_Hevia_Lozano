@@ -65,7 +65,24 @@ public class Lote_material {
             pst.setInt(6,fk_mat_pro_codigo);
             pst.setInt(7, fk_fac_codigo);
             pst.executeUpdate();
+            stm = "SELECT lot_codigo FROM lote_material WHERE lot_precio=? AND lot_fecha_compra=? AND lot_cantidad=? AND fk_mat_codigo = ? AND fk_pro_rif =? AND fk_mat_pro_codigo=? AND fk_fac_codigo=?";
+            pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, lot_precio);
+            pst.setDate(2,lot_fecha_compra);
+            pst.setInt(3,lot_cantidad);
+            pst.setInt(4,fk_mat_codigo);
+            pst.setInt(5,fk_pro_rif);
+            pst.setInt(6,fk_mat_pro_codigo);
+            pst.setInt(7, fk_fac_codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                this.lot_codigo = rs.getInt("lot_codigo");
+            }
             pst.close();
+            pru_lot pl1 = new pru_lot(1,lot_codigo,1);
+            pl1.agregarADB(conector);
+            pru_lot pl2 = new pru_lot(2,lot_codigo,1);
+            pl2.agregarADB(conector);
         }catch (SQLException ex){
            System.out.print(ex.toString());
         }
@@ -126,8 +143,26 @@ public class Lote_material {
         return lotes;
     }
     
+    public static Lote_material buscarPorCodigo(ConectorDB conector, int id){
+        Lote_material lote = null;
+        try {
+            String stm = "Select lot_codigo, lot_precio, lot_fecha_compra, lot_cantidad, fk_mat_codigo, fk_pro_rif, fk_mat_pro_codigo  from Lote_material where lot_codigo=?";
+            PreparedStatement pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                lote = new Lote_material(rs.getInt("lot_codigo"),rs.getInt("lot_precio"),rs.getDate("lot_fecha_compra"),rs.getInt("lot_cantidad"),rs.getInt("fk_mat_codigo"),rs.getInt("fk_pro_rif"),rs.getInt("fk_mat_pro_codigo"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return lote;
+    }
+    
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT lot_codigo as Codigo,lot_precio as Precio,lot_fecha_compra as Fecha_Compra,lot_cantidad as Cantidad,fk_mat_codigo as Codigo_Material,fk_pro_rif as Rif_Proveedor,fk_mat_pro_codigo as Codigo_material  FROM lote_material");
+        ResultSet rs =obtenerResultSet(conector,"SELECT l.lot_codigo as Codigo,l.lot_precio as Precio,l.lot_fecha_compra as Fecha_Compra,l.lot_cantidad as Cantidad,m.mat_nombre as Material,p.pro_nombre as Proveedor "
+                + " FROM lote_material l, material m, proveedor p"
+                + " WHERE l.fk_pro_rif=p.pro_rif AND l.fk_mat_codigo=m.mat_codigo");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }

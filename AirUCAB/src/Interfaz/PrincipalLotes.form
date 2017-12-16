@@ -29,10 +29,7 @@
               <EmptySpace pref="89" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="628" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jbNuevo" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="jbModificar" pref="0" max="32767" attributes="0"/>
-              </Group>
+              <Component id="jbModificar" min="-2" pref="48" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -49,12 +46,8 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jbNuevo" min="-2" pref="48" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jbModificar" min="-2" pref="48" max="-2" attributes="0"/>
-                  </Group>
                   <Component id="jScrollPane1" min="-2" pref="264" max="-2" attributes="0"/>
+                  <Component id="jbModificar" min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="126" max="32767" attributes="0"/>
           </Group>
@@ -94,20 +87,6 @@
         <Property name="text" type="java.lang.String" value="Lista de Lotes Pendientes"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jbNuevo">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Interfaz/Imagenes/ic_add_black_48dp_1x.png"/>
-        </Property>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbNuevoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbModificar">
       <Properties>

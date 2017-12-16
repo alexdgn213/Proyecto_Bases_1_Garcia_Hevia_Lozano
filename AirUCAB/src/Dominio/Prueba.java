@@ -7,12 +7,14 @@ package Dominio;
 
 import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.ConectorDB;
+import static Dominio.Estatus.obtenerResultSet;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 /**
@@ -35,8 +37,8 @@ public class Prueba {
         try{
             String stm = "INSERT INTO Prueba(pru_nombre,pru_descripcion) VALUES(?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(1, pru_nombre);
-            pst.setDate(2,pru_descripcion);
+            pst.setString(1, pru_nombre);
+            pst.setString(2,pru_descripcion);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -49,8 +51,8 @@ public class Prueba {
             String stm = "UPDATE Prueba SET pru_nombre = ?,pru_descripcion=? WHERE pru_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(3, pru_codigo);
-            pst.setInt(1, pru_nombre);
-            pst.setDate(2,pru_descripcion);
+            pst.setString(1, pru_nombre);
+            pst.setString(2,pru_descripcion);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -86,7 +88,7 @@ public class Prueba {
         try {
             ResultSet rs = obtenerResultSet(conector,"SELECT pru_codigo as codigo,pru_nombre as nombre,pru_descripcion FROM prueba");
             while (rs.next()) {
-                Prueba p = new Lote_material(rs.getInt("pru_codigo"),rs.getString("pru_nombre"),rs.getString("pru_descripcion"));
+                Prueba p = new Prueba(rs.getInt("pru_codigo"),rs.getString("pru_nombre"),rs.getString("pru_descripcion"));
                 pruebas.add(p);
             }
         } catch (SQLException ex) {
@@ -97,6 +99,11 @@ public class Prueba {
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
         ResultSet rs =obtenerResultSet(conector,"SELECT pru_codigo as Codigo,pru_nombre as Nombre,pru_descripcion as Descripcion FROM prueba");
-        AdaptadorSQLUI.llenarTabla(jTable, rs);
-        
+        AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
+    
+    public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
+        ResultSet rs =obtenerResultSet(conector,"SELECT pru_nombre as Nombre FROM prueba");
+        AdaptadorSQLUI.llenarComboBox(jCombo, rs);
+    }
+}
