@@ -2491,7 +2491,7 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   (4,'01/01/2011'),
   (16,'02/02/2012'),
   (6,'10/09/2009'),
-  (10,02/03/2013'),
+  (10,'02/03/2013'),
   (4,'04/03/2014'),
   (50,'12/12/2010'),
   (48,'09/08/2011'),
@@ -2668,11 +2668,11 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   ('09/09/2015','09/09/2015',3,2,12,null,null);
   
 	insert into Estatus(est_nombre) Values
-	(1,'No Iniciado'),
-	(2,'En Espera'),
-	(3,'En Curso'),
-	(4,'Finalizado'),
-	(5,'Cancelado');
+	('No Iniciado'),
+	('En Espera'),
+	('En Curso'),
+	('Finalizado'),
+	('Cancelado');
 
   INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_mot_codigo,fk_est_codigo) VALUES
   ('Ensamblaje del Ala',5,3,1,null,1),
@@ -2823,7 +2823,7 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
   (906,2,2),
   (200,5,3);
   
-  INSERT INTO pru_aer(pru_aer_fecha_realizacion,fk_pru_codigo,fk_aer_codigo,fk_est)VALUES
+  INSERT INTO pru_aer(pru_aer_fecha_realizacion,fk_pru_codigo,fk_aer_codigo,fk_est_codigo)VALUES
   ('03/12/2015',4,5,1),
   ('12/04/2014',4,4,1),
   ('11/11/2015',4,3,1),
@@ -2836,13 +2836,4 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
   (14000000,null,5678876556788765,'Mercantil','VISA','02/10/2025','Debito',3),
   (14800000,null,1267762112677621,'Banesco','Master','06/10/2028','Debito',4),
   (15500000,null,9812218934566543,'Venezolan','Master','09/09/2035','Credito',5);
-  
-  
-  INSERT INTO estatus(est_nombre)VALUES
-  ("Finalizado"),
-  ("En Curso"),
-  ("En Espera"),
-  ("Cancelado"),
-  ("No Iniciado");
-
 --
