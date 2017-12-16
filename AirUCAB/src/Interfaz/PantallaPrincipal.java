@@ -558,11 +558,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuComprarMouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalVender(conector,Contenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void menuVenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuVenderMouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalVender(conector,Contenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_menuVenderMouseClicked
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
@@ -582,11 +590,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuAvionesMouseClicked
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalFactura(conector,Contenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_jLabel19MouseClicked
 
     private void menuFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFacturaMouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalFactura(conector,Contenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_menuFacturaMouseClicked
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked

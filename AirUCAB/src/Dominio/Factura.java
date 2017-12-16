@@ -113,10 +113,22 @@ public class Factura{
         return facturas;
     }
     
-    public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT fac_codigo as Codigo,fac_monto_total as Monto_Total FROM factura");
-        AdaptadorSQLUI.llenarTabla(jTable, rs);
-        
+    public static void llenarTablaFacturasCompra(ConectorDB conector, JTable jTable){
+        ResultSet rs =obtenerResultSet(conector,"SELECT fac_codigo as Codigo, min(lot_fecha_compra) as Fecha,fac_monto_total as Monto_Total, pro_nombre as Proveedor"
+                + " FROM factura, lote_material, proveedor"
+                + " WHERE fac_codigo=fk_fac_codigo AND fk_pro_rif=pro_rif"
+                + " GROUP BY fac_codigo ,fac_monto_total , pro_nombre"
+                + " ORDER by fac_codigo");
+        AdaptadorSQLUI.llenarTabla(jTable, rs);     
+    }
+    
+    public static void llenarTablaFacturasVenta(ConectorDB conector, JTable jTable){
+        ResultSet rs =obtenerResultSet(conector,"SELECT fac_codigo as Codigo, min(aer_fecha_compra) as Fecha,fac_monto_total as Monto_Total, cli_nombre as Cliente"
+                + " FROM factura, aeronave, cliente"
+                + " WHERE fac_codigo=fk_fac_codigo AND fk_cli_rif=cli_rif"
+                + " GROUP BY fac_codigo ,fac_monto_total , pro_nombre"
+                + " ORDER by fac_codigo");
+        AdaptadorSQLUI.llenarTabla(jTable, rs);     
     }
     
     public static Factura buscarPorCodigo(ConectorDB conector, int codigo){
