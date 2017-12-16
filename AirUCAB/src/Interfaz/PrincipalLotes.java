@@ -33,6 +33,7 @@ public class PrincipalLotes extends javax.swing.JPanel {
         Lote_material.llenarTablaPendientes(conector, tablaLotesPendientes);
         Lote_material.llenarTablaFinalizados(conector, tablaLotesFinalizados);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
+        jScrollPane2.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
     }
 
     /**
@@ -77,7 +78,7 @@ public class PrincipalLotes extends javax.swing.JPanel {
         jLabel1.setToolTipText("");
 
         jbModificar.setBackground(new java.awt.Color(255, 255, 255));
-        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_edit_black_48dp_1x.png"))); // NOI18N
+        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_search_black_24dp_2x.png"))); // NOI18N
         jbModificar.setToolTipText("");
         jbModificar.setContentAreaFilled(false);
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +111,7 @@ public class PrincipalLotes extends javax.swing.JPanel {
         jLabel3.setToolTipText("");
 
         jbModificar1.setBackground(new java.awt.Color(255, 255, 255));
-        jbModificar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_edit_black_48dp_1x.png"))); // NOI18N
+        jbModificar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_search_black_24dp_2x.png"))); // NOI18N
         jbModificar1.setToolTipText("");
         jbModificar1.setContentAreaFilled(false);
         jbModificar1.addActionListener(new java.awt.event.ActionListener() {

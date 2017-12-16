@@ -64,7 +64,7 @@ public class PantallaLogin extends javax.swing.JFrame {
         jLabel1.setToolTipText("");
 
         bAcceder.setBackground(new java.awt.Color(255, 255, 255));
-        bAcceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_chevron_right_black_48dp_1x.png"))); // NOI18N
+        bAcceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_forward_black_24dp_2x.png"))); // NOI18N
         bAcceder.setMargin(new java.awt.Insets(14, 14, 14, 14));
         bAcceder.setMaximumSize(new java.awt.Dimension(421, 269));
         bAcceder.setMinimumSize(new java.awt.Dimension(421, 269));

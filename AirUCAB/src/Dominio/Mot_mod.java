@@ -120,8 +120,12 @@ public class Mot_mod{
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
         ResultSet rs =obtenerResultSet(conector,"SELECT mot_mod_codigo as Codigo,mot_mod_cantidad as Cantidad,fk_mot_codigo as Codigo_Motor,fk_mod_codigo as Codigo_Modelo_Aeronave FROM mot_mod");
-        AdaptadorSQLUI.llenarTabla(jTable, rs);
-        
+        AdaptadorSQLUI.llenarTabla(jTable, rs); 
+    }
+    
+    public static void llenarTablaDeModelo(ConectorDB conector, JTable jTable, int id){
+        ResultSet rs =obtenerResultSet(conector,"SELECT mot_mod_codigo as Codigo,mot_marca ||' '||  mot_modelo as Motor ,mot_mod_cantidad as Cantidad FROM mot_mod, motor where fk_mot_codigo=mot_codigo AND fk_mod_codigo="+String.valueOf(id));
+        AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
     
     public static Mot_mod buscarPorCodigo(ConectorDB conector, int codigo){

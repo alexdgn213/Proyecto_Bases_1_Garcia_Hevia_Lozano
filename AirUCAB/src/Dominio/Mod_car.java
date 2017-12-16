@@ -110,6 +110,11 @@ public class Mod_car {
         ResultSet rs =obtenerResultSet(conector,"SELECT mod_car_codigo as Codigo,mod_car_valor as Valor,mod_car_descripcion,fk_mod_codigo as Codigo_Modelo_Aeronave,fk_car_codigo as Codigo_Caracteristica FROM mod_car");
         AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
+    
+    public static void llenarTablaDeModelo(ConectorDB conector, JTable jTable, int id){
+        ResultSet rs =obtenerResultSet(conector,"SELECT mod_car_codigo as Codigo,car_nombre as Caracteristica ,mod_car_valor as Valor,mod_car_descripcion as Descripcion FROM mod_car, caracteristica where fk_car_codigo=car_codigo AND fk_mod_codigo="+String.valueOf(id));
+        AdaptadorSQLUI.llenarTabla(jTable, rs);   
+    }
   
 }
     /*

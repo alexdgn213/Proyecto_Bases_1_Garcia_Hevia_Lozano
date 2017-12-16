@@ -10,6 +10,8 @@ import Adaptadores.ConectorDB;
 import Dominio.Cliente;
 import Dominio.Informacion_contacto;
 import Dominio.Lugar;
+import Dominio.Mod_car;
+import Dominio.Mot_mod;
 import Dominio.Proveedor;
 import Dominio.mat_pro;
 import Dominio.modelo_aeronave;
@@ -49,7 +51,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
          
         }
         else{
-            llenarDatosCliente();    
+            llenarDatosModelo();    
         }
     }
 
@@ -81,12 +83,12 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         bDelMaterial = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaCaracteristicas = new javax.swing.JTable();
         bAddInf = new javax.swing.JButton();
         bDelInf = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tablaMotores = new javax.swing.JTable();
         bAddMaterial1 = new javax.swing.JButton();
         bDelMaterial1 = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
@@ -181,7 +183,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jLabel9.setText("Piezas:");
         jLabel9.setToolTipText("");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCaracteristicas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -192,7 +194,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(tablaCaracteristicas);
 
         bAddInf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_add_black_24dp_1x.png"))); // NOI18N
 
@@ -202,7 +204,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jLabel10.setText("Motores:");
         jLabel10.setToolTipText("");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMotores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -213,7 +215,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(jTable3);
+        jScrollPane4.setViewportView(tablaMotores);
 
         bAddMaterial1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_add_black_24dp_1x.png"))); // NOI18N
 
@@ -484,7 +486,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1100, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 969, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -529,8 +531,6 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -542,12 +542,15 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
     private javax.swing.JPanel jpanel;
     private javax.swing.JTextField jtfNombre;
     private javax.swing.JTextField jtfRif;
+    private javax.swing.JTable tablaCaracteristicas;
+    private javax.swing.JTable tablaMotores;
     // End of variables declaration//GEN-END:variables
 
-    private void llenarDatosCliente() {
+    private void llenarDatosModelo() {
         jtfRif.setText(String.valueOf(m.getMod_nombre()));
         jtfRif.setEnabled(false);
         jtfNombre.setText(String.valueOf(m.getMod_precio_compra()));
+        Mod_car.llenarTablaDeModelo(conector, tablaCaracteristicas, m.getMod_codigo());
+        Mot_mod.llenarTablaDeModelo(conector, tablaMotores, m.getMod_codigo());
     }
-
 }
