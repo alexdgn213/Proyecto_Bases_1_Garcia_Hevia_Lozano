@@ -109,6 +109,24 @@ public class Tip_mod {
         return tm;
     }
     
+    public static List<Tip_mod> obtenerTipoPiezasModelo(ConectorDB conector,int fk_tip_codigo){
+        List<Tip_mod> pls = new ArrayList<Tip_mod>();
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("\"SELECT tip_mod_codigo,tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo\"\n" +
+"                    + \" FROM Tip_mod  \"\n" +
+"                    + \" Where fk_mod_codigo=?\"");
+            pst.setInt(1, fk_tip_codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Tip_mod l = new Tip_mod(rs.getInt("tip_mod_codigo"),rs.getInt("tip_mod_cantidad"),rs.getInt("fk_mod_codigo"),rs.getInt("fk_tip_codigo"));
+                pls.add(l);
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return pls;
+    }
+    
     public static void llenarTabla(ConectorDB conector, JTable jTable){
         ResultSet rs =obtenerResultSet(conector,"SELECT tip_mod_codigo as Codigo,tip_mod_cantidad as Cantidad,fk_mod_codigo as Codigo_Modelo_Aeronave,fk_tip_codigo as Codigo_Tipo_Pieza FROM tip_mod");
         AdaptadorSQLUI.llenarTabla(jTable, rs);   

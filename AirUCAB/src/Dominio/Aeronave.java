@@ -51,10 +51,21 @@ public class Aeronave {
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setDate(1, aer_fecha_compra);
             pst.setInt(2, fk_cli_rif);
-            pst.setDate(4,aer_fecha_compra);
-            pst.setInt(5,fk_mod_codigo);
+            pst.setInt(3,fk_mod_codigo);
+            pst.setInt(4,fk_fac_codigo);
             pst.executeUpdate();
+            stm ="Select aer_codigo From Aeronave Where aer_fecha_compra=? AND fk_cli_rif=? AND fk_mod_codigo=? AND fk_fac_codigo=?";
+             pst = conector.conexion.prepareStatement(stm);
+             pst.setDate(1, aer_fecha_compra);
+            pst.setInt(2, fk_cli_rif);
+            pst.setInt(3,fk_mod_codigo);
+            pst.setInt(4,fk_fac_codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                this.aer_codigo = rs.getInt("aer_codigo");
+            }
             pst.close();
+            
         }catch (SQLException ex){
            System.out.print(ex.toString());
         }
