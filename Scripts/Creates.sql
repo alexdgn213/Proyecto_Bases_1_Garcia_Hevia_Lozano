@@ -280,7 +280,7 @@ create table pieza
     fk_mot_codigo int,
 	constraint pk_pieza primary key(pie_codigo),
 	constraint fk_inv_codigo foreign key(fk_inv_codigo)
-	references inventario(inv_codigo),
+	references inventario(inv_codigo) ON DELETE CASCADE,
 	constraint fk_aer_codigo foreign key(fk_aer_codigo)
 	references aeronave(aer_codigo) ON DELETE CASCADE,
 	constraint fk_tip_codigo foreign key(fk_tip_codigo)
@@ -407,7 +407,7 @@ create table mat_inv
 	constraint fk_mat_codigo foreign key(fk_mat_codigo)
 	references material(mat_codigo),
 	constraint fk_inv_codigo foreign key(fk_inv_codigo)
-	references inventario(inv_codigo)
+	references inventario(inv_codigo) ON DELETE CASCADE
 );	
 
 create table pru_lot
