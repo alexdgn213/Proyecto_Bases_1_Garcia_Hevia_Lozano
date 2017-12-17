@@ -618,7 +618,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1141, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1262, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -694,7 +694,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
             if(jcbPieza.getSelectedIndex()>0){
                 Tip_mod relacion = Tip_mod.relacionDada(conector, jcbPieza.getSelectedIndex(),m.getMod_codigo());
                 if(relacion == null){
-                    relacion = new Tip_mod(Integer.parseInt(jtfPiezaCantidad.getText()),m.getMod_codigo(),jcbPieza.getSelectedIndex());
+                    relacion = new Tip_mod(Integer.parseInt(jtfPiezaCantidad.getText()),jcbPieza.getSelectedIndex(),m.getMod_codigo());
                     relacion.agregarADB(conector);
                 }
                 else{
@@ -750,11 +750,8 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                 relacion.modificarEnDB(conector);
             }
             }
-<<<<<<< HEAD
-        Mot_mod.llenarTablaDeModelo(conector, tablaPiezas, m.getMod_codigo());}
-=======
         Mot_mod.llenarTablaDeModelo(conector, tablaMotores, m.getMod_codigo());
->>>>>>> ca0b8867f7802873827927973e7c20a0417bdf95
+        }
     }//GEN-LAST:event_bAddMaterial1ActionPerformed
 
     private void bDelMaterial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDelMaterial1ActionPerformed

@@ -26,14 +26,14 @@ public class Tip_mod {
     int fk_mod_codigo;
     int fk_tip_codigo;
 
-    public Tip_mod(int tip_mod_codigo, int tip_mod_cantidad,int fk_mod_codigo, int fk_tip_codigo) {
+    public Tip_mod(int tip_mod_codigo, int tip_mod_cantidad,int fk_tip_codigo,int fk_mod_codigo) {
         this.tip_mod_codigo = tip_mod_codigo;
         this.tip_mod_cantidad = tip_mod_cantidad;
         this.fk_mod_codigo=fk_mod_codigo;
         this.fk_tip_codigo = fk_tip_codigo;
     }
 
-    public Tip_mod(int tip_mod_cantidad, int fk_mod_codigo, int fk_tip_codigo) {
+    public Tip_mod(int tip_mod_cantidad, int fk_tip_codigo,int fk_mod_codigo) {
         this.tip_mod_cantidad = tip_mod_cantidad;
         this.fk_mod_codigo = fk_mod_codigo;
         this.fk_tip_codigo = fk_tip_codigo;
