@@ -25,21 +25,31 @@ public class Aeronave {
     int fk_cli_rif;
     Date aer_fecha_compra;
     int fk_mod_codigo;
+    int fk_fac_codigo;
 
-    public Aeronave(int aer_codigo, int fk_cli_rif, Date aer_fecha_compra, int fk_mod_codigo) {
+    public Aeronave(int aer_codigo, int fk_cli_rif, Date aer_fecha_compra, int fk_mod_codigo, int fk_fac_codigo) {
         this.aer_codigo = aer_codigo;
         this.fk_cli_rif = fk_cli_rif;
         this.aer_fecha_compra = aer_fecha_compra;
         this.fk_mod_codigo = fk_mod_codigo;
+        this.fk_fac_codigo = fk_fac_codigo;
     }
 
+    public Aeronave(int fk_cli_rif, Date aer_fecha_compra, int fk_mod_codigo, int fk_fac_codigo) {
+        this.fk_cli_rif = fk_cli_rif;
+        this.aer_fecha_compra = aer_fecha_compra;
+        this.fk_mod_codigo = fk_mod_codigo;
+        this.fk_fac_codigo = fk_fac_codigo;
+    }
+
+    
 
 
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO Aeronave(aer_codigo,fk_cli_rif,aer_fecha_compra,fk_mod_codigo) VALUES(?,?,?,?)";
+            String stm = "INSERT INTO Aeronave(aer_fecha_compra,fk_cli_rif,fk_,fk_mod_codigo,fk_fac_codigo) VALUES(?,?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(1, aer_codigo);
+            pst.setDate(1, aer_fecha_compra);
             pst.setInt(2, fk_cli_rif);
             pst.setDate(4,aer_fecha_compra);
             pst.setInt(5,fk_mod_codigo);
@@ -93,8 +103,8 @@ public class Aeronave {
         try {
             ResultSet rs = obtenerResultSet(conector,"SELECT aer_codigo,fk_cli_rif,aer_fecha_compra,fk_mod_codigo FROM aeronave");
             while (rs.next()) {
-                Aeronave a = new Aeronave(rs.getInt("aer_codigo"),rs.getInt("fk_cli_rif"),rs.getDate("aer_fecha_compra"),rs.getInt("fk_mod_codigo"));
-                aeronaves.add(a);
+                //Aeronave a = new Aeronave(rs.getInt("aer_codigo"),rs.getInt("fk_cli_rif"),rs.getDate("aer_fecha_compra"),rs.getInt("fk_mod_codigo"));
+                //aeronaves.add(a);
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
