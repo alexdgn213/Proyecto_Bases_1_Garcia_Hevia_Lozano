@@ -1679,8 +1679,8 @@ INSERT INTO motor(mot_modelo ,mot_marca) VALUES
 --('CF6-80C2B5F','GE'), el otro
 --('RB211-524G/H','RR'),
 ('CF6-80C2B5F','GE'),--AU747Silver ER 3Clases
-('CF6-80C2B5F','GE');--AU747Silver ER
-('JT3D-1','Pratt & Whitney');--32
+('CF6-80C2B5F','GE'),--AU747Silver ER
+('JT3D-1','Pratt & Whitney'),--32
 ('JT8D','Pratt & Whitney');--33
 
 INSERT INTO mot_mod(mot_mod_cantidad,fk_mot_codigo,fk_mod_codigo) VALUES
@@ -1714,8 +1714,8 @@ INSERT INTO mot_mod(mot_mod_cantidad,fk_mot_codigo,fk_mod_codigo) VALUES
 (4,10,33),
 (4,11,34),
 (4,30,35),
-(4,31,36);
-(4,32,1);
+(4,31,36),
+(4,32,1),
 (3,33,5);
 
 INSERT INTO caracteristica (car_codigo,car_nombre) VALUES
@@ -2715,7 +2715,10 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
  ('Control de calidad de la pieza','Comprueba el nivel optimo de la pieza ensamblada'),
  ('Prueba de control de ensamble','Comprueba que el ensamblaje se haya hecho satisfactoriamente'),
  ('Control de calidad de piezas por traslado','Comprueba que no hayan sufrido daños por traslado'),
- ('Control de calidad de motor','Comprueba que el ensamblaje del motor se haya hecho satisfactoriamente');
+ ('Control de calidad de motor','Comprueba que el ensamblaje del motor se haya hecho satisfactoriamente'),
+ ('Control de resistencia del motor','Comprueba la resistencia del motor'),
+ ('Armado','Comprueba el armado del avion '),
+ ('Despegue','Comprueba que el despegue es exitoso');
  
  INSERT INTO tip_pru(fk_tip_codigo,fk_pru_codigo) VALUES
  (1,4),

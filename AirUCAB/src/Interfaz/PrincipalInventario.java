@@ -13,6 +13,7 @@ import Dominio.Fabrica;
 import Dominio.Factura;
 import Dominio.Inventario;
 import Dominio.Lote_material;
+import Dominio.Mat_inv;
 import Dominio.Proveedor;
 import Dominio.mat_pro;
 import java.awt.Color;
@@ -176,6 +177,7 @@ public class PrincipalInventario extends javax.swing.JPanel {
             if(jcbFabrica.getSelectedIndex()>0){
                 String nombreFabrica = jcbFabrica.getSelectedItem().toString();
                 Inventario.llenarTablaDeMaterialesPorFabrica(conector, tablaMateriales, nombreFabrica);
+                Mat_inv.llenarTabla(conector, tablaMateriales);
                 panelComprar.setVisible(true);           
             }
             else{
