@@ -111,11 +111,11 @@ create table informacion_contacto
 	fk_ben_ci int,
 	constraint pk_informacion_contacto primary key(inf_codigo),
 	constraint fk_pro_rif foreign key(fk_pro_rif)
-	references proveedor (pro_rif),
+	references proveedor (pro_rif) ON DELETE CASCADE,
 	constraint fk_per_ci foreign key(fk_per_ci)
 	references personal(per_ci),
 	constraint fk_cli_rif foreign key(fk_cli_rif)
-	references cliente(cli_rif),
+	references cliente(cli_rif) ON DELETE CASCADE,
 	constraint fk_ben_ci foreign key(fk_ben_ci)
 	references beneficiario(ben_ci)
 );
@@ -146,7 +146,7 @@ create table mot_mod
 	constraint fk_mot_codigo foreign key(fk_mot_codigo)
 	references motor(mot_codigo),
 	constraint fk_mod_codigo foreign key(fk_mod_codigo)
-	references modelo_aeronave(mod_codigo)
+	references modelo_aeronave(mod_codigo) ON DELETE CASCADE
 );
 
 create table caracteristica
@@ -179,7 +179,7 @@ create table mod_car
 	fk_car_codigo int not null,
 	constraint pk_mod_car primary key(mod_car_codigo,fk_mod_codigo,fk_car_codigo),
 	constraint fk_modelo_aeronave foreign key(fk_mod_codigo)
-	references modelo_aeronave(mod_codigo),
+	references modelo_aeronave(mod_codigo) ON DELETE CASCADE,
 	constraint fk_caracteristica foreign key(fk_car_codigo)
 	references caracteristica(car_codigo)	
 );
@@ -202,9 +202,9 @@ create table aeronave
 	fk_fac_codigo int not null,
 	constraint pk_aeronave primary key(aer_codigo),
 	constraint fk_cli_rif foreign key(fk_cli_rif)
-	references cliente(cli_rif),
+	references cliente(cli_rif) ON DELETE CASCADE,
 	constraint fk_tip_cod foreign key(fk_mod_codigo)
-	references modelo_aeronave(mod_codigo),
+	references modelo_aeronave(mod_codigo) ON DELETE CASCADE,
 	constraint fk_fac_codigo foreign key(fk_fac_codigo)
 	references factura(fac_codigo)
 );
@@ -227,7 +227,7 @@ create table mat_pro
 	constraint fk_mat_codigo foreign key(fk_mat_codigo)
 	references material(mat_codigo),
 	constraint fk_pro_rif foreign key(fk_pro_rif)
-	references proveedor(pro_rif)
+	references proveedor(pro_rif) ON DELETE CASCADE
 );
 
 create table lote_material 
@@ -242,7 +242,7 @@ create table lote_material
     fk_fac_codigo int not null,
 	constraint pk_lot_codigo primary key(lot_codigo),
 	constraint fk_mat_pro_codigo foreign key(fk_mat_pro_codigo,fk_pro_rif,fk_mat_codigo)
-	references mat_pro(mat_pro_codigo,fk_pro_rif,fk_mat_codigo),
+	references mat_pro(mat_pro_codigo,fk_pro_rif,fk_mat_codigo) ON DELETE CASCADE,
 	constraint fk_fac_codigo foreign key(fk_fac_codigo)
 	references factura(fac_codigo)
 );
@@ -282,7 +282,7 @@ create table pieza
 	constraint fk_inv_codigo foreign key(fk_inv_codigo)
 	references inventario(inv_codigo),
 	constraint fk_aer_codigo foreign key(fk_aer_codigo)
-	references aeronave(aer_codigo),
+	references aeronave(aer_codigo) ON DELETE CASCADE,
 	constraint fk_tip_codigo foreign key(fk_tip_codigo)
 	references tipo_pieza(tip_codigo),
 	constraint fk_pieza foreign key(fk_pie_codigo)
@@ -314,7 +314,7 @@ create table ensamblaje
 	constraint fk_zon_codigo foreign key(fk_zon_codigo,fk_fab_codigo)
 	references zona(zon_codigo,fk_fab_codigo),
 	constraint fk_pie_codigo foreign key(fk_pie_codigo)
-	references pieza(pie_codigo),
+	references pieza(pie_codigo) ON DELETE CASCADE,
     constraint fk_tip_codigo foreign key(fk_tip_codigo)
     references tipo_pieza(tip_codigo),
     constraint fk_mot_codigo foreign key(fk_mot_codigo)
@@ -356,7 +356,7 @@ create table tip_mod
     fk_tip_codigo int not null,
 	constraint pk_tip_mod primary key(tip_mod_codigo,fk_tip_codigo,fk_mod_codigo),
 	constraint fk_mod_codigo foreign key(fk_mod_codigo)
-	references modelo_aeronave(mod_codigo),
+	references modelo_aeronave(mod_codigo) ON DELETE CASCADE,
 	constraint fk_tip_codigo foreign key(fk_tip_codigo)
 	references tipo_pieza(tip_codigo)
 );
@@ -392,7 +392,7 @@ create table pru_pie
 	constraint fk_pru_codigo foreign key(fk_pru_codigo)
 	references prueba(pru_codigo),
 	constraint fk_pie_codigo foreign key(fk_pie_codigo)
-	references pieza(pie_codigo),
+	references pieza(pie_codigo) ON DELETE CASCADE,
 	constraint fk_est_codigo foreign key(fk_est_codigo)
 	references estatus(est_codigo)
 );
@@ -421,7 +421,7 @@ create table pru_lot
 	constraint fk_pru_codigo foreign key(fk_pru_codigo)
 	references prueba(pru_codigo),
 	constraint fk_lot_codigo foreign key(fk_lot_codigo)
-	references lote_material(lot_codigo),
+	references lote_material(lot_codigo) ON DELETE CASCADE,
 	constraint fk_est_codigo foreign key(fk_est_codigo)
 	references estatus(est_codigo)
 );
@@ -438,7 +438,7 @@ create table per_pru_pie
 	constraint fk_personal foreign key(fk_per_ci)
 	references personal(per_ci),
 	constraint fk_pru_pie_codigo foreign key(fk_pru_pie_codigo,fk_pie_codigo,fk_pru_codigo)
-	references pru_pie(pru_pie_codigo,fk_pie_codigo,fk_pru_codigo),
+	references pru_pie(pru_pie_codigo,fk_pie_codigo,fk_pru_codigo) ON DELETE CASCADE,
 	constraint check_per_pru_pie_encargado check(per_pru_pie_encargado in(0,1))
 );
 
@@ -466,7 +466,7 @@ create table pru_aer
 	constraint fk_pru_codigo foreign key(fk_pru_codigo)
 	references prueba(pru_codigo),
 	constraint fk_aer_codigo foreign key(fk_aer_codigo)
-	references aeronave(aer_codigo),
+	references aeronave(aer_codigo) ON DELETE CASCADE,
 	constraint fk_est_codigo foreign key(fk_est_codigo)
 	references estatus(est_codigo)
 );

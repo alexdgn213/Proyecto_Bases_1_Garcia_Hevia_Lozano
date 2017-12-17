@@ -111,6 +111,41 @@ public class Tip_mod {
         ResultSet rs =obtenerResultSet(conector,"SELECT tm.tip_mod_codigo as Codigo, t.tip_nombre as Pieza,tm.tip_mod_cantidad as Cantidad  FROM tip_mod tm, tipo_pieza t where tm.fk_tip_codigo=t.tip_codigo AND fk_mod_codigo="+String.valueOf(id));
         AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
+    
+    
+    public static Tip_mod relacionDada(ConectorDB conector, int tip_codigo, int mod_codigo){
+       Tip_mod respuesta = null; 
+        try{
+            String stm = "SELECT tip_mod_codigo, tip_mod_cantidad, fk_pru_codigo, fk_tip_codigo, fk_mod_codigo FROM pru_lot "
+                    + "WHERE fk_tip_codigo=? AND fk_mod_codigo=?";
+            PreparedStatement pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, tip_codigo);
+            pst.setInt(2, mod_codigo);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                respuesta = new Tip_mod(rs.getInt("tip_mod_codigo"),rs.getInt("tip_mod_cantidad"),rs.getInt("fk_tip_codigo"),rs.getInt("fk_mod_codigo"));
+            }
+            pst.close();
+        }catch (SQLException ex){
+           System.out.print(ex.toString());
+        };
+        return respuesta;
+    }
+    
+     public static Tip_mod buscarPorCodigo(ConectorDB conector, int codigo){
+        Tip_mod tm = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT tip_mod_codigo, tip_mod_cantidad,fk_tip_codigo,fk_mod_codigo FROM Tip_mod WHERE tip_mod_codigo=?");
+            pst.setInt(1, codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                tm = new Tip_mod(rs.getInt("mot_mod_codigo"),rs.getInt("tip_mod_cantidad"),rs.getInt("fk_tip_codigo"),rs.getInt("fk_mod_codigo"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return tm;
+    }
   
 }
     /*
