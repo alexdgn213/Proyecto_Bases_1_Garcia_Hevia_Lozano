@@ -124,7 +124,7 @@ create table modelo_aeronave
 (
 	mod_codigo serial not null,
 	mod_nombre varchar(30) unique not null,
-	mod_precio_compra real not null,
+	mod_precio_compra int not null,
 	constraint pk_modelo_aeronave primary key(mod_codigo)
 );
 
@@ -196,7 +196,7 @@ create table aeronave
 (
 	aer_codigo serial not null,
 	aer_fecha_compra date not null,
-	aer_precio_compra real not null,
+	aer_precio_compra int not null,
 	fk_cli_rif int not null,
 	fk_mod_codigo int not null,
 	fk_fac_codigo int not null,
@@ -220,7 +220,7 @@ create table material
 create table mat_pro 
 (
 	mat_pro_codigo serial not null,
-	mat_pro_precio_actual real not null,
+	mat_pro_precio_actual int not null,
 	fk_mat_codigo int not null,
 	fk_pro_rif int not null,
 	constraint pk_mat_pro_codigo primary key(mat_pro_codigo,fk_mat_codigo,fk_pro_rif),
@@ -233,7 +233,7 @@ create table mat_pro
 create table lote_material 
 (
 	lot_codigo serial not null,
-	lot_precio real not null,
+	lot_precio int not null,
 	lot_fecha_compra date not null,
 	lot_cantidad int not null,
     fk_mat_codigo int not null,
