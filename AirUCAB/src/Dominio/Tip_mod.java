@@ -33,6 +33,14 @@ public class Tip_mod {
         this.fk_tip_codigo = fk_tip_codigo;
     }
 
+    public Tip_mod(int tip_mod_cantidad, int fk_mod_codigo, int fk_tip_codigo) {
+        this.tip_mod_cantidad = tip_mod_cantidad;
+        this.fk_mod_codigo = fk_mod_codigo;
+        this.fk_tip_codigo = fk_tip_codigo;
+    }
+    
+    
+
 
 
     public void agregarADB(ConectorDB conector){
@@ -146,6 +154,40 @@ public class Tip_mod {
         }
         return tm;
     }
+
+    public int getTip_mod_codigo() {
+        return tip_mod_codigo;
+    }
+
+    public void setTip_mod_codigo(int tip_mod_codigo) {
+        this.tip_mod_codigo = tip_mod_codigo;
+    }
+
+    public int getTip_mod_cantidad() {
+        return tip_mod_cantidad;
+    }
+
+    public void setTip_mod_cantidad(int tip_mod_cantidad) {
+        this.tip_mod_cantidad = tip_mod_cantidad;
+    }
+
+    public int getFk_mod_codigo() {
+        return fk_mod_codigo;
+    }
+
+    public void setFk_mod_codigo(int fk_mod_codigo) {
+        this.fk_mod_codigo = fk_mod_codigo;
+    }
+
+    public int getFk_tip_codigo() {
+        return fk_tip_codigo;
+    }
+
+    public void setFk_tip_codigo(int fk_tip_codigo) {
+        this.fk_tip_codigo = fk_tip_codigo;
+    }
+     
+     
   
 }
     /*
