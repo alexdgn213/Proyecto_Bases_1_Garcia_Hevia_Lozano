@@ -134,6 +134,13 @@ public class Pru_aer {
     }
    
     
+    public static void llenarTablaAvion(ConectorDB conector, JTable jTable, int id){
+        ResultSet rs =obtenerResultSet(conector,"SELECT pa.pru_aer_codigo as Codigo,pa.pru_aer_fecha_realizacion as Fecha_Realizacion,p.pru_nombre as Prueba,e.est_nombre as Estatus "
+                + " FROM pru_aer pa left join prueba p on pa.fk_pru_codigo=p.pru_codigo left join estatus e on e.est_codigo=pa.fk_est_codigo"
+                + " WHERE fk_aer_codigo="+String.valueOf(id));
+        AdaptadorSQLUI.llenarTabla(jTable, rs);   
+    }
+    
     public static Pru_aer buscarPorCodigo(ConectorDB conector, int codigo){
         Pru_aer tp = null;
         try {
