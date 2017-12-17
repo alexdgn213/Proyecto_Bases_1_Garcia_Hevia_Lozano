@@ -9,6 +9,7 @@ import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.Comprobador;
 import Adaptadores.ConectorDB;
 import Adaptadores.MensajeUI;
+import Dominio.Aeronave;
 import Dominio.Cliente;
 import Dominio.Estatus;
 import Dominio.Informacion_contacto;
@@ -31,15 +32,19 @@ import javax.swing.JPanel;
 public class DetalleAvion extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
-    Lote_material l;
+    Aeronave a;
     JPanel panelMensaje;
+    String modelo;
+    String cliente;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetalleAvion(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje, boolean pendiente) {
+    public DetalleAvion(ConectorDB conector,JPanel contenedor,int id,String modelo, String cliente, JPanel panelMensaje, boolean pendiente) {
         this.conector = conector;
         this.contenedor = contenedor;
+        this.modelo=modelo;
+        this.cliente=cliente;
         this.panelMensaje = panelMensaje;
         initComponents();
         jlErrorFecha.setVisible(false);
@@ -48,8 +53,8 @@ public class DetalleAvion extends javax.swing.JPanel {
         Estatus.llenarComboBox(conector, jcbEstatus);
         Prueba.llenarComboBox(conector, jcbPrueba);
         this.setSize(870, 610);
-        l = Lote_material.buscarPorCodigo(conector, id);
-        if (l==null){
+        a = Aeronave.buscarPorCodigo(conector, id);
+        if (a==null){
             panelInformacion.setVisible(false);
         }
         else{
@@ -457,7 +462,7 @@ public class DetalleAvion extends javax.swing.JPanel {
             c.modificarEnDB(conector);
             new Thread(new MensajeUI(panelMensaje,"Cliente modificado exitosamente",1)).start();
         }
-        */
+        
         if(pru_lot.pruebasListasLote(conector, l.getLot_codigo())){
             PrincipalLotes nuevoPanel = new PrincipalLotes(conector,contenedor,panelMensaje);
             contenedor.removeAll();
@@ -469,6 +474,7 @@ public class DetalleAvion extends javax.swing.JPanel {
             new Thread(new MensajeUI(panelMensaje,"Aun no se han completado todas las pruebas",0)).start();
         
         }
+*/
         
         
         
@@ -476,6 +482,7 @@ public class DetalleAvion extends javax.swing.JPanel {
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void bAddInfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddInfActionPerformed
+        /*
         jlErrorFecha.setVisible(false);
         boolean A = Comprobador.ComprobarDate(jtfFechaRealizacion, jlErrorFecha);
         if (A) {
@@ -494,6 +501,7 @@ public class DetalleAvion extends javax.swing.JPanel {
             }
             pru_lot.llenarTablaLote(conector, tablaPruebas, l.getLot_codigo());
         }else {new Thread(new MensajeUI(panelMensaje,"Los datos ingresados no son correctos",0)).start();}
+*/
     }//GEN-LAST:event_bAddInfActionPerformed
 
     private void tablaPruebasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPruebasMouseClicked
@@ -509,7 +517,7 @@ public class DetalleAvion extends javax.swing.JPanel {
     }//GEN-LAST:event_tablaPruebasMouseClicked
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
-        PrincipalLotes nuevoPanel = new PrincipalLotes(conector,contenedor,panelMensaje);
+        PrincipalAviones nuevoPanel = new PrincipalAviones(conector,contenedor,panelMensaje);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();    
@@ -568,19 +576,17 @@ public class DetalleAvion extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void llenarDatosLote() {
-        jtCodigo.setText(String.valueOf(l.getLot_codigo()));
+        jtCodigo.setText(String.valueOf(a.getAer_codigo()));
         jtCodigo.setEnabled(false);
-        Material m = Material.buscarPorCodigo(conector, l.getFk_mat_codigo());
-        Proveedor p = Proveedor.buscarPorCodigo(conector, l.getFk_pro_rif());
-        jtfMaterial.setText(m.getMat_nombre());
+        jtfMaterial.setText(modelo);
         jtfMaterial.setEnabled(false);
-        jtfProveedor.setText(p.getPro_nombre());
+        jtfProveedor.setText(cliente);
         jtfProveedor.setEnabled(false);
-        jtfFechaCompra.setText(l.getLot_fecha_compra().toString());
+        jtfFechaCompra.setText(a.getAer_fecha_compra().toString());
         jtfFechaCompra.setEnabled(false);
-        jtfCantidad.setText(String.valueOf(l.getLot_cantidad()));
+        jtfCantidad.setText(String.valueOf(a.getAer_precio_compra()));
         jtfCantidad.setEnabled(false);
-        pru_lot.llenarTablaLote(conector, tablaPruebas, l.getLot_codigo());
+        //pru_lot.llenarTablaLote(conector, tablaPruebas, l.getLot_codigo());
         
     }
     

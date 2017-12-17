@@ -173,7 +173,9 @@ public class PrincipalAviones extends javax.swing.JPanel {
         int fila = tablaLotesFinalizados.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaLotesFinalizados.getValueAt(fila, 0);
-            DetalleAvion nuevoPanel = new DetalleAvion(conector,contenedor,id,panelMensaje,false);
+            String modelo = tablaLotesFinalizados.getValueAt(fila, 1).toString();
+            String cliente = tablaLotesFinalizados.getValueAt(fila, 2).toString();
+            DetalleAvion nuevoPanel = new DetalleAvion(conector,contenedor,id,modelo,cliente,panelMensaje,false);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();
@@ -184,7 +186,9 @@ public class PrincipalAviones extends javax.swing.JPanel {
         int fila = tablaLotesPendientes.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaLotesPendientes.getValueAt(fila, 0);
-            DetalleAvion nuevoPanel = new DetalleAvion(conector,contenedor,id,panelMensaje,true);
+            String modelo = tablaLotesPendientes.getValueAt(fila, 1).toString();
+            String cliente = tablaLotesPendientes.getValueAt(fila, 2).toString();
+            DetalleAvion nuevoPanel = new DetalleAvion(conector,contenedor,id,modelo,cliente,panelMensaje,true);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();

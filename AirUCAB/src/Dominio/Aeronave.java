@@ -179,22 +179,21 @@ public class Aeronave {
         AdaptadorSQLUI.llenarTabla(jTable, rs);
     }
 
-    /*
+    
     public static Aeronave buscarPorCodigo(ConectorDB conector, int codigo){
         Aeronave l = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT aer_codigo,fk_cli_rif,aer_fecha_compra,fk_mod_codigo FROM aeronave WHERE aer_codigo=?");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT aer_codigo,fk_cli_rif,aer_fecha_compra, aer_precio_compra,fk_mod_codigo, fk_fac_codigo FROM aeronave WHERE aer_codigo=?");
             pst.setInt(1, codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                l = new Aeronave(rs.getInt("aer_codigo"),rs.getInt("fk_cli_rif"),rs.getDate("aer_fecha_compra"),rs.getInt("fk_mod_codigo"));
+                l = new Aeronave(rs.getInt("aer_codigo"),rs.getInt("fk_cli_rif"),rs.getDate("aer_fecha_compra"),rs.getInt("aer_precio_compra"),rs.getInt("fk_mod_codigo"),rs.getInt("fk_fac_codigo"));
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
         }
         return l;
     }
-    */
 
     public void setAer_codigo(int aer_codigo) {
         this.aer_codigo = aer_codigo;
@@ -244,11 +243,6 @@ public class Aeronave {
         this.fk_fac_codigo = fk_fac_codigo;
     }
 
-    private static class LocalDate {
-
-        public LocalDate() {
-        }
-    }
     
     
 }
