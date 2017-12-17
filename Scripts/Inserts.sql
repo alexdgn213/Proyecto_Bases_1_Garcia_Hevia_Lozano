@@ -2675,10 +2675,10 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
 	('Cancelado');
 
   INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_mot_codigo,fk_est_codigo) VALUES
-  ('Ensamblaje del Ala',5,3,1,null,1),
-  ('Ensamblaje del Fuselaje',7,5,2,null,1),
-  ('Ensamblaje del Grupo Motopropulsor',8,1,3,null,1),
-  ('Ensamblaje de Alerones',5,3,4,null,1),
+  ('Ensamblaje del Ala',5,3,1,null,4),
+  ('Ensamblaje del Fuselaje',7,5,2,null,4),
+  ('Ensamblaje del Grupo Motopropulsor',8,1,3,null,4),
+  ('Ensamblaje de Alerones',5,3,4,null,4),
   ('Ensamblaje de Flaps',5,3,5,null,1),
   ('Ensamblaje de Spoilers',5,3,6,null,1),
   ('Ensamblaje de Flaps',5,3,7,null,1),
