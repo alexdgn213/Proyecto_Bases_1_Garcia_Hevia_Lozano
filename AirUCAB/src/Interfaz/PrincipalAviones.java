@@ -31,8 +31,8 @@ public class PrincipalAviones extends javax.swing.JPanel {
         this.panelMensaje = panelMensaje;
         initComponents();
         this.setSize(850,580);
-        Aeronave.llenarTabla(conector, tablaLotesPendientes);
-        Aeronave.llenarTabla(conector, tablaLotesFinalizados);
+        Aeronave.llenarTablaAeronaveNoFinalizadas(conector, tablaLotesPendientes);
+        Aeronave.llenarTablaAeronaveFinalizadas(conector, tablaLotesFinalizados);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
         jScrollPane2.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
     }
