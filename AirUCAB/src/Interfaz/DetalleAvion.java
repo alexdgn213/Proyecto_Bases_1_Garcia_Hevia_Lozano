@@ -16,6 +16,7 @@ import Dominio.Informacion_contacto;
 import Dominio.Lote_material;
 import Dominio.Lugar;
 import Dominio.Material;
+import Dominio.Pieza;
 import Dominio.Proveedor;
 import Dominio.Pru_aer;
 import Dominio.Prueba;
@@ -104,7 +105,7 @@ public class DetalleAvion extends javax.swing.JPanel {
         jlErrorFecha = new javax.swing.JLabel();
         bAddInf = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tablaPruebas1 = new javax.swing.JTable();
+        tablaPiezas = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jbModificar1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -263,7 +264,7 @@ public class DetalleAvion extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        tablaPruebas1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPiezas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -274,12 +275,12 @@ public class DetalleAvion extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablaPruebas1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaPiezas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaPruebas1MouseClicked(evt);
+                tablaPiezasMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(tablaPruebas1);
+        jScrollPane4.setViewportView(tablaPiezas);
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel9.setText("Piezas:");
@@ -361,7 +362,7 @@ public class DetalleAvion extends javax.swing.JPanel {
                         .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 157, Short.MAX_VALUE)
+                        .addGap(0, 174, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,7 +443,7 @@ public class DetalleAvion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -524,9 +525,9 @@ public class DetalleAvion extends javax.swing.JPanel {
         contenedor.updateUI();    
     }//GEN-LAST:event_botonVolverActionPerformed
 
-    private void tablaPruebas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPruebas1MouseClicked
+    private void tablaPiezasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPiezasMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tablaPruebas1MouseClicked
+    }//GEN-LAST:event_tablaPiezasMouseClicked
 
     private void jbModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificar1ActionPerformed
         //int fila = tablaLotesPendientes.getSelectedRow();
@@ -572,8 +573,8 @@ public class DetalleAvion extends javax.swing.JPanel {
     private javax.swing.JTextField jtfProveedor;
     private javax.swing.JPanel panelInformacion;
     private javax.swing.JPanel panelNueva;
+    private javax.swing.JTable tablaPiezas;
     private javax.swing.JTable tablaPruebas;
-    private javax.swing.JTable tablaPruebas1;
     // End of variables declaration//GEN-END:variables
 
     private void llenarDatosLote() {
@@ -588,6 +589,7 @@ public class DetalleAvion extends javax.swing.JPanel {
         jtfCantidad.setText(String.valueOf(a.getAer_precio_compra()));
         jtfCantidad.setEnabled(false);
         Pru_aer.llenarTablaAvion(conector, tablaPruebas, a.getAer_codigo());
+        Pieza.llenarTablaDeAvion(conector, tablaPiezas, WIDTH);
         
     }
     
