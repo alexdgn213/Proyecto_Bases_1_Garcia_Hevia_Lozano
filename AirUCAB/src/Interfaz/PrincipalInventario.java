@@ -11,6 +11,7 @@ import Adaptadores.MensajeUI;
 import Dominio.Cliente;
 import Dominio.Fabrica;
 import Dominio.Factura;
+import Dominio.Inventario;
 import Dominio.Lote_material;
 import Dominio.Proveedor;
 import Dominio.mat_pro;
@@ -172,9 +173,8 @@ public class PrincipalInventario extends javax.swing.JPanel {
 
     private void jcbFabricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbFabricaActionPerformed
         if(lock==0){
-            
-            String nombreProveedor = jcbFabrica.getSelectedItem().toString();
-            p = Proveedor.buscarPorNombre(conector, nombreProveedor);
+            String nombreFabrica = jcbFabrica.getSelectedItem().toString();
+            Inventario.llenarTablaDeMaterialesPorFabrica(conector, tablaMateriales, nombreFabrica);
             cargarProveedor();
         }
     }//GEN-LAST:event_jcbFabricaActionPerformed

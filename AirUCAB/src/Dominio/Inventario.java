@@ -129,8 +129,8 @@ public class Inventario {
         return l;
     }
     
-     public static void llenarTablaDeMaterialesPorFabrica(ConectorDB conector, JTable jTable, int id){
-        ResultSet rs =obtenerResultSet(conector,"SELECT inv_codigo as Codigo,mat_codigo as Codigo_Material ,mat_nombre as Nombre,mat_inv_cantidad as Cantidad FROM inventario, material,mat_inv where fk_inv_codigo=inv_codigo AND fk_mat__codigo=mat_codigo AND fk_inv_codigo="+String.valueOf(id));
+     public static void llenarTablaDeMaterialesPorFabrica(ConectorDB conector, JTable jTable, String nombre){
+        ResultSet rs =obtenerResultSet(conector,"SELECT mat_codigo as Codigo_Material ,mat_nombre as Material,mat_inv_cantidad as Cantidad FROM inventario, material,mat_inv,fabrica where fk_inv_codigo=inv_codigo AND fk_mat_codigo=mat_codigo AND fk_fab_codigo=fab_codigo AND fab_nombre='"+nombre+"'");
         AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
    
