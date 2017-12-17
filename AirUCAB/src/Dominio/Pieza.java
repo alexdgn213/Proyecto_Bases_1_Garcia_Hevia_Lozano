@@ -65,6 +65,7 @@ public class Pieza {
                 this.pie_codigo = rs.getInt("pie_codigo");
             }
             pst.close();
+            Tip_pru.obtenerTodasPruebasPieza(conector, fk_tip_codigo);
             Pru_pie pl1 = new Pru_pie(1,pie_codigo,1);
             pl1.agregarADB(conector);
        //     Pru_pie pl2 = new pru_lot(2,pie_codigo,1);
