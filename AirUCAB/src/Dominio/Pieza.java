@@ -59,14 +59,12 @@ public class Pieza {
             pst.setInt(3,fk_aer_codigo);
             pst.setInt(4,fk_tip_codigo);
             pst.executeUpdate();
-                        stm = "SELECT pie_codigo FROM pieza WHERE pie_fecha_estimada=? AND pie_fecha_entregada=? AND fk_aer_codigo=? AND fk_tip_codigo = ? AND fk_pie_codigo =? AND fk_mot_codigo=?";
+            stm = "SELECT pie_codigo FROM pieza WHERE pie_fecha_estimada=? AND pie_fecha_entregada=? AND fk_aer_codigo=? AND fk_tip_codigo = ?";
             pst = conector.conexion.prepareStatement(stm);
-             pst.setDate(1, pie_fecha_estimado);
+            pst.setDate(1, pie_fecha_estimado);
             pst.setDate(2,pie_fecha_entregado);
             pst.setInt(3,fk_aer_codigo);
             pst.setInt(4,fk_tip_codigo);
-            pst.setInt(5,fk_pie_codigo);
-            pst.setInt(6, fk_mot_codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 this.pie_codigo = rs.getInt("pie_codigo");
