@@ -115,6 +115,12 @@ public class Aeronave {
                 + " AND fk_fac_codigo="+String.valueOf(id));
         AdaptadorSQLUI.llenarTabla(jTable, rs);
     }
+    
+    public static void llenarTablaAeronavesListas(ConectorDB conector, JTable jTable){
+        ResultSet rs =obtenerResultSet(conector,"SELECT aer_codigo as Codigo,mod_nombre as Modelo, cli_nombre as Cliente,aer_fecha_compra as Fecha_de_compra FROM aeronave,cliente,modelo_aeronave,ensamblaje,estatus "
+                + " WHERE fk_cli_rif=cli_rif AND fk_mod_codigo=mod_codigo AND est_codigo=fk_est_codigo AND est_codigo=4 Group By aer_codigo,mod_nombre,cli_nombre,aer_fecha_compra");
+        AdaptadorSQLUI.llenarTabla(jTable, rs);
+    }
 
     /*
     public static Aeronave buscarPorCodigo(ConectorDB conector, int codigo){
