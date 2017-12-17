@@ -127,7 +127,7 @@ public class Tip_pru {
     public static Tip_pru buscarPorCodigo(ConectorDB conector, int codigo){
         Tip_pru tp = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT tip_pru_codigo, fk_tip_codigo,fk_pru_codigo FROM tip_pru WHERE tip_pru_codigo=?");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT tip_pru_codigo, fk_tip_codigo,fk_pru_codigo FROM Tip_pru WHERE tip_pru_codigo=?");
             pst.setInt(1, codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
