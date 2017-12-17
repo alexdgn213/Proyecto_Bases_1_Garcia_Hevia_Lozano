@@ -148,10 +148,28 @@ public class Ensamblaje{
     public static List<Ensamblaje> obtenerEnsamblajeTipoPieza(ConectorDB conector,int fk_tip_codigo){
         List<Ensamblaje> pls = new ArrayList<Ensamblaje>();
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("\"SELECT ens_codigo,ens_descripcion,fk_zon_codigo, fk_fab_codigo, fk_pie_codigo, fk_tip_codigo, fk_mot_codigo, fk_est_codigo\"\n" +
-"                    + \" FROM Ensamblaje  \"\n" +
-"                    + \" Where fk_tip_codigo=?\"");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT ens_codigo,ens_descripcion,fk_zon_codigo, fk_fab_codigo, fk_pie_codigo, fk_tip_codigo, fk_mot_codigo, fk_est_codigo" +
+"                     FROM Ensamblaje  " +
+"                    Where fk_tip_codigo=?");
             pst.setInt(1, fk_tip_codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Ensamblaje l = new Ensamblaje(rs.getInt("ens_codigo"),rs.getString("ens_descripcion"),rs.getInt("fk_zon_codigo"),rs.getInt("fk_fab_codigo"),rs.getInt("fk_pie_codigo"),rs.getInt("fk_tip_codigo"),rs.getInt("fk_mot_codigo"),rs.getInt("fk_est_codigo"));
+                pls.add(l);
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return pls;
+    }
+    
+     public static List<Ensamblaje> obtenerEnsamblajeMotor(ConectorDB conector,int fk_mot_codigo){
+        List<Ensamblaje> pls = new ArrayList<Ensamblaje>();
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT ens_codigo,ens_descripcion,fk_zon_codigo, fk_fab_codigo, fk_pie_codigo, fk_tip_codigo, fk_mot_codigo, fk_est_codigo" +
+"                     FROM Ensamblaje  " +
+"                     Where fk_mot_codigo=?");
+            pst.setInt(1, fk_mot_codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 Ensamblaje l = new Ensamblaje(rs.getInt("ens_codigo"),rs.getString("ens_descripcion"),rs.getInt("fk_zon_codigo"),rs.getInt("fk_fab_codigo"),rs.getInt("fk_pie_codigo"),rs.getInt("fk_tip_codigo"),rs.getInt("fk_mot_codigo"),rs.getInt("fk_est_codigo"));
