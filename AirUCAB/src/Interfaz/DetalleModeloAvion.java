@@ -746,15 +746,19 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                 relacion.agregarADB(conector);
             }
             else{
-                relacion.setMot_mod_cantidad(Integer.parseInt(jtfMotor.getText()));
+                relacion.setMot_mod_cantidad(Integer.parseInt(jtfPiezaCantidad.getText()));
                 relacion.modificarEnDB(conector);
             }
             }
+<<<<<<< HEAD
 <<<<<<< HEAD
         Mot_mod.llenarTablaDeModelo(conector, tablaPiezas, m.getMod_codigo());}
 =======
         Mot_mod.llenarTablaDeModelo(conector, tablaMotores, m.getMod_codigo());
 >>>>>>> ca0b8867f7802873827927973e7c20a0417bdf95
+=======
+        Mot_mod.llenarTablaDeModelo(conector, tablaPiezas, m.getMod_codigo());
+>>>>>>> parent of ca0b886... Listo detalle modelo
     }//GEN-LAST:event_bAddMaterial1ActionPerformed
 
     private void bDelMaterial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDelMaterial1ActionPerformed
@@ -763,7 +767,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
             int id = (Integer) tablaMotores.getValueAt(fila, 0);
             Mot_mod mm = Mot_mod.buscarPorCodigo(conector, id);
             mm.eliminarDeDB(conector);
-            Mot_mod.llenarTablaDeModelo(conector, tablaMotores, m.getMod_codigo());
+            Mot_mod.llenarTablaDeModelo(conector, tablaPiezas, m.getMod_codigo());
         }
     }//GEN-LAST:event_bDelMaterial1ActionPerformed
 
@@ -773,7 +777,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
             int id = (Integer) tablaMotores.getValueAt(fila, 0);
             Mot_mod mm = Mot_mod.buscarPorCodigo(conector, id);
             jtfMotor.setText(String.valueOf(mm.getMot_mod_cantidad()));
-            jcbMotor.setSelectedIndex(mm.getFk_mot_codigo());
+            jcbPieza.setSelectedIndex(mm.getFk_mot_codigo());
         }
     }//GEN-LAST:event_tablaMotoresMouseClicked
 

@@ -51,7 +51,15 @@ public class Mot_mod{
             pst.setInt(1, mot_mod_cantidad);
             pst.setInt(2, fk_mot_codigo);
             pst.setInt(3, fk_mod_codigo);
-            pst.execute();
+            stm = "SELECT TOP 1 mot_mod_codigo FROM mot_mod WHERE mot_mod_cantidad=? AND fk_mot_codigo=? AND fk_mod_codigo=?";
+            pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, mot_mod_cantidad);
+            pst.setInt(2, fk_mot_codigo);
+            pst.setInt(3, fk_mod_codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                this.mot_mod_codigo = rs.getInt("mot_mod_codigo");
+            }
             pst.close();
         }catch (SQLException ex){
            System.out.print(ex.toString());
