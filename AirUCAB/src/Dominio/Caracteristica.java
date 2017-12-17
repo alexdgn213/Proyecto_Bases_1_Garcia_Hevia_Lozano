@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 /**
@@ -113,6 +114,18 @@ public class Caracteristica {
             System.out.print(ex.toString());
         }
         return c;
+    }
+    
+    public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
+        PreparedStatement pst;
+        try {
+            pst = conector.conexion.prepareStatement("SELECT car_nombre from caracteristica ORDER BY car_nombre");
+            ResultSet rs = pst.executeQuery();
+            AdaptadorSQLUI.llenarComboBox(jCombo, rs);
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        
     }
 
     public void setCar_codigo(int car_codigo) {

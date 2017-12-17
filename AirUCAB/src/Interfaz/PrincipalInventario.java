@@ -173,9 +173,15 @@ public class PrincipalInventario extends javax.swing.JPanel {
 
     private void jcbFabricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbFabricaActionPerformed
         if(lock==0){
-            String nombreFabrica = jcbFabrica.getSelectedItem().toString();
-            Inventario.llenarTablaDeMaterialesPorFabrica(conector, tablaMateriales, nombreFabrica);
-            cargarProveedor();
+            if(jcbFabrica.getSelectedIndex()>0){
+                String nombreFabrica = jcbFabrica.getSelectedItem().toString();
+                Inventario.llenarTablaDeMaterialesPorFabrica(conector, tablaMateriales, nombreFabrica);
+                panelComprar.setVisible(true);           
+            }
+            else{
+                panelComprar.setVisible(false);
+            }
+
         }
     }//GEN-LAST:event_jcbFabricaActionPerformed
 
@@ -193,21 +199,5 @@ public class PrincipalInventario extends javax.swing.JPanel {
     private javax.swing.JPanel panelComprar;
     private javax.swing.JTable tablaMateriales;
     // End of variables declaration//GEN-END:variables
-
-    private void cargarProveedor() {
-        panelComprar.setVisible(true);
-        mat_pro.llenarTablaMaterialesDeProveedor(conector, tablaMateriales, p.getPro_rif());
-        this.compras.clear();
-    }
-    
-    public void comprar(){
-        Factura f = new Factura(montoTotal);
-        f.agregarADB(conector);
-        for(Lote_material l : compras){
-            l.setFk_fac_codigo(f.getFac_codigo());
-            l.agregarADB(conector);
-        }
-        new Thread(new MensajeUI(panelMensaje,"Se han generado la factura y las pruebas.",1)).start();
-    }
     
 }

@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 /**
@@ -60,6 +61,18 @@ public class Motor {
         }catch (SQLException ex){
            System.out.print(ex.toString());
         }
+    }
+    
+    public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
+        PreparedStatement pst;
+        try {
+            pst = conector.conexion.prepareStatement("SELECT mot_marca || ' ' || mot_modelo from motor order by mot_marca");
+            ResultSet rs = pst.executeQuery();
+            AdaptadorSQLUI.llenarComboBox(jCombo, rs);
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        
     }
     
     public void eliminarDeDB(ConectorDB conector){
