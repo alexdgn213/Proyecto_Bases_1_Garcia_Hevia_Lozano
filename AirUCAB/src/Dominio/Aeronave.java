@@ -74,6 +74,10 @@ public class Aeronave {
                 Pieza p = new Pieza(Date.valueOf(java.time.LocalDate.now()),Date.valueOf(java.time.LocalDate.now()),aer_codigo,tp.fk_tip_codigo);
                 p.agregarPiezaADB(conector);
             }
+            for (Mot_mod mm :Mot_mod.obtenerMotorModelo(conector, fk_mod_codigo)){
+                Pieza p = new Pieza(Date.valueOf(java.time.LocalDate.now()),Date.valueOf(java.time.LocalDate.now()),aer_codigo,mm.fk_mot_codigo);
+                p.agregarMotorADB(conector);
+            }
             
         }catch (SQLException ex){
            System.out.print(ex.toString());

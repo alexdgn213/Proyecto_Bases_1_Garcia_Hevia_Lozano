@@ -82,6 +82,40 @@ public class Pieza {
         }
     }
     
+    public void agregarMotorADB(ConectorDB conector){
+        try{
+            String stm = "INSERT INTO Pieza(pie_fecha_estimada,pie_fecha_entregada,fk_aer_codigo,fk_mot_codigo) VALUES(?,?,?,?)";
+            PreparedStatement pst = conector.conexion.prepareStatement(stm);
+            pst.setDate(1, pie_fecha_estimado);
+            pst.setDate(2,pie_fecha_entregado);
+            pst.setInt(3,fk_aer_codigo);
+            pst.setInt(4,fk_tip_codigo);
+            pst.executeUpdate();
+            stm = "SELECT pie_codigo FROM pieza WHERE pie_fecha_estimada=? AND pie_fecha_entregada=? AND fk_aer_codigo=? AND fk_mot_codigo = ?";
+            pst = conector.conexion.prepareStatement(stm);
+            pst.setDate(1, pie_fecha_estimado);
+            pst.setDate(2,pie_fecha_entregado);
+            pst.setInt(3,fk_aer_codigo);
+            pst.setInt(4,fk_tip_codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                this.pie_codigo = rs.getInt("pie_codigo");
+            }
+            pst.close();
+            /*
+            for (Pru_mot pm:Pru_mot.obtenerTodasPruebasMotor(conector, fk_tip_codigo))
+            {
+               Pru_pie pl1 = new Pru_pie(tp.getFk_pru_codigo(),pie_codigo,1);
+               pl1.agregarADB(conector); 
+            } 
+            */
+       //     Pru_pie pl2 = new pru_lot(2,pie_codigo,1);
+       //     pl2.agregarADB(conector);
+        }catch (SQLException ex){
+           System.out.print(ex.toString());
+        }
+    }
+    
     public void modificarEnDB(ConectorDB conector){
         try{
             String stm = "UPDATE Pieza SET pie_fecha_estimada = ?,pie_fecha_entregada = ?,fk_aer_codigo=?,fk_tip_codigo=?,fk_pie_codigo=?,fk_mot_codigo=? WHERE pie_codigo=?";
