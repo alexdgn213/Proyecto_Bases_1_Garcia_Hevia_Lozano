@@ -173,9 +173,15 @@ public class PrincipalInventario extends javax.swing.JPanel {
 
     private void jcbFabricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbFabricaActionPerformed
         if(lock==0){
-            String nombreFabrica = jcbFabrica.getSelectedItem().toString();
-            Inventario.llenarTablaDeMaterialesPorFabrica(conector, tablaMateriales, nombreFabrica);
-            panelComprar.setVisible(true);
+            if(jcbFabrica.getSelectedIndex()>0){
+                String nombreFabrica = jcbFabrica.getSelectedItem().toString();
+                Inventario.llenarTablaDeMaterialesPorFabrica(conector, tablaMateriales, nombreFabrica);
+                panelComprar.setVisible(true);           
+            }
+            else{
+                panelComprar.setVisible(false);
+            }
+
         }
     }//GEN-LAST:event_jcbFabricaActionPerformed
 
