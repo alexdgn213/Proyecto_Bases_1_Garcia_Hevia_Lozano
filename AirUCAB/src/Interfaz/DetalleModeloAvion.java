@@ -211,6 +211,11 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaPiezas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaPiezasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaPiezas);
 
         tablaCaracteristicas.setModel(new javax.swing.table.DefaultTableModel(
@@ -670,11 +675,11 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                 relacion.agregarADB(conector);
             }
             else{
-                relacion.setTip_mod_cantidad(Integer.parseInt(jtfValor.getText()));
+                relacion.setTip_mod_cantidad(Integer.parseInt(jtfPiezaCantidad.getText()));
                 relacion.modificarEnDB(conector);
             }
             }
-        Mod_car.llenarTablaDeModelo(conector, tablaCaracteristicas, m.getMod_codigo());
+        Tip_mod.llenarTablaDeModelo(conector, tablaPiezas, m.getMod_codigo());
     }//GEN-LAST:event_bAddMaterialActionPerformed
 
     private void jtfPiezaCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPiezaCantidadActionPerformed
@@ -685,11 +690,21 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         int fila = tablaPiezas.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaPiezas.getValueAt(fila, 0);
-            Mod_car mc = Mod_car.buscarPorCodigo(conector, id);
-            mc.eliminarDeDB(conector);
-            Mod_car.llenarTablaDeModelo(conector, tablaCaracteristicas, m.getMod_codigo());
+            Tip_mod tm = Tip_mod.buscarPorCodigo(conector, id);
+            tm.eliminarDeDB(conector);
+            Tip_mod.llenarTablaDeModelo(conector, tablaPiezas, m.getMod_codigo());
         }
     }//GEN-LAST:event_bDelMaterialActionPerformed
+
+    private void tablaPiezasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPiezasMouseClicked
+        int fila = tablaPiezas.getSelectedRow();
+        if (fila>=0){
+            int id = (Integer) tablaPiezas.getValueAt(fila, 0);
+            Tip_mod tm = Tip_mod.buscarPorCodigo(conector, id);
+            jtfPiezaCantidad.setText(String.valueOf(tm.getTip_mod_cantidad()));
+            jcbPieza.setSelectedIndex(tm.getFk_tip_codigo());
+        }
+    }//GEN-LAST:event_tablaPiezasMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
