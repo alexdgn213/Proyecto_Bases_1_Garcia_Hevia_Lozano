@@ -24,24 +24,51 @@ public class Pieza {
     int pie_codigo;
     Date pie_fecha_estimado;
     Date pie_fecha_entregado;
+    int fk_aer_codigo;
+    int fk_tip_codigo;
+    int fk_pie_codigo;
+    int fk_mot_codigo; 
 
-    public Pieza(int pie_codigo, Date pie_fecha_estimado, Date pie_fecha_entregado) {
+    public Pieza(int pie_codigo, Date pie_fecha_estimado, Date pie_fecha_entregado,int fk_aer_codigo,int fk_tip_codigo,int fk_pie_codigo,int fk_mot_codigo) {
         this.pie_codigo = pie_codigo;
         this.pie_fecha_estimado = pie_fecha_estimado;
         this.pie_fecha_entregado = pie_fecha_entregado;
+        this.fk_aer_codigo=fk_aer_codigo;
+        this.fk_tip_codigo=fk_tip_codigo;
+        this.fk_pie_codigo=fk_pie_codigo;
+        this.fk_mot_codigo=fk_mot_codigo;
     }
 
 
 
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO Pieza(pie_codigo,pie_fecha_estimado,pie_fecha_entregado) VALUES(?,?,?)";
+            String stm = "INSERT INTO Pieza(pie_fecha_estimado,pie_fecha_entregado,fk_aer_codigo,fk_tip_codigo,fk_pie_codigo,fk_mot_codigo) VALUES(?,?,?,?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(1, pie_codigo);
-            pst.setDate(2, pie_fecha_estimado);
-            pst.setDate(3,pie_fecha_entregado);
+            pst.setDate(1, pie_fecha_estimado);
+            pst.setDate(2,pie_fecha_entregado);
+            pst.setInt(3,fk_aer_codigo);
+            pst.setInt(4,fk_tip_codigo);
+            pst.setInt(5,fk_pie_codigo);
+            pst.setInt(6, fk_mot_codigo);
             pst.executeUpdate();
+                        stm = "SELECT pie_codigo FROM pieza WHERE pie_fecha_estimado=? AND pie_fecha_entregado=? AND fk_aer_codigo=? AND fk_tip_codigo = ? AND fk_pie_codigo =? AND fk_mot_codigo=?";
+            pst = conector.conexion.prepareStatement(stm);
+             pst.setDate(1, pie_fecha_estimado);
+            pst.setDate(2,pie_fecha_entregado);
+            pst.setInt(3,fk_aer_codigo);
+            pst.setInt(4,fk_tip_codigo);
+            pst.setInt(5,fk_pie_codigo);
+            pst.setInt(6, fk_mot_codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                this.pie_codigo = rs.getInt("pie_codigo");
+            }
             pst.close();
+            Pru_pie pl1 = new Pru_pie(1,pie_codigo,1);
+            pl1.agregarADB(conector);
+       //     Pru_pie pl2 = new pru_lot(2,pie_codigo,1);
+       //     pl2.agregarADB(conector);
         }catch (SQLException ex){
            System.out.print(ex.toString());
         }
@@ -49,9 +76,13 @@ public class Pieza {
     
     public void modificarEnDB(ConectorDB conector){
         try{
-            String stm = "UPDATE Pieza SET pie_fecha_estimado = ?,pie_fecha_entregado = ? WHERE pie_codigo=?";
+            String stm = "UPDATE Pieza SET pie_fecha_estimado = ?,pie_fecha_entregado = ?,fk_aer_codigo=?,fk_tip_codigo=?,fk_pie_codigo=?,fk_mot_codigo=? WHERE pie_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(3, pie_codigo);
+            pst.setInt(7, pie_codigo);
+            pst.setInt(6, fk_mot_codigo);
+            pst.setInt(5,fk_pie_codigo);
+             pst.setInt(4,fk_tip_codigo);
+            pst.setInt(3,fk_aer_codigo);
             pst.setDate(2,pie_fecha_entregado);
             pst.setDate(1,pie_fecha_estimado);
             pst.executeUpdate();
@@ -89,7 +120,7 @@ public class Pieza {
         try {
             ResultSet rs = obtenerResultSet(conector,"SELECT pie_codigo,pie_fecha_estimado,pie_fecha_entregado FROM pieza");
             while (rs.next()) {
-                Pieza p = new Pieza(rs.getInt("pie_codigo"),rs.getDate("pie_fecha_estimado"),rs.getDate("pie_fecha_entregado"));
+                Pieza p = new Pieza(rs.getInt("pie_codigo"),rs.getDate("pie_fecha_estimado"),rs.getDate("pie_fecha_entregado"),rs.getInt("fk_aer_codigo"),rs.getInt("fk_tip_codigo"),rs.getInt("fk_pie_codigo"),rs.getInt("fk_mot_codigo"));
                 piezas.add(p);
             }
         } catch (SQLException ex) {
@@ -99,7 +130,7 @@ public class Pieza {
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT pie_codigo as Codigo,pie_fecha_estimado as Fecha_Estimada,pie_fecha_entregado as Fecha_de_Entrega FROM pieza");
+        ResultSet rs =obtenerResultSet(conector,"SELECT pie_codigo as Codigo,pie_fecha_estimado as Fecha_Estimada,pie_fecha_entregado as Fecha_de_Entrega,fk_aer_codigo as Codigo_Aeronave,fk_tip_codigo as Codigo_Tipo_Pieza,fk_pie_codigo as Codigo_Pieza,fk_mot_codigo as Codigo_Motor FROM pieza");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }

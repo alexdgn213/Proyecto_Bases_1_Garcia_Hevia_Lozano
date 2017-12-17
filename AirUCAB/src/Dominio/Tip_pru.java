@@ -40,6 +40,9 @@ public class Tip_pru {
             pst.setInt(1, fk_tip_codigo);
             pst.setInt(2,fk_pru_codigo);
             pst.executeUpdate();
+            
+            
+            
             pst.close();
         }catch (SQLException ex){
            System.out.print(ex.toString());
@@ -87,6 +90,23 @@ public class Tip_pru {
         List<Tip_pru> pls = new ArrayList<Tip_pru>();
         try {
             ResultSet rs = obtenerResultSet(conector,"SELECT tip_pru_codigo as codigo,fk_tip_codigo as Codigo_Tipo_Pieza,fk_pru_codigo as Codigo_Prueba, FROM Tip_pru");
+            while (rs.next()) {
+                Tip_pru l = new Tip_pru(rs.getInt("tip_pru_codigo"),rs.getInt("fk_tip_codigo"),rs.getInt("fk_pru_codigo"));
+                pls.add(l);
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return pls;
+    }
+    
+    public static List<Tip_pru> obtenerTodasPruebasPieza(ConectorDB conector){
+        List<Tip_pru> pls = new ArrayList<Tip_pru>();
+        try {
+            ResultSet rs = obtenerResultSet(conector,"SELECT tip_pru_codigo as codigo,fk_tip_codigo as Codigo_Tipo_Pieza,fk_pru_codigo as Codigo_Prueba"
+                    + " FROM Tip_pru  "
+                    + " Where fk_tip_codigo=?"
+                    + "Group By tip_pru_codigo,fk_tip_codigo_fk_pru_codigo");
             while (rs.next()) {
                 Tip_pru l = new Tip_pru(rs.getInt("tip_pru_codigo"),rs.getInt("fk_tip_codigo"),rs.getInt("fk_pru_codigo"));
                 pls.add(l);
