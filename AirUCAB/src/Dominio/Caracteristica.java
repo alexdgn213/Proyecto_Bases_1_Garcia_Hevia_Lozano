@@ -119,7 +119,7 @@ public class Caracteristica {
     public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
         PreparedStatement pst;
         try {
-            pst = conector.conexion.prepareStatement("SELECT car_nombre from caracteristica");
+            pst = conector.conexion.prepareStatement("SELECT car_nombre from caracteristica ORDER BY car_nombre");
             ResultSet rs = pst.executeQuery();
             AdaptadorSQLUI.llenarComboBox(jCombo, rs);
         } catch (SQLException ex) {

@@ -66,7 +66,7 @@ public class Motor {
     public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
         PreparedStatement pst;
         try {
-            pst = conector.conexion.prepareStatement("SELECT mot_marca || ' ' || mot_modelo from motor");
+            pst = conector.conexion.prepareStatement("SELECT mot_marca || ' ' || mot_modelo from motor order by mot_marca");
             ResultSet rs = pst.executeQuery();
             AdaptadorSQLUI.llenarComboBox(jCombo, rs);
         } catch (SQLException ex) {
