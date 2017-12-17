@@ -74,7 +74,7 @@ public class Tipo_pieza {
     public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
         PreparedStatement pst;
         try {
-            pst = conector.conexion.prepareStatement("SELECT tip_nombre from tipo_pieza ORDER BY tip_nombre");
+            pst = conector.conexion.prepareStatement("SELECT tip_nombre from tipo_pieza");
             ResultSet rs = pst.executeQuery();
             AdaptadorSQLUI.llenarComboBox(jCombo, rs);
         } catch (SQLException ex) {

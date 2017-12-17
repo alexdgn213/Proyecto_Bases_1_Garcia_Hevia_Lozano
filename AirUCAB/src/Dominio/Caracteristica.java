@@ -23,9 +23,9 @@ import javax.swing.JTable;
 public class Caracteristica {
     
     int car_codigo;
-    int car_valor;
+    String car_valor;
 
-    public Caracteristica(int car_codigo,int car_valor) {
+    public Caracteristica(int car_codigo,String car_valor) {
         this.car_codigo = car_codigo;
         this.car_valor = car_valor;
     }
@@ -34,10 +34,10 @@ public class Caracteristica {
 
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO Caracteristica(car_codigo,car_valor) VALUES(?,?)";
+            String stm = "INSERT INTO Caracteristica(car_codigo,car_nombre) VALUES(?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, car_codigo);
-            pst.setInt(2, car_valor);
+            pst.setString(2, car_valor);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -47,10 +47,10 @@ public class Caracteristica {
     
     public void modificarEnDB(ConectorDB conector){
         try{
-            String stm = "UPDATE Caracteristica SET car_valor = ? WHERE car_codigo=?";
+            String stm = "UPDATE Caracteristica SET car_nombre = ? WHERE car_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(2, car_codigo);
-            pst.setInt(1, car_valor);
+            pst.setString(1, car_valor);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -84,9 +84,9 @@ public class Caracteristica {
     public static List<Caracteristica> obtenerTodos(ConectorDB conector){
         List<Caracteristica> caracteristicas = new ArrayList<Caracteristica>();
         try {
-            ResultSet rs = obtenerResultSet(conector,"SELECT car_codigo,car_valor FROM caracteristica");
+            ResultSet rs = obtenerResultSet(conector,"SELECT car_codigo,car_nombre FROM caracteristica");
             while (rs.next()) {
-                Caracteristica c = new Caracteristica(rs.getInt("car_codigo"),rs.getInt("car_valor"));
+                Caracteristica c = new Caracteristica(rs.getInt("car_codigo"),rs.getString("car_nombre"));
                 caracteristicas.add(c);
             }
         } catch (SQLException ex) {
@@ -96,7 +96,7 @@ public class Caracteristica {
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT car_codigo as Codigo,car_valor as Valor FROM caracteristica");
+        ResultSet rs =obtenerResultSet(conector,"SELECT car_codigo as Codigo,car_nombre as Valor FROM caracteristica");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
@@ -104,11 +104,26 @@ public class Caracteristica {
     public static Caracteristica buscarPorCodigo(ConectorDB conector, int codigo){
         Caracteristica c = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT car_codigo,car_valor FROM caracteristica WHERE car_codigo=?");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT car_codigo,car_nombre FROM caracteristica WHERE car_codigo=?");
             pst.setInt(1, codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                c = new Caracteristica(rs.getInt("car_codigo"),rs.getInt("car_valor"));
+                c = new Caracteristica(rs.getInt("car_codigo"),rs.getString("car_nombre"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return c;
+    }
+    
+    public static Caracteristica buscarPorNombre(ConectorDB conector, String codigo){
+        Caracteristica c = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT car_codigo,car_nombre FROM caracteristica WHERE car_nombre=?");
+            pst.setString(1, codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                c = new Caracteristica(rs.getInt("car_codigo"),rs.getString("car_nombre"));
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
@@ -119,7 +134,7 @@ public class Caracteristica {
     public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
         PreparedStatement pst;
         try {
-            pst = conector.conexion.prepareStatement("SELECT car_nombre from caracteristica ORDER BY car_nombre");
+            pst = conector.conexion.prepareStatement("SELECT car_nombre from caracteristica");
             ResultSet rs = pst.executeQuery();
             AdaptadorSQLUI.llenarComboBox(jCombo, rs);
         } catch (SQLException ex) {
@@ -132,15 +147,10 @@ public class Caracteristica {
         this.car_codigo = car_codigo;
     }
 
-    public void setCar_valor(int car_valor) {
-        this.car_valor = car_valor;
-    }
-
     public int getCar_codigo() {
         return car_codigo;
     }
 
-    public int getCar_valor() {
-        return car_valor;
-    }
+    
+    
 }    
