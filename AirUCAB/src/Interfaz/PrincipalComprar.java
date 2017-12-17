@@ -6,6 +6,7 @@
 package Interfaz;
 
 import Adaptadores.AdaptadorSQLUI;
+import Adaptadores.Comprobador;
 import Adaptadores.ConectorDB;
 import Adaptadores.MensajeUI;
 import Dominio.Cliente;
@@ -53,6 +54,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
         this.compras = new ArrayList<Lote_material>();
         jtfTotal.setText(String.valueOf(montoTotal));
         jtfTotal.setEnabled(false);
+        jlErrorcantidad.setVisible(false);
 
     }
 
@@ -82,6 +84,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
         tablaMateriales = new javax.swing.JTable();
         jtfTotal = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jlErrorcantidad = new javax.swing.JLabel();
         botonGuardar = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
 
@@ -191,6 +194,11 @@ public class PrincipalComprar extends javax.swing.JPanel {
         jLabel7.setText("TOTAL: ");
         jLabel7.setToolTipText("");
 
+        jlErrorcantidad.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jlErrorcantidad.setForeground(new java.awt.Color(255, 0, 0));
+        jlErrorcantidad.setText("Error en el rif");
+        jlErrorcantidad.setToolTipText("");
+
         javax.swing.GroupLayout panelComprarLayout = new javax.swing.GroupLayout(panelComprar);
         panelComprar.setLayout(panelComprarLayout);
         panelComprarLayout.setHorizontalGroup(
@@ -215,7 +223,11 @@ public class PrincipalComprar extends javax.swing.JPanel {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(panelComprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelComprarLayout.createSequentialGroup()
+                                    .addComponent(jtfcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jlErrorcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelComprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,7 +250,8 @@ public class PrincipalComprar extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(panelComprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jtfcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlErrorcantidad))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
@@ -321,15 +334,17 @@ public class PrincipalComprar extends javax.swing.JPanel {
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         int fila = tablaMateriales.getSelectedRow();
-        if (fila>=0){
-            int id = (Integer) tablaMateriales.getValueAt(fila, 0);
-            int cantidad = Integer.parseInt(jtfcantidad.getText());
-            int codigoCompra= (Integer)tablaMateriales.getValueAt(fila,3);
-            int precio=(Integer)tablaMateriales.getValueAt(fila,2);
-            Lote_material l = new Lote_material(precio*cantidad,Date.valueOf(LocalDate.now()),cantidad,id,p.getPro_rif(),codigoCompra);
-            añadirAFactura(l);
+        jlErrorcantidad.setVisible(false);
+        if (Comprobador.ComprobarInt(jtfcantidad,jlErrorcantidad)){
+            if (fila>=0){
+                int id = (Integer) tablaMateriales.getValueAt(fila, 0);
+                int cantidad = Integer.parseInt(jtfcantidad.getText());
+                int codigoCompra= (Integer)tablaMateriales.getValueAt(fila,3);
+                int precio=(Integer)tablaMateriales.getValueAt(fila,2);
+                Lote_material l = new Lote_material(precio*cantidad,Date.valueOf(LocalDate.now()),cantidad,id,p.getPro_rif(),codigoCompra);
+                añadirAFactura(l);
+            }
         }
-        
         
     }//GEN-LAST:event_jbNuevoActionPerformed
 
@@ -384,6 +399,7 @@ public class PrincipalComprar extends javax.swing.JPanel {
     private javax.swing.JButton jbEliminat;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JComboBox<String> jcbProveedor;
+    private javax.swing.JLabel jlErrorcantidad;
     private javax.swing.JTextField jtfTotal;
     private javax.swing.JTextField jtfcantidad;
     private javax.swing.JPanel panelComprar;
