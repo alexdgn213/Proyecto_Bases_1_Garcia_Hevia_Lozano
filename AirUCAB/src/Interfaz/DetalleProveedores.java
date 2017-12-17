@@ -636,7 +636,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1148, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -707,10 +707,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         if( Comprobador.ComprobarInt(jtfRif, jlErrorRif) &&
         Comprobador.ComprobarString(jtfNombre, jlErrorNombre) &&
         Comprobador.ComprobarInt(jtfMontoAcreditado, jlErrorMonto) &&
-        Comprobador.ComprobarDate(jtfFechaInicio, jlErrorFecha) &&
-        Comprobador.ComprobarString(jtfTipo, jlErrorInformacionTipo) &&
-        Comprobador.ComprobarInt(jtfValor, jlErrorInformacionValor) &&
-        Comprobador.ComprobarInt(jtfPrecio, jlErrorMaterialPrecio) ){
+        Comprobador.ComprobarDate(jtfFechaInicio, jlErrorFecha)){
         if (p==null){
            Proveedor p = new Proveedor(Integer.parseInt(jtfRif.getText()),jtfNombre.getText(),Integer.parseInt(jtfMontoAcreditado.getText()),Date.valueOf(jtfFechaInicio.getText()),fk_lugar);
            p.agregarADB(conector);
@@ -748,9 +745,13 @@ public class DetalleProveedores extends javax.swing.JPanel {
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void bAddInf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddInf1ActionPerformed
-        Informacion_contacto i = new Informacion_contacto(jtfValor.getText(),jtfTipo.getText(),p.getPro_rif(),1);
-        i.agregarADB(conector);
-        Informacion_contacto.llenarTablaInformacionProveedor(conector, jTable2, p.getPro_rif());
+        boolean A = Comprobador.ComprobarString(jtfTipo, jlErrorInformacionTipo);
+        boolean B = Comprobador.ComprobarString(jtfValor, jlErrorInformacionValor);
+        if (A && B){
+            Informacion_contacto i = new Informacion_contacto(jtfValor.getText(),jtfTipo.getText(),p.getPro_rif(),1);
+            i.agregarADB(conector);
+            Informacion_contacto.llenarTablaInformacionProveedor(conector, jTable2, p.getPro_rif());
+        }
     }//GEN-LAST:event_bAddInf1ActionPerformed
 
     private void bDelInfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDelInfActionPerformed
@@ -764,21 +765,24 @@ public class DetalleProveedores extends javax.swing.JPanel {
     }//GEN-LAST:event_bDelInfActionPerformed
 
     private void bAddMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddMaterialActionPerformed
-        if(jcbMateriales.getSelectedIndex()>0){
-            Material m= Material.buscarPorNombre(conector, jcbMateriales.getSelectedItem().toString());
-            if(m!=null){
-                mat_pro relacion = mat_pro.relacionDada(conector, p.getPro_rif(), m.getMat_codigo());
-                if(relacion == null){
-                    relacion = new mat_pro(Integer.parseInt(jtfPrecio.getText()),m.getMat_codigo(),p.getPro_rif());
-                    relacion.agregarADB(conector);
-                }
-                else{
-                    relacion.setMat_pro_precio_actual(Integer.parseInt(jtfPrecio.getText()));
-                    relacion.modificarEnDB(conector);
+        boolean A = Comprobador.ComprobarInt(jtfPrecio, jlErrorMaterialPrecio);
+        if (A){
+            if(jcbMateriales.getSelectedIndex()>0){
+                Material m= Material.buscarPorNombre(conector, jcbMateriales.getSelectedItem().toString());
+                if(m!=null){
+                    mat_pro relacion = mat_pro.relacionDada(conector, p.getPro_rif(), m.getMat_codigo());
+                    if(relacion == null){
+                        relacion = new mat_pro(Integer.parseInt(jtfPrecio.getText()),m.getMat_codigo(),p.getPro_rif());
+                        relacion.agregarADB(conector);
+                    }
+                    else{
+                        relacion.setMat_pro_precio_actual(Integer.parseInt(jtfPrecio.getText()));
+                        relacion.modificarEnDB(conector);
+                    }
                 }
             }
+            mat_pro.llenarTablaMaterialesDeProveedor(conector, jTable1, p.getPro_rif());
         }
-        mat_pro.llenarTablaMaterialesDeProveedor(conector, jTable1, p.getPro_rif());
     }//GEN-LAST:event_bAddMaterialActionPerformed
 
     private void bDelMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDelMaterialActionPerformed

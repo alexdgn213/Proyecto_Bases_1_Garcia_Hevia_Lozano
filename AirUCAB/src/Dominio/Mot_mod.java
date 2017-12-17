@@ -178,4 +178,36 @@ public class Mot_mod{
         return mm;
     }*/
 
+    public int getMot_mod_codigo() {
+        return mot_mod_codigo;
+    }
+
+    public void setMot_mod_codigo(int mot_mod_codigo) {
+        this.mot_mod_codigo = mot_mod_codigo;
+    }
+
+    public int getMot_mod_cantidad() {
+        return mot_mod_cantidad;
+    }
+
+    public void setMot_mod_cantidad(int mot_mod_cantidad) {
+        this.mot_mod_cantidad = mot_mod_cantidad;
+    }
+
+    public int getFk_mot_codigo() {
+        return fk_mot_codigo;
+    }
+
+    public void setFk_mot_codigo(int fk_mot_codigo) {
+        this.fk_mot_codigo = fk_mot_codigo;
+    }
+
+    public int getFk_mod_codigo() {
+        return fk_mod_codigo;
+    }
+
+    public void setFk_mod_codigo(int fk_mod_codigo) {
+        this.fk_mod_codigo = fk_mod_codigo;
+    }
+
 }

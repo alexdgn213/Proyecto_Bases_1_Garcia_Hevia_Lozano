@@ -6,6 +6,7 @@
 package Interfaz;
 
 import Adaptadores.AdaptadorSQLUI;
+import Adaptadores.Comprobador;
 import Adaptadores.ConectorDB;
 import Adaptadores.MensajeUI;
 import Dominio.Cliente;
@@ -398,7 +399,7 @@ public class DetalleLote extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -438,8 +439,10 @@ public class DetalleLote extends javax.swing.JPanel {
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void bAddInfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddInfActionPerformed
-
-        if(jcbPrueba.getSelectedIndex()>0 && jcbEstatus.getSelectedIndex()>0){
+        jlErrorFecha.setVisible(false);
+        boolean A = Comprobador.ComprobarDate(jtfFechaRealizacion, jlErrorFecha);
+        if (A) {
+            if(jcbPrueba.getSelectedIndex()>0 && jcbEstatus.getSelectedIndex()>0){
                 pru_lot relacion = pru_lot.relacionDada(conector, l.getLot_codigo(),jcbPrueba.getSelectedIndex());
                 if(relacion == null){
                     relacion = new pru_lot(Date.valueOf(jtfFechaRealizacion.getText()),
@@ -452,9 +455,8 @@ public class DetalleLote extends javax.swing.JPanel {
                     relacion.modificarEnDB(conector);
                 }
             }
-        pru_lot.llenarTablaLote(conector, tablaPruebas, l.getLot_codigo());
-                
-        
+            pru_lot.llenarTablaLote(conector, tablaPruebas, l.getLot_codigo());
+        }else {new Thread(new MensajeUI(panelMensaje,"Los datos ingresados no son correctos",0)).start();}
     }//GEN-LAST:event_bAddInfActionPerformed
 
     private void tablaPruebasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPruebasMouseClicked

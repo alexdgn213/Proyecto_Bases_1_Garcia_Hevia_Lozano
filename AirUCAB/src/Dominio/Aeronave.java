@@ -117,12 +117,19 @@ public class Aeronave {
     }
     
    public static void llenarTablaAeronaveFinalizadas(ConectorDB conector, JTable jTable){
+<<<<<<< HEAD
+        ResultSet rs =obtenerResultSet(conector,"SELECT aer_codigo as Codigo,mod_nombre as Modelo,cli_nombre as Nombre_Cliente,aer_fecha_compra as Fecha_Compra "
+                + " FROM aeronave a,modelo_aeronave m,cliente c,pru_aer pa"
+                + " WHERE a.fk_cli_rif=c.cli_rif AND a.fk_mod_codigo=m.mod_codigo AND a.aer_codigo=pa.fk_aer_codigo "
+                + " AND exists(Select e.fk_est_codigo from  ensamblaje e,pru_pie pp where pp.fk_est_codigo= pa.fk_est_codigo AND e.fk_est_codigo=pa.fk_est_codigo AND e.fk_est_codigo!=4))");
+=======
         ResultSet rs =obtenerResultSet(conector,"SELECT aer_codigo as Codigo,mod_nombre as Modelo,cli_nombre as Nombre_Cliente,aer_fecha_compra as Fecha_Compra \n" +
 "                 FROM aeronave a,modelo_aeronave m,cliente c,pru_aer pa\n" +
 "                 WHERE a.fk_cli_rif=c.cli_rif AND a.fk_mod_codigo=m.mod_codigo AND a.aer_codigo=pa.fk_aer_codigo \n" +
 "                 AND(not exists(Select e.fk_est_codigo from  ensamblaje e, pieza p where e.fk_pie_codigo=p.pie_codigo AND e.fk_est_codigo!=4 and p.fk_aer_codigo=aer_codigo)\n" +
 "                 AND not exists(Select pp.fk_est_codigo from  pru_pie pp, pieza p where p.pie_codigo = pp.fk_pie_codigo AND pp.fk_est_codigo!=4 AND p.fk_aer_codigo=aer_codigo)\n" +
 "                 AND not exists(Select pa.fk_est_codigo from  pru_aer pa where pa.fk_est_codigo!=4 AND pa.fk_aer_codigo=aer_codigo));");
+>>>>>>> 679b990bf17920dded8f8c520f8a3182c8a59263
         AdaptadorSQLUI.llenarTabla(jTable, rs);
     }
    
@@ -133,6 +140,14 @@ public class Aeronave {
 "                 AND(exists(Select e.fk_est_codigo from  ensamblaje e, pieza p where e.fk_pie_codigo=p.pie_codigo AND e.fk_est_codigo!=4 and p.fk_aer_codigo=aer_codigo)\n" +
 "                 OR exists(Select pp.fk_est_codigo from  pru_pie pp, pieza p where p.pie_codigo = pp.fk_pie_codigo AND pp.fk_est_codigo!=4 AND p.fk_aer_codigo=aer_codigo)\n" +
 "                 OR exists(Select pa.fk_est_codigo from  pru_aer pa where pa.fk_est_codigo!=4 AND pa.fk_aer_codigo=aer_codigo));");
+        AdaptadorSQLUI.llenarTabla(jTable, rs);
+    }
+   
+   public static void llenarTablaPruebasAeronave(ConectorDB conector, JTable jTable){
+        ResultSet rs =obtenerResultSet(conector,"SELECT aer_codigo as Codigo,mod_nombre as Modelo,pru_aer_codigo as Codigo_Prueba_Aeronave,est_nombre as Estatus "
+                + " FROM aeronave a,modelo_aeronave m c,pru_aer pa"
+                + " WHERE a.fk_cli_rif=c.cli_rif AND a.fk_mod_codigo=m.mod_codigo AND a.aer_codigo=pa.fk_aer_codigo "
+                + " AND exists(Select e.fk_est_codigo from  ensamblaje e,pru_pie pp where pp.fk_est_codigo= pa.fk_est_codigo AND e.fk_est_codigo=pa.fk_est_codigo AND e.fk_est_codigo==4)");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
     }
 
