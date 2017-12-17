@@ -33,6 +33,12 @@ public class Motor {
         this.fk_mod_codigo = fk_mod_codigo;
     }
     
+    public Motor(String mot_modelo, String mot_marca, int fk_mod_codigo) {
+        this.mot_modelo = mot_modelo;
+        this.mot_marca = mot_marca;
+        this.fk_mod_codigo = fk_mod_codigo;
+    }
+    
     public void agregarADB(ConectorDB conector){
         try{
             String stm = "INSERT INTO motor(mot_codigo,mot_modelo,mot_marca,fk_mod_codigo) VALUES(?,?,?,?)";
