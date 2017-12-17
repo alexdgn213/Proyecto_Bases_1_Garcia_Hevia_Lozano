@@ -103,9 +103,9 @@ public class Tip_pru {
     public static List<Tip_pru> obtenerTodasPruebasPieza(ConectorDB conector,int fk_tip_codigo){
         List<Tip_pru> pls = new ArrayList<Tip_pru>();
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("\"SELECT tip_pru_codigo as codigo,fk_tip_codigo as Codigo_Tipo_Pieza,fk_pru_codigo as Codigo_Prueba\"\n" +
-"                    + \" FROM Tip_pru  \"\n" +
-"                    + \" Where fk_tip_codigo=?\"");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT tip_pru_codigo as codigo,fk_tip_codigo as Codigo_Tipo_Pieza,fk_pru_codigo as Codigo_Prueba" +
+"                    FROM Tip_pru  " +
+"                     Where fk_tip_codigo=?");
             pst.setInt(1, fk_tip_codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
