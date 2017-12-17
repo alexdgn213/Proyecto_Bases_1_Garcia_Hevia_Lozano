@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Adaptadores.Comprobador;
 import Adaptadores.ConectorDB;
 import Dominio.Usuario;
 import javax.swing.UIManager;  
@@ -150,7 +151,7 @@ public class PantallaLogin extends javax.swing.JFrame {
         jlUsuario.setVisible(false);
         jlClave.setVisible(false);
         Usuario usuarioActual = Usuario.loguearUsuario(conector, usuario);
-        if(usuarioActual!=null){
+        if(usuarioActual!=null && Comprobador.ComprobarString(tfUsuario, jlUsuario)){
             if(usuarioActual.getUsu_clave().equals(clave)){
                 acceder();
             }
