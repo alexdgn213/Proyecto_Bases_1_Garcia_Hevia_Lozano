@@ -133,6 +133,21 @@ public class modelo_aeronave {
         return m;
     }
     
+    public static String buscarNombrewPorCodigo(ConectorDB conector, int codigo){
+        String modelo ="";
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT mod_codigo,mod_nombre,mod_precio_compra FROM modelo_aeronave WHERE mod_codigo=?");
+            pst.setInt(1, codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                modelo = rs.getString("mod_nombre");
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return modelo;
+    }
+    
     public static modelo_aeronave buscarPorNombre(ConectorDB conector, String nombre){
         modelo_aeronave m = null;
         try {
