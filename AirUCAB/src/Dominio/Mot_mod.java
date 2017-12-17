@@ -146,14 +146,14 @@ public class Mot_mod{
     public static Mot_mod relacionDada(ConectorDB conector, int mot_codigo, int mod_codigo){
        Mot_mod respuesta = null; 
         try{
-            String stm = "SELECT mot_mod_codigo, , fk_mot_codigo, fk_mod_codigo FROM mot_mod "
+            String stm = "SELECT mot_mod_codigo, mot_mod_cantidad, fk_mot_codigo, fk_mod_codigo FROM mot_mod "
                     + "WHERE fk_mot_codigo=? AND fk_mod_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, mot_codigo);
             pst.setInt(2, mod_codigo);
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
-                respuesta = new Mot_mod(rs.getInt("mot_mod_codigo"),rs.getInt("fk_mot_codigo"),rs.getInt("fk_mod_codigo"));
+                respuesta = new Mot_mod(rs.getInt("mot_mod_codigo"),rs.getInt("mot_mod_cantidad"),rs.getInt("fk_mot_codigo"),rs.getInt("fk_mod_codigo"));
             }
             pst.close();
         }catch (SQLException ex){
@@ -161,5 +161,21 @@ public class Mot_mod{
         };
         return respuesta;
     }
+    
+    /*
+     public static Mot_mod buscarPorCodigo(ConectorDB conector, int codigo){
+        Mot_mod mm = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT mot_mod_codigo, mot_mod_cantidad,fk_mot_codigo,fk_mod_codigo FROM mot_mod WHERE mot_mod_codigo=?");
+            pst.setInt(1, codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                mm = new Mot_mod(rs.getInt("mot_mod_codigo"),rs.getInt("mot_mod_cantidad"),rs.getInt("fk_mot_codigo"),rs.getInt("fk_mod_codigo"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return mm;
+    }*/
 
 }
