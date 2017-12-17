@@ -110,6 +110,24 @@ public class Mot_mod{
         return mot_mods;
     }
     
+    public static List<Mot_mod> obtenerMotorModelo(ConectorDB conector,int fk_mot_codigo){
+        List<Mot_mod> pls = new ArrayList<Mot_mod>();
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT mot_mod_codigo,mot_mod_cantidad,fk_mot_codigo,fk_mod_codigo" +
+"            FROM Mot_mod " +
+"            Where fk_mod_codigo=?");
+            pst.setInt(1, fk_mot_codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Mot_mod l = new Mot_mod(rs.getInt("mot_mod_codigo"),rs.getInt("mot_mod_cantidad"),rs.getInt("fk_mot_codigo"),rs.getInt("fk_mod_codigo"));
+                pls.add(l);
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return pls;
+    }
+    
     public static void llenarTabla(ConectorDB conector, JTable jTable){
         ResultSet rs =obtenerResultSet(conector,"SELECT mot_mod_codigo as Codigo,mot_mod_cantidad as Cantidad,fk_mot_codigo as Codigo_Motor,fk_mod_codigo as Codigo_Modelo_Aeronave FROM mot_mod");
         AdaptadorSQLUI.llenarTabla(jTable, rs); 
