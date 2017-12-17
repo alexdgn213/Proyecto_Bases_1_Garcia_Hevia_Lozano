@@ -17,6 +17,7 @@ import Dominio.Lote_material;
 import Dominio.Lugar;
 import Dominio.Material;
 import Dominio.Proveedor;
+import Dominio.Pru_aer;
 import Dominio.Prueba;
 import Dominio.pru_lot;
 import java.awt.Color;
@@ -586,7 +587,7 @@ public class DetalleAvion extends javax.swing.JPanel {
         jtfFechaCompra.setEnabled(false);
         jtfCantidad.setText(String.valueOf(a.getAer_precio_compra()));
         jtfCantidad.setEnabled(false);
-        //pru_lot.llenarTablaLote(conector, tablaPruebas, l.getLot_codigo());
+        Pru_aer.llenarTablaAvion(conector, tablaPruebas, a.getAer_codigo());
         
     }
     

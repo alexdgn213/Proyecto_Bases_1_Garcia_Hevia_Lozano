@@ -136,7 +136,7 @@ public class pru_lot {
     public static void llenarTablaLote(ConectorDB conector, JTable jTable, int id){
         ResultSet rs =obtenerResultSet(conector,"SELECT pl.pru_lot_codigo as Codigo,pl.pru_lot_fecha_realizacion as Fecha_Realizacion,p.pru_nombre as Prueba,e.est_nombre as Estatus "
                 + " FROM pru_lot pl left join prueba p on pl.fk_pru_codigo=p.pru_codigo left join estatus e on e.est_codigo=pl.fk_est_codigo"
-                + " WHERE fk_est_codigo!=6 AND fk_lot_codigo="+String.valueOf(id));
+                + " WHERE fk_lot_codigo="+String.valueOf(id));
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
