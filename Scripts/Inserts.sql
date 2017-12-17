@@ -2714,7 +2714,8 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
  ('Control de calidad de materiales por traslado','Comprueba que no hayan sufrido daños por traslado'),
  ('Control de calidad de la pieza','Comprueba el nivel optimo de la pieza ensamblada'),
  ('Prueba de control de ensamble','Comprueba que el ensamblaje se haya hecho satisfactoriamente'),
- ('Control de calidad de piezas por traslado','Comprueba que no hayan sufrido daños por traslado');
+ ('Control de calidad de piezas por traslado','Comprueba que no hayan sufrido daños por traslado'),
+ ('Control de calidad de motor','Comprueba que el ensamblaje del motor se haya hecho satisfactoriamente');
  
  INSERT INTO tip_pru(fk_tip_codigo,fk_pru_codigo) VALUES
  (1,4),
