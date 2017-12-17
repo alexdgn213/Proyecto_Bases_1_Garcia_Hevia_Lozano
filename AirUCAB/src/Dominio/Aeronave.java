@@ -120,13 +120,21 @@ public class Aeronave {
         ResultSet rs =obtenerResultSet(conector,"SELECT aer_codigo as Codigo,mod_nombre as Modelo,cli_nombre as Nombre_Cliente,aer_fecha_compra as Fecha_Compra "
                 + " FROM aeronave a,modelo_aeronave m,cliente c,pru_aer pa"
                 + " WHERE a.fk_cli_rif=c.cli_rif AND a.fk_mod_codigo=m.mod_codigo AND a.aer_codigo=pa.fk_aer_codigo "
-                + " AND exists(Select e.fk_est_codigo from  ensamblaje e,pru_pie pp where pp.fk_est_codigo= pa.fk_est_codigo AND e.fk_est_codigo=pa.fk_est_codigo AND e.fk_est_codigo!=4)");
+                + " AND exists(Select e.fk_est_codigo from  ensamblaje e,pru_pie pp where pp.fk_est_codigo= pa.fk_est_codigo AND e.fk_est_codigo=pa.fk_est_codigo AND e.fk_est_codigo!=4))");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
     }
    
    public static void llenarTablaAeronaveNoFinalizadas(ConectorDB conector, JTable jTable){
         ResultSet rs =obtenerResultSet(conector,"SELECT aer_codigo as Codigo,mod_nombre as Modelo,cli_nombre as Nombre_Cliente,aer_fecha_compra as Fecha_Compra "
                 + " FROM aeronave a,modelo_aeronave m,cliente c,pru_aer pa"
+                + " WHERE a.fk_cli_rif=c.cli_rif AND a.fk_mod_codigo=m.mod_codigo AND a.aer_codigo=pa.fk_aer_codigo "
+                + " AND exists(Select e.fk_est_codigo from  ensamblaje e,pru_pie pp where pp.fk_est_codigo= pa.fk_est_codigo AND e.fk_est_codigo=pa.fk_est_codigo AND e.fk_est_codigo==4)");
+        AdaptadorSQLUI.llenarTabla(jTable, rs);
+    }
+   
+   public static void llenarTablaPruebasAeronave(ConectorDB conector, JTable jTable){
+        ResultSet rs =obtenerResultSet(conector,"SELECT aer_codigo as Codigo,mod_nombre as Modelo,pru_aer_codigo as Codigo_Prueba_Aeronave,est_nombre as Estatus "
+                + " FROM aeronave a,modelo_aeronave m c,pru_aer pa"
                 + " WHERE a.fk_cli_rif=c.cli_rif AND a.fk_mod_codigo=m.mod_codigo AND a.aer_codigo=pa.fk_aer_codigo "
                 + " AND exists(Select e.fk_est_codigo from  ensamblaje e,pru_pie pp where pp.fk_est_codigo= pa.fk_est_codigo AND e.fk_est_codigo=pa.fk_est_codigo AND e.fk_est_codigo==4)");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
