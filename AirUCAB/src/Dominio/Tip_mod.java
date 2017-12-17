@@ -112,13 +112,13 @@ public class Tip_mod {
     public static List<Tip_mod> obtenerTipoPiezasModelo(ConectorDB conector,int fk_tip_codigo){
         List<Tip_mod> pls = new ArrayList<Tip_mod>();
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("\"SELECT tip_mod_codigo,tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo\"\n" +
-"                    + \" FROM Tip_mod  \"\n" +
-"                    + \" Where fk_mod_codigo=?\"");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT tip_mod_codigo,tip_mod_cantidad,fk_mod_codigo,fk_tip_codigo" +
+            " FROM Tip_mod" +
+            " Where fk_mod_codigo=?");
             pst.setInt(1, fk_tip_codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                Tip_mod l = new Tip_mod(rs.getInt("tip_mod_codigo"),rs.getInt("tip_mod_cantidad"),rs.getInt("fk_mod_codigo"),rs.getInt("fk_tip_codigo"));
+                Tip_mod l = new Tip_mod(rs.getInt("tip_mod_codigo"),rs.getInt("tip_mod_cantidad"),rs.getInt("fk_tip_codigo"),rs.getInt("fk_mod_codigo"));
                 pls.add(l);
             }
         } catch (SQLException ex) {

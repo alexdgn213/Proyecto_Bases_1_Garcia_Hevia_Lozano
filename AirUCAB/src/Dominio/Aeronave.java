@@ -50,7 +50,7 @@ public class Aeronave {
 
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO Aeronave(aer_fecha_compra,aer_precio_compra,fk_cli_rif,fk_,fk_mod_codigo,fk_fac_codigo) VALUES(?,?,?,?)";
+            String stm = "INSERT INTO Aeronave(aer_fecha_compra,aer_precio_compra,fk_cli_rif,fk_mod_codigo,fk_fac_codigo) VALUES(?,?,?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setDate(1, aer_fecha_compra);
             pst.setInt(2, aer_precio_compra);
@@ -58,8 +58,8 @@ public class Aeronave {
             pst.setInt(4,fk_mod_codigo);
             pst.setInt(5,fk_fac_codigo);
             pst.executeUpdate();
-            stm ="Select aer_codigo From Aeronave Where aer_fecha_compra=? AND aer_precio_compra AND fk_cli_rif=? AND fk_mod_codigo=? AND fk_fac_codigo=?";
-             pst = conector.conexion.prepareStatement(stm);
+            stm ="Select aer_codigo From Aeronave Where aer_fecha_compra=? AND aer_precio_compra=? AND fk_cli_rif=? AND fk_mod_codigo=? AND fk_fac_codigo=?";
+            pst = conector.conexion.prepareStatement(stm);
             pst.setDate(1, aer_fecha_compra);
             pst.setInt(2, aer_precio_compra);
             pst.setInt(3, fk_cli_rif);
@@ -70,6 +70,10 @@ public class Aeronave {
                 this.aer_codigo = rs.getInt("aer_codigo");
             }
             pst.close();
+            for (Tip_mod tp :Tip_mod.obtenerTipoPiezasModelo(conector, fk_mod_codigo)){
+                Pieza p = new Pieza(Date.valueOf(java.time.LocalDate.now()),Date.valueOf(java.time.LocalDate.now()),aer_codigo,tp.fk_tip_codigo);
+                p.agregarPiezaADB(conector);
+            }
             
         }catch (SQLException ex){
            System.out.print(ex.toString());
@@ -219,5 +223,29 @@ public class Aeronave {
     public int getFk_mod_codigo() {
         return fk_mod_codigo;
     }
+
+    public int getAer_precio_compra() {
+        return aer_precio_compra;
+    }
+
+    public void setAer_precio_compra(int aer_precio_compra) {
+        this.aer_precio_compra = aer_precio_compra;
+    }
+
+    public int getFk_fac_codigo() {
+        return fk_fac_codigo;
+    }
+
+    public void setFk_fac_codigo(int fk_fac_codigo) {
+        this.fk_fac_codigo = fk_fac_codigo;
+    }
+
+    private static class LocalDate {
+
+        public LocalDate() {
+        }
+    }
+    
+    
 }
     

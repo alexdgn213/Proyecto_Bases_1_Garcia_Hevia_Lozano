@@ -308,9 +308,9 @@ public class PrincipalVender extends javax.swing.JPanel {
         if (fila>=0){
             int id = (Integer) tablaModelos.getValueAt(fila, 0);
             int cantidad = Integer.parseInt(jtfcantidad.getText());
-            int precio=(Integer)tablaModelos.getValueAt(fila,3);
+            int precio=(Integer)tablaModelos.getValueAt(fila,2);
             for (int i=0;i<cantidad;i++){
-                Aeronave a = new Aeronave(c.getCli_rif(),precio,Date.valueOf(LocalDate.now(),id,0));
+                Aeronave a = new Aeronave(c.getCli_rif(),Date.valueOf(LocalDate.now()),precio,id,0);
                 añadirAFactura(a);
             }
             
@@ -378,14 +378,13 @@ public class PrincipalVender extends javax.swing.JPanel {
     }
     
     public void comprar(){
-        /*Factura f = new Factura(montoTotal);
+        Factura f = new Factura(montoTotal);
         f.agregarADB(conector);
-        for(Lote_material l : compras){
-            l.setFk_fac_codigo(f.getFac_codigo());
-            l.agregarADB(conector);
+        for(Aeronave a : aviones){
+            a.setFk_fac_codigo(f.getFac_codigo());
+            a.agregarADB(conector);
         }
         new Thread(new MensajeUI(panelMensaje,"Se han generado la factura y las pruebas.",1)).start();
-        */
 }
     
     private void actualizarTabla() {
@@ -402,11 +401,11 @@ public class PrincipalVender extends javax.swing.JPanel {
         
         for(Aeronave a: aviones) {
             lleno=1;
-            Object[] fila = new Object[2];
+            Object[] fila = new Object[3];
             fila[0] = a.getFk_mod_codigo();
             fila[1] = modelo_aeronave.buscarNombrewPorCodigo(conector, a.getFk_mod_codigo());
-            fila[2] = a.getPrecio_compra();
-            montoTotal+=a.getPrecio_compra();
+            fila[2] = a.getAer_precio_compra();
+            montoTotal+=a.getAer_precio_compra();
             modelo.addRow(fila);
            }
         if(lleno==1) tablaCompras.setModel(modelo);
