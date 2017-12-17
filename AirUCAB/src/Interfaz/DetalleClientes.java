@@ -582,7 +582,6 @@ public class DetalleClientes extends javax.swing.JPanel {
         boolean B = Comprobador.ComprobarString(jtfNombre, jlErrorNombre);
         boolean C = Comprobador.ComprobarInt(jtfMontoAcreditado, jlErrorMonto);
         boolean D = Comprobador.ComprobarDate(jtfFechaInicio, jlErrorFecha);
-        
         int fk_lugar = Lugar.fkDireccion(conector,jcbPais.getSelectedItem().toString(),jcbEstado.getSelectedItem().toString() , jcbMunicipio.getSelectedItem().toString(), jcbParroquia.getSelectedItem().toString());
         if( A && B && C && D){
         if (c==null){
