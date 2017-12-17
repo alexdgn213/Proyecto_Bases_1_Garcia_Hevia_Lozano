@@ -2824,7 +2824,7 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
   (200,5,3);
   
   INSERT INTO pru_aer(pru_aer_fecha_realizacion,fk_pru_codigo,fk_aer_codigo,fk_est_codigo)VALUES
-  ('03/12/2015',4,5,1),
+  ('03/12/2015',4,5,4),
   ('12/04/2014',4,4,1),
   ('11/11/2015',4,3,1),
   ('02/06/2017',4,2,1),
