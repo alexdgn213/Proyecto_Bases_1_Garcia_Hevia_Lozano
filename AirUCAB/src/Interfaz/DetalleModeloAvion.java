@@ -167,6 +167,11 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_48dp_1x.png"))); // NOI18N
         botonEliminar.setMaximumSize(new java.awt.Dimension(69, 48));
         botonEliminar.setMinimumSize(new java.awt.Dimension(69, 48));
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
 
         jlErrorNombre.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jlErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
@@ -647,13 +652,18 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                 m.setMod_precio_compra(Integer.parseInt(jtfPrecio.getText()));
                 m.modificarEnDB(conector);
             }
+            PrincipalModeloAvion nuevoPanel = new PrincipalModeloAvion(conector,contenedor,panelMensaje);
+            contenedor.removeAll();
+            contenedor.add(nuevoPanel);
+            contenedor.updateUI();
         }else {
             new Thread(new MensajeUI(panelMensaje,"Los datos ingresados no son correctos",0)).start();
         }
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void bAddInfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddInfActionPerformed
-        if (Comprobador.ComprobarString(jtfValor, jlErrorCaracteristicaValor) && Comprobador.ComprobarString(jtfDescripcion, jlErrorCaracteristicaDescripcion)){
+        jlErrorCaracteristicaValor.setVisible(false);
+        if (Comprobador.ComprobarInt(jtfValor, jlErrorCaracteristicaValor) && Comprobador.ComprobarString(jtfDescripcion, jlErrorCaracteristicaDescripcion)){
             if(jcbCaracteristica.getSelectedIndex()>0){
                 Mod_car relacion = Mod_car.relacionDada(conector,m.getMod_codigo(), jcbCaracteristica.getSelectedIndex());
                 if(relacion == null){
@@ -690,6 +700,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
     }//GEN-LAST:event_bDelInfActionPerformed
 
     private void bAddMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddMaterialActionPerformed
+        jlErrorPiezaCantidad.setVisible(false);
         if (Comprobador.ComprobarInt(jtfPiezaCantidad, jlErrorPiezaCantidad)){
             if(jcbPieza.getSelectedIndex()>0){
                 Tip_mod relacion = Tip_mod.relacionDada(conector, jcbPieza.getSelectedIndex(),m.getMod_codigo());
@@ -738,6 +749,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
     }//GEN-LAST:event_bAddMaterialMouseClicked
 
     private void bAddMaterial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddMaterial1ActionPerformed
+        jlErrorMotorCantidad.setVisible(false);
         if (Comprobador.ComprobarInt(jtfMotor, jlErrorMotorCantidad)){
         if(jcbMotor.getSelectedIndex()>0){
             Mot_mod relacion = Mot_mod.relacionDada(conector, jcbMotor.getSelectedIndex(),m.getMod_codigo());
@@ -773,6 +785,14 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
             jcbMotor.setSelectedIndex(mm.getFk_mot_codigo());
         }
     }//GEN-LAST:event_tablaMotoresMouseClicked
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        m.eliminarDeDB(conector);
+        PrincipalModeloAvion nuevoPanel = new PrincipalModeloAvion(conector,contenedor,panelMensaje);
+        contenedor.removeAll();
+        contenedor.add(nuevoPanel);
+        contenedor.updateUI();
+    }//GEN-LAST:event_botonEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

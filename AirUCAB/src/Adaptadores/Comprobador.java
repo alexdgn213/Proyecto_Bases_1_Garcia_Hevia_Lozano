@@ -34,7 +34,7 @@ public class Comprobador{
     }
 
     public static boolean ComprobarString(JTextField dato,JLabel error){
-        Pattern pat = Pattern.compile("[a-zA-z0-9 ]*");
+        Pattern pat = Pattern.compile("[-a-zA-z0-9 ]*");
         String dat = dato.getText();
         Matcher mat = pat.matcher(dat);
         if(!mat.matches()||(dat.length()==0)){
