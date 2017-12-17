@@ -36,6 +36,13 @@ public class Pru_pie {
         this.fk_est_codigo = fk_est_codigo;
     }
     
+    public Pru_pie(int fk_pru_codigo,int fk_pie_codigo,int fk_est_codigo) {
+        this.pru_pie_fecha_realizacion = Date.valueOf(LocalDate.now());
+        this.fk_pru_codigo = fk_pru_codigo;
+        this.fk_pie_codigo = fk_pie_codigo;
+        this.fk_est_codigo = fk_est_codigo;
+    }
+    
     public void agregarADB(ConectorDB conector){
         try{
             String stm = "INSERT INTO Pru_pie(pru_pie_fecha_realizacion,fk_pru_codigo,fk_pie_codigo,fk_est_codigo) VALUES(?,?,?,?)";
