@@ -707,10 +707,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         if( Comprobador.ComprobarInt(jtfRif, jlErrorRif) &&
         Comprobador.ComprobarString(jtfNombre, jlErrorNombre) &&
         Comprobador.ComprobarInt(jtfMontoAcreditado, jlErrorMonto) &&
-        Comprobador.ComprobarDate(jtfFechaInicio, jlErrorFecha) &&
-        Comprobador.ComprobarString(jtfTipo, jlErrorInformacionTipo) &&
-        Comprobador.ComprobarInt(jtfValor, jlErrorInformacionValor) &&
-        Comprobador.ComprobarInt(jtfPrecio, jlErrorMaterialPrecio) ){
+        Comprobador.ComprobarDate(jtfFechaInicio, jlErrorFecha)){
         if (p==null){
            Proveedor p = new Proveedor(Integer.parseInt(jtfRif.getText()),jtfNombre.getText(),Integer.parseInt(jtfMontoAcreditado.getText()),Date.valueOf(jtfFechaInicio.getText()),fk_lugar);
            p.agregarADB(conector);
