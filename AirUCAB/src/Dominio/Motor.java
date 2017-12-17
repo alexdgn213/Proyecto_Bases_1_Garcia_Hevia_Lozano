@@ -42,7 +42,19 @@ public class Motor {
             pst.setString(3, mot_marca);
             pst.setInt(4, fk_mod_codigo);
             pst.executeUpdate();
-            pst.close();
+            stm = "SELECT mot_codigo FROM pieza WHERE pie_fecha_estimado=? AND pie_fecha_entregado=? AND fk_aer_codigo=? AND fk_tip_codigo = ? AND fk_pie_codigo =? AND fk_mot_codigo=?";
+            pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, mot_codigo);
+            pst.setString(2, mot_modelo);
+            pst.setString(3, mot_marca);
+            pst.setInt(4, fk_mod_codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                this.mot_codigo = rs.getInt("mot_codigo");
+            }
+            pst.close(); 
+       //     Pru_pie pl2 = new pru_lot(2,pie_codigo,1);
+       //     pl2.agregarADB(conector);
         }catch (SQLException ex){
            System.out.print(ex.toString());
         }

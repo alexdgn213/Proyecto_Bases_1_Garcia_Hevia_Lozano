@@ -24,20 +24,23 @@ public class Aeronave {
     int aer_codigo;
     int fk_cli_rif;
     Date aer_fecha_compra;
+    int aer_precio_compra;
     int fk_mod_codigo;
     int fk_fac_codigo;
 
-    public Aeronave(int aer_codigo, int fk_cli_rif, Date aer_fecha_compra, int fk_mod_codigo, int fk_fac_codigo) {
+    public Aeronave(int aer_codigo, int fk_cli_rif, Date aer_fecha_compra,int aer_precio_compra, int fk_mod_codigo, int fk_fac_codigo) {
         this.aer_codigo = aer_codigo;
         this.fk_cli_rif = fk_cli_rif;
         this.aer_fecha_compra = aer_fecha_compra;
+        this.aer_precio_compra=aer_precio_compra;
         this.fk_mod_codigo = fk_mod_codigo;
         this.fk_fac_codigo = fk_fac_codigo;
     }
 
-    public Aeronave(int fk_cli_rif, Date aer_fecha_compra, int fk_mod_codigo, int fk_fac_codigo) {
+    public Aeronave(int fk_cli_rif, Date aer_fecha_compra,int aer_precio_compra, int fk_mod_codigo, int fk_fac_codigo) {
         this.fk_cli_rif = fk_cli_rif;
         this.aer_fecha_compra = aer_fecha_compra;
+        this.aer_precio_compra=aer_precio_compra;
         this.fk_mod_codigo = fk_mod_codigo;
         this.fk_fac_codigo = fk_fac_codigo;
     }
@@ -47,19 +50,21 @@ public class Aeronave {
 
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO Aeronave(aer_fecha_compra,fk_cli_rif,fk_,fk_mod_codigo,fk_fac_codigo) VALUES(?,?,?,?)";
+            String stm = "INSERT INTO Aeronave(aer_fecha_compra,aer_precio_compra,fk_cli_rif,fk_,fk_mod_codigo,fk_fac_codigo) VALUES(?,?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setDate(1, aer_fecha_compra);
-            pst.setInt(2, fk_cli_rif);
-            pst.setInt(3,fk_mod_codigo);
-            pst.setInt(4,fk_fac_codigo);
+            pst.setInt(2, aer_precio_compra);
+            pst.setInt(3, fk_cli_rif);
+            pst.setInt(4,fk_mod_codigo);
+            pst.setInt(5,fk_fac_codigo);
             pst.executeUpdate();
-            stm ="Select aer_codigo From Aeronave Where aer_fecha_compra=? AND fk_cli_rif=? AND fk_mod_codigo=? AND fk_fac_codigo=?";
+            stm ="Select aer_codigo From Aeronave Where aer_fecha_compra=? AND aer_precio_compra AND fk_cli_rif=? AND fk_mod_codigo=? AND fk_fac_codigo=?";
              pst = conector.conexion.prepareStatement(stm);
-             pst.setDate(1, aer_fecha_compra);
-            pst.setInt(2, fk_cli_rif);
-            pst.setInt(3,fk_mod_codigo);
-            pst.setInt(4,fk_fac_codigo);
+            pst.setDate(1, aer_fecha_compra);
+            pst.setInt(2, aer_precio_compra);
+            pst.setInt(3, fk_cli_rif);
+            pst.setInt(4,fk_mod_codigo);
+            pst.setInt(5,fk_fac_codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 this.aer_codigo = rs.getInt("aer_codigo");
@@ -73,11 +78,12 @@ public class Aeronave {
     
     public void modificarEnDB(ConectorDB conector){
         try{
-            String stm = "UPDATE Aeronave SET fk_cli_rif = ?,aer_fecha_compra = ?,fk_mod_codigo = ? WHERE aer_codigo=?";
+            String stm = "UPDATE Aeronave SET fk_cli_rif = ?,aer_fecha_compra = ?,aer_precio_compra = ?,fk_mod_codigo = ? WHERE aer_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(4, aer_codigo);
+            pst.setInt(5, aer_codigo);
             pst.setDate(2,aer_fecha_compra);
-            pst.setInt(3,fk_mod_codigo);
+            pst.setInt(3,aer_precio_compra);
+            pst.setInt(4,fk_mod_codigo);
             pst.setInt(1,fk_cli_rif);
             pst.executeUpdate();
             pst.close();
@@ -112,7 +118,7 @@ public class Aeronave {
     public static List<Aeronave> obtenerTodos(ConectorDB conector){
         List<Aeronave> aeronaves = new ArrayList<Aeronave>();
         try {
-            ResultSet rs = obtenerResultSet(conector,"SELECT aer_codigo,fk_cli_rif,aer_fecha_compra,fk_mod_codigo FROM aeronave");
+            ResultSet rs = obtenerResultSet(conector,"SELECT aer_codigo,fk_cli_rif,aer_fecha_compra,aer_precio_compra,fk_mod_codigo FROM aeronave");
             while (rs.next()) {
                 //Aeronave a = new Aeronave(rs.getInt("aer_codigo"),rs.getInt("fk_cli_rif"),rs.getDate("aer_fecha_compra"),rs.getInt("fk_mod_codigo"));
                 //aeronaves.add(a);
@@ -124,7 +130,7 @@ public class Aeronave {
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT aer_codigo as Codigo,mod_nombre as Modelo, cli_nombre as Cliente,aer_fecha_compra as Fecha_de_compra FROM aeronave,cliente,modelo_aeronave "
+        ResultSet rs =obtenerResultSet(conector,"SELECT aer_codigo as Codigo,mod_nombre as Modelo, cli_nombre as Cliente,aer_fecha_compra as Fecha_de_compra,aer_precio_compra as Precio_Compra FROM aeronave,cliente,modelo_aeronave "
                 + " WHERE fk_cli_rif=cli_rif AND fk_mod_codigo=mod_codigo");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
     }
