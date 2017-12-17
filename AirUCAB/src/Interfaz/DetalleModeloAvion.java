@@ -183,6 +183,11 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jLabel8.setToolTipText("");
 
         bAddMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
+        bAddMaterial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAddMaterialMouseClicked(evt);
+            }
+        });
         bAddMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAddMaterialActionPerformed(evt);
@@ -265,11 +270,31 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaMotores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMotoresMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tablaMotores);
 
         bAddMaterial1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
+        bAddMaterial1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAddMaterial1MouseClicked(evt);
+            }
+        });
+        bAddMaterial1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAddMaterial1ActionPerformed(evt);
+            }
+        });
 
         bDelMaterial1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_24dp_1x.png"))); // NOI18N
+        bDelMaterial1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bDelMaterial1ActionPerformed(evt);
+            }
+        });
 
         jLabel24.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel24.setText("Caracteristica:");
@@ -705,6 +730,49 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
             jcbPieza.setSelectedIndex(tm.getFk_tip_codigo());
         }
     }//GEN-LAST:event_tablaPiezasMouseClicked
+
+    private void bAddMaterial1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAddMaterial1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bAddMaterial1MouseClicked
+
+    private void bAddMaterialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAddMaterialMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bAddMaterialMouseClicked
+
+    private void bAddMaterial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddMaterial1ActionPerformed
+        if(jcbMotor.getSelectedIndex()>0){
+            Mot_mod relacion = Mot_mod.relacionDada(conector, jcbMotor.getSelectedIndex(),m.getMod_codigo());
+            if(relacion == null){
+                relacion = new Mot_mod(Integer.parseInt(jtfMotor.getText()),jcbMotor.getSelectedIndex(),m.getMod_codigo());
+                relacion.agregarADB(conector);
+            }
+            else{
+                relacion.setMot_mod_cantidad(Integer.parseInt(jtfPiezaCantidad.getText()));
+                relacion.modificarEnDB(conector);
+            }
+            }
+        Mot_mod.llenarTablaDeModelo(conector, tablaPiezas, m.getMod_codigo());
+    }//GEN-LAST:event_bAddMaterial1ActionPerformed
+
+    private void bDelMaterial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDelMaterial1ActionPerformed
+        int fila = tablaMotores.getSelectedRow();
+        if (fila>=0){
+            int id = (Integer) tablaMotores.getValueAt(fila, 0);
+            Mot_mod mm = Mot_mod.buscarPorCodigo(conector, id);
+            mm.eliminarDeDB(conector);
+            Mot_mod.llenarTablaDeModelo(conector, tablaPiezas, m.getMod_codigo());
+        }
+    }//GEN-LAST:event_bDelMaterial1ActionPerformed
+
+    private void tablaMotoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMotoresMouseClicked
+        int fila = tablaMotores.getSelectedRow();
+        if (fila>=0){
+            int id = (Integer) tablaMotores.getValueAt(fila, 0);
+            Mot_mod mm = Mot_mod.buscarPorCodigo(conector, id);
+            jtfMotor.setText(String.valueOf(mm.getMot_mod_cantidad()));
+            jcbPieza.setSelectedIndex(mm.getFk_mot_codigo());
+        }
+    }//GEN-LAST:event_tablaMotoresMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
