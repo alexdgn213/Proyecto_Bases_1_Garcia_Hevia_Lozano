@@ -78,7 +78,7 @@ public class Motor {
     public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
         PreparedStatement pst;
         try {
-            pst = conector.conexion.prepareStatement("SELECT mot_marca || ' ' || mot_modelo from motor");
+            pst = conector.conexion.prepareStatement("SELECT mot_marca,mot_modelo From Motor");
             ResultSet rs = pst.executeQuery();
             AdaptadorSQLUI.llenarComboBox(jCombo, rs);
         } catch (SQLException ex) {
@@ -89,7 +89,7 @@ public class Motor {
     
     public void eliminarDeDB(ConectorDB conector){
         try{
-            String stm = "Delete from motor where mot_codigo=?";
+            String stm = "Delete from Motor where mot_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, mot_codigo);
             pst.executeUpdate();
@@ -125,7 +125,7 @@ public class Motor {
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT mot_codigo as Motor,mot_modelo as Nombre, mot_marca as Marca, fk_mod_codigo as Modelo FROM motor");
+        ResultSet rs =obtenerResultSet(conector,"SELECT mot_codigo as Motor,mot_modelo as Nombre, mot_marca as Marca, fk_mod_codigo as Modelo FROM Motor");
         AdaptadorSQLUI.llenarTabla(jTable, rs);
         
     }
