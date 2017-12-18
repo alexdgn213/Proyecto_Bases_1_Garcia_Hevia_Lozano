@@ -35,6 +35,15 @@ public class Mat_inv {
         this.fk_inv_codigo = fk_inv_codigo;
     }
 
+    public Mat_inv(int mat_inv_codigo, int mat_inv_cantidad, int fk_mat_codigo, int fk_inv_codigo) {
+        this.mat_inv_codigo = mat_inv_codigo;
+        this.mat_inv_cantidad = mat_inv_cantidad;
+        this.fk_mat_codigo = fk_mat_codigo;
+        this.fk_inv_codigo = fk_inv_codigo;
+    }
+    
+    
+
  
 
     

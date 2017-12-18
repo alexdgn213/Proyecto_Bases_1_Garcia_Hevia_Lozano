@@ -136,7 +136,7 @@ public class Inventario {
             pst.setInt(1, fk_fab_codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                l = new Mat_inv(rs.getInt("fk_mat_inv_cantidad"),rs.getInt("mi.fk_mat_codigo"),rs.getInt("i.fk_inv_codigo"));
+                l = new Mat_inv(rs.getInt("mat_inv_codigo"),rs.getInt("mat_inv_cantidad"),rs.getInt("fk_mat_codigo"),rs.getInt("fk_inv_codigo"));
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());

@@ -10,6 +10,7 @@ import Adaptadores.Comprobador;
 import Adaptadores.ConectorDB;
 import Adaptadores.MensajeUI;
 import Dominio.Cliente;
+import Dominio.Ensamblaje;
 import Dominio.Estatus;
 import Dominio.Fabrica;
 import Dominio.Informacion_contacto;
@@ -84,7 +85,7 @@ public class DetallePieza extends javax.swing.JPanel {
         jtCodigo = new javax.swing.JTextField();
         jtfTipo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jtfProveedor = new javax.swing.JTextField();
+        jtfEnsamblaje = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         panelInformacion = new javax.swing.JPanel();
@@ -336,7 +337,7 @@ public class DetallePieza extends javax.swing.JPanel {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jtfProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jtfEnsamblaje, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -380,7 +381,7 @@ public class DetallePieza extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfEnsamblaje, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -487,8 +488,8 @@ public class DetallePieza extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jcbZona;
     private javax.swing.JLabel jlErrorFecha;
     private javax.swing.JTextField jtCodigo;
+    private javax.swing.JTextField jtfEnsamblaje;
     private javax.swing.JTextField jtfFechaRealizacion;
-    private javax.swing.JTextField jtfProveedor;
     private javax.swing.JTextField jtfTipo;
     private javax.swing.JPanel panelInformacion;
     private javax.swing.JPanel panelNueva;
@@ -501,7 +502,9 @@ public class DetallePieza extends javax.swing.JPanel {
         jtCodigo.setEnabled(false);
         jtfTipo.setText(tipo);
         jtfTipo.setEnabled(false);
-        Pru_pie.llenarTablaDePruebas(conector, tablaPruebas, p.getPie_codigo());   
+        Pru_pie.llenarTablaDePruebas(conector, tablaPruebas, p.getPie_codigo());
+        Ensamblaje e = Ensamblaje.buscarPorPieza(conector, p.getFk_pie_codigo());
+        if(e!=null)jtfEnsamblaje.setText(e.getEns_descripcion());
     }
     
 }

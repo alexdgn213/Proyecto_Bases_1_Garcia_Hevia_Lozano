@@ -225,4 +225,68 @@ public class Ensamblaje{
         return e;
     }
 
+    public int getEns_codigo() {
+        return ens_codigo;
+    }
+
+    public void setEns_codigo(int ens_codigo) {
+        this.ens_codigo = ens_codigo;
+    }
+
+    public String getEns_descripcion() {
+        return ens_descripcion;
+    }
+
+    public void setEns_descripcion(String ens_descripcion) {
+        this.ens_descripcion = ens_descripcion;
+    }
+
+    public int getFk_zon_codigo() {
+        return fk_zon_codigo;
+    }
+
+    public void setFk_zon_codigo(int fk_zon_codigo) {
+        this.fk_zon_codigo = fk_zon_codigo;
+    }
+
+    public int getFk_fab_codigo() {
+        return fk_fab_codigo;
+    }
+
+    public void setFk_fab_codigo(int fk_fab_codigo) {
+        this.fk_fab_codigo = fk_fab_codigo;
+    }
+
+    public int getFk_pie_codigo() {
+        return fk_pie_codigo;
+    }
+
+    public void setFk_pie_codigo(int fk_pie_codigo) {
+        this.fk_pie_codigo = fk_pie_codigo;
+    }
+
+    public int getFk_tip_codigo() {
+        return fk_tip_codigo;
+    }
+
+    public void setFk_tip_codigo(int fk_tip_codigo) {
+        this.fk_tip_codigo = fk_tip_codigo;
+    }
+
+    public int getFk_mot_codigo() {
+        return fk_mot_codigo;
+    }
+
+    public void setFk_mot_codigo(int fk_mot_codigo) {
+        this.fk_mot_codigo = fk_mot_codigo;
+    }
+
+    public int getFk_est_codigo() {
+        return fk_est_codigo;
+    }
+
+    public void setFk_est_codigo(int fk_est_codigo) {
+        this.fk_est_codigo = fk_est_codigo;
+    }
+
 }

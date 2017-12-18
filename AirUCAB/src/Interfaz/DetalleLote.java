@@ -410,8 +410,10 @@ public class DetalleLote extends javax.swing.JPanel {
             
             PrincipalLotes nuevoPanel = new PrincipalLotes(conector,contenedor,panelMensaje);
             Mat_inv mi = Inventario.buscarPorFabricaYMaterial(conector, 1, l.getFk_mat_codigo());
-            mi.setMat_inv_cantidad(mi.getMat_inv_cantidad()+l.getLot_cantidad());
-            if(mi!=null)mi.modificarEnDB(conector);
+            if(mi!=null){
+                mi.setMat_inv_cantidad(mi.getMat_inv_cantidad()+l.getLot_cantidad());
+                mi.modificarEnDB(conector);
+            }
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();     
