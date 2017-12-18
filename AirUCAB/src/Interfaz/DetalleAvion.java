@@ -530,14 +530,14 @@ public class DetalleAvion extends javax.swing.JPanel {
     }//GEN-LAST:event_tablaPiezasMouseClicked
 
     private void jbModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificar1ActionPerformed
-        //int fila = tablaLotesPendientes.getSelectedRow();
-        //if (fila>=0){
-            //int id = (Integer) tablaLotesPendientes.getValueAt(fila, 0);
-            DetallePieza nuevoPanel = new DetallePieza(conector,contenedor,0,panelMensaje,true);
+        int fila = tablaPiezas.getSelectedRow();
+        if (fila>=0){
+            int id = (Integer) tablaPiezas.getValueAt(fila, 0);
+            DetallePieza nuevoPanel = new DetallePieza(conector,contenedor,id,panelMensaje,true);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();
-        //}
+        }
     }//GEN-LAST:event_jbModificar1ActionPerformed
 
 

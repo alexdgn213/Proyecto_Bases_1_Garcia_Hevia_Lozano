@@ -15,7 +15,9 @@ import Dominio.Informacion_contacto;
 import Dominio.Lote_material;
 import Dominio.Lugar;
 import Dominio.Material;
+import Dominio.Pieza;
 import Dominio.Proveedor;
+import Dominio.Pru_pie;
 import Dominio.Prueba;
 import Dominio.pru_lot;
 import java.awt.Color;
@@ -31,7 +33,7 @@ import javax.swing.JPanel;
 public class DetallePieza extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
-    Lote_material l;
+    Pieza p;
     JPanel panelMensaje;
 
     /**
@@ -48,8 +50,8 @@ public class DetallePieza extends javax.swing.JPanel {
         Estatus.llenarComboBox(conector, jcbEstatus);
         Prueba.llenarComboBox(conector, jcbPrueba);
         this.setSize(870, 610);
-        l = Lote_material.buscarPorCodigo(conector, id);
-        if (l==null){
+        p = Pieza.buscarPorCodigo(conector, id);
+        if (p==null){
             panelInformacion.setVisible(false);
         }
         else{
@@ -80,7 +82,6 @@ public class DetallePieza extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jtfProveedor = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jtfFechaCompra = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         botonGuardar = new javax.swing.JButton();
         panelInformacion = new javax.swing.JPanel();
@@ -98,8 +99,11 @@ public class DetallePieza extends javax.swing.JPanel {
         jlErrorFecha = new javax.swing.JLabel();
         bAddInf = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jtfCantidad = new javax.swing.JTextField();
         botonVolver = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(870, 610));
         setOpaque(false);
@@ -123,17 +127,15 @@ public class DetallePieza extends javax.swing.JPanel {
         jLabel2.setToolTipText("");
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel3.setText("Modelo:");
+        jLabel3.setText("Tipo:");
         jLabel3.setToolTipText("");
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel4.setText("Cliente:");
+        jLabel4.setText("Ensamble:");
         jLabel4.setToolTipText("");
 
-        jtfFechaCompra.setToolTipText("");
-
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel5.setText("Fecha Compra:");
+        jLabel5.setText("Fabrica:");
         jLabel5.setToolTipText("");
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_check_black_48dp_1x.png"))); // NOI18N
@@ -283,10 +285,8 @@ public class DetallePieza extends javax.swing.JPanel {
         );
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel6.setText("Precio:");
+        jLabel6.setText("Estatus Ensamble:");
         jLabel6.setToolTipText("");
-
-        jtfCantidad.setToolTipText("");
 
         botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_back_black_24dp_2x.png"))); // NOI18N
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -294,6 +294,16 @@ public class DetallePieza extends javax.swing.JPanel {
                 botonVolverActionPerformed(evt);
             }
         });
+
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel7.setText("Zona:");
+        jLabel7.setToolTipText("");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -315,15 +325,15 @@ public class DetallePieza extends javax.swing.JPanel {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jtfFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jtfProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jtfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGap(306, 306, 306))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,7 +349,15 @@ public class DetallePieza extends javax.swing.JPanel {
                                                 .addComponent(jtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(panelInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(panelInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(222, 222, 222)))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
                                 .addContainerGap())))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -367,16 +385,21 @@ public class DetallePieza extends javax.swing.JPanel {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(panelInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(panelInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -389,7 +412,7 @@ public class DetallePieza extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -473,6 +496,9 @@ public class DetallePieza extends javax.swing.JPanel {
     private javax.swing.JButton bAddInf;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonVolver;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
@@ -483,6 +509,7 @@ public class DetallePieza extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -491,8 +518,6 @@ public class DetallePieza extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jcbPrueba;
     private javax.swing.JLabel jlErrorFecha;
     private javax.swing.JTextField jtCodigo;
-    private javax.swing.JTextField jtfCantidad;
-    private javax.swing.JTextField jtfFechaCompra;
     private javax.swing.JTextField jtfFechaRealizacion;
     private javax.swing.JTextField jtfMaterial;
     private javax.swing.JTextField jtfProveedor;
@@ -510,12 +535,7 @@ public class DetallePieza extends javax.swing.JPanel {
         jtfMaterial.setEnabled(false);
         jtfProveedor.setText(p.getPro_nombre());
         jtfProveedor.setEnabled(false);
-        jtfFechaCompra.setText(l.getLot_fecha_compra().toString());
-        jtfFechaCompra.setEnabled(false);
-        jtfCantidad.setText(String.valueOf(l.getLot_cantidad()));
-        jtfCantidad.setEnabled(false);
-        pru_lot.llenarTablaLote(conector, tablaPruebas, l.getLot_codigo());
-        
+        Pru_pie.llenarTablaPieza(conector, tablaPruebas, p.getPie_codigo());   
     }
     
 }
