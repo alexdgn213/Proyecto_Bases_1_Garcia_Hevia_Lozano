@@ -72,11 +72,11 @@ public class Aeronave {
             }
             pst.close();
             for (Tip_mod tp :Tip_mod.obtenerTipoPiezasModelo(conector, fk_mod_codigo)){
-                Pieza p = new Pieza(Date.valueOf(java.time.LocalDate.now()),Date.valueOf(java.time.LocalDate.now()),aer_codigo,tp.fk_tip_codigo);
+                Pieza p = new Pieza(Date.valueOf(java.time.LocalDate.now()),Date.valueOf(java.time.LocalDate.now()),aer_codigo,tp.fk_tip_codigo,1);
                 p.agregarPiezaADB(conector);
             }
             for (Mot_mod mm :Mot_mod.obtenerMotorModelo(conector, fk_mod_codigo)){
-                Pieza p = new Pieza(Date.valueOf(java.time.LocalDate.now()),Date.valueOf(java.time.LocalDate.now()),aer_codigo,mm.fk_mot_codigo);
+                Pieza p = new Pieza(Date.valueOf(java.time.LocalDate.now()),Date.valueOf(java.time.LocalDate.now()),aer_codigo,mm.fk_mot_codigo,2);
                 p.agregarMotorADB(conector);
             }
             Pru_aer pr= new Pru_aer(Date.valueOf(java.time.LocalDate.now()),8,this.aer_codigo,1);

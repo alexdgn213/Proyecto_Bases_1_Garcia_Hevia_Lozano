@@ -39,12 +39,13 @@ public class Pieza {
         this.fk_mot_codigo=fk_mot_codigo;
     }
 
-    public Pieza(Date pie_fecha_estimado, Date pie_fecha_entregado, int fk_aer_codigo, int fk_tip_codigo) {
+    public Pieza(Date pie_fecha_estimado, Date pie_fecha_entregado, int fk_aer_codigo, int fk_tip_codigo, int opcion) {
         this.pie_fecha_estimado = pie_fecha_estimado;
         this.pie_fecha_entregado = pie_fecha_entregado;
         this.fk_aer_codigo = fk_aer_codigo;
-        this.fk_tip_codigo = fk_tip_codigo;
-        this.fk_pie_codigo = fk_pie_codigo;
+        if(opcion==1)this.fk_tip_codigo = fk_tip_codigo;
+        else{ this.fk_mot_codigo = fk_tip_codigo;}
+        
     }
     
     public Pieza(int pie_codigo, Date pie_fecha_estimado, Date pie_fecha_entregado,int fk_aer_codigo) {
@@ -85,7 +86,7 @@ public class Pieza {
                Pru_pie pl1 = new Pru_pie(tp.getFk_pru_codigo(),pie_codigo,1);
                pl1.agregarADB(conector); 
             }
-            Ensamblaje e = new Ensamblaje("Primer Ensamblaje de la Pieza",1,1,this.pie_codigo,4);
+            Ensamblaje e = new Ensamblaje("Primer Ensamblaje de la Pieza",1,1,this.pie_codigo,1);
             e.agregarADB(conector);
        //     Pru_pie pl2 = new pru_lot(2,pie_codigo,1);
        //     pl2.agregarADB(conector);
@@ -101,28 +102,26 @@ public class Pieza {
             pst.setDate(1, pie_fecha_estimado);
             pst.setDate(2,pie_fecha_entregado);
             pst.setInt(3,fk_aer_codigo);
-            pst.setInt(4,fk_tip_codigo);
+            pst.setInt(4,fk_mot_codigo);
             pst.executeUpdate();
             stm = "SELECT pie_codigo FROM pieza WHERE pie_fecha_estimada=? AND pie_fecha_entregada=? AND fk_aer_codigo=? AND fk_mot_codigo = ?";
             pst = conector.conexion.prepareStatement(stm);
             pst.setDate(1, pie_fecha_estimado);
             pst.setDate(2,pie_fecha_entregado);
             pst.setInt(3,fk_aer_codigo);
-            pst.setInt(4,fk_tip_codigo);
+            pst.setInt(4,fk_mot_codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 this.pie_codigo = rs.getInt("pie_codigo");
             }
-<<<<<<< HEAD
             Ensamblaje e = new Ensamblaje("Primer Ensamblaje del Motor",1,1,this.pie_codigo,1);
             e.agregarADB(conector);
-=======
             pst.close();
-            Pru_pie pp= new Pru_pie(Date.valueOf(java.time.LocalDate.now()),6,this.fk_mot_codigo,1);
+            Pru_pie pp= new Pru_pie(Date.valueOf(java.time.LocalDate.now()),6,this.pie_codigo,1);
             pp.agregarADB(conector);
-            Pru_pie pp2= new Pru_pie(Date.valueOf(java.time.LocalDate.now()),7,this.fk_mot_codigo,1);
+            Pru_pie pp2= new Pru_pie(Date.valueOf(java.time.LocalDate.now()),7,this.pie_codigo,1);
             pp.agregarADB(conector);
->>>>>>> d25b1aa0a9b727f6ca60d18eece1b5457842ca1b
+
             /*
             for (Pru_mot pm:Pru_mot.obtenerTodasPruebasMotor(conector, fk_tip_codigo))
             {

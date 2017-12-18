@@ -72,27 +72,8 @@ public class Ensamblaje{
             pst.setInt(2, fk_zon_codigo);
             pst.setInt(3, fk_fab_codigo);
             pst.setInt(4, fk_pie_codigo);
-<<<<<<< HEAD
             pst.setInt(5, fk_est_codigo);
             pst.execute();
-=======
-            pst.setInt(5, fk_tip_codigo);
-            pst.setInt(6, fk_mot_codigo);
-            pst.setInt(7, fk_est_codigo);
-            stm = "SELECT ens_codigo FROM ensamblaje WHERE ens_descripcion=? AND fk_zon_codigo=? AND fk_fab_codigo=? AND fk_pie_codigo=? AND fk_tip_codigo=? AND fk_mot_codigo=? AND fk_est_codigo=?";
-            pst = conector.conexion.prepareStatement(stm);
-            pst.setString(1, ens_descripcion);
-            pst.setInt(2, fk_zon_codigo);
-            pst.setInt(3, fk_fab_codigo);
-            pst.setInt(4, fk_pie_codigo);
-            pst.setInt(5, fk_tip_codigo);
-            pst.setInt(6, fk_mot_codigo);
-            pst.setInt(7, fk_est_codigo);
-            ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
-                this.ens_codigo = rs.getInt("ens_codigo");
-            }
->>>>>>> d25b1aa0a9b727f6ca60d18eece1b5457842ca1b
             pst.close();
             
             
@@ -102,20 +83,33 @@ public class Ensamblaje{
         }
     }
     
-    public void modificarEnDB(ConectorDB conector){
+    public void modificarEnDB(ConectorDB conector,String tipo){
         try{
-            String stm = "UPDATE Ensamblaje SET ens_descripcion = ?,fk_zon_codigo=?, fk_fab_codigo=?, fk_pie_codigo=?, fk_tip_codigo=?, fk_mot_codigo=?, fk_est_codigo=? WHERE ens_codigo=?";
-            PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(8, ens_codigo);
-            pst.setString(1, ens_descripcion);
-            pst.setInt(2, fk_zon_codigo);
-            pst.setInt(3, fk_fab_codigo);
-            pst.setInt(4, fk_pie_codigo);
-            pst.setInt(5, fk_tip_codigo);
-            pst.setInt(6, fk_mot_codigo);
-            pst.setInt(7, fk_est_codigo);
-            pst.executeUpdate();
-            pst.close();
+            if(tipo.equals("Pieza")){
+                String stm = "UPDATE Ensamblaje SET ens_descripcion = ?,fk_zon_codigo=?, fk_fab_codigo=?, fk_pie_codigo=?, fk_est_codigo=? WHERE ens_codigo=?";
+                System.out.print(stm);
+                PreparedStatement pst = conector.conexion.prepareStatement(stm);
+                pst.setInt(6, ens_codigo);
+                pst.setString(1, ens_descripcion);
+                pst.setInt(2, fk_zon_codigo);
+                pst.setInt(3, fk_fab_codigo);
+                pst.setInt(4, this.fk_pie_codigo);
+                pst.setInt(5, fk_est_codigo);
+                pst.executeUpdate();
+                pst.close();
+            }
+            else if(tipo.equals("Motor")){
+                String stm = "UPDATE Ensamblaje SET ens_descripcion = ?,fk_zon_codigo=?, fk_fab_codigo=?, fk_pie_codigo=?, fk_est_codigo=? WHERE ens_codigo=?";
+                PreparedStatement pst = conector.conexion.prepareStatement(stm);
+                pst.setInt(6, ens_codigo);
+                pst.setString(1, ens_descripcion);
+                pst.setInt(2, fk_zon_codigo);
+                pst.setInt(3, fk_fab_codigo);
+                pst.setInt(4, fk_pie_codigo);
+                pst.setInt(5, fk_est_codigo);
+                pst.executeUpdate();
+                pst.close();
+            }
         }catch (SQLException ex){
            System.out.print(ex.toString());
         }

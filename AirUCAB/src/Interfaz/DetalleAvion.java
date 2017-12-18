@@ -534,7 +534,8 @@ public class DetalleAvion extends javax.swing.JPanel {
         if (fila>=0){
             int id = (Integer) tablaPiezas.getValueAt(fila, 0);
             String nombre = tablaPiezas.getValueAt(fila, 2).toString();
-            DetallePieza nuevoPanel = new DetallePieza(conector,contenedor,id,panelMensaje,nombre);
+            String tipo = tablaPiezas.getValueAt(fila, 3).toString();
+            DetallePieza nuevoPanel = new DetallePieza(conector,contenedor,id,panelMensaje,nombre,tipo);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();

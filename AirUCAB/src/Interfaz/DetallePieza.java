@@ -39,15 +39,17 @@ public class DetallePieza extends javax.swing.JPanel {
     Pieza p;
     JPanel panelMensaje;
     String tipo;
+    String tipoPieza;
     Ensamblaje e;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetallePieza(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje, String tipo) {
+    public DetallePieza(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje, String tipo, String tipoPieza) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
+        this.tipoPieza = tipoPieza;
         this.tipo=tipo;
         initComponents();
         jlErrorFecha.setVisible(false);
@@ -64,6 +66,7 @@ public class DetallePieza extends javax.swing.JPanel {
         else{
             llenarDatosLote();    
         }
+        
 
     }
 
@@ -132,7 +135,7 @@ public class DetallePieza extends javax.swing.JPanel {
         });
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel3.setText("Tipo:");
+        jLabel3.setText("Nombre:");
         jLabel3.setToolTipText("");
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -432,7 +435,7 @@ public class DetallePieza extends javax.swing.JPanel {
         if(e!=null){
             e.setEns_descripcion(jtfEnsamblaje.getText());
             if(jcbEstatusEnsamble.getSelectedIndex()>0)e.setFk_est_codigo(jcbEstatusEnsamble.getSelectedIndex());
-            e.modificarEnDB(conector);
+            e.modificarEnDB(conector,tipoPieza);
         }
     }//GEN-LAST:event_bAddInf1ActionPerformed
 
