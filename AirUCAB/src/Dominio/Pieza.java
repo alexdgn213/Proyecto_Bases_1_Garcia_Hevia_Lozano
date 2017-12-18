@@ -234,4 +234,38 @@ public class Pieza {
     public void setPie_fecha_entregado(Date pie_fecha_entregado) {
         this.pie_fecha_entregado = pie_fecha_entregado;
     }
+
+    public int getFk_aer_codigo() {
+        return fk_aer_codigo;
+    }
+
+    public void setFk_aer_codigo(int fk_aer_codigo) {
+        this.fk_aer_codigo = fk_aer_codigo;
+    }
+
+    public int getFk_tip_codigo() {
+        return fk_tip_codigo;
+    }
+
+    public void setFk_tip_codigo(int fk_tip_codigo) {
+        this.fk_tip_codigo = fk_tip_codigo;
+    }
+
+    public int getFk_pie_codigo() {
+        return fk_pie_codigo;
+    }
+
+    public void setFk_pie_codigo(int fk_pie_codigo) {
+        this.fk_pie_codigo = fk_pie_codigo;
+    }
+
+    public int getFk_mot_codigo() {
+        return fk_mot_codigo;
+    }
+
+    public void setFk_mot_codigo(int fk_mot_codigo) {
+        this.fk_mot_codigo = fk_mot_codigo;
+    }
+    
+    
 }
