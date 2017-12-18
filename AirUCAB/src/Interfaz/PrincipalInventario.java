@@ -177,7 +177,6 @@ public class PrincipalInventario extends javax.swing.JPanel {
             if(jcbFabrica.getSelectedIndex()>0){
                 String nombreFabrica = jcbFabrica.getSelectedItem().toString();
                 Inventario.llenarTablaDeMaterialesPorFabrica(conector, tablaMateriales, nombreFabrica);
-                Mat_inv.llenarTabla(conector, tablaMateriales);
                 panelComprar.setVisible(true);           
             }
             else{

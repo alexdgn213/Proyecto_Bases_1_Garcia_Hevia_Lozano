@@ -19,6 +19,7 @@ import Dominio.Material;
 import Dominio.Pieza;
 import Dominio.Proveedor;
 import Dominio.Pru_aer;
+import Dominio.Pru_pie;
 import Dominio.Prueba;
 import Dominio.pru_lot;
 import java.awt.Color;
@@ -507,14 +508,13 @@ public class DetalleAvion extends javax.swing.JPanel {
     }//GEN-LAST:event_bAddInfActionPerformed
 
     private void tablaPruebasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPruebasMouseClicked
-
         int fila = tablaPruebas.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaPruebas.getValueAt(fila, 0);
-            Pru_aer pl = Pru_aer.buscarPorCodigo(conector, id);
-            jcbPrueba.setSelectedIndex(pl.getFk_pru_codigo());
-            jcbEstatus.setSelectedIndex(pl.getFk_est_codigo());
-            jtfFechaRealizacion.setText(pl.getPru_aer_fecha_realizacion().toString());
+            Pru_pie pp = Pru_pie.buscarPorCodigo(conector, id);
+            jcbPrueba.setSelectedIndex(pp.getFk_pru_codigo());
+            jcbEstatus.setSelectedIndex(pp.getFk_est_codigo());
+            jtfFechaRealizacion.setText(pp.getPru_pie_fecha_realizacion().toString());
         }
     }//GEN-LAST:event_tablaPruebasMouseClicked
 
@@ -590,7 +590,7 @@ public class DetalleAvion extends javax.swing.JPanel {
         jtfCantidad.setText(String.valueOf(a.getAer_precio_compra()));
         jtfCantidad.setEnabled(false);
         Pru_aer.llenarTablaAvion(conector, tablaPruebas, a.getAer_codigo());
-        Pieza.llenarTablaDeAvion(conector, tablaPiezas, WIDTH);
+        Pieza.llenarTablaDeAvion(conector, tablaPiezas,a.getAer_codigo());
         
     }
     

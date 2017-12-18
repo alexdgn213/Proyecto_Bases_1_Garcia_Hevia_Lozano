@@ -131,10 +131,10 @@ public class Zona {
         }
         return l;
     }
-    public static void llenarComboBox(ConectorDB conector, JComboBox jCombo,String id){
+    public static void llenarComboBox(ConectorDB conector, JComboBox jCombo,int id){
         PreparedStatement pst;
         try {
-            pst = conector.conexion.prepareStatement("SELECT zon_nombre from zona,fabrica where fk_fab_codigo=fab_codigo AND fab_nombre="+(id));
+            pst = conector.conexion.prepareStatement("SELECT zon_nombre from zona,fabrica where fk_fab_codigo=fab_codigo AND fab_codigo="+String.valueOf(id));
             ResultSet rs = pst.executeQuery();
             AdaptadorSQLUI.llenarComboBox(jCombo, rs);
         } catch (SQLException ex) {

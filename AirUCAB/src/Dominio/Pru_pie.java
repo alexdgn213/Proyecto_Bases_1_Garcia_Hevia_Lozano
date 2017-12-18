@@ -42,6 +42,15 @@ public class Pru_pie {
         this.fk_pie_codigo = fk_pie_codigo;
         this.fk_est_codigo = fk_est_codigo;
     }
+
+    public Pru_pie(Date pru_pie_fecha_realizacion, int fk_pru_codigo, int fk_pie_codigo, int fk_est_codigo) {
+        this.pru_pie_fecha_realizacion = pru_pie_fecha_realizacion;
+        this.fk_pru_codigo = fk_pru_codigo;
+        this.fk_pie_codigo = fk_pie_codigo;
+        this.fk_est_codigo = fk_est_codigo;
+    }
+    
+    
     
     public void agregarADB(ConectorDB conector){
         try{
@@ -62,10 +71,11 @@ public class Pru_pie {
         try{
             String stm = "UPDATE Pru_pie SET pru_pie_fecha_realizacion =?, fk_pru_codigo = ?,fk_pie_codigo=?,fk_est_codigo=? WHERE pru_pie_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(4, pru_pie_codigo);
+            pst.setInt(5, pru_pie_codigo);
             pst.setDate(1, pru_pie_fecha_realizacion);
             pst.setInt(2, fk_pru_codigo);
             pst.setInt(3,fk_pie_codigo);
+            pst.setInt(4,fk_est_codigo);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -95,6 +105,25 @@ public class Pru_pie {
         }
         return null;
     }
+    
+    public static Pru_pie relacionDada(ConectorDB conector, int pru_codigo, int pie_codigo){
+       Pru_pie respuesta = null; 
+        try{
+            String stm = "SELECT pru_pie_codigo, pru_pie_fecha_realizacion, fk_pru_codigo, fk_pie_codigo, fk_est_codigo FROM pru_pie "
+                    + "WHERE fk_pie_codigo=? AND fk_pru_codigo=?";
+            PreparedStatement pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, pie_codigo);
+            pst.setInt(2, pru_codigo);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                respuesta = new Pru_pie(rs.getInt("pru_pie_codigo"),rs.getDate("pru_pie_fecha_realizacion"),rs.getInt("fk_pru_codigo"),rs.getInt("fk_pie_codigo"),rs.getInt("fk_est_codigo"));
+            }
+            pst.close();
+        }catch (SQLException ex){
+           System.out.print(ex.toString());
+        };
+        return respuesta;
+    }
 
     public static List<Pru_pie> obtenerTodos(ConectorDB conector){
         List<Pru_pie> pp = new ArrayList<Pru_pie>();
@@ -116,9 +145,10 @@ public class Pru_pie {
     }
     
     public static void llenarTablaDePruebas(ConectorDB conector, JTable jTable, int id){
-        ResultSet rs =obtenerResultSet(conector,"SELECT pru_pie_codigo as Codigo ,pru_pie_fecha_realizacion as Fecha_Realizacion,fk_pru_codigo as Codigo_Prueba,fk_pie_codigo as Codigo_Pieza,fk_est_codigo as Codigo_Estatus"
-                + " From Pru_pie"
-                + " WHERE fk_pie_codigo=id");
+        ResultSet rs =obtenerResultSet(conector,"SELECT pru_pie_codigo as Codigo ,pru_pie_fecha_realizacion as Fecha_Realizacion,pru_nombre as Prueba,est_nombre as Estatus"
+                + " From Pru_pie, prueba, estatus"
+                + " WHERE fk_pru_codigo=pru_codigo AND fk_est_codigo=est_codigo "
+                + " AND fk_pie_codigo="+String.valueOf(id));
         AdaptadorSQLUI.llenarTabla(jTable, rs);
     }
    
@@ -137,4 +167,46 @@ public class Pru_pie {
         }
         return tp;
     }
+
+    public int getPru_pie_codigo() {
+        return pru_pie_codigo;
+    }
+
+    public void setPru_pie_codigo(int pru_pie_codigo) {
+        this.pru_pie_codigo = pru_pie_codigo;
+    }
+
+    public Date getPru_pie_fecha_realizacion() {
+        return pru_pie_fecha_realizacion;
+    }
+
+    public void setPru_pie_fecha_realizacion(Date pru_pie_fecha_realizacion) {
+        this.pru_pie_fecha_realizacion = pru_pie_fecha_realizacion;
+    }
+
+    public int getFk_pru_codigo() {
+        return fk_pru_codigo;
+    }
+
+    public void setFk_pru_codigo(int fk_pru_codigo) {
+        this.fk_pru_codigo = fk_pru_codigo;
+    }
+
+    public int getFk_pie_codigo() {
+        return fk_pie_codigo;
+    }
+
+    public void setFk_pie_codigo(int fk_pie_codigo) {
+        this.fk_pie_codigo = fk_pie_codigo;
+    }
+
+    public int getFk_est_codigo() {
+        return fk_est_codigo;
+    }
+
+    public void setFk_est_codigo(int fk_est_codigo) {
+        this.fk_est_codigo = fk_est_codigo;
+    }
+    
+    
 }

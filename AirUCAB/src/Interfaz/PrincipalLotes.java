@@ -107,7 +107,7 @@ public class PrincipalLotes extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel3.setText("Finalizados;:");
+        jLabel3.setText("Finalizados:");
         jLabel3.setToolTipText("");
 
         jbModificar1.setBackground(new java.awt.Color(255, 255, 255));
