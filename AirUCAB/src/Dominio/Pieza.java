@@ -74,7 +74,9 @@ public class Pieza {
             {
                Pru_pie pl1 = new Pru_pie(tp.getFk_pru_codigo(),pie_codigo,1);
                pl1.agregarADB(conector); 
-            } 
+            }
+            Ensamblaje e = new Ensamblaje("Primer Ensamblaje de la Pieza",1,1,this.pie_codigo,4);
+            
        //     Pru_pie pl2 = new pru_lot(2,pie_codigo,1);
        //     pl2.agregarADB(conector);
         }catch (SQLException ex){

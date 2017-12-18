@@ -68,6 +68,7 @@ public class Aeronave {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 this.aer_codigo = rs.getInt("aer_codigo");
+                
             }
             pst.close();
             for (Tip_mod tp :Tip_mod.obtenerTipoPiezasModelo(conector, fk_mod_codigo)){
@@ -78,7 +79,22 @@ public class Aeronave {
                 Pieza p = new Pieza(Date.valueOf(java.time.LocalDate.now()),Date.valueOf(java.time.LocalDate.now()),aer_codigo,mm.fk_mot_codigo);
                 p.agregarMotorADB(conector);
             }
+            Pru_aer pr= new Pru_aer(Date.valueOf(java.time.LocalDate.now()),8,this.aer_codigo,1);
+            pr.agregarADB(conector);
+            Pru_aer pr2= new Pru_aer(Date.valueOf(java.time.LocalDate.now()),9,this.aer_codigo,1);
+            pr2.agregarADB(conector);
             
+            
+           /*
+           int pru_aer_codigo;
+           Date pru_aer_fecha_realizacion;
+           int fk_pru_codigo;
+           int fk_aer_codigo;
+           int fk_est_codigo;         
+                    
+                    */
+                    
+                    
         }catch (SQLException ex){
            System.out.print(ex.toString());
         }

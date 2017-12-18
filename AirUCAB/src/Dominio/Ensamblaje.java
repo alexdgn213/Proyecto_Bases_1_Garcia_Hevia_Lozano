@@ -52,6 +52,16 @@ public class Ensamblaje{
         this.fk_est_codigo = fk_est_codigo;
     }
     
+    public Ensamblaje(String ens_descripcion,int fk_zon_codigo,int fk_fab_codigo, int fk_pie_codigo,int fk_est_codigo) {
+        this.ens_descripcion = ens_descripcion;
+        this.fk_zon_codigo = fk_zon_codigo;
+        this.fk_fab_codigo = fk_fab_codigo;
+	      this.fk_pie_codigo = fk_pie_codigo;
+        this.fk_tip_codigo = fk_tip_codigo;
+        this.fk_mot_codigo = fk_mot_codigo;
+        this.fk_est_codigo = fk_est_codigo;
+    }
+    
     
 
 
