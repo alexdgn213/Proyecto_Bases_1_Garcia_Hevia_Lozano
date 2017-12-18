@@ -28,7 +28,7 @@ public class Pru_aer {
     int fk_aer_codigo;
     int fk_est_codigo;
 
-    public Pru_aer(int pru_aer_codigo,Date pru_aer_fecha_realizacion,int fk_pru_codigo,int fk_aer_codigo,int fk_est_codigo) {
+    public Pru_aer(int pru_aer_codigo,Date pru_aer_fecha_realizacion,int fk_aer_codigo,int fk_pru_codigo,int fk_est_codigo) {
         this.pru_aer_codigo = pru_aer_codigo;
         this.pru_aer_fecha_realizacion = pru_aer_fecha_realizacion;
         this.fk_pru_codigo = fk_pru_codigo;
@@ -70,10 +70,11 @@ public class Pru_aer {
         try{
             String stm = "UPDATE Pru_aer SET pru_aer_fecha_realizacion =?, fk_pru_codigo = ?,fk_aer_codigo=?,fk_est_codigo=? WHERE pru_aer_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setInt(4, pru_aer_codigo);
+            pst.setInt(5, pru_aer_codigo);
             pst.setDate(1, pru_aer_fecha_realizacion);
             pst.setInt(2, fk_pru_codigo);
             pst.setInt(3,fk_aer_codigo);
+            pst.setInt(4,fk_est_codigo);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -134,6 +135,25 @@ public class Pru_aer {
             System.out.print(ex.toString());
         }
         return pls;
+    }
+     
+     public static Pru_aer relacionDada(ConectorDB conector, int pru_codigo, int aer_codigo){
+       Pru_aer respuesta = null; 
+        try{
+            String stm = "SELECT pru_aer_codigo, pru_aer_fecha_realizacion, fk_pru_codigo, fk_aer_codigo, fk_est_codigo FROM pru_aer "
+                    + "WHERE fk_aer_codigo=? AND fk_pru_codigo=?";
+            PreparedStatement pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, aer_codigo);
+            pst.setInt(2, pru_codigo);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                respuesta = new Pru_aer(rs.getInt("pru_aer_codigo"),rs.getDate("pru_aer_fecha_realizacion"),rs.getInt("fk_pru_codigo"),rs.getInt("fk_aer_codigo"),rs.getInt("fk_est_codigo"));
+            }
+            pst.close();
+        }catch (SQLException ex){
+           System.out.print(ex.toString());
+        };
+        return respuesta;
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){

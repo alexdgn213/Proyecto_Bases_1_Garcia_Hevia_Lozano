@@ -484,7 +484,7 @@ public class DetalleAvion extends javax.swing.JPanel {
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void bAddInfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddInfActionPerformed
-        /*
+        
         jlErrorFecha.setVisible(false);
         boolean A = Comprobador.ComprobarDate(jtfFechaRealizacion, jlErrorFecha);
         if (A) {
@@ -497,17 +497,17 @@ public class DetalleAvion extends javax.swing.JPanel {
                 }
                 else{
                     relacion.setFk_est_codigo(jcbEstatus.getSelectedIndex());
-                    relacion.setPru_lot_fecha_realizacion(Date.valueOf(jtfFechaRealizacion.getText()));
+                    relacion.setPru_aer_fecha_realizacion(Date.valueOf(jtfFechaRealizacion.getText()));
                     relacion.modificarEnDB(conector);
                 }
             }
-            pru_lot.llenarTablaLote(conector, tablaPruebas, l.getLot_codigo());
+            Pru_aer.llenarTablaAvion(conector, tablaPruebas, a.getAer_codigo());
         }else {new Thread(new MensajeUI(panelMensaje,"Los datos ingresados no son correctos",0)).start();}
-*/
+
     }//GEN-LAST:event_bAddInfActionPerformed
 
     private void tablaPruebasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPruebasMouseClicked
-        /*
+
         int fila = tablaPruebas.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaPruebas.getValueAt(fila, 0);
@@ -515,7 +515,7 @@ public class DetalleAvion extends javax.swing.JPanel {
             jcbPrueba.setSelectedIndex(pl.getFk_pru_codigo());
             jcbEstatus.setSelectedIndex(pl.getFk_est_codigo());
             jtfFechaRealizacion.setText(pl.getPru_aer_fecha_realizacion().toString());
-        }*/
+        }
     }//GEN-LAST:event_tablaPruebasMouseClicked
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
