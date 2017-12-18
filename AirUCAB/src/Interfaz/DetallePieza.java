@@ -35,11 +35,12 @@ public class DetallePieza extends javax.swing.JPanel {
     JPanel contenedor;
     Pieza p;
     JPanel panelMensaje;
+    String tipo;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetallePieza(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje, boolean pendiente) {
+    public DetallePieza(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje, String tipo) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
@@ -57,11 +58,7 @@ public class DetallePieza extends javax.swing.JPanel {
         else{
             llenarDatosLote();    
         }
-        if(!pendiente){
-            botonGuardar.setVisible(false);
-            bAddInf.setVisible(false);
-            panelNueva.setVisible(false);
-        }
+        this.tipo=tipo;
     }
 
     /**
