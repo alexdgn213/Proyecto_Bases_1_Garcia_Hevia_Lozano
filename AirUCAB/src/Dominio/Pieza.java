@@ -177,9 +177,9 @@ public class Pieza {
     }
     
     public static void llenarTablaDeAvion(ConectorDB conector, JTable jTable, int id){
-        ResultSet rs =obtenerResultSet(conector,"SELECT p.pie_codigo as Codigo,p.pie_fecha_estimada as Fecha, tp.tip_nombre as Nombre, 'Pieza' as Tipo FROM pieza p ,tipo_pieza tp WHERE p.fk_tip_codigo = tp.tip_codigo and p.aer_codigo="+String.valueOf(id)
+        ResultSet rs =obtenerResultSet(conector,"SELECT p.pie_codigo as Codigo,p.pie_fecha_estimada as Fecha, tp.tip_nombre as Nombre, 'Pieza' as Tipo FROM pieza p ,tipo_pieza tp WHERE p.fk_tip_codigo = tp.tip_codigo and p.fk_aer_codigo="+String.valueOf(id)
                 + " UNION"
-                + " SELECT p.pie_codigo as Codigo,p.pie_fecha_estimada as Fecha, m.mot_modelo ||' '|| m.mot_marca as Nombre, 'Motor' as Tipo FROM pieza p,motor m WHERE p.fk_mot_codigo = m.mot_codigo and p.aer_codigo="+String.valueOf(id));
+                + " SELECT p.pie_codigo as Codigo,p.pie_fecha_estimada as Fecha, m.mot_modelo ||' '|| m.mot_marca as Nombre, 'Motor' as Tipo FROM pieza p,motor m WHERE p.fk_mot_codigo = m.mot_codigo and p.fk_aer_codigo="+String.valueOf(id));
         AdaptadorSQLUI.llenarTabla(jTable, rs);
    
     }

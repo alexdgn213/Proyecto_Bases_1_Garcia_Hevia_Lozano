@@ -122,7 +122,7 @@ public class DetalleAvion extends javax.swing.JPanel {
 
         jPanel1.setMaximumSize(new java.awt.Dimension(850, 32767));
         jPanel1.setMinimumSize(new java.awt.Dimension(850, 740));
-        jPanel1.setPreferredSize(new java.awt.Dimension(850, 740));
+        jPanel1.setPreferredSize(new java.awt.Dimension(850, 840));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(66, 66, 66));
@@ -362,7 +362,7 @@ public class DetalleAvion extends javax.swing.JPanel {
                         .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 174, Short.MAX_VALUE)
+                        .addGap(0, 157, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -489,10 +489,10 @@ public class DetalleAvion extends javax.swing.JPanel {
         boolean A = Comprobador.ComprobarDate(jtfFechaRealizacion, jlErrorFecha);
         if (A) {
             if(jcbPrueba.getSelectedIndex()>0 && jcbEstatus.getSelectedIndex()>0){
-                pru_lot relacion = pru_lot.relacionDada(conector, l.getLot_codigo(),jcbPrueba.getSelectedIndex());
+                Pru_aer relacion = Pru_aer.relacionDada(conector,jcbPrueba.getSelectedIndex(), a.getAer_codigo());
                 if(relacion == null){
-                    relacion = new pru_lot(Date.valueOf(jtfFechaRealizacion.getText()),
-                    jcbPrueba.getSelectedIndex(),l.getLot_codigo(),jcbEstatus.getSelectedIndex());
+                    relacion = new Pru_aer( Date.valueOf(jtfFechaRealizacion.getText()),
+                    jcbPrueba.getSelectedIndex(),jcbEstatus.getSelectedIndex(),a.getAer_codigo());
                     relacion.agregarADB(conector);
                 }
                 else{
@@ -507,15 +507,15 @@ public class DetalleAvion extends javax.swing.JPanel {
     }//GEN-LAST:event_bAddInfActionPerformed
 
     private void tablaPruebasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPruebasMouseClicked
-        
+        /*
         int fila = tablaPruebas.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaPruebas.getValueAt(fila, 0);
-            pru_lot pl = pru_lot.buscarPorCodigo(conector, id);
+            Pru_aer pl = Pru_aer.buscarPorCodigo(conector, id);
             jcbPrueba.setSelectedIndex(pl.getFk_pru_codigo());
             jcbEstatus.setSelectedIndex(pl.getFk_est_codigo());
-            jtfFechaRealizacion.setText(pl.getPru_lot_fecha_realizacion().toString());
-        }
+            jtfFechaRealizacion.setText(pl.getPru_aer_fecha_realizacion().toString());
+        }*/
     }//GEN-LAST:event_tablaPruebasMouseClicked
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
