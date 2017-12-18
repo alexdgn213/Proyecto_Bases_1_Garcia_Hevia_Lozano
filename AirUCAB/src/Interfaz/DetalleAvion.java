@@ -511,10 +511,10 @@ public class DetalleAvion extends javax.swing.JPanel {
         int fila = tablaPruebas.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaPruebas.getValueAt(fila, 0);
-            Pru_pie pp = Pru_pie.buscarPorCodigo(conector, id);
-            jcbPrueba.setSelectedIndex(pp.getFk_pru_codigo());
-            jcbEstatus.setSelectedIndex(pp.getFk_est_codigo());
-            jtfFechaRealizacion.setText(pp.getPru_pie_fecha_realizacion().toString());
+            Pru_aer pa = Pru_aer.buscarPorCodigo(conector, id);
+            jcbPrueba.setSelectedIndex(pa.getFk_pru_codigo());
+            jcbEstatus.setSelectedIndex(pa.getFk_est_codigo());
+            jtfFechaRealizacion.setText(pa.getPru_aer_fecha_realizacion().toString());
         }
     }//GEN-LAST:event_tablaPruebasMouseClicked
 
