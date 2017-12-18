@@ -28,7 +28,7 @@ public class Pru_aer {
     int fk_aer_codigo;
     int fk_est_codigo;
 
-    public Pru_aer(int pru_aer_codigo,Date pru_aer_fecha_realizacion,int fk_aer_codigo,int fk_pru_codigo,int fk_est_codigo) {
+    public Pru_aer(int pru_aer_codigo,Date pru_aer_fecha_realizacion,int fk_pru_codigo,int fk_aer_codigo,int fk_est_codigo) {
         this.pru_aer_codigo = pru_aer_codigo;
         this.pru_aer_fecha_realizacion = pru_aer_fecha_realizacion;
         this.fk_pru_codigo = fk_pru_codigo;
