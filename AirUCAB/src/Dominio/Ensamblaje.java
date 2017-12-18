@@ -68,28 +68,14 @@ public class Ensamblaje{
 
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO Ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_tip_codigo,fk_mot_codigo,fk_est_codigo) VALUES(?,?,?,?,?,?,?)";
+            String stm = "INSERT INTO Ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_est_codigo) VALUES(?,?,?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setString(1, ens_descripcion);
             pst.setInt(2, fk_zon_codigo);
             pst.setInt(3, fk_fab_codigo);
             pst.setInt(4, fk_pie_codigo);
-            pst.setInt(5, fk_tip_codigo);
-            pst.setInt(6, fk_mot_codigo);
-            pst.setInt(7, fk_est_codigo);
-            stm = "SELECT TOP 1 ens_codigo FROM ensamblaje WHERE ens_descripcion=? AND fk_zon_codigo=? AND fk_fab_codigo=? AND fk_pie_codigo=? AND fk_tip_codigo=? AND fk_mot_codigo=? AND fk_est_codigo=?";
-            pst = conector.conexion.prepareStatement(stm);
-            pst.setString(1, ens_descripcion);
-            pst.setInt(2, fk_zon_codigo);
-            pst.setInt(3, fk_fab_codigo);
-            pst.setInt(4, fk_pie_codigo);
-            pst.setInt(5, fk_tip_codigo);
-            pst.setInt(6, fk_mot_codigo);
-            pst.setInt(7, fk_est_codigo);
-            ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
-                this.ens_codigo = rs.getInt("ens_codigo");
-            }
+            pst.setInt(5, fk_est_codigo);
+            pst.execute();
             pst.close();
             
             
@@ -215,7 +201,7 @@ public class Ensamblaje{
     public static Ensamblaje buscarPorPieza(ConectorDB conector, int codigo){
         Ensamblaje e = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT ens_codigo,ens_descripcion,fk_zon_codigo, fk_fab_codigo, fk_tip_codigo, fk_mot_codigo, fk_est_codigo FROM ensamblaje WHERE fk_pie_codigo=?");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT ens_codigo,ens_descripcion,fk_zon_codigo, fk_fab_codigo, fk_pie_codigo, fk_tip_codigo, fk_mot_codigo, fk_est_codigo FROM ensamblaje WHERE fk_pie_codigo=?");
             pst.setInt(1, codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {

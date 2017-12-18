@@ -86,7 +86,7 @@ public class Pieza {
                pl1.agregarADB(conector); 
             }
             Ensamblaje e = new Ensamblaje("Primer Ensamblaje de la Pieza",1,1,this.pie_codigo,4);
-            
+            e.agregarADB(conector);
        //     Pru_pie pl2 = new pru_lot(2,pie_codigo,1);
        //     pl2.agregarADB(conector);
         }catch (SQLException ex){
@@ -113,7 +113,8 @@ public class Pieza {
             while (rs.next()) {
                 this.pie_codigo = rs.getInt("pie_codigo");
             }
-            pst.close();
+            Ensamblaje e = new Ensamblaje("Primer Ensamblaje del Motor",1,1,this.pie_codigo,1);
+            e.agregarADB(conector);
             /*
             for (Pru_mot pm:Pru_mot.obtenerTodasPruebasMotor(conector, fk_tip_codigo))
             {
