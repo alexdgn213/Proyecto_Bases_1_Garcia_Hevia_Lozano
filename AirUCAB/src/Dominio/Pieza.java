@@ -113,8 +113,16 @@ public class Pieza {
             while (rs.next()) {
                 this.pie_codigo = rs.getInt("pie_codigo");
             }
+<<<<<<< HEAD
             Ensamblaje e = new Ensamblaje("Primer Ensamblaje del Motor",1,1,this.pie_codigo,1);
             e.agregarADB(conector);
+=======
+            pst.close();
+            Pru_pie pp= new Pru_pie(Date.valueOf(java.time.LocalDate.now()),6,this.fk_mot_codigo,1);
+            pp.agregarADB(conector);
+            Pru_pie pp2= new Pru_pie(Date.valueOf(java.time.LocalDate.now()),7,this.fk_mot_codigo,1);
+            pp.agregarADB(conector);
+>>>>>>> d25b1aa0a9b727f6ca60d18eece1b5457842ca1b
             /*
             for (Pru_mot pm:Pru_mot.obtenerTodasPruebasMotor(conector, fk_tip_codigo))
             {
