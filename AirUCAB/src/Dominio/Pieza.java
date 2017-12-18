@@ -114,6 +114,10 @@ public class Pieza {
                 this.pie_codigo = rs.getInt("pie_codigo");
             }
             pst.close();
+            Pru_pie pp= new Pru_pie(Date.valueOf(java.time.LocalDate.now()),6,this.fk_mot_codigo,1);
+            pp.agregarADB(conector);
+            Pru_pie pp2= new Pru_pie(Date.valueOf(java.time.LocalDate.now()),7,this.fk_mot_codigo,1);
+            pp.agregarADB(conector);
             /*
             for (Pru_mot pm:Pru_mot.obtenerTodasPruebasMotor(conector, fk_tip_codigo))
             {
