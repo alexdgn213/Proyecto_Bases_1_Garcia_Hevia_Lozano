@@ -186,11 +186,11 @@ public class Pieza {
     public static Pieza buscarPorCodigo(ConectorDB conector, int codigo){
         Pieza m = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT pie_codigo,pie_fecha_estimado,pie_fecha_entregado,fk_aer_codigo,fk_tip_codigo,fk_mot_codigo FROM Pieza WHERE pie_codigo=?");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT pie_codigo,pie_fecha_estimada,pie_fecha_entregada,fk_aer_codigo,fk_tip_codigo,fk_mot_codigo FROM Pieza WHERE pie_codigo=?");
             pst.setInt(1, codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                m = new Pieza(rs.getInt("pie_codigo"),rs.getDate("pie_fecha_estimado"),rs.getDate("pie_fecha_entregado"),rs.getInt("fk_aer_codigo"));
+                m = new Pieza(rs.getInt("pie_codigo"),rs.getDate("pie_fecha_estimada"),rs.getDate("pie_fecha_entregada"),rs.getInt("fk_aer_codigo"));
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
