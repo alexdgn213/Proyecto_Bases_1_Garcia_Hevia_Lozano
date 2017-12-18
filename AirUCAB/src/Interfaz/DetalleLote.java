@@ -12,8 +12,10 @@ import Adaptadores.MensajeUI;
 import Dominio.Cliente;
 import Dominio.Estatus;
 import Dominio.Informacion_contacto;
+import Dominio.Inventario;
 import Dominio.Lote_material;
 import Dominio.Lugar;
+import Dominio.Mat_inv;
 import Dominio.Material;
 import Dominio.Proveedor;
 import Dominio.Prueba;
@@ -404,26 +406,12 @@ public class DetalleLote extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        /*
-        int fk_lugar = 0;
-        if (c==null){
-           Cliente c = new Cliente(Integer.parseInt(jtCodigo.getText()),jtfMaterial.getText(),Integer.parseInt(jtfProveedor.getText()),Date.valueOf(jtfFechaCompra.getText()),fk_lugar);
-           c.agregarADB(conector);
-           new Thread(new MensajeUI(panelMensaje,"Cliente agregado exitosamente",1)).start();
-        }
-        else{
-            c.setCli_rif(Integer.parseInt(jtCodigo.getText()));
-            c.setCli_nombre(jtfMaterial.getText());
-            c.setCli_monto_acreditado(Integer.parseInt(jtfProveedor.getText()));
-            c.setCli_fecha_inicio(Date.valueOf(jtfFechaCompra.getText()));
-            c.setFk_lug_codigo(fk_lugar);
-            c.modificarEnDB(conector);
-            new Thread(new MensajeUI(panelMensaje,"Cliente modificado exitosamente",1)).start();
-        }
-        */
         if(pru_lot.pruebasListasLote(conector, l.getLot_codigo())){
             
             PrincipalLotes nuevoPanel = new PrincipalLotes(conector,contenedor,panelMensaje);
+            Mat_inv mi = Inventario.buscarPorFabricaYMaterial(conector, 1, l.getFk_mat_codigo());
+            mi.setMat_inv_cantidad(mi.getMat_inv_cantidad()+l.getLot_cantidad());
+            if(mi!=null)mi.modificarEnDB(conector);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();     
