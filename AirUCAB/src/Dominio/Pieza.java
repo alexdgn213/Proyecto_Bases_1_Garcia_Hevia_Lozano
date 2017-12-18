@@ -46,6 +46,16 @@ public class Pieza {
         this.fk_tip_codigo = fk_tip_codigo;
         this.fk_pie_codigo = fk_pie_codigo;
     }
+    
+    public Pieza(int pie_codigo, Date pie_fecha_estimado, Date pie_fecha_entregado,int fk_aer_codigo) {
+        this.pie_codigo = pie_codigo;
+        this.pie_fecha_estimado = pie_fecha_estimado;
+        this.pie_fecha_entregado = pie_fecha_entregado;
+        this.fk_aer_codigo=fk_aer_codigo;
+        this.fk_tip_codigo=fk_tip_codigo;
+        this.fk_pie_codigo=fk_pie_codigo;
+        this.fk_mot_codigo=fk_mot_codigo;
+    }
 
     
 
@@ -171,6 +181,21 @@ public class Pieza {
             System.out.print(ex.toString());
         }
         return piezas;
+    }
+    
+    public static Pieza buscarPorCodigo(ConectorDB conector, int codigo){
+        Pieza m = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT pie_codigo,pie_fecha_estimado,pie_fecha_entregado,fk_aer_codigo,fk_tip_codigo,fk_mot_codigo FROM Pieza WHERE pie_codigo=?");
+            pst.setInt(1, codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                m = new Pieza(rs.getInt("pie_codigo"),rs.getDate("pie_fecha_estimado"),rs.getDate("pie_fecha_entregado"),rs.getInt("fk_aer_codigo"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return m;
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
