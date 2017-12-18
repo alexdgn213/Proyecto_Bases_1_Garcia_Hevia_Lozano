@@ -133,7 +133,7 @@ public class Inventario {
         Mat_inv l = null;
         try {
             PreparedStatement pst = conector.conexion.prepareStatement("SELECT mat_inv_codigo, mat_inv_cantidad, fk_mat_codigo,fk_inv_codigo FROM mat_inv WHERE fk_inv_codigo=1 AND fk_mat_codigo=?");
-            pst.setInt(1, fk_fab_codigo);
+            pst.setInt(1, fk_mat_codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 l = new Mat_inv(rs.getInt("mat_inv_codigo"),rs.getInt("mat_inv_cantidad"),rs.getInt("fk_mat_codigo"),rs.getInt("fk_inv_codigo"));

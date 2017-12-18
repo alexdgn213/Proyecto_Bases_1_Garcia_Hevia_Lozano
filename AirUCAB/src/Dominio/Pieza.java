@@ -120,7 +120,7 @@ public class Pieza {
             Pru_pie pp= new Pru_pie(Date.valueOf(java.time.LocalDate.now()),6,this.pie_codigo,1);
             pp.agregarADB(conector);
             Pru_pie pp2= new Pru_pie(Date.valueOf(java.time.LocalDate.now()),7,this.pie_codigo,1);
-            pp.agregarADB(conector);
+            pp2.agregarADB(conector);
 
             /*
             for (Pru_mot pm:Pru_mot.obtenerTodasPruebasMotor(conector, fk_tip_codigo))

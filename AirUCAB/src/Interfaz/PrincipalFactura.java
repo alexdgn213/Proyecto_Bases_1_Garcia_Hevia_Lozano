@@ -35,6 +35,7 @@ public class PrincipalFactura extends javax.swing.JPanel {
         Factura.llenarTablaFacturasCompra(conector, tablaCompras);
         Factura.llenarTablaFacturasVenta(conector, tablaVentas);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
+        jScrollPane2.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
     }
 
     /**
