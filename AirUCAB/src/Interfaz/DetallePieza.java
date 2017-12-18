@@ -434,7 +434,7 @@ public class DetallePieza extends javax.swing.JPanel {
             new Thread(new MensajeUI(panelMensaje,"Cliente modificado exitosamente",1)).start();
         }
         */
-        if(pru_lot.pruebasListasLote(conector, l.getLot_codigo())){
+        if(true){
             PrincipalLotes nuevoPanel = new PrincipalLotes(conector,contenedor,panelMensaje);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
@@ -452,6 +452,7 @@ public class DetallePieza extends javax.swing.JPanel {
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void bAddInfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddInfActionPerformed
+        /*
         jlErrorFecha.setVisible(false);
         boolean A = Comprobador.ComprobarDate(jtfFechaRealizacion, jlErrorFecha);
         if (A) {
@@ -470,6 +471,7 @@ public class DetallePieza extends javax.swing.JPanel {
             }
             pru_lot.llenarTablaLote(conector, tablaPruebas, l.getLot_codigo());
         }else {new Thread(new MensajeUI(panelMensaje,"Los datos ingresados no son correctos",0)).start();}
+*/
     }//GEN-LAST:event_bAddInfActionPerformed
 
     private void tablaPruebasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPruebasMouseClicked
@@ -527,7 +529,8 @@ public class DetallePieza extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void llenarDatosLote() {
-        jtCodigo.setText(String.valueOf(l.getLot_codigo()));
+        
+/*        jtCodigo.setText(String.valueOf(l.getLot_codigo()));
         jtCodigo.setEnabled(false);
         Material m = Material.buscarPorCodigo(conector, l.getFk_mat_codigo());
         Proveedor p = Proveedor.buscarPorCodigo(conector, l.getFk_pro_rif());
@@ -535,7 +538,8 @@ public class DetallePieza extends javax.swing.JPanel {
         jtfMaterial.setEnabled(false);
         jtfProveedor.setText(p.getPro_nombre());
         jtfProveedor.setEnabled(false);
-        Pru_pie.llenarTablaPieza(conector, tablaPruebas, p.getPie_codigo());   
+*/
+        Pru_pie.llenarTablaDePruebas(conector, tablaPruebas, p.getPie_codigo());   
     }
     
 }
