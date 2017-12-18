@@ -211,5 +211,20 @@ public class Ensamblaje{
         }
         return e;
     }
+    
+    public static Ensamblaje buscarPorPieza(ConectorDB conector, int codigo){
+        Ensamblaje e = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT ens_codigo,ens_descripcion,fk_zon_codigo, fk_fab_codigo, fk_tip_codigo, fk_mot_codigo, fk_est_codigo FROM ensamblaje WHERE fk_pieza_codigo=?");
+            pst.setInt(1, codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                e = new Ensamblaje(rs.getInt("ens_codigo"),rs.getString("ens_descripcion"),rs.getInt("fk_zon_codigo"),rs.getInt("fk_fab_codigo"),rs.getInt("fk_pie_codigo"),rs.getInt("fk_tip_codigo"),rs.getInt("fk_mot_codigo"),rs.getInt("fk_est_codigo"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return e;
+    }
 
 }

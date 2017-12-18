@@ -422,6 +422,7 @@ public class DetalleLote extends javax.swing.JPanel {
         }
         */
         if(pru_lot.pruebasListasLote(conector, l.getLot_codigo())){
+            
             PrincipalLotes nuevoPanel = new PrincipalLotes(conector,contenedor,panelMensaje);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);

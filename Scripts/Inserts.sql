@@ -2739,7 +2739,12 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
  (350,2,4),
  (500,3,3),
  (30,4,2),
- (96,5,5);
+ (96,5,5),
+ (200,2,1),
+ (200,3,1),
+ (200,4,1),
+ (200,5,1),
+ (200,6,1);
   
   
   --REVISAR
