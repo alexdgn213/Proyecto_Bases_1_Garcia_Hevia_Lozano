@@ -88,7 +88,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel4" min="-2" pref="210" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jtfProveedor" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Component id="jtfEnsamblaje" min="-2" pref="150" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel7" min="-2" pref="210" max="-2" attributes="0"/>
@@ -151,7 +151,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel4" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jtfProveedor" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jtfEnsamblaje" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -215,7 +215,7 @@
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtfProveedor">
+            <Component class="javax.swing.JTextField" name="jtfEnsamblaje">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
