@@ -114,6 +114,13 @@ public class Pru_pie {
         ResultSet rs =obtenerResultSet(conector,"SELECT pru_pie_codigo as Codigo,pru_pie_fecha_realizacion as Fecha_Realizacion,fk_pru_codigo as Codigo_Prueba,fk_pie_codigo as Codigo_Pieza,fk_est_codigo as Codigo_Estatus FROM Pru_pie");
         AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
+    
+    public static void llenarTablaDePruebas(ConectorDB conector, JTable jTable, int id){
+        ResultSet rs =obtenerResultSet(conector,"SELECT pru_pie_codigo as Codigo ,pru_pie_fecha_realizacion as Fecha_Realizacion,fk_pru_codigo as Codigo_Prueba,fk_pie_codigo as Codigo_Pieza,fk_est_codigo as Codigo_Estatus"
+                + " From Pru_pie"
+                + " WHERE fk_pie_codigo=id");
+        AdaptadorSQLUI.llenarTabla(jTable, rs);
+    }
    
     
     public static Pru_pie buscarPorCodigo(ConectorDB conector, int codigo){

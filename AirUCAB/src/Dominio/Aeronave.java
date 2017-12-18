@@ -167,6 +167,8 @@ public class Aeronave {
         AdaptadorSQLUI.llenarTabla(jTable, rs);
     }
     
+    
+    
    public static void llenarTablaAeronaveFinalizadas(ConectorDB conector, JTable jTable){
         ResultSet rs =obtenerResultSet(conector,"SELECT aer_codigo as Codigo,mod_nombre as Modelo,cli_nombre as Nombre_Cliente,aer_fecha_compra as Fecha_Compra " +
 "                 FROM aeronave a,modelo_aeronave m,cliente c" +

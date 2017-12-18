@@ -129,6 +129,21 @@ public class Inventario {
         return l;
     }
     
+     public static Mat_inv buscarPorFabricaYMaterial(ConectorDB conector, int fk_fab_codigo,int fk_mat_codigo){
+        Mat_inv l = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT inv_codigo, inv_descripcion, fk_fab_codigo FROM inventario i, mat_inv mi WHERE i.fk_fab_codigo=? AND mi.fk_mat_codigo=?");
+            pst.setInt(1, fk_fab_codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                l = new Mat_inv(rs.getInt("fk_mat_inv_cantidad"),rs.getInt("mi.fk_mat_codigo"),rs.getInt("i.fk_inv_codigo"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return l;
+    }
+    
      public static void llenarTablaDeMaterialesPorFabrica(ConectorDB conector, JTable jTable, String nombre){
         ResultSet rs =obtenerResultSet(conector,"SELECT mat_codigo as Codigo_Material ,mat_nombre as Material,mat_inv_cantidad as Cantidad FROM inventario, material,mat_inv,fabrica where fk_inv_codigo=inv_codigo AND fk_mat_codigo=mat_codigo AND fk_fab_codigo=fab_codigo AND fab_nombre='"+nombre+"'");
         AdaptadorSQLUI.llenarTabla(jTable, rs);   
