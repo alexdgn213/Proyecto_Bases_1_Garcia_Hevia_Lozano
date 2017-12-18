@@ -117,7 +117,7 @@ public class Inventario {
     public static Inventario buscarPorFabrica(ConectorDB conector, int fk_fab_codigo){
         Inventario l = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT inv_codigo, inv_descripcion, fk_fab_codigo FROM inventario WHERE fk_fab_codigo=?");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT mat_inv_codigo, mat_inv_cantidad, fk_mat_codigo,fk_inv_codigo FROM mat_inv WHERE fk_inv_codigo=1 AND fk_mat_codigo = (mat_codigo=?)");
             pst.setInt(1, fk_fab_codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
