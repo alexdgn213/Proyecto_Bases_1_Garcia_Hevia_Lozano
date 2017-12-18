@@ -36,6 +36,14 @@ public class Pru_aer {
         this.fk_est_codigo = fk_est_codigo;
     }
     
+    public Pru_aer(Date pru_aer_fecha_realizacion,int fk_pru_codigo,int fk_aer_codigo,int fk_est_codigo) {
+        this.pru_aer_codigo = pru_aer_codigo;
+        this.pru_aer_fecha_realizacion = pru_aer_fecha_realizacion;
+        this.fk_pru_codigo = fk_pru_codigo;
+        this.fk_aer_codigo = fk_aer_codigo;
+        this.fk_est_codigo = fk_est_codigo;
+    }
+    
     public Pru_aer(int fk_pru_codigo,int fk_aer_codigo,int fk_est_codigo) {
         this.pru_aer_fecha_realizacion = Date.valueOf(LocalDate.now());
         this.fk_pru_codigo = fk_pru_codigo;
@@ -154,6 +162,46 @@ public class Pru_aer {
             System.out.print(ex.toString());
         }
         return tp;
+    }
+
+    public int getPru_aer_codigo() {
+        return pru_aer_codigo;
+    }
+
+    public void setPru_aer_codigo(int pru_aer_codigo) {
+        this.pru_aer_codigo = pru_aer_codigo;
+    }
+
+    public Date getPru_aer_fecha_realizacion() {
+        return pru_aer_fecha_realizacion;
+    }
+
+    public void setPru_aer_fecha_realizacion(Date pru_aer_fecha_realizacion) {
+        this.pru_aer_fecha_realizacion = pru_aer_fecha_realizacion;
+    }
+
+    public int getFk_pru_codigo() {
+        return fk_pru_codigo;
+    }
+
+    public void setFk_pru_codigo(int fk_pru_codigo) {
+        this.fk_pru_codigo = fk_pru_codigo;
+    }
+
+    public int getFk_aer_codigo() {
+        return fk_aer_codigo;
+    }
+
+    public void setFk_aer_codigo(int fk_aer_codigo) {
+        this.fk_aer_codigo = fk_aer_codigo;
+    }
+
+    public int getFk_est_codigo() {
+        return fk_est_codigo;
+    }
+
+    public void setFk_est_codigo(int fk_est_codigo) {
+        this.fk_est_codigo = fk_est_codigo;
     }
     
     
