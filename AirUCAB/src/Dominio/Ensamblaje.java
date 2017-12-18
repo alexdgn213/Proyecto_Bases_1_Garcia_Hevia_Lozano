@@ -57,8 +57,6 @@ public class Ensamblaje{
         this.fk_zon_codigo = fk_zon_codigo;
         this.fk_fab_codigo = fk_fab_codigo;
 	      this.fk_pie_codigo = fk_pie_codigo;
-        this.fk_tip_codigo = fk_tip_codigo;
-        this.fk_mot_codigo = fk_mot_codigo;
         this.fk_est_codigo = fk_est_codigo;
     }
     
@@ -77,7 +75,7 @@ public class Ensamblaje{
             pst.setInt(5, fk_tip_codigo);
             pst.setInt(6, fk_mot_codigo);
             pst.setInt(7, fk_est_codigo);
-            stm = "SELECT TOP 1 ens_codigo FROM ensamblaje WHERE ens_descripcion=? AND fk_zon_codigo=? AND fk_fab_codigo=? AND fk_pie_codigo=? AND fk_tip_codigo=? AND fk_mot_codigo=? AND fk_est_codigo=?";
+            stm = "SELECT ens_codigo FROM ensamblaje WHERE ens_descripcion=? AND fk_zon_codigo=? AND fk_fab_codigo=? AND fk_pie_codigo=? AND fk_tip_codigo=? AND fk_mot_codigo=? AND fk_est_codigo=?";
             pst = conector.conexion.prepareStatement(stm);
             pst.setString(1, ens_descripcion);
             pst.setInt(2, fk_zon_codigo);
@@ -155,13 +153,13 @@ public class Ensamblaje{
         return ensamblajes;
     }
     
-    public static List<Ensamblaje> obtenerEnsamblajeTipoPieza(ConectorDB conector,int fk_tip_codigo){
+    public static List<Ensamblaje> obtenerEnsamblajeTipoPieza(ConectorDB conector,int tip_codigo){
         List<Ensamblaje> pls = new ArrayList<Ensamblaje>();
         try {
             PreparedStatement pst = conector.conexion.prepareStatement("SELECT ens_codigo,ens_descripcion,fk_zon_codigo, fk_fab_codigo, fk_pie_codigo, fk_tip_codigo, fk_mot_codigo, fk_est_codigo" +
 "                     FROM Ensamblaje  " +
-"                    Where fk_tip_codigo=?");
-            pst.setInt(1, fk_tip_codigo);
+"                    Where tip_codigo=? AND (fk_tip_codigo=tip_codigo)");
+            pst.setInt(1, tip_codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 Ensamblaje l = new Ensamblaje(rs.getInt("ens_codigo"),rs.getString("ens_descripcion"),rs.getInt("fk_zon_codigo"),rs.getInt("fk_fab_codigo"),rs.getInt("fk_pie_codigo"),rs.getInt("fk_tip_codigo"),rs.getInt("fk_mot_codigo"),rs.getInt("fk_est_codigo"));
@@ -173,13 +171,13 @@ public class Ensamblaje{
         return pls;
     }
     
-     public static List<Ensamblaje> obtenerEnsamblajeMotor(ConectorDB conector,int fk_mot_codigo){
+     public static List<Ensamblaje> obtenerEnsamblajeMotor(ConectorDB conector,int mot_codigo){
         List<Ensamblaje> pls = new ArrayList<Ensamblaje>();
         try {
             PreparedStatement pst = conector.conexion.prepareStatement("SELECT ens_codigo,ens_descripcion,fk_zon_codigo, fk_fab_codigo, fk_pie_codigo, fk_tip_codigo, fk_mot_codigo, fk_est_codigo" +
 "                     FROM Ensamblaje  " +
-"                     Where fk_mot_codigo=?");
-            pst.setInt(1, fk_mot_codigo);
+"                     Where mot_codigo=? AND (mot_codigo=fk__mot_codigo)");
+            pst.setInt(1, mot_codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 Ensamblaje l = new Ensamblaje(rs.getInt("ens_codigo"),rs.getString("ens_descripcion"),rs.getInt("fk_zon_codigo"),rs.getInt("fk_fab_codigo"),rs.getInt("fk_pie_codigo"),rs.getInt("fk_tip_codigo"),rs.getInt("fk_mot_codigo"),rs.getInt("fk_est_codigo"));
@@ -215,7 +213,7 @@ public class Ensamblaje{
     public static Ensamblaje buscarPorPieza(ConectorDB conector, int codigo){
         Ensamblaje e = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT ens_codigo,ens_descripcion,fk_zon_codigo, fk_fab_codigo, fk_tip_codigo, fk_mot_codigo, fk_est_codigo FROM ensamblaje WHERE fk_pieza_codigo=?");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT ens_codigo,ens_descripcion,fk_zon_codigo, fk_fab_codigo, fk_tip_codigo, fk_mot_codigo, fk_est_codigo FROM ensamblaje WHERE fk_pie_codigo=?");
             pst.setInt(1, codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
