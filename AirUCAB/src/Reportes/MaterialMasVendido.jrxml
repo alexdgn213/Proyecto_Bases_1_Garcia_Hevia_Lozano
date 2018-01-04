@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7afc8c6a-5981-490b-af93-f27310663dd6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="MaterialMasVendido" uuid="76d1cd79-e576-482a-b4bf-2716bb05ee99">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     material."mat_codigo" AS material_mat_codigo,
+     material."mat_nombre" AS material_mat_nombre
+FROM
+     "public"."material" material INNER JOIN "public"."mat_pro" mat_pro ON material."mat_codigo" = mat_pro."fk_mat_codigo"
+     INNER JOIN "public"."lote_material" lote_material ON mat_pro."mat_pro_codigo" = lote_material."fk_mat_pro_codigo"
+     AND mat_pro."fk_mat_codigo" = lote_material."fk_mat_codigo"
+     AND mat_pro."fk_pro_rif" = lote_material."fk_pro_rif"
+GROUP BY material."mat_codigo", material."mat_nombre"
+ORDER BY SUM(lote_material."lot_cantidad") DESC
+LIMIT 1]]>
+		</queryString>
+		<field name="material_mat_codigo" class="java.lang.Integer"/>
+		<field name="material_mat_nombre" class="java.lang.String"/>
+		<group name="material_mat_codigo">
+			<groupExpression><![CDATA[$F{material_mat_codigo}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+     material."mat_codigo" AS material_mat_codigo,
+     material."mat_nombre" AS material_mat_nombre
+FROM
+     "public"."material" material INNER JOIN "public"."mat_pro" mat_pro ON material."mat_codigo" = mat_pro."fk_mat_codigo"
+     INNER JOIN "public"."lote_material" lote_material ON mat_pro."mat_pro_codigo" = lote_material."fk_mat_pro_codigo"
+     AND mat_pro."fk_mat_codigo" = lote_material."fk_mat_codigo"
+     AND mat_pro."fk_pro_rif" = lote_material."fk_pro_rif"
+GROUP BY material."mat_codigo", material."mat_nombre"
+ORDER BY SUM(lote_material."lot_cantidad") DESC
+LIMIT 1]]>
+	</queryString>
+	<field name="material_mat_codigo" class="java.lang.Integer"/>
+	<field name="material_mat_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="179" y="27" width="195" height="31" uuid="52b5bfcd-5bb1-4009-aecb-d130a6cc70d2"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Material Mas Vendido]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="6" y="8" width="100" height="20" uuid="face12c3-3f1c-4ddf-8c0e-eb75fad5cce4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="165" y="0" width="360" height="80" uuid="2fe53ffb-5b7f-489f-a209-781532f88306"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="MaterialMasVendido" uuid="d24e2e8d-8e3f-4a36-b524-130dfd829bbf">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="a15a82b9-ce8f-4928-8e3a-98024f734733">
+						<jr:columnHeader style="table 1_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="e7d4c63b-eddc-490a-808f-f0de6f09293a"/>
+								<text><![CDATA[Codigo]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="30"/>
+						<jr:detailCell style="table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="7ea8d9e0-dfff-464d-825f-0c2b68ae5780"/>
+								<textFieldExpression><![CDATA[$F{material_mat_codigo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="1dedec8e-0b74-41bf-8157-39aaeb086ee6">
+						<jr:columnHeader style="table 1_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="68f0651e-d98d-4667-859c-05623fae0ee5"/>
+								<text><![CDATA[Nombre Material]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="30"/>
+						<jr:detailCell style="table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="26afa7e6-d215-45ee-96ce-225a71ec41e1"/>
+								<textFieldExpression><![CDATA[$F{material_mat_nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="455" y="34" width="100" height="20" uuid="417afad5-9399-4a85-8f74-d5f0259efba6"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
