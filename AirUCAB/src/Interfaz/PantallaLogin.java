@@ -188,7 +188,7 @@ public class PantallaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -235,7 +235,13 @@ public class PantallaLogin extends javax.swing.JFrame {
         PantallaPrincipal pantallaNueva = new PantallaPrincipal(conector);
         this.dispose();
         pantallaNueva.setVisible(true);
-        }
+    }
+    
+    private void detalleUsuario(){
+        PantallaRegistro pantallaNueva = new PantallaRegistro(conector);
+        this.dispose();
+        pantallaNueva.setVisible(true);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
