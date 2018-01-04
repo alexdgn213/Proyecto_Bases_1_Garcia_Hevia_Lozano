@@ -199,14 +199,14 @@ LIMIT 1]]>
 				<textFieldExpression><![CDATA[$F{modelo_aeronave_mod_nombre}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="37" y="104" width="118" height="30" uuid="f3d69dd4-6cca-4eb4-9d87-250238ae9c15"/>
+				<reportElement x="27" y="104" width="100" height="30" uuid="f3d69dd4-6cca-4eb4-9d87-250238ae9c15"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[vendidos]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="155" y="104" width="111" height="30" uuid="be5780f3-20e9-45d7-b2d5-9ad773389e2c"/>
+				<reportElement x="141" y="104" width="100" height="30" uuid="be5780f3-20e9-45d7-b2d5-9ad773389e2c"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
