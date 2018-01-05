@@ -31,7 +31,8 @@ public class PrincipalFactura extends javax.swing.JPanel {
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
         initComponents();
-        this.setSize(850,580);
+        this.setBackground(AdaptadorSQLUI.fondoScrolls);
+        this.setSize(870, 610);
         Factura.llenarTablaFacturasCompra(conector, tablaCompras);
         Factura.llenarTablaFacturasVenta(conector, tablaVentas);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
@@ -58,7 +59,6 @@ public class PrincipalFactura extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(850, 580));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(850, 580));
 
         tablaCompras.setModel(new javax.swing.table.DefaultTableModel(

@@ -134,6 +134,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jScrollPane2.setMinimumSize(new java.awt.Dimension(870, 610));
         jScrollPane2.setPreferredSize(new java.awt.Dimension(870, 920));
 
+        jpanel.setOpaque(false);
         jpanel.setPreferredSize(new java.awt.Dimension(850, 1110));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -182,6 +183,8 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jlErrorPrecio.setForeground(new java.awt.Color(255, 0, 0));
         jlErrorPrecio.setText("Error en el rif");
         jlErrorPrecio.setToolTipText("");
+
+        panelRelaciones.setOpaque(false);
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel8.setText("Caracteristicas:");

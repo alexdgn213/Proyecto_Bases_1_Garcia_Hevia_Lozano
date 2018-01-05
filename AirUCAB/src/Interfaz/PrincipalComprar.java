@@ -44,7 +44,8 @@ public class PrincipalComprar extends javax.swing.JPanel {
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
         initComponents();
-        this.setSize(850,580);
+        this.setBackground(AdaptadorSQLUI.fondoScrolls);
+        this.setSize(870, 610);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
         jScrollPane2.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
         lock=1;
@@ -89,7 +90,6 @@ public class PrincipalComprar extends javax.swing.JPanel {
         botonCancelar = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(850, 580));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(850, 580));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N

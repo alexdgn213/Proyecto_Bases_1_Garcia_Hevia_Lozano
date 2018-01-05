@@ -124,6 +124,7 @@ public class DetalleClientes extends javax.swing.JPanel {
 
         jPanel1.setMaximumSize(new java.awt.Dimension(850, 32767));
         jPanel1.setMinimumSize(new java.awt.Dimension(850, 810));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 810));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -250,6 +251,8 @@ public class DetalleClientes extends javax.swing.JPanel {
                 botonCancelarActionPerformed(evt);
             }
         });
+
+        panelInformacion.setOpaque(false);
 
         jtfValor.setToolTipText("");
 

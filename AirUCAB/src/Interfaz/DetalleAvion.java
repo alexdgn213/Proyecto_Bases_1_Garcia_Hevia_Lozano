@@ -123,6 +123,7 @@ public class DetalleAvion extends javax.swing.JPanel {
 
         jPanel1.setMaximumSize(new java.awt.Dimension(850, 32767));
         jPanel1.setMinimumSize(new java.awt.Dimension(850, 740));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 840));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -154,6 +155,8 @@ public class DetalleAvion extends javax.swing.JPanel {
                 botonGuardarActionPerformed(evt);
             }
         });
+
+        panelInformacion.setOpaque(false);
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel8.setText("Pruebas:");

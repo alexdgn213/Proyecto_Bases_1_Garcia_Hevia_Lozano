@@ -46,7 +46,8 @@ public class PrincipalVender extends javax.swing.JPanel {
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
         initComponents();
-        this.setSize(850,580);
+        this.setBackground(AdaptadorSQLUI.fondoScrolls);
+        this.setSize(870, 610);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
         lock=1;
         modelo_aeronave.llenarTabla(conector, tablaModelos);
@@ -85,8 +86,7 @@ public class PrincipalVender extends javax.swing.JPanel {
         botonCancelar = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(850, 580));
-        setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(850, 580));
+        setPreferredSize(new java.awt.Dimension(870, 810));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(66, 66, 66));
