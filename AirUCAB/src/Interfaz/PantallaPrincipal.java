@@ -93,6 +93,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         Contenido = new javax.swing.JPanel();
         panelContenido = new javax.swing.JPanel();
         fondoContenido = new javax.swing.JLabel();
+        campoUsuario = new javax.swing.JLabel();
         jlTitulo = new javax.swing.JLabel();
         jlUsuario = new javax.swing.JLabel();
         jLabelUsuario = new javax.swing.JLabel();
@@ -547,6 +548,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 870, 610));
 
+        campoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoUsuarioMouseClicked(evt);
+            }
+        });
+        getContentPane().add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 4, 140, 40));
+
         jlTitulo.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         jlTitulo.setForeground(new java.awt.Color(255, 255, 255));
         jlTitulo.setText("Sistema de Ensamble de Aviones");
@@ -747,9 +755,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuProveedores2MouseClicked
 
+    private void campoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoUsuarioMouseClicked
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalDatos(conector,panelContenido,jlUsuario.getText(),panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
+    }//GEN-LAST:event_campoUsuarioMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Contenido;
     private javax.swing.JPanel LateralExpandido;
+    private javax.swing.JLabel campoUsuario;
     private javax.swing.JLabel fondoContenido;
     private javax.swing.JLabel fondoLateralExpandido;
     private javax.swing.JLabel jLabel1;

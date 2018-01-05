@@ -92,6 +92,20 @@ public class Usuario {
         return usuarios;
     }
     
+    public static Usuario buscarPorNombre(ConectorDB conector,String nombre){
+        Usuario u = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT usu_codigo, usu_nombre, fk_rol_codigo FROM usuario WHERE usu_nombre='"+nombre+"'");
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                u = new Usuario(rs.getInt("usu_codigo"),rs.getString("usu_nombre"),"",rs.getInt("fk_rol_codigo"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return u;
+    }
+    
     public static Usuario loguearUsuario(ConectorDB conector, String nombre){
         Usuario u = null;
         try {
