@@ -7,7 +7,9 @@ package Interfaz;
 
 import Adaptadores.ConectorDB;
 import Dominio.Cliente;
+import Dominio.Usuario;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -18,18 +20,43 @@ import javax.swing.UIManager;
 public class PantallaPrincipal extends javax.swing.JFrame {
     ConectorDB conector;
     JPanel nuevoPanel;
+    ArrayList<String> permisos;
 
     /**
      * Creates new form PantallaPrincipal
      */
     public PantallaPrincipal(ConectorDB conector, String usuario) {
         this.conector= conector;
+        permisos = new ArrayList<String>();
         try{
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         }catch(Exception e){
             e.printStackTrace();
         } 
         initComponents();
+        Usuario.llenarPrivilegios(conector, permisos, usuario);
+        menuModeloAviones.setVisible(permisos.contains("rmodelo_aeronave"));
+        menuAviones.setVisible(permisos.contains("raeronave"));
+        menuLotes.setVisible(permisos.contains("rlote_material"));
+        menuInventario.setVisible(permisos.contains("rinventario"));
+        separador1.setVisible(permisos.contains("rmodelo_aeronave")||permisos.contains("raeronave")
+                              ||permisos.contains("rlote_material")||permisos.contains("rinventario")
+        );
+        menuComprar.setVisible(permisos.contains("clote_material"));
+        menuVender.setVisible(permisos.contains("caeronave"));
+        menuFactura.setVisible(permisos.contains("rfactura"));
+        separador2.setVisible(permisos.contains("clote_material")||permisos.contains("caeronave")
+                              ||permisos.contains("rfactura")
+        );
+        menuClientes.setVisible(permisos.contains("rcliente"));
+        menuProveedores.setVisible(permisos.contains("rproveedor"));
+        menuUsuario.setVisible(permisos.contains("rusuario"));
+        separador3.setVisible(permisos.contains("rcliente")||permisos.contains("rproveedor")
+                              ||permisos.contains("rusuario")
+        );
+        menuReporte.setVisible(permisos.contains("rreporte"));
+        separador4.setVisible(permisos.contains("rreporte")
+        );
         jlUsuario.setText(usuario);
         Contenido.setVisible(false);
         panelMensaje.setVisible(false);
@@ -52,7 +79,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuInicio = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        separador1 = new javax.swing.JLabel();
         menuModeloAviones = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -65,7 +92,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuInventario = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        separador2 = new javax.swing.JLabel();
         menuComprar = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -75,18 +102,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuFactura = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        separador3 = new javax.swing.JLabel();
         menuClientes = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         menuProveedores = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        menuProveedores1 = new javax.swing.JPanel();
+        menuUsuario = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        menuProveedores2 = new javax.swing.JPanel();
+        separador4 = new javax.swing.JLabel();
+        menuReporte = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         fondoLateralExpandido = new javax.swing.JLabel();
@@ -163,8 +190,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_home_black_24dp_1x.png"))); // NOI18N
         menuInicio.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
-        jLabel16.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel16.setOpaque(true);
+        separador1.setBackground(new java.awt.Color(0, 0, 0));
+        separador1.setOpaque(true);
 
         menuModeloAviones.setOpaque(false);
         menuModeloAviones.setPreferredSize(new java.awt.Dimension(162, 30));
@@ -262,8 +289,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuInventario.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
-        jLabel17.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel17.setOpaque(true);
+        separador2.setBackground(new java.awt.Color(0, 0, 0));
+        separador2.setOpaque(true);
 
         menuComprar.setOpaque(false);
         menuComprar.setPreferredSize(new java.awt.Dimension(162, 30));
@@ -337,8 +364,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuFactura.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
-        jLabel18.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel18.setOpaque(true);
+        separador3.setBackground(new java.awt.Color(0, 0, 0));
+        separador3.setOpaque(true);
 
         menuClientes.setOpaque(false);
         menuClientes.setPreferredSize(new java.awt.Dimension(162, 30));
@@ -392,14 +419,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuProveedores.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
-        menuProveedores1.setOpaque(false);
-        menuProveedores1.setPreferredSize(new java.awt.Dimension(162, 30));
-        menuProveedores1.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuUsuario.setOpaque(false);
+        menuUsuario.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuProveedores1MouseClicked(evt);
+                menuUsuarioMouseClicked(evt);
             }
         });
-        menuProveedores1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menuUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel27.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(66, 66, 66));
@@ -410,23 +437,23 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 jLabel27MouseClicked(evt);
             }
         });
-        menuProveedores1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+        menuUsuario.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
 
         jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_person_black_24dp_1x.png"))); // NOI18N
         jLabel28.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuProveedores1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+        menuUsuario.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
-        jLabel29.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel29.setOpaque(true);
+        separador4.setBackground(new java.awt.Color(0, 0, 0));
+        separador4.setOpaque(true);
 
-        menuProveedores2.setOpaque(false);
-        menuProveedores2.setPreferredSize(new java.awt.Dimension(162, 30));
-        menuProveedores2.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuReporte.setOpaque(false);
+        menuReporte.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuReporte.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuProveedores2MouseClicked(evt);
+                menuReporteMouseClicked(evt);
             }
         });
-        menuProveedores2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menuReporte.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel30.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(66, 66, 66));
@@ -437,11 +464,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 jLabel30MouseClicked(evt);
             }
         });
-        menuProveedores2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+        menuReporte.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
 
         jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_assignment_black_24dp_1x.png"))); // NOI18N
         jLabel31.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuProveedores2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+        menuReporte.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
         javax.swing.GroupLayout panelLateralExtendidoLayout = new javax.swing.GroupLayout(panelLateralExtendido);
         panelLateralExtendido.setLayout(panelLateralExtendidoLayout);
@@ -449,9 +476,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
                 .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separador1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separador2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separador3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,15 +490,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                             .addComponent(menuFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(menuProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(menuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(separador4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 43, Short.MAX_VALUE))
             .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menuInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menuModeloAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuProveedores2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(menuUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLateralExtendidoLayout.setVerticalGroup(
@@ -480,7 +507,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(menuInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separador1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(menuModeloAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -490,7 +517,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separador2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuComprar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -498,17 +525,17 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separador3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menuUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separador4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuProveedores2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menuReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(193, Short.MAX_VALUE))
         );
 
@@ -747,21 +774,29 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         panelContenido.updateUI();
     }//GEN-LAST:event_jLabel27MouseClicked
 
-    private void menuProveedores1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProveedores1MouseClicked
+    private void menuUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuUsuarioMouseClicked
         Contenido.setVisible(true);
         nuevoPanel = new PrincipalUsuarios(conector,panelContenido,panelMensaje);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
-    }//GEN-LAST:event_menuProveedores1MouseClicked
+    }//GEN-LAST:event_menuUsuarioMouseClicked
 
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalReportes(conector,panelContenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_jLabel30MouseClicked
 
-    private void menuProveedores2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProveedores2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuProveedores2MouseClicked
+    private void menuReporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuReporteMouseClicked
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalReportes(conector,panelContenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
+    }//GEN-LAST:event_menuReporteMouseClicked
 
     private void campoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoUsuarioMouseClicked
         Contenido.setVisible(true);
@@ -784,9 +819,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -798,7 +830,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -820,12 +851,16 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel menuLotes;
     private javax.swing.JPanel menuModeloAviones;
     private javax.swing.JPanel menuProveedores;
-    private javax.swing.JPanel menuProveedores1;
-    private javax.swing.JPanel menuProveedores2;
+    private javax.swing.JPanel menuReporte;
+    private javax.swing.JPanel menuUsuario;
     private javax.swing.JPanel menuVender;
     private javax.swing.JPanel panelContenido;
     private javax.swing.JPanel panelLateralExtendido;
     private javax.swing.JPanel panelMensaje;
+    private javax.swing.JLabel separador1;
+    private javax.swing.JLabel separador2;
+    private javax.swing.JLabel separador3;
+    private javax.swing.JLabel separador4;
     // End of variables declaration//GEN-END:variables
   
 

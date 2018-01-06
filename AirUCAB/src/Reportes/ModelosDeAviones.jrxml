@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="86fb7ad5-f694-4957-aeeb-2a238897333d">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1"/>
+	<property name="ireport.y" value="28"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#000000"/>
@@ -110,18 +110,24 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="99" splitType="Stretch">
-			<staticText>
-				<reportElement x="74" y="57" width="310" height="42" uuid="8db0a407-d484-4140-ac69-1e4706ee020a"/>
-				<textElement>
-					<font size="22"/>
-				</textElement>
-				<text><![CDATA[Reporte Modelos de Aeronaves]]></text>
-			</staticText>
-			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="0" y="10" width="181" height="20" uuid="70a1f159-0ddd-43cb-8483-995094a54d21"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
+		<band height="87" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-49" y="-22" width="657" height="109" backcolor="#3F51B5" uuid="df7fba66-6296-4661-a6f8-f24bd8179cb2"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="49" y="22" width="109" height="20" forecolor="#FFFFFF" uuid="358d0163-a14a-41c0-8aca-135f51f94ed0"/>
+					<textElement>
+						<font fontName="Roboto" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="49" y="64" width="555" height="31" forecolor="#FFFFFF" uuid="2c42a672-0d26-4fe6-b05a-f89681c0baf2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[MODELOS DE AVIONES]]></text>
+				</staticText>
+			</frame>
 		</band>
 	</title>
 	<pageHeader>
@@ -131,39 +137,51 @@ FROM
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="88" splitType="Stretch">
+		<band height="141" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 2" style="table 2" x="24" y="0" width="360" height="80" uuid="8a69e945-233d-4340-a108-945cf8dd6622"/>
+				<reportElement key="table 2" style="table 1" positionType="Float" stretchType="RelativeToTallestObject" x="138" y="46" width="282" height="80" uuid="8a69e945-233d-4340-a108-945cf8dd6622"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="ModelosdeAviones" uuid="bc3d0037-b93d-43e1-b9a6-4e4293f6de45">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="90" uuid="fc91f541-9768-470d-8a76-29a7efd1ec5a">
+					<jr:column width="130" uuid="fc91f541-9768-470d-8a76-29a7efd1ec5a">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="e8370f3f-eb28-4774-9c08-bf266ce9307b"/>
-								<text><![CDATA[modelo_aeronave_mod_codigo]]></text>
+								<reportElement x="0" y="0" width="130" height="30" uuid="e8370f3f-eb28-4774-9c08-bf266ce9307b"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Modelo]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 2_CH" height="39" rowSpan="1"/>
+						<jr:columnFooter style="table 2_CH" height="31" rowSpan="1"/>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="71fc9091-fffc-4e0f-bc3f-923cfb990e41"/>
+								<reportElement x="0" y="0" width="130" height="20" uuid="71fc9091-fffc-4e0f-bc3f-923cfb990e41"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{modelo_aeronave_mod_codigo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="ddb4b3ae-2517-4688-8237-e662a6be2fe2">
+					<jr:column width="179" uuid="ddb4b3ae-2517-4688-8237-e662a6be2fe2">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="a29e91c8-801d-4032-a4f5-798175634982"/>
-								<text><![CDATA[modelo_aeronave_mod_nombre]]></text>
+								<reportElement x="0" y="0" width="179" height="30" uuid="a29e91c8-801d-4032-a4f5-798175634982"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Nombre]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 2_CH" height="39" rowSpan="1"/>
+						<jr:columnFooter style="table 2_CH" height="31" rowSpan="1"/>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="531f6d57-60eb-4fb3-a817-141c4fe691bc"/>
+								<reportElement x="0" y="0" width="179" height="20" uuid="531f6d57-60eb-4fb3-a817-141c4fe691bc"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{modelo_aeronave_mod_nombre}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -177,10 +195,23 @@ FROM
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch">
-			<textField>
-				<reportElement x="455" y="34" width="100" height="20" uuid="40b515c8-1db2-4245-841c-dcec7ad4a32c"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
+			<frame>
+				<reportElement mode="Opaque" x="-30" y="0" width="621" height="54" backcolor="#3F51B5" uuid="9a35008a-ace0-4743-88cf-4c628428ff11"/>
+				<staticText>
+					<reportElement x="30" y="12" width="555" height="31" forecolor="#FFFFFF" uuid="01abb479-b134-44c0-800d-a661e0712096"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[AirUCAB - Reportes]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="514" y="14" width="71" height="29" forecolor="#FFFFFF" uuid="4b378bbe-7458-4323-93e5-311fc528ee5f"/>
+					<textElement>
+						<font fontName="Roboto" size="24"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
 		</band>
 	</pageFooter>
 	<summary>
