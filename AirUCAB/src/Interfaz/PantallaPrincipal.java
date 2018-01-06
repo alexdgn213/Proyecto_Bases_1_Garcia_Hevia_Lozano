@@ -783,11 +783,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuUsuarioMouseClicked
 
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalReportes(conector,panelContenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_jLabel30MouseClicked
 
     private void menuReporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuReporteMouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalReportes(conector,panelContenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_menuReporteMouseClicked
 
     private void campoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoUsuarioMouseClicked
