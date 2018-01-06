@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="72749c4d-b59e-4fc4-b636-aafb6ee2d35c">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="4"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#000000"/>
@@ -95,17 +95,23 @@ FROM
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<staticText>
-				<reportElement x="226" y="47" width="128" height="32" uuid="02ef5329-cb2d-40fd-90c2-36679f377cff"/>
-				<textElement>
-					<font size="18"/>
-				</textElement>
-				<text><![CDATA[Proveedores]]></text>
-			</staticText>
-			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="2" y="9" width="100" height="20" uuid="34b9b9f5-fb5e-4b6d-b99d-8a8c097eb602"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
+			<frame>
+				<reportElement mode="Opaque" x="-43" y="-30" width="657" height="109" backcolor="#3F51B5" uuid="9e8c0b16-8fa3-4403-963f-cd3912adde5e"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="43" y="30" width="109" height="20" forecolor="#FFFFFF" uuid="36fbe236-d544-469c-8b02-d06bdddb190c"/>
+					<textElement>
+						<font fontName="Roboto" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="43" y="65" width="555" height="31" forecolor="#FFFFFF" uuid="a857817d-13a1-4760-b122-393f4d7a804f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PROVEEDORES]]></text>
+				</staticText>
+			</frame>
 		</band>
 	</title>
 	<pageHeader>
@@ -117,82 +123,112 @@ FROM
 	<detail>
 		<band height="125" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="13" y="45" width="360" height="80" uuid="08ae8c81-e783-4f09-ba46-a6725aa630ba"/>
+				<reportElement key="table 1" style="table 1" x="38" y="45" width="479" height="80" uuid="08ae8c81-e783-4f09-ba46-a6725aa630ba"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="ProveedorDatos" uuid="64deb828-e840-4208-9bf4-4faa10b79f0f">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="90" uuid="37dd1b74-7e8a-4258-8a68-0ffe9b4de39b">
-						<jr:columnHeader style="table 1_CH" height="30">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="f052583b-013a-4bca-9f29-45539ea1c1a8"/>
-								<text><![CDATA[proveedor_pro_rif]]></text>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Rif]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="0ee68e3e-d02f-4112-a138-73934f72419f"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{proveedor_pro_rif}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="0f32ce51-ae0f-4c9a-8061-155b56d76ecf">
-						<jr:columnHeader style="table 1_CH" height="30">
+					<jr:column width="118" uuid="0f32ce51-ae0f-4c9a-8061-155b56d76ecf">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="937323b5-41f0-4c8e-96f6-9a1b9382b7d8"/>
-								<text><![CDATA[proveedor_pro_nombre]]></text>
+								<reportElement x="0" y="0" width="118" height="30" uuid="937323b5-41f0-4c8e-96f6-9a1b9382b7d8"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Nombre]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="17574c3a-cf46-4f5b-a555-1c2e1cea54ee"/>
+								<reportElement x="0" y="0" width="118" height="20" uuid="17574c3a-cf46-4f5b-a555-1c2e1cea54ee"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{proveedor_pro_nombre}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="5fe4ad49-1f8d-48a1-958a-4c394ee636ea">
-						<jr:columnHeader style="table 1_CH" height="30">
+					<jr:column width="74" uuid="5fe4ad49-1f8d-48a1-958a-4c394ee636ea">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="69f9f7bd-b4fe-43e9-b6d5-c4c3b61a05ce"/>
-								<text><![CDATA[proveedor_pro_monto_acreditado]]></text>
+								<reportElement x="0" y="0" width="74" height="30" uuid="69f9f7bd-b4fe-43e9-b6d5-c4c3b61a05ce"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Monto Acreditado]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="615030ca-c476-4e53-b042-309a10545075"/>
+								<reportElement x="0" y="0" width="74" height="20" uuid="615030ca-c476-4e53-b042-309a10545075"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{proveedor_pro_monto_acreditado}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="caccb10b-797c-4912-a33d-6ab2660ade9b">
-						<jr:columnHeader style="table 1_CH" height="30">
+					<jr:column width="106" uuid="caccb10b-797c-4912-a33d-6ab2660ade9b">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="97014a00-656b-4b7a-b2db-658036ba2ff8"/>
-								<text><![CDATA[proveedor_pro_fecha_inicio]]></text>
+								<reportElement x="0" y="0" width="106" height="30" uuid="97014a00-656b-4b7a-b2db-658036ba2ff8"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Inicio Operaciones]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="f9e27400-d63d-478e-a950-87183498b964"/>
+								<reportElement x="0" y="0" width="106" height="20" uuid="f9e27400-d63d-478e-a950-87183498b964"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{proveedor_pro_fecha_inicio}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="8169de79-4f5f-460b-a38d-b85df0133c03">
-						<jr:columnHeader style="table 1_CH" height="30">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="b6e1de78-666d-429c-bbe3-432c0db2d63b"/>
-								<text><![CDATA[lugar_lug_nombre]]></text>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Ubicacion]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="55551edc-e060-4bdc-bfee-558899e09317"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{lugar_lug_nombre}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -205,9 +241,27 @@ FROM
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-30" y="0" width="644" height="54" backcolor="#3F51B5" uuid="ba28fae8-f844-4122-99f0-62302d1e7384"/>
+				<staticText>
+					<reportElement x="27" y="14" width="555" height="31" forecolor="#FFFFFF" uuid="17f9a574-63e1-4a64-8c6c-e7237b230712"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[AirUCAB - Reportes]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="511" y="16" width="71" height="29" forecolor="#FFFFFF" uuid="1dedc279-efa0-4e36-950d-a8ead04bf10d"/>
+					<textElement>
+						<font fontName="Roboto" size="24"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>
