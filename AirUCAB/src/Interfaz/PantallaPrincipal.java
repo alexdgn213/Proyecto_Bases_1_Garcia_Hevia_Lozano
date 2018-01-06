@@ -366,7 +366,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuClientes.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_business_center_black_24dp_1x.png"))); // NOI18N
-        menuClientes.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 24, 24));
+        menuClientes.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, 24, 24));
 
         menuProveedores.setOpaque(false);
         menuProveedores.setPreferredSize(new java.awt.Dimension(162, 30));
@@ -403,7 +403,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jLabel27.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(66, 66, 66));
-        jLabel27.setText("Usuarios");
+        jLabel27.setText("Usuarios y Roles");
         jLabel27.setToolTipText("");
         jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -740,11 +740,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuModeloAvionesMouseClicked
 
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalUsuarios(conector,panelContenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_jLabel27MouseClicked
 
     private void menuProveedores1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProveedores1MouseClicked
-        // TODO add your handling code here:
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalUsuarios(conector,panelContenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
     }//GEN-LAST:event_menuProveedores1MouseClicked
 
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
@@ -757,7 +765,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void campoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoUsuarioMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalDatos(conector,panelContenido,jlUsuario.getText(),panelMensaje);
+        nuevoPanel = new PrincipalDatos(conector,panelContenido,jlUsuario.getText(),panelMensaje, this);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();

@@ -19,6 +19,7 @@ import Dominio.mat_pro;
 import java.awt.Color;
 import java.sql.Date;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -30,20 +31,23 @@ public class PrincipalDatos extends javax.swing.JPanel {
     JPanel contenedor;
     JPanel panelMensaje;
     Usuario u;
+    JFrame padre;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public PrincipalDatos(ConectorDB conector,JPanel contenedor,String nombre,JPanel panelMensaje) {
+    public PrincipalDatos(ConectorDB conector,JPanel contenedor,String nombre,JPanel panelMensaje,JFrame padre) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
+        this.padre=padre;
         initComponents();
         jScrollPane2.getViewport().setBackground(AdaptadorSQLUI.fondoScrolls);
         this.setSize(870, 610);
+        
         u = Usuario.buscarPorNombre(conector,nombre);
         if (u==null){
-            
+  
         }
         else{
             llenarDatosCliente();    
@@ -64,14 +68,15 @@ public class PrincipalDatos extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jtfRif = new javax.swing.JTextField();
-        jtfNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jtfMontoAcreditado = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jtfFechaInicio = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         botonGuardar = new javax.swing.JButton();
         botonEliminar = new javax.swing.JButton();
+        botonEliminar1 = new javax.swing.JButton();
+        jpClaveAntigua = new javax.swing.JPasswordField();
+        jpClave = new javax.swing.JPasswordField();
+        jpClave1 = new javax.swing.JPasswordField();
 
         setMaximumSize(new java.awt.Dimension(1870, 1610));
         setMinimumSize(new java.awt.Dimension(870, 610));
@@ -102,8 +107,6 @@ public class PrincipalDatos extends javax.swing.JPanel {
         jLabel4.setText("Nueva clave:");
         jLabel4.setToolTipText("");
 
-        jtfFechaInicio.setToolTipText("");
-
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel5.setText("Repetir nueva clave:");
         jLabel5.setToolTipText("");
@@ -124,74 +127,89 @@ public class PrincipalDatos extends javax.swing.JPanel {
             }
         });
 
+        botonEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/prender48dp_1x.png"))); // NOI18N
+        botonEliminar1.setMaximumSize(new java.awt.Dimension(69, 48));
+        botonEliminar1.setMinimumSize(new java.awt.Dimension(69, 48));
+        botonEliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminar1ActionPerformed(evt);
+            }
+        });
+
+        jpClaveAntigua.setText("jPasswordField1");
+
+        jpClave.setText("jPasswordField1");
+
+        jpClave1.setText("jPasswordField1");
+
         javax.swing.GroupLayout panelMaterialesLayout = new javax.swing.GroupLayout(panelMateriales);
         panelMateriales.setLayout(panelMaterialesLayout);
         panelMaterialesLayout.setHorizontalGroup(
             panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMaterialesLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelMaterialesLayout.createSequentialGroup()
-                        .addGap(0, 215, Short.MAX_VALUE)
-                        .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelMaterialesLayout.createSequentialGroup()
-                                .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelMaterialesLayout.createSequentialGroup()
-                                        .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(panelMaterialesLayout.createSequentialGroup()
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(panelMaterialesLayout.createSequentialGroup()
-                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jtfMontoAcreditado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(255, 255, 255))
-                                    .addGroup(panelMaterialesLayout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jtfRif, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap())
-                            .addGroup(panelMaterialesLayout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtfFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36))))
-                    .addGroup(panelMaterialesLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelMaterialesLayout.createSequentialGroup()
+                        .addGap(212, 212, 212)
+                        .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelMaterialesLayout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jpClave1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelMaterialesLayout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jpClave, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelMaterialesLayout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfRif, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelMaterialesLayout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jpClaveAntigua, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                        .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonEliminar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         panelMaterialesLayout.setVerticalGroup(
             panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMaterialesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelMaterialesLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(botonEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelMaterialesLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelMaterialesLayout.createSequentialGroup()
+                                .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfRif, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jpClaveAntigua, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfRif, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfMontoAcreditado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(338, Short.MAX_VALUE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpClave, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpClave1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(panelMateriales);
@@ -212,13 +230,13 @@ public class PrincipalDatos extends javax.swing.JPanel {
         if (u==null){
         }
         else{
-            if(jtfNombre.getText().equals(u.getUsu_clave())){
-                if(jtfMontoAcreditado.getText().equals(jtfFechaInicio.getText())){
-                    u.setUsu_clave(jtfMontoAcreditado.getText());
+            if(jpClaveAntigua.getText().equals(u.getUsu_clave())){
+                if(jpClave.getText().equals(jpClave1.getText())){
+                    u.setUsu_clave(jpClave.getText());
                     u.modificarEnDB(conector);
-                    jtfNombre.setText("");
-                    jtfMontoAcreditado.setText("");
-                    jtfFechaInicio.setText("");
+                    jpClaveAntigua.setText("");
+                    jpClave.setText("");
+                    jpClave1.setText("");
                     new Thread(new MensajeUI(panelMensaje,"Usuario modificado exitosamente",1)).start();
                 }
                 else{
@@ -236,9 +254,11 @@ public class PrincipalDatos extends javax.swing.JPanel {
         if (u==null){
         }
         else{
-            if(jtfNombre.getText().equals(u.getUsu_clave())){
+            if(jpClaveAntigua.getText().equals(u.getUsu_clave())){
                 u.eliminarDeDB(conector);
-                System.exit(0);
+                PantallaLogin pantallaNueva = new PantallaLogin(conector);
+                padre.dispose();
+                pantallaNueva.setVisible(true);
                 
             }
             else{
@@ -247,9 +267,16 @@ public class PrincipalDatos extends javax.swing.JPanel {
         }    
     }//GEN-LAST:event_botonEliminarActionPerformed
 
+    private void botonEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminar1ActionPerformed
+        PantallaLogin pantallaNueva = new PantallaLogin(conector);
+        padre.dispose();
+        pantallaNueva.setVisible(true);
+    }//GEN-LAST:event_botonEliminar1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonEliminar1;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -257,9 +284,9 @@ public class PrincipalDatos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jtfFechaInicio;
-    private javax.swing.JTextField jtfMontoAcreditado;
-    private javax.swing.JTextField jtfNombre;
+    private javax.swing.JPasswordField jpClave;
+    private javax.swing.JPasswordField jpClave1;
+    private javax.swing.JPasswordField jpClaveAntigua;
     private javax.swing.JTextField jtfRif;
     private javax.swing.JPanel panelMateriales;
     // End of variables declaration//GEN-END:variables
@@ -267,9 +294,9 @@ public class PrincipalDatos extends javax.swing.JPanel {
     private void llenarDatosCliente() {
         jtfRif.setText(String.valueOf(u.getUsu_nombre()));
         jtfRif.setEnabled(false);
-        jtfNombre.setText("");
-        jtfMontoAcreditado.setText("");
-        jtfFechaInicio.setText("");
+        jpClaveAntigua.setText("");
+        jpClave.setText("");
+        jpClave1.setText("");
     }
 
 }

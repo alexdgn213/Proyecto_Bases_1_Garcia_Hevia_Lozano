@@ -109,6 +109,8 @@ public class PrincipalComprar extends javax.swing.JPanel {
             }
         });
 
+        panelComprar.setOpaque(false);
+
         jbNuevo.setBackground(new java.awt.Color(255, 255, 255));
         jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_add_black_48dp_1x.png"))); // NOI18N
         jbNuevo.setContentAreaFilled(false);

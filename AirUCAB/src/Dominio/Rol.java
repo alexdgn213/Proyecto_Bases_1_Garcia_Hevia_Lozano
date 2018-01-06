@@ -5,12 +5,16 @@
  */
 package Dominio;
 
+import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.ConectorDB;
+import static Dominio.Usuario.obtenerResultSet;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
 
 /**
  *
@@ -67,6 +71,17 @@ public class Rol {
         }
     }
     
+    public static ResultSet obtenerResultSet(ConectorDB conector, String query){
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return null;
+    }
+    
     public static List<Rol> obtenerTodos(ConectorDB conector){
         List<Rol> roles = new ArrayList<Rol>();
         try {
@@ -80,6 +95,37 @@ public class Rol {
             System.out.print(ex.toString());
         }
         return roles;
+    }
+    
+    public static int obtenerCodigoPorNombre(ConectorDB conector, String nombre){
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT rol_codigo FROM rol WHERE rol_nombre =?");
+            pst.setString(1, nombre);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("rol_codigo");
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return 0;
+    }
+    
+    public static void llenarTabla(ConectorDB conector, JTable jTable){
+        ResultSet rs =obtenerResultSet(conector,"SELECT rol_codigo as Codigo,rol_nombre as nombre, rol_descripcion as Descripcion FROM rol");
+        AdaptadorSQLUI.llenarTabla(jTable, rs);   
+    }
+    
+    public static void llenarComboBox(ConectorDB conector, JComboBox jCombo){
+        PreparedStatement pst;
+        try {
+            pst = conector.conexion.prepareStatement("SELECT rol_nombre from rol");
+            ResultSet rs = pst.executeQuery();
+            AdaptadorSQLUI.llenarComboBox(jCombo, rs);
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        
     }
 
     public int getRol_codigo() {
