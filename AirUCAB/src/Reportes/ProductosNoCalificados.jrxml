@@ -1,10 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c771b73a-265b-4613-8fab-d3e5efedba76">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="ProductosNoCalificados" uuid="a85ed531-82b1-425e-8662-e4885b0ed582">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+    
+     material."mat_nombre" AS material_mat_nombre,
+SUM( lote_material."lot_cantidad") AS lote_material_lot_cantidad
+FROM
+     "public"."mat_pro" mat_pro INNER JOIN "public"."lote_material" lote_material ON mat_pro."mat_pro_codigo" = lote_material."fk_mat_pro_codigo"
+     AND mat_pro."fk_mat_codigo" = lote_material."fk_mat_codigo"
+     AND mat_pro."fk_pro_rif" = lote_material."fk_pro_rif"
+     INNER JOIN "public"."material" material ON mat_pro."fk_mat_codigo" = material."mat_codigo"
+     INNER JOIN "public"."pru_lot" pru_lot ON lote_material."lot_codigo" = pru_lot."fk_lot_codigo"
+     INNER JOIN "public"."estatus" estatus ON pru_lot."fk_est_codigo" = estatus."est_codigo"
+WHERE estatus."est_nombre"='Cancelado' AND pru_lot."fk_pru_codigo"='1'
+GROUP BY  material."mat_nombre"]]>
+		</queryString>
+		<field name="material_mat_nombre" class="java.lang.String"/>
+		<field name="lote_material_lot_cantidad" class="java.lang.Long"/>
+		<group name="material_mat_nombre">
+			<groupExpression><![CDATA[$F{material_mat_nombre}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+    
+     material."mat_nombre" AS material_mat_nombre,
+SUM( lote_material."lot_cantidad") AS lote_material_lot_cantidad
+FROM
+     "public"."mat_pro" mat_pro INNER JOIN "public"."lote_material" lote_material ON mat_pro."mat_pro_codigo" = lote_material."fk_mat_pro_codigo"
+     AND mat_pro."fk_mat_codigo" = lote_material."fk_mat_codigo"
+     AND mat_pro."fk_pro_rif" = lote_material."fk_pro_rif"
+     INNER JOIN "public"."material" material ON mat_pro."fk_mat_codigo" = material."mat_codigo"
+     INNER JOIN "public"."pru_lot" pru_lot ON lote_material."lot_codigo" = pru_lot."fk_lot_codigo"
+     INNER JOIN "public"."estatus" estatus ON pru_lot."fk_est_codigo" = estatus."est_codigo"
+WHERE estatus."est_nombre"='Cancelado' AND pru_lot."fk_pru_codigo"='1'
+GROUP BY  material."mat_nombre"]]>
+	</queryString>
+	<field name="material_mat_nombre" class="java.lang.String"/>
+	<field name="lote_material_lot_cantidad" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="202" y="39" width="100" height="20" uuid="b5d4d0c5-f2cb-43b0-a1e3-f43a873267ce"/>
+				<text><![CDATA[Static text]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
@@ -13,7 +116,46 @@
 		<band height="61" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="2" y="44" width="360" height="80" uuid="94d06186-9f1e-40a1-bc8d-2c473b6c7d15"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="ProductosNoCalificados" uuid="751f7dec-1fd3-4981-b11e-7b23ccfe57f6">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="70adbe60-081f-47b6-92aa-2faf8b9779e6">
+						<jr:columnHeader style="table 1_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="0493d635-942a-4957-816c-b3e07398988b"/>
+								<text><![CDATA[Nombre Material]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="30"/>
+						<jr:detailCell style="table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="984eb435-8ffb-405b-a480-24479df77aa4"/>
+								<textFieldExpression><![CDATA[$F{material_mat_nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="e5b599d3-af15-4849-90cf-90c0f96cf629">
+						<jr:columnHeader style="table 1_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="872ea65a-866c-4ed7-995e-de56bd2826c1"/>
+								<text><![CDATA[Cantidad]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="30"/>
+						<jr:detailCell style="table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="cce8a5d2-696d-4ed5-83f7-c1cd2777e976"/>
+								<textFieldExpression><![CDATA[$F{lote_material_lot_cantidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
