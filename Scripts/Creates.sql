@@ -124,7 +124,9 @@ create table modelo_aeronave
 (
 	mod_codigo serial not null,
 	mod_nombre varchar(30) unique not null,
+	mod_descripcion varchar(50),
 	mod_precio_compra int not null,
+	mod_fecha_creacion date,
 	constraint pk_modelo_aeronave primary key(mod_codigo)
 );
 
@@ -133,6 +135,7 @@ create table motor
 	mot_codigo serial not null,
 	mot_modelo varchar(50) not null,
 	mot_marca varchar(50) not null,
+	mot_tiempo_estimado varchar(50),
 	constraint pk_mot_codigo primary key(mot_codigo)
 );
 
@@ -386,6 +389,7 @@ create table pru_pie
 (
 	pru_pie_codigo serial not null,
 	pru_pie_fecha_realizacion date,
+	pru_pie_fecha_estimada date,
     fk_pru_codigo int not null,
     fk_pie_codigo int not null,
     fk_est_codigo int,
@@ -414,6 +418,7 @@ create table mat_inv
 create table pru_lot
 (
 	pru_lot_codigo serial not null,
+	pru_lot_fecha_estimada date,
 	pru_lot_fecha_realizacion date,
 	fk_pru_codigo int not null,
 	fk_lot_codigo int not null,
@@ -460,6 +465,7 @@ create table pru_aer
 (
 	pru_aer_codigo serial not null,
 	pru_aer_fecha_realizacion date,
+	pru_aer_fecha_estimada date,
     fk_pru_codigo int not null,
     fk_aer_codigo int not null,
     fk_est_codigo int,
