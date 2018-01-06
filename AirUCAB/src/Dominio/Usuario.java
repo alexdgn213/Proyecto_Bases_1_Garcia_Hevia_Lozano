@@ -158,9 +158,16 @@ public class Usuario {
     
     public static void llenarPrivilegios(ConectorDB conector, ArrayList<String> privilegios, String usuario){
         privilegios.clear();
-        privilegios.add("rmodelo_aeronave");
-        privilegios.add("raeronave");
-        privilegios.add("rreporte");
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT pri_nombre_clave FROM usuario as u, rol as r, rol_pri as rp, privilegio as p WHERE usu_nombre= ? AND u.fk_rol_codigo = r.rol_codigo AND r.rol_codigo = rp.fk_rol_codigo AND rp.fk_pri_codigo = p.pri_codigo");
+            pst.setString(1, usuario);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                privilegios.add(rs.getString("pri_nombre_clave"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
     }
     
     public int getUsu_codigo() {
