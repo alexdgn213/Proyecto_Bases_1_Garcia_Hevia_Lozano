@@ -8,6 +8,7 @@ package Interfaz;
 import Adaptadores.ConectorDB;
 import Dominio.Cliente;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -18,18 +19,22 @@ import javax.swing.UIManager;
 public class PantallaPrincipal extends javax.swing.JFrame {
     ConectorDB conector;
     JPanel nuevoPanel;
+    ArrayList<String> permisos;
 
     /**
      * Creates new form PantallaPrincipal
      */
     public PantallaPrincipal(ConectorDB conector, String usuario) {
         this.conector= conector;
+        permisos = new ArrayList<String>();
         try{
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         }catch(Exception e){
             e.printStackTrace();
         } 
         initComponents();
+        menuModeloAviones.setVisible(permisos.contains("rmodelo_aeronave"));
+        menuAviones.setVisible(permisos.contains("rmodelo_aeronave"));
         jlUsuario.setText(usuario);
         Contenido.setVisible(false);
         panelMensaje.setVisible(false);
