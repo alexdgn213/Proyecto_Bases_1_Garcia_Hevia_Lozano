@@ -115,6 +115,7 @@ public class DetalleLote extends javax.swing.JPanel {
 
         jPanel1.setMaximumSize(new java.awt.Dimension(850, 32767));
         jPanel1.setMinimumSize(new java.awt.Dimension(850, 730));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 730));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -147,6 +148,8 @@ public class DetalleLote extends javax.swing.JPanel {
             }
         });
 
+        panelInformacion.setOpaque(false);
+
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel8.setText("Pruebas:");
         jLabel8.setToolTipText("");
@@ -168,6 +171,8 @@ public class DetalleLote extends javax.swing.JPanel {
             }
         });
         jScrollPane3.setViewportView(tablaPruebas);
+
+        panelNueva.setOpaque(false);
 
         jLabel22.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel22.setText("Nueva:");

@@ -27,7 +27,8 @@ public class PrincipalClientes extends javax.swing.JPanel {
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
         initComponents();
-        this.setSize(850,580);
+        this.setBackground(AdaptadorSQLUI.fondoScrolls);
+        this.setSize(870, 610);
         Cliente.llenarTabla(conector, tablaClientes);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
     }
@@ -48,7 +49,6 @@ public class PrincipalClientes extends javax.swing.JPanel {
         jbModificar = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(850, 580));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(850, 580));
 
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(

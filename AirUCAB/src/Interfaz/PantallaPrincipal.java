@@ -22,7 +22,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form PantallaPrincipal
      */
-    public PantallaPrincipal(ConectorDB conector) {
+    public PantallaPrincipal(ConectorDB conector, String usuario) {
         this.conector= conector;
         try{
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -30,6 +30,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             e.printStackTrace();
         } 
         initComponents();
+        jlUsuario.setText(usuario);
         Contenido.setVisible(false);
         panelMensaje.setVisible(false);
     }
@@ -81,11 +82,21 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuProveedores = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        menuProveedores1 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        menuProveedores2 = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
         fondoLateralExpandido = new javax.swing.JLabel();
         Contenido = new javax.swing.JPanel();
         panelContenido = new javax.swing.JPanel();
         fondoContenido = new javax.swing.JLabel();
+        campoUsuario = new javax.swing.JLabel();
         jlTitulo = new javax.swing.JLabel();
+        jlUsuario = new javax.swing.JLabel();
+        jLabelUsuario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -355,7 +366,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuClientes.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_business_center_black_24dp_1x.png"))); // NOI18N
-        menuClientes.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 24, 24));
+        menuClientes.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, 24, 24));
 
         menuProveedores.setOpaque(false);
         menuProveedores.setPreferredSize(new java.awt.Dimension(162, 30));
@@ -381,6 +392,57 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuProveedores.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
+        menuProveedores1.setOpaque(false);
+        menuProveedores1.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuProveedores1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuProveedores1MouseClicked(evt);
+            }
+        });
+        menuProveedores1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel27.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel27.setText("Usuarios y Roles");
+        jLabel27.setToolTipText("");
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
+        });
+        menuProveedores1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_person_black_24dp_1x.png"))); // NOI18N
+        jLabel28.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuProveedores1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+
+        jLabel29.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel29.setOpaque(true);
+
+        menuProveedores2.setOpaque(false);
+        menuProveedores2.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuProveedores2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuProveedores2MouseClicked(evt);
+            }
+        });
+        menuProveedores2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel30.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel30.setText("Reportes");
+        jLabel30.setToolTipText("");
+        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel30MouseClicked(evt);
+            }
+        });
+        menuProveedores2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_assignment_black_24dp_1x.png"))); // NOI18N
+        jLabel31.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuProveedores2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+
         javax.swing.GroupLayout panelLateralExtendidoLayout = new javax.swing.GroupLayout(panelLateralExtendido);
         panelLateralExtendido.setLayout(panelLateralExtendidoLayout);
         panelLateralExtendidoLayout.setHorizontalGroup(
@@ -400,13 +462,16 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                             .addComponent(menuVender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(menuFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(menuProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(menuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(menuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 43, Short.MAX_VALUE))
             .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menuInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuModeloAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(menuModeloAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuProveedores2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLateralExtendidoLayout.setVerticalGroup(
@@ -438,7 +503,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addComponent(menuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuProveedores2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         LateralExpandido.add(panelLateralExtendido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 661));
@@ -477,11 +548,26 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 870, 610));
 
+        campoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoUsuarioMouseClicked(evt);
+            }
+        });
+        getContentPane().add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 4, 140, 40));
+
         jlTitulo.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         jlTitulo.setForeground(new java.awt.Color(255, 255, 255));
         jlTitulo.setText("Sistema de Ensamble de Aviones");
         jlTitulo.setToolTipText("");
         getContentPane().add(jlTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+
+        jlUsuario.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jlUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jlUsuario.setText("jLabel32");
+        getContentPane().add(jlUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, 90, 24));
+
+        jLabelUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_account_circle_white_24dp_1x.png"))); // NOI18N
+        getContentPane().add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 10, 24, 24));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/FondoPrincipal.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 710));
@@ -653,9 +739,42 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         panelContenido.updateUI();
     }//GEN-LAST:event_menuModeloAvionesMouseClicked
 
+    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalUsuarios(conector,panelContenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
+    }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void menuProveedores1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProveedores1MouseClicked
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalUsuarios(conector,panelContenido,panelMensaje);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
+    }//GEN-LAST:event_menuProveedores1MouseClicked
+
+    private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel30MouseClicked
+
+    private void menuProveedores2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProveedores2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuProveedores2MouseClicked
+
+    private void campoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoUsuarioMouseClicked
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipalDatos(conector,panelContenido,jlUsuario.getText(),panelMensaje, this);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
+    }//GEN-LAST:event_campoUsuarioMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Contenido;
     private javax.swing.JPanel LateralExpandido;
+    private javax.swing.JLabel campoUsuario;
     private javax.swing.JLabel fondoContenido;
     private javax.swing.JLabel fondoLateralExpandido;
     private javax.swing.JLabel jLabel1;
@@ -677,14 +796,21 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JLabel jlTitulo;
+    private javax.swing.JLabel jlUsuario;
     private javax.swing.JPanel menuAviones;
     private javax.swing.JPanel menuClientes;
     private javax.swing.JPanel menuComprar;
@@ -694,6 +820,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel menuLotes;
     private javax.swing.JPanel menuModeloAviones;
     private javax.swing.JPanel menuProveedores;
+    private javax.swing.JPanel menuProveedores1;
+    private javax.swing.JPanel menuProveedores2;
     private javax.swing.JPanel menuVender;
     private javax.swing.JPanel panelContenido;
     private javax.swing.JPanel panelLateralExtendido;

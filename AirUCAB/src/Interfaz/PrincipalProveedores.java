@@ -29,7 +29,8 @@ public class PrincipalProveedores extends javax.swing.JPanel {
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
         initComponents();
-        this.setSize(850,580);
+        this.setBackground(AdaptadorSQLUI.fondoScrolls);
+        this.setSize(870, 610);
         Proveedor.llenarTabla(conector, tablaProveedores);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
     }
@@ -49,9 +50,8 @@ public class PrincipalProveedores extends javax.swing.JPanel {
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
 
-        setMinimumSize(new java.awt.Dimension(850, 580));
-        setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(850, 580));
+        setMinimumSize(new java.awt.Dimension(870, 610));
+        setPreferredSize(new java.awt.Dimension(870, 610));
 
         tablaProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,7 +95,7 @@ public class PrincipalProveedores extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
+                .addContainerGap(109, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -119,7 +119,7 @@ public class PrincipalProveedores extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

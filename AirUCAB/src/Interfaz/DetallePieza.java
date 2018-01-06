@@ -117,6 +117,7 @@ public class DetallePieza extends javax.swing.JPanel {
 
         jPanel1.setMaximumSize(new java.awt.Dimension(850, 32767));
         jPanel1.setMinimumSize(new java.awt.Dimension(850, 740));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 740));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -142,6 +143,8 @@ public class DetallePieza extends javax.swing.JPanel {
         jLabel4.setText("Ensamble:");
         jLabel4.setToolTipText("");
 
+        panelInformacion.setOpaque(false);
+
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel8.setText("Pruebas:");
         jLabel8.setToolTipText("");
@@ -163,6 +166,8 @@ public class DetallePieza extends javax.swing.JPanel {
             }
         });
         jScrollPane3.setViewportView(tablaPruebas);
+
+        panelNueva.setOpaque(false);
 
         jLabel22.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel22.setText("Nueva:");
@@ -361,7 +366,6 @@ public class DetallePieza extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfEnsamblaje, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(148, 148, 148)
@@ -370,7 +374,7 @@ public class DetallePieza extends javax.swing.JPanel {
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jcbEstatusEnsamble, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(bAddInf1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);

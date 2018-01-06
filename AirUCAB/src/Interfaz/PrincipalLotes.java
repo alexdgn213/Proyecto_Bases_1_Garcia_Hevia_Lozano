@@ -29,7 +29,8 @@ public class PrincipalLotes extends javax.swing.JPanel {
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
         initComponents();
-        this.setSize(850,580);
+        this.setBackground(AdaptadorSQLUI.fondoScrolls);
+        this.setSize(870, 610);
         Lote_material.llenarTablaPendientes(conector, tablaLotesPendientes);
         Lote_material.llenarTablaFinalizados(conector, tablaLotesFinalizados);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
@@ -56,7 +57,6 @@ public class PrincipalLotes extends javax.swing.JPanel {
         jbModificar1 = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(850, 580));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(850, 580));
 
         tablaLotesPendientes.setModel(new javax.swing.table.DefaultTableModel(

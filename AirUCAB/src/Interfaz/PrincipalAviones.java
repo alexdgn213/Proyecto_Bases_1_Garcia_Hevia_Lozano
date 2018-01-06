@@ -11,7 +11,6 @@ import Dominio.Aeronave;
 import Dominio.Cliente;
 import Dominio.Informacion_contacto;
 import Dominio.Lote_material;
-import java.awt.Color;
 import javax.swing.JPanel;
 
 /**
@@ -30,7 +29,8 @@ public class PrincipalAviones extends javax.swing.JPanel {
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
         initComponents();
-        this.setSize(850,580);
+        setBackground(AdaptadorSQLUI.fondoScrolls);
+        this.setSize(870, 610);
         Aeronave.llenarTablaAeronaveNoFinalizadas(conector, tablaLotesPendientes);
         Aeronave.llenarTablaAeronaveFinalizadas(conector, tablaLotesFinalizados);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
@@ -56,8 +56,8 @@ public class PrincipalAviones extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jbModificar1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(850, 580));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(850, 580));
 
         tablaLotesPendientes.setModel(new javax.swing.table.DefaultTableModel(

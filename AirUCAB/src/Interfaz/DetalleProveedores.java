@@ -137,6 +137,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         jScrollPane2.setMinimumSize(new java.awt.Dimension(870, 610));
         jScrollPane2.setPreferredSize(new java.awt.Dimension(850, 920));
 
+        panelMateriales.setOpaque(false);
         panelMateriales.setPreferredSize(new java.awt.Dimension(850, 1130));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -263,6 +264,8 @@ public class DetalleProveedores extends javax.swing.JPanel {
         jlErrorUbicacion.setForeground(new java.awt.Color(255, 0, 0));
         jlErrorUbicacion.setText("Error en el rif");
         jlErrorUbicacion.setToolTipText("");
+
+        jPanel2.setOpaque(false);
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel8.setText("Informacion de contacto:");

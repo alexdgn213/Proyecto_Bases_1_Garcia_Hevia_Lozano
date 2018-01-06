@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class AdaptadorSQLUI {
     
     public static Color fondoTablas = new Color(255,255,255);
-    public static Color fondoScrolls = new Color(240,240,240);
+    public static Color fondoScrolls = new Color(153,227,236);
     public static Color fondoExito = new Color(102,255,102);
     public static Color fondoError = new Color(255,102,102);
     
