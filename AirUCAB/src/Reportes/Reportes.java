@@ -22,7 +22,7 @@ import net.sf.jasperreports.view.JasperViewer;
 public class Reportes {
     public static void ReporteProveedor(Connection c) throws SQLException,JRException {
         JasperReport reporte = null;
-        reporte=(JasperReport) JRLoader.loadObjectFromFile("jdbc:postgresql://localhost;databaseName=AirUcabPrueba//Proveedores.jasper");
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/Proveedores.jasper");
         JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
         JasperViewer ver= new JasperViewer(print);
         ver.setTitle("Proveedores");
