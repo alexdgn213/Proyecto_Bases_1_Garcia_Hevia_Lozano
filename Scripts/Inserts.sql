@@ -2886,7 +2886,7 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
 (2,11),
 (2,14),
 (2,15),
-(2,19),
+(2,20),
 (3,2),
 (5,4),
 (4,5);
