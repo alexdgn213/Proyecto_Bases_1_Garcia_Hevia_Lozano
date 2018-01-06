@@ -256,12 +256,10 @@ public class PrincipalUsuarios extends javax.swing.JPanel {
         int fila = tablaRoles.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaRoles.getValueAt(fila, 0);
-            String modelo = tablaRoles.getValueAt(fila, 1).toString();
-            String cliente = tablaRoles.getValueAt(fila, 2).toString();
-            DetalleAvion nuevoPanel = new DetalleAvion(conector,contenedor,id,modelo,cliente,panelMensaje,false);
+            DetalleRol nuevoPanel = new DetalleRol(conector,contenedor,id,panelMensaje);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
-            contenedor.updateUI();
+            contenedor.updateUI();   
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
@@ -278,7 +276,10 @@ public class PrincipalUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_bDelInfActionPerformed
 
     private void jbModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificar1ActionPerformed
-        // TODO add your handling code here:
+        DetalleRol nuevoPanel = new DetalleRol(conector,contenedor,-1,panelMensaje);
+        contenedor.removeAll();
+        contenedor.add(nuevoPanel);
+        contenedor.updateUI();
     }//GEN-LAST:event_jbModificar1ActionPerformed
 
     private void tablaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsuariosMouseClicked

@@ -5,12 +5,15 @@
  */
 package Dominio;
 
+import Adaptadores.AdaptadorSQLUI;
 import Adaptadores.ConectorDB;
+import static Dominio.Rol.obtenerResultSet;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTable;
 
 /**
  *
@@ -79,6 +82,18 @@ public class Rol_pri {
             System.out.print(ex.toString());
         }
         return rol_pris;
+    }
+    
+    public static void llenarTablaPuede(ConectorDB conector, JTable jTable, int rol){
+        ResultSet rs =obtenerResultSet(conector,"SELECT DISTINCT pri_codigo as Codigo, pri_accion as Accion,pri_descripcion as Descripcion FROM privilegio, rol_pri "
+                + "WHERE fk_pri_codigo=pri_codigo AND fk_rol_codigo="+String.valueOf(rol));
+        AdaptadorSQLUI.llenarTabla(jTable, rs);   
+    }
+    
+    public static void llenarTablaNoPuede(ConectorDB conector, JTable jTable, int rol){
+        ResultSet rs =obtenerResultSet(conector,"SELECT pri_codigo as Codigo, pri_accion as Accion,pri_descripcion as Descripcion FROM privilegio "
+                + "WHERE pri_codigo not in(Select fk_pri_codigo from rol_pri where fk_rol_codigo="+String.valueOf(rol)+")");
+        AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
 
     public int getRol_pri_codigo() {

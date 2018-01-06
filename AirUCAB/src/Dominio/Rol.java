@@ -30,14 +30,45 @@ public class Rol {
         this.rol_descripcion = rol_descripcion;
         this.rol_nombre = rol_nombre;
     }
+
+    public Rol(String rol_nombre, String rol_descripcion) {
+        this.rol_nombre = rol_nombre;
+        this.rol_descripcion = rol_descripcion;
+    }
+    
     
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO rol(rol_codigo,rol_nombre,rol_descripcion) VALUES(?,?,?)";
+            String stm = "INSERT INTO rol(rol_nombre,rol_descripcion) VALUES(?,?)";
+            PreparedStatement pst = conector.conexion.prepareStatement(stm);
+            pst.setString(1, rol_nombre);
+            pst.setString(2, rol_descripcion);
+            pst.executeUpdate();
+            pst.close();
+        }catch (SQLException ex){
+           System.out.print(ex.toString());
+        }
+    }
+    
+    public void agregarPrivilegio(ConectorDB conector, int codigoPrivilegio){
+        try{
+            String stm = "INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES(?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, rol_codigo);
-            pst.setString(2, rol_nombre);
-            pst.setString(3, rol_descripcion);
+            pst.setInt(2, codigoPrivilegio);
+            pst.executeUpdate();
+            pst.close();
+        }catch (SQLException ex){
+           System.out.print(ex.toString());
+        }
+    }
+    
+    public void quitarPrivilegio(ConectorDB conector, int codigoPrivilegio){
+        try{
+            String stm = "DELETE FROM rol_pri WHERE fk_rol_codigo=? AND fk_pri_codigo=?";
+            PreparedStatement pst = conector.conexion.prepareStatement(stm);
+            pst.setInt(1, rol_codigo);
+            pst.setInt(2, codigoPrivilegio);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){
@@ -95,6 +126,21 @@ public class Rol {
             System.out.print(ex.toString());
         }
         return roles;
+    }
+    
+    public static Rol buscarPorCodigo(ConectorDB conector, int codigo){
+        Rol r = null;
+        try {
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT rol_codigo, rol_nombre, rol_descripcion FROM rol WHERE rol_codigo =?");
+            pst.setInt(1, codigo);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                r = new Rol(rs.getInt("rol_codigo"),rs.getString("rol_nombre"),rs.getString("rol_descripcion"));
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.toString());
+        }
+        return r;
     }
     
     public static int obtenerCodigoPorNombre(ConectorDB conector, String nombre){
