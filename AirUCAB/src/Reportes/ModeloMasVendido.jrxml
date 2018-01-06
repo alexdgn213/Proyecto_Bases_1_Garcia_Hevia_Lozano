@@ -226,7 +226,7 @@ LIMIT 1]]>
 	<pageFooter>
 		<band height="52" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-27" y="-2" width="644" height="54" backcolor="#3F51B5" uuid="f2ca506c-fe4c-4638-abd7-5b2a3f98513b"/>
+				<reportElement mode="Opaque" x="-27" y="-1" width="644" height="54" backcolor="#3F51B5" uuid="f2ca506c-fe4c-4638-abd7-5b2a3f98513b"/>
 				<staticText>
 					<reportElement x="27" y="12" width="555" height="31" forecolor="#FFFFFF" uuid="d400a3e4-4418-47d6-a123-b45bcba77a52"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">

@@ -156,6 +156,12 @@ public class Usuario {
         AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
     
+    public static void llenarPrivilegios(ConectorDB conector, ArrayList<String> privilegios, String usuario){
+        privilegios.clear();
+        privilegios.add("rmodelo_aeronave");
+        privilegios.add("raeronave");
+        privilegios.add("rreporte");
+    }
     
     public int getUsu_codigo() {
         return usu_codigo;
