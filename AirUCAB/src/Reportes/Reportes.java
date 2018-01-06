@@ -29,25 +29,21 @@ public class Reportes {
         ver.setVisible(true);
     }
     
-    public static void ReporteModelosDeAviones() throws SQLException,JRException {
-        Connection a;
-        a=DriverManager.getConnection("jdbc:postgresql://localhost/AirUcabPrueba");
+    public static void ReporteModelosDeAviones(Connection c) throws SQLException,JRException {
         JasperReport reporte = null;
-        reporte=(JasperReport) JRLoader.loadObjectFromFile("jdbc:postgresql://localhost/AirUcabPrueba");
-        JasperPrint print = JasperFillManager.fillReport(reporte,null,a);
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/ModelosDeAviones.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
         JasperViewer ver= new JasperViewer(print);
-        ver.setTitle("ModelosDeAviones");
+        ver.setTitle("Modelos de Aviones");
         ver.setVisible(true);
     }
     
-    public static void ReporteModeloMasVendido() throws SQLException,JRException {
-        Connection a;
-        a=DriverManager.getConnection("jdbc:postgresql://localhost/AirUcabPrueba");
+    public static void ReporteModeloMasVendido(Connection c) throws SQLException,JRException {
         JasperReport reporte = null;
-        reporte=(JasperReport) JRLoader.loadObjectFromFile("jdbc:postgresql://localhost/AirUcabPrueba");
-        JasperPrint print = JasperFillManager.fillReport(reporte,null,a);
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/ModeloMasVendido.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
         JasperViewer ver= new JasperViewer(print);
-        ver.setTitle("ModeloMasVendido");
+        ver.setTitle("Modelo mas vendido");
         ver.setVisible(true);
     }
     
