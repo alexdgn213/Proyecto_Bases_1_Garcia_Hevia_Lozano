@@ -24,7 +24,7 @@ public class Reportes {
         JasperReport reporte = null;
         reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/Proveedores.jasper");
         JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
-        JasperViewer ver= new JasperViewer(print);
+        JasperViewer ver= new JasperViewer(print,false);
         ver.setTitle("Proveedores");
         ver.setVisible(true);
     }
@@ -33,7 +33,7 @@ public class Reportes {
         JasperReport reporte = null;
         reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/ModelosDeAviones.jasper");
         JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
-        JasperViewer ver= new JasperViewer(print);
+        JasperViewer ver= new JasperViewer(print,false);
         ver.setTitle("Modelos de Aviones");
         ver.setVisible(true);
     }
@@ -42,7 +42,7 @@ public class Reportes {
         JasperReport reporte = null;
         reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/ModeloMasVendido.jasper");
         JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
-        JasperViewer ver= new JasperViewer(print);
+        JasperViewer ver= new JasperViewer(print,false);
         ver.setTitle("Modelo mas vendido");
         ver.setVisible(true);
     }
@@ -51,7 +51,7 @@ public class Reportes {
         JasperReport reporte = null;
         reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/MaterialMasVendido.jasper");
         JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
-        JasperViewer ver= new JasperViewer(print);
+        JasperViewer ver= new JasperViewer(print,false);
         ver.setTitle("Material Mas Solicitado");
         ver.setVisible(true);
     }
@@ -60,7 +60,7 @@ public class Reportes {
         JasperReport reporte = null;
         reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/ProductosNoCalificados.jasper");
         JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
-        JasperViewer ver= new JasperViewer(print);
+        JasperViewer ver= new JasperViewer(print,false);
         ver.setTitle("Productos No Calificados");
         ver.setVisible(true);
     }
