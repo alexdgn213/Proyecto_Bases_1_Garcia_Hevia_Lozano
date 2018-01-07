@@ -17,6 +17,7 @@ import Dominio.Proveedor;
 import Dominio.mat_pro;
 import java.awt.Color;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 
@@ -29,14 +30,16 @@ public class DetalleProveedores extends javax.swing.JPanel {
     JPanel contenedor;
     JPanel panelMensaje;
     Proveedor p;
+    ArrayList<String> permisos;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetalleProveedores(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje) {
+    public DetalleProveedores(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje,ArrayList<String> permisos) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
+        this.permisos=permisos;
         initComponents();
         jlErrorFecha.setVisible(false);
         jlErrorMonto.setVisible(false);
@@ -49,6 +52,13 @@ public class DetalleProveedores extends javax.swing.JPanel {
         jScrollPane2.getViewport().setBackground(AdaptadorSQLUI.fondoScrolls);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
         jScrollPane3.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
+        botonEliminar.setEnabled(permisos.contains("dproveedor"));
+        botonGuardar.setEnabled(permisos.contains("uproveedor"));
+        botonGuardar.setEnabled(permisos.contains("uproveedor"));
+        bAddInf1.setEnabled(permisos.contains("uproveedor"));
+        bDelInf.setEnabled(permisos.contains("uproveedor"));
+        bAddMaterial.setEnabled(permisos.contains("uproveedor"));
+        bDelMaterial.setEnabled(permisos.contains("uproveedor"));
         this.setSize(870, 610);
         p = Proveedor.buscarPorCodigo(conector, id);
         if (p==null){
@@ -217,6 +227,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         jLabel20.setToolTipText("");
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_check_black_48dp_1x.png"))); // NOI18N
+        botonGuardar.setContentAreaFilled(false);
         botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardarActionPerformed(evt);
@@ -225,6 +236,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_close_black_48dp_1x.png"))); // NOI18N
         botonCancelar.setToolTipText("");
+        botonCancelar.setContentAreaFilled(false);
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActionPerformed(evt);
@@ -232,6 +244,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         });
 
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_48dp_1x.png"))); // NOI18N
+        botonEliminar.setContentAreaFilled(false);
         botonEliminar.setMaximumSize(new java.awt.Dimension(69, 48));
         botonEliminar.setMinimumSize(new java.awt.Dimension(69, 48));
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -294,6 +307,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         jLabel22.setToolTipText("");
 
         bDelInf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_24dp_1x.png"))); // NOI18N
+        bDelInf.setContentAreaFilled(false);
         bDelInf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bDelInfActionPerformed(evt);
@@ -301,6 +315,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         });
 
         bAddInf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
+        bAddInf1.setContentAreaFilled(false);
         bAddInf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAddInf1ActionPerformed(evt);
@@ -378,6 +393,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         jlErrorMaterialPrecio.setToolTipText("");
 
         bAddMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
+        bAddMaterial.setContentAreaFilled(false);
         bAddMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAddMaterialActionPerformed(evt);
@@ -385,6 +401,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
         });
 
         bDelMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_24dp_1x.png"))); // NOI18N
+        bDelMaterial.setContentAreaFilled(false);
         bDelMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bDelMaterialActionPerformed(evt);
@@ -644,7 +661,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        PrincipalProveedores nuevoPanel = new PrincipalProveedores(conector,contenedor,panelMensaje);
+        PrincipalProveedores nuevoPanel = new PrincipalProveedores(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -725,7 +742,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
             p.modificarEnDB(conector);
             new Thread(new MensajeUI(panelMensaje,"Proveedor modificado exitosamente",1)).start();
         }
-        PrincipalProveedores nuevoPanel = new PrincipalProveedores(conector,contenedor,panelMensaje);
+        PrincipalProveedores nuevoPanel = new PrincipalProveedores(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -741,7 +758,7 @@ public class DetalleProveedores extends javax.swing.JPanel {
             p.eliminarDeDB(conector);
             new Thread(new MensajeUI(panelMensaje,"Proveedor eliminado exitosamente",1)).start();
         }
-        PrincipalProveedores nuevoPanel = new PrincipalProveedores(conector,contenedor,panelMensaje);
+        PrincipalProveedores nuevoPanel = new PrincipalProveedores(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();

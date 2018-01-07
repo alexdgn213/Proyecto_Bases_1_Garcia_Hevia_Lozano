@@ -19,6 +19,7 @@ import Dominio.Rol_pri;
 import Dominio.mat_pro;
 import java.awt.Color;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 
@@ -31,19 +32,25 @@ public class DetalleRol extends javax.swing.JPanel {
     JPanel contenedor;
     JPanel panelMensaje;
     Rol r;
+    ArrayList<String> permisos;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetalleRol(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje) {
+    public DetalleRol(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje,ArrayList<String> permisos) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
+        this.permisos=permisos;
         initComponents();
         jScrollPane2.getViewport().setBackground(AdaptadorSQLUI.fondoScrolls);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
         jScrollPane3.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
         this.setSize(870, 610);
+        botonEliminar.setEnabled(permisos.contains("drol"));
+        botonGuardar.setEnabled(permisos.contains("urol"));
+        botonGuardar2.setEnabled(permisos.contains("urol"));
+        botonGuardar2.setEnabled(permisos.contains("urol"));
         r = Rol.buscarPorCodigo(conector, id);
         if (r==null){
             jPanel2.setVisible(false);
@@ -236,6 +243,7 @@ public class DetalleRol extends javax.swing.JPanel {
         jtaNombre.setColumns(20);
         jtaNombre.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jtaNombre.setRows(5);
+        jtaNombre.setMaximumSize(new java.awt.Dimension(214, 229));
         jScrollPane4.setViewportView(jtaNombre);
 
         javax.swing.GroupLayout panelMaterialesLayout = new javax.swing.GroupLayout(panelMateriales);
@@ -260,7 +268,7 @@ public class DetalleRol extends javax.swing.JPanel {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jtfRif, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                         .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -312,7 +320,7 @@ public class DetalleRol extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        PrincipalUsuarios nuevoPanel = new PrincipalUsuarios(conector,contenedor,panelMensaje);
+        PrincipalUsuarios nuevoPanel = new PrincipalUsuarios(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -324,7 +332,12 @@ public class DetalleRol extends javax.swing.JPanel {
            r.agregarADB(conector);
            new Thread(new MensajeUI(panelMensaje,"Rol creado exitosamente",1)).start();
         }
-        PrincipalUsuarios nuevoPanel = new PrincipalUsuarios(conector,contenedor,panelMensaje);
+        else{
+            r.setRol_descripcion(jtaNombre.getText());
+            r.modificarEnDB(conector);
+            new Thread(new MensajeUI(panelMensaje,"Rol modificado exitosamente",1)).start();
+        }
+        PrincipalUsuarios nuevoPanel = new PrincipalUsuarios(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -337,7 +350,7 @@ public class DetalleRol extends javax.swing.JPanel {
             r.eliminarDeDB(conector);
             new Thread(new MensajeUI(panelMensaje,"Rol eliminado exitosamente",1)).start();
         }
-        PrincipalUsuarios nuevoPanel = new PrincipalUsuarios(conector,contenedor,panelMensaje);
+        PrincipalUsuarios nuevoPanel = new PrincipalUsuarios(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();

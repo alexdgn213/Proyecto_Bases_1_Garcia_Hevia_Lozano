@@ -615,7 +615,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void menuClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuClientesMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalClientes(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalClientes(conector,panelContenido,panelMensaje,permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -632,7 +632,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalClientes(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalClientes(conector,panelContenido,panelMensaje,permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -640,7 +640,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void menuProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProveedoresMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalProveedores(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalProveedores(conector,panelContenido,panelMensaje,permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -648,7 +648,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalProveedores(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalProveedores(conector,panelContenido,panelMensaje,permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -768,7 +768,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalUsuarios(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalUsuarios(conector,panelContenido,panelMensaje,permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -776,7 +776,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void menuUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuUsuarioMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalUsuarios(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalUsuarios(conector,panelContenido,panelMensaje,permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();

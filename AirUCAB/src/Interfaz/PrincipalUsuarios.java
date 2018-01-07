@@ -15,6 +15,7 @@ import Dominio.Lote_material;
 import Dominio.Mod_car;
 import Dominio.Rol;
 import Dominio.Usuario;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
@@ -26,17 +27,22 @@ public class PrincipalUsuarios extends javax.swing.JPanel {
     JPanel contenedor;
     JPanel panelMensaje;
     Usuario u;
+    ArrayList<String> permisos;
     /**
      * Creates new form PrincipalClientes
      */
-    public PrincipalUsuarios(ConectorDB conector,JPanel contenedor,JPanel panelMensaje) {
+    public PrincipalUsuarios(ConectorDB conector,JPanel contenedor,JPanel panelMensaje,ArrayList<String> permisos) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
+        this.permisos = permisos;
         initComponents();
         setBackground(AdaptadorSQLUI.fondoScrolls);
         this.setSize(870, 610);
         Usuario.llenarTabla(conector, tablaUsuarios);
+        bDelInf.setEnabled(permisos.contains("dusuario"));
+        bDelInf1.setEnabled(permisos.contains("uusuario"));
+        jbModificar1.setEnabled(permisos.contains("crol"));
         Rol.llenarTabla(conector, tablaRoles);
         Rol.llenarComboBox(conector, jcbRol);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
@@ -146,6 +152,7 @@ public class PrincipalUsuarios extends javax.swing.JPanel {
         jLabel26.setToolTipText("");
 
         bDelInf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_24dp_1x.png"))); // NOI18N
+        bDelInf.setContentAreaFilled(false);
         bDelInf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bDelInfActionPerformed(evt);
@@ -163,6 +170,7 @@ public class PrincipalUsuarios extends javax.swing.JPanel {
         });
 
         bDelInf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
+        bDelInf1.setContentAreaFilled(false);
         bDelInf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bDelInf1ActionPerformed(evt);
@@ -256,7 +264,7 @@ public class PrincipalUsuarios extends javax.swing.JPanel {
         int fila = tablaRoles.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaRoles.getValueAt(fila, 0);
-            DetalleRol nuevoPanel = new DetalleRol(conector,contenedor,id,panelMensaje);
+            DetalleRol nuevoPanel = new DetalleRol(conector,contenedor,id,panelMensaje,permisos);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();   
@@ -276,7 +284,7 @@ public class PrincipalUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_bDelInfActionPerformed
 
     private void jbModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificar1ActionPerformed
-        DetalleRol nuevoPanel = new DetalleRol(conector,contenedor,-1,panelMensaje);
+        DetalleRol nuevoPanel = new DetalleRol(conector,contenedor,-1,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
