@@ -47,14 +47,21 @@ public class Reportes {
         ver.setVisible(true);
     }
     
-    public static void ReporteMaterialMasVendido() throws SQLException,JRException {
-        Connection a;
-        a=DriverManager.getConnection("jdbc:postgresql://localhost/AirUcabPrueba");
+    public static void ReporteMaterialMasVendido(Connection c) throws SQLException,JRException {
         JasperReport reporte = null;
-        reporte=(JasperReport) JRLoader.loadObjectFromFile("jdbc:postgresql://localhost/AirUcabPrueba");
-        JasperPrint print = JasperFillManager.fillReport(reporte,null,a);
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/MaterialMasVendido.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
         JasperViewer ver= new JasperViewer(print);
-        ver.setTitle("MaterialMasVendido");
+        ver.setTitle("Material Mas Solicitado");
+        ver.setVisible(true);
+    }
+    
+    public static void ReporteProductosNoCalificados(Connection c) throws SQLException,JRException {
+        JasperReport reporte = null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/ProductosNoCalificados.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
+        JasperViewer ver= new JasperViewer(print);
+        ver.setTitle("Productos No Calificados");
         ver.setVisible(true);
     }
     
