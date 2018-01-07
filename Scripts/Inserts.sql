@@ -1590,7 +1590,7 @@ INSERT INTO informacion_contacto (inf_valor,inf_tipo,fk_pro_rif,fk_per_ci,fk_cli
 
 
 
-INSERT INTO modelo_aeronave (mod_nombre,mod_precio_compra) VALUES 
+INSERT INTO modelo_aeronave (mod_nombre,mod_precio_compra,mod_descripcion,mod_fecha_creacion) VALUES 
 ('AU80',10000000), --1
 ('AU80-2',10000000), --Por sia cosa
 ('AU80-700',10000000), -- Por si acaso
@@ -2632,20 +2632,25 @@ INSERT INTO car_mot(car_mot_valor,car_mot_descripcion,fk_car_codigo,fk_mot_codig
   (30,'02/03/2014',10,3,98767657,41,47),
   (400,'01/01/2011',100,4,98767657,42,48);
   
-  INSERT INTO tipo_pieza(fk_tip_codigo,tip_tiempo_fabricacion,tip_nombre) VALUES --fk_tip_codigo es para piezas compuestas por otra
-  (null,50,'Ala'), --No se que poner en fk_tip_codigo de ninguna
-  (null,20,'Fuselaje'),
-  (null,15,'Grupo Motopropulsor'),
-  (null,24,'Alerones'),
-  (null,7,'Flaps'),
-  (null,10,'Spoilers'),
-  (null,5,'Slats'),
-  (null,8,'Estabilizadores'),
-  (null,4,'Instrumentos de Control'),
+  INSERT INTO tipo_pieza(fk_tip_codigo,tip_tiempo_fabricacion,tip_nombre,tip_descripcion) VALUES --fk_tip_codigo es para piezas compuestas por otra
+  (null,50,'Ala','Es un cuerpo aerodinámico formado por una estructura muy fuerte, compuesta por un perfil aerodinámico o perfil alar envolviendo a uno o más largueros y que es capaz de generar una diferencia de presiones entre su cara superior y su cara inferior al desplazarse por el aire lo que produce la fuerza ascendente de sustentación que mantiene al avión en vuelo.'), --No se que poner en fk_tip_codigo de ninguna
+  (null,20,'Fuselaje','Es el cuerpo del avión al que se encuentran unidas las alas y los estabilizadores tanto horizontales como verticales. Su interior es hueco, para poder albergar dentro a la cabina de pasajeros, la de mandos y los compartimentos de carga.'),
+  (null,15,'Grupo Motopropulsor','
+La función es generar la tracción necesaria para contrarrestar la resistencia aerodinámica que se genera precisamente por la sustentación.'),
+  (null,24,'Alerones','Son superficies móviles que se encuentran en los extremos de las alas y sobre el borde de salida de estas. Son los encargados de controlar el desplazamiento del avión sobre su eje longitudinal al crear una descompensación aerodinámica de las alas, que es la que permite al avión girar'),
+  (null,7,'Flaps','
+Se encuentran ubicados en el borde de salida del ala, cuando están retraídos forman un solo cuerpo con el ala. Éstos son utilizados en ciertas maniobras (comúnmente el despegue y el aterrizaje), en las cuales se extienden hacia atrás y abajo del ala a un determinado ángulo, aumentando su curvatura.'),
+  (null,10,'Spoilers','Son superficies móviles dispuestas en el extradós. Su función es reducir la sustentación generada por el ala
+cuando ello es requerido, por ejemplo, para aumentar el ritmo de descenso o en el momento de tocar tierra'),
+  (null,5,'Slats','
+Al igual que los flaps, son dispositivos hipersustentadores, la diferencia está en que los slats se encuentran ubicados en el borde de ataque, y cuando son extendidos aumentan aún más la curvatura del ala, impidiendo el desprendimiento de la capa límite aun con elevados ángulos de ataque, es decir, velocidades reducidas.'),
+  (null,8,'Estabilizadores','Son pequeñas alas que garantizan la estabilidad del avión. Podemos mencionar aquí los diversos tipos de colas
+de aviones que nosotros también fabricamos.'),
+  (null,4,'Instrumentos de Control','Son dispositivos tanto mecánicos como electrónicos, que permiten al piloto tener conocimiento de los parámetros de vuelo principales, como la velocidad, altura, rumbo, ritmo de ascenso o descenso, y del estado de los sistemas del avión durante el vuelo'),
   --Elementos Internos: 
-  (null,30,'Asientos'),
-  (null,10,'Tren de Aterrizaje Fijo'),
-  (null,10,'Tren de Aterrizaje Retractil');
+  (null,30,'Asientos',''),
+  (null,10,'Tren de Aterrizaje Fijo','son los que, durante el vuelo se encuentran permanentemente expuestos a la corriente de aire. Se usan solamente en aviones relativamente pequeños'),
+  (null,10,'Tren de Aterrizaje Retractil','son los que no están expuestos al aire sino que están escondidos en la parte estructural del avión. El piloto desde la cabina de mando con una palanca hace posible que el tren de aterrizaje pueda contraerse escondiéndose en el interior de la aeronave, así cuando el avión tiene que aterrizar el piloto con la misma palanca hace posible que el tren de aterrizaje baje y así la aeronave pueda aterrizar.');
   --12 piezas
   --ETC
  
