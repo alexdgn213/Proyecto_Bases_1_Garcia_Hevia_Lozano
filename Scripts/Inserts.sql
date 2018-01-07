@@ -2840,7 +2840,7 @@ INSERT INTO privilegio(pri_accion,pri_descripcion,pri_nombre_clave)VALUES
 ('Eliminar proveedor','Permite eliminar proveedores','dproveedor'),
 ('Ver usuarios','Permite ver los usuarios','rusuario'),
 ('Modificar usuarios','Permite modificar los usuarios','uusuario'),
-('Eliminar','Permite eliminar los usuarios','dusuario'),
+('Eliminar usuarios','Permite eliminar los usuarios','dusuario'),
 ('Ver roles','Permite ver los roles','rrol'),
 ('Añadir roles','Permite añadir roles','crol'),
 ('Modificar roles','Permite modificar roles','urol'),
