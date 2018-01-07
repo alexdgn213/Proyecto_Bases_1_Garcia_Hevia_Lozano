@@ -10,6 +10,7 @@ import Adaptadores.ConectorDB;
 import Dominio.Cliente;
 import java.awt.Color;
 import javax.swing.JPanel;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,14 +20,17 @@ public class PrincipalClientes extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
     JPanel panelMensaje;
+    ArrayList<String> permisos;
     /**
      * Creates new form PrincipalClientes
      */
-    public PrincipalClientes(ConectorDB conector,JPanel contenedor,JPanel panelMensaje) {
+    public PrincipalClientes(ConectorDB conector,JPanel contenedor,JPanel panelMensaje,ArrayList<String> permisos) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
+        this.permisos=permisos;
         initComponents();
+        jbNuevo.setEnabled(permisos.contains("ccliente"));
         this.setBackground(AdaptadorSQLUI.fondoScrolls);
         this.setSize(870, 610);
         Cliente.llenarTabla(conector, tablaClientes);
@@ -79,7 +83,7 @@ public class PrincipalClientes extends javax.swing.JPanel {
         });
 
         jbModificar.setBackground(new java.awt.Color(255, 255, 255));
-        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_edit_black_48dp_1x.png"))); // NOI18N
+        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_search_black_24dp_2x.png"))); // NOI18N
         jbModificar.setToolTipText("");
         jbModificar.setContentAreaFilled(false);
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +126,7 @@ public class PrincipalClientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,-1,panelMensaje);
+        DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,-1,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -132,7 +136,7 @@ public class PrincipalClientes extends javax.swing.JPanel {
         int fila = tablaClientes.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaClientes.getValueAt(fila, 0);
-            DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,id,panelMensaje);
+            DetalleClientes nuevoPanel = new DetalleClientes(conector,contenedor,id,panelMensaje,permisos);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();   

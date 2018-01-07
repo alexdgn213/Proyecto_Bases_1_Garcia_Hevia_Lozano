@@ -10,6 +10,7 @@ import Adaptadores.ConectorDB;
 import Dominio.Cliente;
 import Dominio.Proveedor;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
@@ -20,17 +21,20 @@ public class PrincipalProveedores extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
     JPanel panelMensaje;
+    ArrayList<String> permisos;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public PrincipalProveedores(ConectorDB conector,JPanel contenedor,JPanel panelMensaje) {
+    public PrincipalProveedores(ConectorDB conector,JPanel contenedor,JPanel panelMensaje,ArrayList<String> permisos) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
+        this.permisos = permisos;
         initComponents();
         this.setBackground(AdaptadorSQLUI.fondoScrolls);
         this.setSize(870, 610);
+        jbNuevo.setEnabled(permisos.contains("cproveedor"));
         Proveedor.llenarTabla(conector, tablaProveedores);
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
     }
@@ -81,7 +85,7 @@ public class PrincipalProveedores extends javax.swing.JPanel {
         });
 
         jbModificar.setBackground(new java.awt.Color(255, 255, 255));
-        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_edit_black_48dp_1x.png"))); // NOI18N
+        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_search_black_24dp_2x.png"))); // NOI18N
         jbModificar.setToolTipText("");
         jbModificar.setContentAreaFilled(false);
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +128,7 @@ public class PrincipalProveedores extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        DetalleProveedores nuevoPanel = new DetalleProveedores(conector,contenedor,-1,panelMensaje);
+        DetalleProveedores nuevoPanel = new DetalleProveedores(conector,contenedor,-1,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -134,7 +138,7 @@ public class PrincipalProveedores extends javax.swing.JPanel {
         int fila = tablaProveedores.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaProveedores.getValueAt(fila, 0);
-            DetalleProveedores nuevoPanel = new DetalleProveedores(conector,contenedor,id,panelMensaje);
+            DetalleProveedores nuevoPanel = new DetalleProveedores(conector,contenedor,id,panelMensaje,permisos);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();   

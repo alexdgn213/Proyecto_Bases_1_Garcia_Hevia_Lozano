@@ -28,15 +28,21 @@ public class DetalleClientes extends javax.swing.JPanel {
     JPanel contenedor;
     Cliente c;
     JPanel panelMensaje;
+    ArrayList<String> permisos;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetalleClientes(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje) {
+    public DetalleClientes(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje,ArrayList<String> permisos) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
+        this.permisos= permisos;
         initComponents();
+        botonEliminar.setEnabled(permisos.contains("dcliente"));
+        botonGuardar.setEnabled(permisos.contains("ucliente"));
+        bAddInf.setEnabled(permisos.contains("ucliente"));
+        bDeInf.setEnabled(permisos.contains("ucliente"));
         jlErrorFecha.setVisible(false);
         jlErrorMonto.setVisible(false);
         jlErrorNombre.setVisible(false);
@@ -229,6 +235,7 @@ public class DetalleClientes extends javax.swing.JPanel {
         jlErrorUbicacion.setToolTipText("");
 
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_48dp_1x.png"))); // NOI18N
+        botonEliminar.setContentAreaFilled(false);
         botonEliminar.setMaximumSize(new java.awt.Dimension(69, 48));
         botonEliminar.setMinimumSize(new java.awt.Dimension(69, 48));
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -238,6 +245,7 @@ public class DetalleClientes extends javax.swing.JPanel {
         });
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_check_black_48dp_1x.png"))); // NOI18N
+        botonGuardar.setContentAreaFilled(false);
         botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardarActionPerformed(evt);
@@ -246,6 +254,7 @@ public class DetalleClientes extends javax.swing.JPanel {
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_close_black_48dp_1x.png"))); // NOI18N
         botonCancelar.setToolTipText("");
+        botonCancelar.setContentAreaFilled(false);
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActionPerformed(evt);
@@ -292,6 +301,7 @@ public class DetalleClientes extends javax.swing.JPanel {
         jLabel23.setToolTipText("");
 
         bAddInf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
+        bAddInf.setContentAreaFilled(false);
         bAddInf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAddInfActionPerformed(evt);
@@ -299,6 +309,7 @@ public class DetalleClientes extends javax.swing.JPanel {
         });
 
         bDeInf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_24dp_1x.png"))); // NOI18N
+        bDeInf.setContentAreaFilled(false);
         bDeInf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bDeInfActionPerformed(evt);
@@ -570,7 +581,7 @@ public class DetalleClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbParroquiaActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        PrincipalClientes nuevoPanel = new PrincipalClientes(conector,contenedor,panelMensaje);
+        PrincipalClientes nuevoPanel = new PrincipalClientes(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -601,7 +612,7 @@ public class DetalleClientes extends javax.swing.JPanel {
             c.modificarEnDB(conector);
             new Thread(new MensajeUI(panelMensaje,"Cliente modificado exitosamente",1)).start();
         }
-        PrincipalClientes nuevoPanel = new PrincipalClientes(conector,contenedor,panelMensaje);
+        PrincipalClientes nuevoPanel = new PrincipalClientes(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -617,7 +628,7 @@ public class DetalleClientes extends javax.swing.JPanel {
             c.eliminarDeDB(conector);
             new Thread(new MensajeUI(panelMensaje,"Cliente eliminado exitosamente",1)).start();
         }
-        PrincipalClientes nuevoPanel = new PrincipalClientes(conector,contenedor,panelMensaje);
+        PrincipalClientes nuevoPanel = new PrincipalClientes(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
