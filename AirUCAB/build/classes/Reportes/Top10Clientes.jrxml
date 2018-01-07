@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7eda342-3372-47d5-86ab-3e5040875cbc">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="105"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -56,8 +56,8 @@
 		</conditionalStyle>
 	</style>
 	<subDataset name="TOP10CLIENTES" uuid="0fd9fbf1-727b-4be1-9976-70a0798b47a2">
-		<queryString language="SQL">
-			<![CDATA[select SB.cli_nombre,AVG (SB.NUMERO) from (select cli_nombre,
+		<queryString>
+			<![CDATA[select SB.cli_nombre,FLOOR(AVG (SB.NUMERO)) from (select cli_nombre,
     
     EXTRACT (year from aer_fecha_compra) AS AÑO,COUNT (*) AS NUMERO from aeronave,cliente
 	where fk_cli_rif=cli_rif
@@ -67,7 +67,7 @@
     limit 10]]>
 		</queryString>
 		<field name="cli_nombre" class="java.lang.String"/>
-		<field name="avg" class="java.math.BigDecimal"/>
+		<field name="floor" class="java.math.BigDecimal"/>
 		<group name="cli_nombre">
 			<groupExpression><![CDATA[$F{cli_nombre}]]></groupExpression>
 		</group>
@@ -80,7 +80,7 @@
     group by cli_nombre, AÑO) as SB
     group by SB.cli_nombre
     order by AVG(SB.NUMERO) desc
-    limit 10]]>
+    limit 1]]>
 	</queryString>
 	<field name="cli_nombre" class="java.lang.String"/>
 	<field name="avg" class="java.math.BigDecimal"/>
@@ -98,39 +98,68 @@
 	</columnHeader>
 	<detail>
 		<band height="125" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-62" y="-205" width="657" height="109" backcolor="#3F51B5" uuid="41bbcbe2-3aca-42c7-a9d8-458e4860d890"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="62" y="30" width="109" height="20" forecolor="#FFFFFF" uuid="97302a2d-6206-4b61-9d14-d909d9dbbd77"/>
+					<textElement>
+						<font fontName="Roboto" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="62" y="66" width="555" height="31" forecolor="#FFFFFF" uuid="f6df16b2-1853-4ee1-8e04-59d551063531"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOP 10 CLIENTES]]></text>
+				</staticText>
+			</frame>
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="41" y="27" width="360" height="80" uuid="f283cb6e-3729-4aab-971a-e8b4a6d92068"/>
+				<reportElement key="table 1" style="table 1" x="119" y="0" width="360" height="80" uuid="f283cb6e-3729-4aab-971a-e8b4a6d92068"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="TOP10CLIENTES" uuid="3692d809-5523-42db-a806-336a85840e82">
+					<datasetRun subDataset="TOP10CLIENTES" uuid="e6442755-f773-4a0b-82fb-0c156854570b">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="90" uuid="d342e0d6-23d6-44ff-b8e6-5694178dd486">
-						<jr:columnHeader style="table 1_CH" height="30">
+					<jr:column width="187" uuid="d342e0d6-23d6-44ff-b8e6-5694178dd486">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="14b23af8-aee9-4a88-824f-53434258688a"/>
-								<text><![CDATA[cli_nombre]]></text>
+								<reportElement x="0" y="0" width="187" height="30" uuid="14b23af8-aee9-4a88-824f-53434258688a"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Cliente]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="abe4ab3c-215c-4fbf-b6b2-460e09c0062d"/>
+								<reportElement x="0" y="0" width="187" height="20" uuid="abe4ab3c-215c-4fbf-b6b2-460e09c0062d"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{cli_nombre}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="cb00afcb-df6c-45e1-af1b-3d3eb95a15b2">
-						<jr:columnHeader style="table 1_CH" height="30">
+					<jr:column width="176" uuid="cb00afcb-df6c-45e1-af1b-3d3eb95a15b2">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="a71dd814-c9fa-4648-be56-a29bc70e5abe"/>
-								<text><![CDATA[avg]]></text>
+								<reportElement x="0" y="0" width="176" height="30" uuid="a71dd814-c9fa-4648-be56-a29bc70e5abe"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Promedio de Compras Anuales]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="66cbf845-61c6-4c91-8c4e-2c941ab0f973"/>
-								<textFieldExpression><![CDATA[$F{avg}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="176" height="20" uuid="66cbf845-61c6-4c91-8c4e-2c941ab0f973"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{floor}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -139,12 +168,30 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="47" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-27" y="0" width="613" height="54" backcolor="#3F51B5" uuid="1fefbbbb-93ff-47d5-a102-c147d393ff04"/>
+				<staticText>
+					<reportElement x="26" y="16" width="555" height="31" forecolor="#FFFFFF" uuid="028d351c-6df8-4558-90ac-31199b672559"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[AirUCAB - Reportes]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="510" y="18" width="71" height="29" forecolor="#FFFFFF" uuid="837375aa-e74b-4944-9bd2-9e2a9b76e0e6"/>
+					<textElement>
+						<font fontName="Roboto" size="24"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>

@@ -56,12 +56,12 @@
 		</conditionalStyle>
 	</style>
 	<subDataset name="ProveedorDatos" uuid="e2b77699-6c4a-4a67-af82-3a3ee7cda289">
-		<queryString language="SQL">
+		<queryString>
 			<![CDATA[SELECT
      proveedor."pro_rif" AS proveedor_pro_rif,
      proveedor."pro_nombre" AS proveedor_pro_nombre,
      proveedor."pro_monto_acreditado" AS proveedor_pro_monto_acreditado,
-     proveedor."pro_fecha_inicio" AS proveedor_pro_fecha_inicio,
+     date(proveedor."pro_fecha_inicio") AS proveedor_pro_fecha_inicio,
      lugar."lug_nombre" AS lugar_lug_nombre
 FROM
      "public"."lugar" lugar INNER JOIN "public"."proveedor" proveedor ON lugar."lug_codigo" = proveedor."fk_lug_codigo"]]>
@@ -83,7 +83,8 @@ FROM
      proveedor."pro_fecha_inicio" AS proveedor_pro_fecha_inicio,
      proveedor."fk_lug_codigo" AS proveedor_fk_lug_codigo
 FROM
-     "public"."proveedor" proveedor]]>
+     "public"."proveedor" proveedor
+limit 1;]]>
 	</queryString>
 	<field name="proveedor_pro_rif" class="java.lang.Integer"/>
 	<field name="proveedor_pro_nombre" class="java.lang.String"/>
@@ -123,10 +124,12 @@ FROM
 	<detail>
 		<band height="125" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="38" y="45" width="479" height="80" uuid="08ae8c81-e783-4f09-ba46-a6725aa630ba"/>
+				<reportElement key="table 1" style="table 1" x="17" y="45" width="522" height="80" uuid="08ae8c81-e783-4f09-ba46-a6725aa630ba"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="ProveedorDatos" uuid="64deb828-e840-4208-9bf4-4faa10b79f0f">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<datasetRun subDataset="ProveedorDatos" uuid="08c19f9d-a9ac-4bbb-8d83-b0e86a98f49b">
+						<datasetParameter name="REPORT_CONNECTION">
+							<datasetParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></datasetParameterExpression>
+						</datasetParameter>
 					</datasetRun>
 					<jr:column width="90" uuid="37dd1b74-7e8a-4258-8a68-0ffe9b4de39b">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
@@ -149,10 +152,10 @@ FROM
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="118" uuid="0f32ce51-ae0f-4c9a-8061-155b56d76ecf">
+					<jr:column width="176" uuid="0f32ce51-ae0f-4c9a-8061-155b56d76ecf">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="118" height="30" uuid="937323b5-41f0-4c8e-96f6-9a1b9382b7d8"/>
+								<reportElement x="0" y="0" width="163" height="30" uuid="937323b5-41f0-4c8e-96f6-9a1b9382b7d8"/>
 								<textElement>
 									<font fontName="Roboto" size="12"/>
 								</textElement>
@@ -162,7 +165,7 @@ FROM
 						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="118" height="20" uuid="17574c3a-cf46-4f5b-a555-1c2e1cea54ee"/>
+								<reportElement x="0" y="0" width="163" height="20" uuid="17574c3a-cf46-4f5b-a555-1c2e1cea54ee"/>
 								<textElement>
 									<font fontName="Roboto" size="12"/>
 								</textElement>
@@ -191,10 +194,10 @@ FROM
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="106" uuid="caccb10b-797c-4912-a33d-6ab2660ade9b">
+					<jr:column width="82" uuid="caccb10b-797c-4912-a33d-6ab2660ade9b">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="106" height="30" uuid="97014a00-656b-4b7a-b2db-658036ba2ff8"/>
+								<reportElement x="0" y="0" width="82" height="30" uuid="97014a00-656b-4b7a-b2db-658036ba2ff8"/>
 								<textElement>
 									<font fontName="Roboto" size="12"/>
 								</textElement>
@@ -204,7 +207,7 @@ FROM
 						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="106" height="20" uuid="f9e27400-d63d-478e-a950-87183498b964"/>
+								<reportElement x="0" y="0" width="82" height="20" uuid="f9e27400-d63d-478e-a950-87183498b964"/>
 								<textElement>
 									<font fontName="Roboto" size="12"/>
 								</textElement>
@@ -212,7 +215,7 @@ FROM
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="8169de79-4f5f-460b-a38d-b85df0133c03">
+					<jr:column width="101" uuid="8169de79-4f5f-460b-a38d-b85df0133c03">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="b6e1de78-666d-429c-bbe3-432c0db2d63b"/>

@@ -65,4 +65,13 @@ public class Reportes {
         ver.setVisible(true);
     }
     
+    public static void ReporteTop10Clientes(Connection c) throws SQLException,JRException {
+        JasperReport reporte = null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/Top10Clientes.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
+        JasperViewer ver= new JasperViewer(print,false);
+        ver.setTitle("Top 10 Clientes");
+        ver.setVisible(true);
+    }
+    
 }
