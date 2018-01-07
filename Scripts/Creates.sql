@@ -500,7 +500,7 @@ create table rol
 (
 	rol_codigo serial not null,
 	rol_nombre varchar(80) not null unique,
-	rol_descripcion varchar(80) not null,
+	rol_descripcion varchar(200) not null,
 	constraint pk_rol_codigo primary key(rol_codigo)
 );
 
