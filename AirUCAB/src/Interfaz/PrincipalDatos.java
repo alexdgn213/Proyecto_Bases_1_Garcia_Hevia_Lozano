@@ -112,6 +112,7 @@ public class PrincipalDatos extends javax.swing.JPanel {
         jLabel5.setToolTipText("");
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_check_black_48dp_1x.png"))); // NOI18N
+        botonGuardar.setContentAreaFilled(false);
         botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardarActionPerformed(evt);
@@ -119,6 +120,7 @@ public class PrincipalDatos extends javax.swing.JPanel {
         });
 
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_48dp_1x.png"))); // NOI18N
+        botonEliminar.setContentAreaFilled(false);
         botonEliminar.setMaximumSize(new java.awt.Dimension(69, 48));
         botonEliminar.setMinimumSize(new java.awt.Dimension(69, 48));
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +130,7 @@ public class PrincipalDatos extends javax.swing.JPanel {
         });
 
         botonEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/prender48dp_1x.png"))); // NOI18N
+        botonEliminar1.setContentAreaFilled(false);
         botonEliminar1.setMaximumSize(new java.awt.Dimension(69, 48));
         botonEliminar1.setMinimumSize(new java.awt.Dimension(69, 48));
         botonEliminar1.addActionListener(new java.awt.event.ActionListener() {

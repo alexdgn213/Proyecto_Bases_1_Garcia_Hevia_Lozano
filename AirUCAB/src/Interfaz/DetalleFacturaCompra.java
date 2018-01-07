@@ -186,6 +186,7 @@ public class DetalleFacturaCompra extends javax.swing.JPanel {
         );
 
         botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_back_black_24dp_2x.png"))); // NOI18N
+        botonVolver.setContentAreaFilled(false);
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVolverActionPerformed(evt);

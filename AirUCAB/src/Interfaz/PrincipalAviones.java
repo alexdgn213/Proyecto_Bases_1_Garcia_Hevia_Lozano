@@ -11,6 +11,7 @@ import Dominio.Aeronave;
 import Dominio.Cliente;
 import Dominio.Informacion_contacto;
 import Dominio.Lote_material;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
@@ -21,13 +22,15 @@ public class PrincipalAviones extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
     JPanel panelMensaje;
+    ArrayList<String> permisos;
     /**
      * Creates new form PrincipalClientes
      */
-    public PrincipalAviones(ConectorDB conector,JPanel contenedor,JPanel panelMensaje) {
+    public PrincipalAviones(ConectorDB conector,JPanel contenedor,JPanel panelMensaje,ArrayList<String> permisos) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
+        this.permisos = permisos;
         initComponents();
         setBackground(AdaptadorSQLUI.fondoScrolls);
         this.setSize(870, 610);
@@ -175,7 +178,7 @@ public class PrincipalAviones extends javax.swing.JPanel {
             int id = (Integer) tablaLotesFinalizados.getValueAt(fila, 0);
             String modelo = tablaLotesFinalizados.getValueAt(fila, 1).toString();
             String cliente = tablaLotesFinalizados.getValueAt(fila, 2).toString();
-            DetalleAvion nuevoPanel = new DetalleAvion(conector,contenedor,id,modelo,cliente,panelMensaje,false);
+            DetalleAvion nuevoPanel = new DetalleAvion(conector,contenedor,id,modelo,cliente,panelMensaje,false,permisos);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();
@@ -188,7 +191,7 @@ public class PrincipalAviones extends javax.swing.JPanel {
             int id = (Integer) tablaLotesPendientes.getValueAt(fila, 0);
             String modelo = tablaLotesPendientes.getValueAt(fila, 1).toString();
             String cliente = tablaLotesPendientes.getValueAt(fila, 2).toString();
-            DetalleAvion nuevoPanel = new DetalleAvion(conector,contenedor,id,modelo,cliente,panelMensaje,true);
+            DetalleAvion nuevoPanel = new DetalleAvion(conector,contenedor,id,modelo,cliente,panelMensaje,true,permisos);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();

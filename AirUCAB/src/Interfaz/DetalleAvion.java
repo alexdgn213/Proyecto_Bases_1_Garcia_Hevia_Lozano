@@ -39,20 +39,24 @@ public class DetalleAvion extends javax.swing.JPanel {
     JPanel panelMensaje;
     String modelo;
     String cliente;
+    ArrayList<String> permisos;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetalleAvion(ConectorDB conector,JPanel contenedor,int id,String modelo, String cliente, JPanel panelMensaje, boolean pendiente) {
+    public DetalleAvion(ConectorDB conector,JPanel contenedor,int id,String modelo, String cliente, JPanel panelMensaje, boolean pendiente,ArrayList<String> permisos) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.modelo=modelo;
         this.cliente=cliente;
         this.panelMensaje = panelMensaje;
+        this.permisos=permisos;
         initComponents();
         jlErrorFecha.setVisible(false);
         jScrollPane2.getViewport().setBackground(AdaptadorSQLUI.fondoScrolls);
         jScrollPane3.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
+        jbModificar1.setEnabled(permisos.contains("rpieza"));
+        bAddInf.setEnabled(permisos.contains("cpru_aer"));
         Estatus.llenarComboBox(conector, jcbEstatus);
         Prueba.llenarComboBox(conector, jcbPrueba);
         this.setSize(870, 610);
@@ -150,6 +154,7 @@ public class DetalleAvion extends javax.swing.JPanel {
         jLabel5.setToolTipText("");
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_check_black_48dp_1x.png"))); // NOI18N
+        botonGuardar.setContentAreaFilled(false);
         botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardarActionPerformed(evt);
@@ -180,6 +185,8 @@ public class DetalleAvion extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tablaPruebas);
 
+        panelNueva.setOpaque(false);
+
         jLabel22.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel22.setText("Nueva:");
         jLabel22.setToolTipText("");
@@ -206,6 +213,7 @@ public class DetalleAvion extends javax.swing.JPanel {
         jlErrorFecha.setToolTipText("");
 
         bAddInf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
+        bAddInf.setContentAreaFilled(false);
         bAddInf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAddInfActionPerformed(evt);
@@ -347,6 +355,7 @@ public class DetalleAvion extends javax.swing.JPanel {
         jtfCantidad.setToolTipText("");
 
         botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_back_black_24dp_2x.png"))); // NOI18N
+        botonVolver.setContentAreaFilled(false);
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVolverActionPerformed(evt);
@@ -522,7 +531,7 @@ public class DetalleAvion extends javax.swing.JPanel {
     }//GEN-LAST:event_tablaPruebasMouseClicked
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
-        PrincipalAviones nuevoPanel = new PrincipalAviones(conector,contenedor,panelMensaje);
+        PrincipalAviones nuevoPanel = new PrincipalAviones(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();    
@@ -538,7 +547,7 @@ public class DetalleAvion extends javax.swing.JPanel {
             int id = (Integer) tablaPiezas.getValueAt(fila, 0);
             String nombre = tablaPiezas.getValueAt(fila, 2).toString();
             String tipo = tablaPiezas.getValueAt(fila, 3).toString();
-            DetallePieza nuevoPanel = new DetallePieza(conector,contenedor,id,panelMensaje,nombre,tipo);
+            DetallePieza nuevoPanel = new DetallePieza(conector,contenedor,id,panelMensaje,nombre,tipo,permisos);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();

@@ -41,20 +41,24 @@ public class DetallePieza extends javax.swing.JPanel {
     String tipo;
     String tipoPieza;
     Ensamblaje e;
+    ArrayList<String> permisos;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetallePieza(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje, String tipo, String tipoPieza) {
+    public DetallePieza(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje, String tipo, String tipoPieza,ArrayList<String> permisos) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
         this.tipoPieza = tipoPieza;
         this.tipo=tipo;
+        this.permisos = permisos;
         initComponents();
         jlErrorFecha.setVisible(false);
         jScrollPane2.getViewport().setBackground(AdaptadorSQLUI.fondoScrolls);
         jScrollPane3.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
+        bAddInf1.setEnabled(permisos.contains("censamble"));
+        bAddInf.setEnabled(permisos.contains("cpru_pie"));
         Estatus.llenarComboBox(conector, jcbEstatus);
         Estatus.llenarComboBox(conector, jcbEstatusEnsamble);
         Prueba.llenarComboBox(conector, jcbPrueba);
@@ -195,6 +199,7 @@ public class DetallePieza extends javax.swing.JPanel {
         jlErrorFecha.setToolTipText("");
 
         bAddInf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
+        bAddInf.setContentAreaFilled(false);
         bAddInf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAddInfActionPerformed(evt);
@@ -291,6 +296,7 @@ public class DetallePieza extends javax.swing.JPanel {
         jLabel6.setToolTipText("");
 
         botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_back_black_24dp_2x.png"))); // NOI18N
+        botonVolver.setContentAreaFilled(false);
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVolverActionPerformed(evt);
@@ -300,6 +306,7 @@ public class DetallePieza extends javax.swing.JPanel {
         jcbEstatusEnsamble.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         bAddInf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_check_black_24dp_1x.png"))); // NOI18N
+        bAddInf1.setContentAreaFilled(false);
         bAddInf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAddInf1ActionPerformed(evt);
@@ -425,7 +432,7 @@ public class DetallePieza extends javax.swing.JPanel {
     }//GEN-LAST:event_tablaPruebasMouseClicked
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
-        PrincipalAviones nuevoPanel = new PrincipalAviones(conector,contenedor,panelMensaje);
+        PrincipalAviones nuevoPanel = new PrincipalAviones(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();    

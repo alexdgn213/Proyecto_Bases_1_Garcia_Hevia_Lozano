@@ -22,6 +22,7 @@ import Dominio.Tipo_pieza;
 import Dominio.mat_pro;
 import Dominio.modelo_aeronave;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 
@@ -34,14 +35,16 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
     JPanel contenedor;
     modelo_aeronave m;
     JPanel panelMensaje;
+    ArrayList<String> permisos;
 
     /**
      * Creates new form PrincipalClientes
      */
-    public DetalleModeloAvion(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje) {
+    public DetalleModeloAvion(ConectorDB conector,JPanel contenedor,int id,JPanel panelMensaje,ArrayList<String> permisos) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
+        this.permisos = permisos;
         initComponents();
         jlErrorPrecio.setVisible(false);
         jlErrorNombre.setVisible(false);
@@ -53,6 +56,14 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jScrollPane1.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
         jScrollPane3.getViewport().setBackground(AdaptadorSQLUI.fondoTablas);
         this.setSize(870, 610);
+        botonGuardar.setEnabled(permisos.contains("umodelo_aeronave"));
+        botonEliminar.setEnabled(permisos.contains("dmodelo_aeronave"));
+        bAddInf.setEnabled(permisos.contains("umodelo_aeronave"));
+        bDelInf.setEnabled(permisos.contains("umodelo_aeronave"));
+        bAddMaterial.setEnabled(permisos.contains("umodelo_aeronave"));
+        bDelMaterial.setEnabled(permisos.contains("umodelo_aeronave"));
+        bAddMaterial1.setEnabled(permisos.contains("umodelo_aeronave"));
+        bDelMaterial1.setEnabled(permisos.contains("umodelo_aeronave"));
         Caracteristica.llenarComboBox(conector, jcbCaracteristica);
         Tipo_pieza.llenarComboBox(conector,jcbPieza);
         Motor.llenarComboBox(conector, jcbMotor);
@@ -151,6 +162,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jLabel3.setToolTipText("");
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_check_black_48dp_1x.png"))); // NOI18N
+        botonGuardar.setContentAreaFilled(false);
         botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardarActionPerformed(evt);
@@ -159,6 +171,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_close_black_48dp_1x.png"))); // NOI18N
         botonCancelar.setToolTipText("");
+        botonCancelar.setContentAreaFilled(false);
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActionPerformed(evt);
@@ -166,6 +179,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         });
 
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_48dp_1x.png"))); // NOI18N
+        botonEliminar.setContentAreaFilled(false);
         botonEliminar.setMaximumSize(new java.awt.Dimension(69, 48));
         botonEliminar.setMinimumSize(new java.awt.Dimension(69, 48));
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +205,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jLabel8.setToolTipText("");
 
         bAddMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
+        bAddMaterial.setContentAreaFilled(false);
         bAddMaterial.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bAddMaterialMouseClicked(evt);
@@ -203,6 +218,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         });
 
         bDelMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_24dp_1x.png"))); // NOI18N
+        bDelMaterial.setContentAreaFilled(false);
         bDelMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bDelMaterialActionPerformed(evt);
@@ -250,6 +266,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jScrollPane3.setViewportView(tablaCaracteristicas);
 
         bAddInf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
+        bAddInf.setContentAreaFilled(false);
         bAddInf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAddInfActionPerformed(evt);
@@ -257,6 +274,8 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         });
 
         bDelInf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_24dp_1x.png"))); // NOI18N
+        bDelInf.setContentAreaFilled(false);
+        bDelInf.setOpaque(false);
         bDelInf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bDelInfActionPerformed(evt);
@@ -286,6 +305,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         jScrollPane4.setViewportView(tablaMotores);
 
         bAddMaterial1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
+        bAddMaterial1.setContentAreaFilled(false);
         bAddMaterial1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bAddMaterial1MouseClicked(evt);
@@ -298,6 +318,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
         });
 
         bDelMaterial1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_24dp_1x.png"))); // NOI18N
+        bDelMaterial1.setContentAreaFilled(false);
         bDelMaterial1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bDelMaterial1ActionPerformed(evt);
@@ -631,7 +652,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        PrincipalModeloAvion nuevoPanel = new PrincipalModeloAvion(conector,contenedor,panelMensaje);
+        PrincipalModeloAvion nuevoPanel = new PrincipalModeloAvion(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();
@@ -655,7 +676,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
                 m.setMod_precio_compra(Integer.parseInt(jtfPrecio.getText()));
                 m.modificarEnDB(conector);
             }
-            PrincipalModeloAvion nuevoPanel = new PrincipalModeloAvion(conector,contenedor,panelMensaje);
+            PrincipalModeloAvion nuevoPanel = new PrincipalModeloAvion(conector,contenedor,panelMensaje,permisos);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();
@@ -791,7 +812,7 @@ public class DetalleModeloAvion extends javax.swing.JPanel {
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
         m.eliminarDeDB(conector);
-        PrincipalModeloAvion nuevoPanel = new PrincipalModeloAvion(conector,contenedor,panelMensaje);
+        PrincipalModeloAvion nuevoPanel = new PrincipalModeloAvion(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
         contenedor.updateUI();

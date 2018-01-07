@@ -704,7 +704,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalAviones(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalAviones(conector,panelContenido,panelMensaje,permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -712,7 +712,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void menuAvionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuAvionesMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalAviones(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalAviones(conector,panelContenido,panelMensaje,permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -736,7 +736,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalLotes(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalLotes(conector,panelContenido,panelMensaje,permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -744,7 +744,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void menuLotesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuLotesMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalLotes(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalLotes(conector,panelContenido,panelMensaje,permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -752,7 +752,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido,panelMensaje,permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
@@ -760,7 +760,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void menuModeloAvionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuModeloAvionesMouseClicked
         Contenido.setVisible(true);
-        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido,panelMensaje);
+        nuevoPanel = new PrincipalModeloAvion(conector,panelContenido,panelMensaje,permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();

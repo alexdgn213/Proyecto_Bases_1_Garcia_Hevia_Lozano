@@ -11,6 +11,7 @@ import Dominio.Cliente;
 import Dominio.Informacion_contacto;
 import Dominio.Lote_material;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
@@ -21,13 +22,15 @@ public class PrincipalLotes extends javax.swing.JPanel {
     ConectorDB conector;
     JPanel contenedor;
     JPanel panelMensaje;
+    ArrayList<String> permisos;
     /**
      * Creates new form PrincipalClientes
      */
-    public PrincipalLotes(ConectorDB conector,JPanel contenedor,JPanel panelMensaje) {
+    public PrincipalLotes(ConectorDB conector,JPanel contenedor,JPanel panelMensaje,ArrayList<String> permisos) {
         this.conector = conector;
         this.contenedor = contenedor;
         this.panelMensaje = panelMensaje;
+        this.permisos=permisos;
         initComponents();
         this.setBackground(AdaptadorSQLUI.fondoScrolls);
         this.setSize(870, 610);
@@ -172,7 +175,7 @@ public class PrincipalLotes extends javax.swing.JPanel {
         int fila = tablaLotesFinalizados.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaLotesFinalizados.getValueAt(fila, 0);
-            DetalleLote nuevoPanel = new DetalleLote(conector,contenedor,id,panelMensaje,false);
+            DetalleLote nuevoPanel = new DetalleLote(conector,contenedor,id,panelMensaje,false,permisos);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();
@@ -183,7 +186,7 @@ public class PrincipalLotes extends javax.swing.JPanel {
         int fila = tablaLotesPendientes.getSelectedRow();
         if (fila>=0){
             int id = (Integer) tablaLotesPendientes.getValueAt(fila, 0);
-            DetalleLote nuevoPanel = new DetalleLote(conector,contenedor,id,panelMensaje,true);
+            DetalleLote nuevoPanel = new DetalleLote(conector,contenedor,id,panelMensaje,true,permisos);
             contenedor.removeAll();
             contenedor.add(nuevoPanel);
             contenedor.updateUI();
