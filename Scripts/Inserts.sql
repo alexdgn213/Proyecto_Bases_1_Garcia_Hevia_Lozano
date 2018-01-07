@@ -2653,6 +2653,19 @@ de aviones que nosotros también fabricamos.'),
   (null,10,'Tren de Aterrizaje Retractil','son los que no están expuestos al aire sino que están escondidos en la parte estructural del avión. El piloto desde la cabina de mando con una palanca hace posible que el tren de aterrizaje pueda contraerse escondiéndose en el interior de la aeronave, así cuando el avión tiene que aterrizar el piloto con la misma palanca hace posible que el tren de aterrizaje baje y así la aeronave pueda aterrizar.');
   --12 piezas
   --ETC
+  (1,50,'Ala Recta'),
+  (1,50,'Ala Trapezoidal'),
+  (1,50,'Ala Eliptica'),
+  (1,50,'Ala Flecha'),
+  (1,50,'Ala Flecha Invertida'),
+  (1,50,'Ala Doble Flecha'),
+  (1,50,'Ala Flecha Variable'),
+  (1,50,'Ala Delta'),
+  (1,50,'Ala Delta con Canard'),
+  (1,50,'Ala Delta con Timones'),
+  (1,50,'Ala Dolbe Delta'),
+  (1,50,'Ala Ojival'),
+
  
   INSERT INTO inventario(inv_codigo,fk_fab_codigo,inv_descripcion) VALUES
   (1,1,'Inventario de piezas para ensamblar el avion'),
