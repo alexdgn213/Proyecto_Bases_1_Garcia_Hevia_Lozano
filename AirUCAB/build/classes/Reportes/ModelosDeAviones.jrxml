@@ -144,20 +144,20 @@ limit 1;]]>
 							<datasetParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></datasetParameterExpression>
 						</datasetParameter>
 					</datasetRun>
-					<jr:column width="130" uuid="fc91f541-9768-470d-8a76-29a7efd1ec5a">
+					<jr:column width="70" uuid="fc91f541-9768-470d-8a76-29a7efd1ec5a">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="130" height="30" uuid="e8370f3f-eb28-4774-9c08-bf266ce9307b"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="e8370f3f-eb28-4774-9c08-bf266ce9307b"/>
 								<textElement>
 									<font fontName="Roboto" size="12"/>
 								</textElement>
-								<text><![CDATA[Modelo]]></text>
+								<text><![CDATA[Codigo:]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:columnFooter style="table 2_CH" height="31" rowSpan="1"/>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="130" height="20" uuid="71fc9091-fffc-4e0f-bc3f-923cfb990e41"/>
+								<reportElement x="0" y="0" width="70" height="20" uuid="71fc9091-fffc-4e0f-bc3f-923cfb990e41"/>
 								<textElement>
 									<font fontName="Roboto" size="12"/>
 								</textElement>
@@ -165,10 +165,10 @@ limit 1;]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="179" uuid="ddb4b3ae-2517-4688-8237-e662a6be2fe2">
+					<jr:column width="213" uuid="ddb4b3ae-2517-4688-8237-e662a6be2fe2">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="179" height="30" uuid="a29e91c8-801d-4032-a4f5-798175634982"/>
+								<reportElement x="0" y="0" width="213" height="30" uuid="a29e91c8-801d-4032-a4f5-798175634982"/>
 								<textElement>
 									<font fontName="Roboto" size="12"/>
 								</textElement>
@@ -178,7 +178,7 @@ limit 1;]]>
 						<jr:columnFooter style="table 2_CH" height="31" rowSpan="1"/>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="179" height="20" uuid="531f6d57-60eb-4fb3-a817-141c4fe691bc"/>
+								<reportElement x="0" y="0" width="213" height="20" uuid="531f6d57-60eb-4fb3-a817-141c4fe691bc"/>
 								<textElement>
 									<font fontName="Roboto" size="12"/>
 								</textElement>
