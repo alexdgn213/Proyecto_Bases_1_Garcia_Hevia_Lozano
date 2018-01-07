@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0dab0726-8901-4adf-be31-cf891eca0f3f">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="112"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#000000"/>
@@ -111,6 +111,34 @@
 			<style backcolor="#EFF7FF"/>
 		</conditionalStyle>
 	</style>
+	<style name="table 4">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
 	<subDataset name="ModeloMasVendido2" uuid="a2799add-8376-4c86-ae77-c17cba98f12b">
 		<queryString>
 			<![CDATA[SELECT
@@ -129,6 +157,29 @@ LIMIT 1]]>
 		<group name="aeronave_fk_mod_codigo">
 			<groupExpression><![CDATA[$F{aeronave_fk_mod_codigo}]]></groupExpression>
 		</group>
+	</subDataset>
+	<subDataset name="New Dataset 1" uuid="3d0adbea-b40e-4a97-a792-17a0aa755fef"/>
+	<subDataset name="TablaVentas" uuid="e2a4ff66-acfc-4102-9746-51249de8437a">
+		<queryString language="SQL">
+			<![CDATA[SELECT cli_nombre as Cliente, count(*) as Cantidad
+FROM cliente,Aeronave
+WHERE fk_cli_rif=cli_rif
+AND fk_mod_codigo=
+(
+SELECT
+     aeronave."fk_mod_codigo" AS aeronave_fk_mod_codigo
+FROM
+     "public"."modelo_aeronave" modelo_aeronave INNER JOIN "public"."aeronave" aeronave ON modelo_aeronave."mod_codigo" = aeronave."fk_mod_codigo"
+GROUP BY aeronave."fk_mod_codigo"
+ORDER BY COUNT (modelo_aeronave."mod_nombre") desc
+LIMIT 1	
+) 
+GROUP BY cli_nombre
+ORDER BY Cantidad;
+]]>
+		</queryString>
+		<field name="cliente" class="java.lang.String"/>
+		<field name="cantidad" class="java.lang.Long"/>
 	</subDataset>
 	<queryString>
 		<![CDATA[SELECT
@@ -175,11 +226,11 @@ LIMIT 1]]>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="134" splitType="Stretch">
+		<band height="296" splitType="Stretch">
 			<staticText>
 				<reportElement x="27" y="53" width="100" height="20" uuid="51a80b58-ce32-4239-9cd3-b9d7cc63fda8"/>
 				<textElement>
-					<font fontName="Roboto" size="14"/>
+					<font fontName="Roboto" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Codigo]]></text>
 			</staticText>
@@ -193,7 +244,7 @@ LIMIT 1]]>
 			<staticText>
 				<reportElement x="266" y="53" width="100" height="20" uuid="5b76acc0-a836-49c8-bbd5-eacfb728bfdb"/>
 				<textElement>
-					<font fontName="Roboto" size="14"/>
+					<font fontName="Roboto" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Modelo]]></text>
 			</staticText>
@@ -207,9 +258,9 @@ LIMIT 1]]>
 			<staticText>
 				<reportElement x="27" y="104" width="100" height="30" uuid="f3d69dd4-6cca-4eb4-9d87-250238ae9c15"/>
 				<textElement>
-					<font fontName="Roboto" size="14"/>
+					<font fontName="Roboto" size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[vendidos]]></text>
+				<text><![CDATA[Total Vendidos]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="141" y="104" width="100" height="30" uuid="be5780f3-20e9-45d7-b2d5-9ad773389e2c"/>
@@ -218,6 +269,65 @@ LIMIT 1]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vendidos}]]></textFieldExpression>
 			</textField>
+			<componentElement>
+				<reportElement key="table 4" style="table 4" x="109" y="195" width="322" height="80" uuid="a82dd31b-2dfb-4d7a-a498-ee0d823fb609"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="TablaVentas" uuid="8bc35b6a-0160-4fde-9de1-2ffe4ea309a1">
+						<datasetParameter name="REPORT_CONNECTION">
+							<datasetParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></datasetParameterExpression>
+						</datasetParameter>
+					</datasetRun>
+					<jr:column width="179" uuid="078fd3d5-5ced-4366-87fe-20ae5923c817">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="166" height="30" uuid="35fb5126-96e6-4e2d-99df-e0b964979c47"/>
+								<textElement>
+									<font fontName="Roboto" size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Cliente]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 4_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="166" height="20" uuid="7591d5aa-ad39-4cd3-96bd-abbf452569ea"/>
+								<textElement>
+									<font fontName="Roboto" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="144" uuid="1d3fa85e-3e9f-4fd8-abfa-4091e1f12fa0">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="144" height="30" uuid="5f2ac975-4342-45eb-b5f8-f41bc5fd3262"/>
+								<textElement>
+									<font fontName="Roboto" size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ Cantidad Comprada]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 4_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="144" height="20" uuid="d5050999-d1d7-42fa-8e54-d1662790273e"/>
+								<textElement>
+									<font fontName="Roboto" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="27" y="148" width="183" height="30" uuid="86af15b0-2921-47f4-bccc-a917091c6bb4"/>
+				<textElement>
+					<font fontName="Roboto" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad por Cliente:]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>

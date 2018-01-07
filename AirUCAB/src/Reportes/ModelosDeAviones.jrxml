@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="86fb7ad5-f694-4957-aeeb-2a238897333d">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="28"/>
+	<property name="ireport.y" value="12"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#000000"/>
@@ -98,14 +98,12 @@ FROM
 		</group>
 	</subDataset>
 	<queryString>
-		<![CDATA[SELECT
-     modelo_aeronave."mod_codigo" AS modelo_aeronave_mod_codigo,
-     modelo_aeronave."mod_nombre" AS modelo_aeronave_mod_nombre
-FROM
-     "public"."modelo_aeronave" modelo_aeronave]]>
+		<![CDATA[select * from modelo_aeronave
+limit 1;]]>
 	</queryString>
-	<field name="modelo_aeronave_mod_codigo" class="java.lang.Integer"/>
-	<field name="modelo_aeronave_mod_nombre" class="java.lang.String"/>
+	<field name="mod_codigo" class="java.lang.Integer"/>
+	<field name="mod_nombre" class="java.lang.String"/>
+	<field name="mod_precio_compra" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -141,8 +139,10 @@ FROM
 			<componentElement>
 				<reportElement key="table 2" style="table 1" positionType="Float" stretchType="RelativeToTallestObject" x="138" y="46" width="282" height="80" uuid="8a69e945-233d-4340-a108-945cf8dd6622"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="ModelosdeAviones" uuid="bc3d0037-b93d-43e1-b9a6-4e4293f6de45">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<datasetRun subDataset="ModelosdeAviones" uuid="2061ffb5-38bc-4593-9d8b-a2949f728a5a">
+						<datasetParameter name="REPORT_CONNECTION">
+							<datasetParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></datasetParameterExpression>
+						</datasetParameter>
 					</datasetRun>
 					<jr:column width="130" uuid="fc91f541-9768-470d-8a76-29a7efd1ec5a">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
