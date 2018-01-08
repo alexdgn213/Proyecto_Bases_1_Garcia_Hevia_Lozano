@@ -255,7 +255,7 @@ create table tipo_pieza
 	tip_codigo serial not null,
     fk_tip_codigo int,
     tip_tiempo_fabricacion int not null,--Numero de dias u horas
-	tip_nombre varchar(80) not null,
+	tip_nombre varchar(200) not null,
 	tip_descripcion varchar(300),
 	constraint pk_tip_pieza primary key(tip_codigo),
 	constraint fk_tip_cod foreign key(fk_tip_codigo)

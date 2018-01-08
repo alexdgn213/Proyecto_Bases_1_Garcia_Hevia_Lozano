@@ -1590,7 +1590,7 @@ INSERT INTO informacion_contacto (inf_valor,inf_tipo,fk_pro_rif,fk_per_ci,fk_cli
 
 
 
-INSERT INTO modelo_aeronave (mod_nombre,mod_precio_compra,mod_descripcion,mod_fecha_creacion) VALUES 
+INSERT INTO modelo_aeronave (mod_nombre,mod_precio_compra) VALUES 
 ('AU80',10000000), --1
 ('AU80-2',10000000), --Por sia cosa
 ('AU80-700',10000000), -- Por si acaso
@@ -2650,21 +2650,21 @@ de aviones que nosotros también fabricamos.'),
   --Elementos Internos: 
   (null,30,'Asientos',''),
   (null,10,'Tren de Aterrizaje Fijo','son los que, durante el vuelo se encuentran permanentemente expuestos a la corriente de aire. Se usan solamente en aviones relativamente pequeños'),
-  (null,10,'Tren de Aterrizaje Retractil','son los que no están expuestos al aire sino que están escondidos en la parte estructural del avión. El piloto desde la cabina de mando con una palanca hace posible que el tren de aterrizaje pueda contraerse escondiéndose en el interior de la aeronave, así cuando el avión tiene que aterrizar el piloto con la misma palanca hace posible que el tren de aterrizaje baje y así la aeronave pueda aterrizar.');
+  (null,10,'Tren de Aterrizaje Retractil','son los que no están expuestos al aire sino que están escondidos en la parte estructural del avión. El piloto desde la cabina de mando con una palanca hace posible que el tren de aterrizaje pueda contraerse escondiéndose en el interior de la aeronave, así cuando el avión tiene que aterrizar el piloto con la misma palanca hace posible que el tren de aterrizaje baje y así la aeronave pueda aterrizar.'),
   --12 piezas
   --ETC
-  (1,50,'Ala Recta'),
-  (1,50,'Ala Trapezoidal'),
-  (1,50,'Ala Eliptica'),
-  (1,50,'Ala Flecha'),
-  (1,50,'Ala Flecha Invertida'),
-  (1,50,'Ala Doble Flecha'),
-  (1,50,'Ala Flecha Variable'),
-  (1,50,'Ala Delta'),
-  (1,50,'Ala Delta con Canard'),
-  (1,50,'Ala Delta con Timones'),
-  (1,50,'Ala Dolbe Delta'),
-  (1,50,'Ala Ojival'),
+  (1,50,'Ala Recta',null),
+  (1,50,'Ala Trapezoidal',null),
+  (1,50,'Ala Eliptica',null),
+  (1,50,'Ala Flecha',null),
+  (1,50,'Ala Flecha Invertida',null),
+  (1,50,'Ala Doble Flecha',null),
+  (1,50,'Ala Flecha Variable',null),
+  (1,50,'Ala Delta',null),
+  (1,50,'Ala Delta con Canard',null),
+  (1,50,'Ala Delta con Timones',null),
+  (1,50,'Ala Dolbe Delta',null),
+  (1,50,'Ala Ojival',null);
 
  
   INSERT INTO inventario(inv_codigo,fk_fab_codigo,inv_descripcion) VALUES
