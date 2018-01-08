@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2df36851-8c39-48d8-a492-0d2ed0d06b1b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="EspecificacionesModelo" uuid="1ca31233-c9fa-4417-942d-7a78277505dd">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     modelo_aeronave."mod_nombre" AS modelo_aeronave_mod_nombre,
+     mod_car."mod_car_valor" AS mod_car_mod_car_valor,
+     mod_car."mod_car_descripcion" AS mod_car_mod_car_descripcion
+FROM
+     "public"."modelo_aeronave" modelo_aeronave INNER JOIN "public"."mod_car" mod_car ON modelo_aeronave."mod_codigo" = mod_car."fk_mod_codigo"]]>
+		</queryString>
+		<field name="modelo_aeronave_mod_nombre" class="java.lang.String"/>
+		<field name="mod_car_mod_car_valor" class="java.lang.Float"/>
+		<field name="mod_car_mod_car_descripcion" class="java.lang.String"/>
+		<group name="modelo_aeronave_mod_nombre">
+			<groupExpression><![CDATA[$F{modelo_aeronave_mod_nombre}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="CaracteristicasModelo" uuid="75351d1c-31f2-4f6e-8470-924710349693">
+		<queryString language="SQL">
+			<![CDATA[select car_nombre,mod_car_valor,mod_car_descripcion from modelo_aeronave,mod_car,caracteristica
+where fk_car_codigo=car_codigo AND mod_codigo=fk_mod_codigo AND mod_nombre='AU802']]>
+		</queryString>
+		<field name="car_nombre" class="java.lang.String"/>
+		<field name="mod_car_valor" class="java.lang.Float"/>
+		<field name="mod_car_descripcion" class="java.lang.String"/>
+		<group name="car_nombre">
+			<groupExpression><![CDATA[$F{car_nombre}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+     modelo_aeronave."mod_nombre" AS modelo_aeronave_mod_nombre,
+     mod_car."mod_car_valor" AS mod_car_mod_car_valor,
+     mod_car."mod_car_descripcion" AS mod_car_mod_car_descripcion
+FROM
+     "public"."modelo_aeronave" modelo_aeronave INNER JOIN "public"."mod_car" mod_car ON modelo_aeronave."mod_codigo" = mod_car."fk_mod_codigo"]]>
+	</queryString>
+	<field name="modelo_aeronave_mod_nombre" class="java.lang.String"/>
+	<field name="mod_car_mod_car_valor" class="java.lang.Float"/>
+	<field name="mod_car_mod_car_descripcion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="21" y="11" width="100" height="20" uuid="7352660e-ed10-419e-9f8c-9560a38c75e4"/>
+				<textFieldExpression><![CDATA[$F{modelo_aeronave_mod_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 2" style="table 2" x="5" y="22" width="360" height="80" uuid="ed698eaa-b3bb-40bc-bc1f-d8d337016c38"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="CaracteristicasModelo" uuid="4b69e8f5-c142-422c-b196-22557a461e2f">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="6a3ca310-20b8-4b43-9909-95ddac689316">
+						<jr:columnHeader style="table 2_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="1aecba93-c859-4648-ac30-5c91b6bae0c1"/>
+								<text><![CDATA[car_nombre]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30"/>
+						<jr:detailCell style="table 2_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="b9318c74-f6bb-4cfc-9924-de604fab6588"/>
+								<textFieldExpression><![CDATA[$F{car_nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="2e2587f7-d0ba-4ec7-92f3-ffddbffe1791">
+						<jr:columnHeader style="table 2_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="2e6fa528-1fe0-431f-8d1e-b588ed7e0332"/>
+								<text><![CDATA[mod_car_valor]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30"/>
+						<jr:detailCell style="table 2_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="873dec42-f90e-4465-92d6-be7b64185487"/>
+								<textFieldExpression><![CDATA[$F{mod_car_valor}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="f9ca9447-8200-45b9-93a3-dd560dd87f54">
+						<jr:columnHeader style="table 2_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="002a5de6-290d-4a36-85e0-166e721d6a5b"/>
+								<text><![CDATA[mod_car_descripcion]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30"/>
+						<jr:detailCell style="table 2_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="88d9b9c2-2028-42b8-bcfd-50b8ed80ce4f"/>
+								<textFieldExpression><![CDATA[$F{mod_car_descripcion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
