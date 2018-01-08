@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="741c5866-2403-420e-b62f-799ff457bdbf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="InventarioMensual" uuid="de72eed2-dd0f-4c87-af35-e5f66a8f7a2e">
+		<queryString>
+			<![CDATA[Select to_char(lot_fecha_compra, 'YYYY') As año,  to_char(lot_fecha_compra, 'MM') As mes, mat_nombre as material, Sum(lot_cantidad) as cantidad
+FROM Material, lote_material
+WHERE mat_codigo=fk_mat_codigo
+AND lot_codigo in(
+SELECT l.lot_codigo
+ FROM lote_material l, material m, proveedor p
+ WHERE l.fk_pro_rif=p.pro_rif AND l.fk_mat_codigo=m.mat_codigo
+ AND not exists(Select pru_lot_codigo from pru_lot where fk_lot_codigo= l.lot_codigo AND fk_est_codigo!=4)
+)
+GROUP BY año, mes, material
+Order by año,mes,material]]>
+		</queryString>
+		<field name="año" class="java.lang.String"/>
+		<field name="mes" class="java.lang.String"/>
+		<field name="material" class="java.lang.String"/>
+		<field name="cantidad" class="java.lang.Long"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[Select * from estatus limit 1;]]>
+	</queryString>
+	<field name="est_codigo" class="java.lang.Integer"/>
+	<field name="est_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-36" y="-30" width="657" height="109" backcolor="#3F51B5" uuid="b3d78855-bc05-4a98-a415-ab030fe2538c"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="36" y="30" width="109" height="20" forecolor="#FFFFFF" uuid="a886bce5-6668-4960-9c8f-d3fb22cef58d"/>
+					<textElement>
+						<font fontName="Roboto" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="36" y="64" width="555" height="31" forecolor="#FFFFFF" uuid="524f3eab-43a3-478b-bae9-7049765332c0"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[INVENTARIO MENSUAL]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="109" y="0" width="360" height="80" uuid="c73b1b68-d63b-4177-ae06-b3b7617c37de"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="InventarioMensual" uuid="a016c209-86b3-42ed-9455-2cf90ec4abb0">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="77" uuid="9d73ca19-7c69-4565-b8d9-40dd44ae6782">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="77" height="30" uuid="359d087c-30b5-44de-a58b-5809fb33fd2c"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Año]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="77" height="20" uuid="77265417-c80e-47c7-8638-59440f75ed3a"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{año}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="70" uuid="230e8d50-27ba-4f97-8884-11b5c026d389">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="30" uuid="8e09c5a5-d3e0-4e04-9148-a79aa29ec1d6"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Mes]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="70" height="20" uuid="4ae407e9-fbb4-4ef8-8eef-c3ff26b4fe1d"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="133" uuid="210781b6-fe0f-4573-bbf8-6438bc0eaa78">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="133" height="30" uuid="712be0f8-41f3-4132-acd8-4688b6f6c4f4"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Material]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="133" height="20" uuid="b7431bd2-d2bb-4e3c-9e29-3210c258d4f9"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{material}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="88" uuid="f8696e38-32fc-4781-b78d-d61bc125646f">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="88" height="30" uuid="6a4137d1-65bf-403c-b48f-be0e7f496bfe"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Cantidad ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="88" height="20" uuid="f76448d9-1dd4-4f78-ae30-add30802a5fb"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-15" y="0" width="621" height="54" backcolor="#3F51B5" uuid="333e7a77-f78c-48d5-97d0-3b8167fe8295"/>
+				<staticText>
+					<reportElement x="30" y="12" width="555" height="31" forecolor="#FFFFFF" uuid="95b1cc0f-4f4b-4fd3-b2de-6280c912757a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[AirUCAB - Reportes]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="499" y="12" width="71" height="29" forecolor="#FFFFFF" uuid="d8e7c91e-7be0-463d-ad8b-8d7e4e8ccd09"/>
+					<textElement>
+						<font fontName="Roboto" size="24"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

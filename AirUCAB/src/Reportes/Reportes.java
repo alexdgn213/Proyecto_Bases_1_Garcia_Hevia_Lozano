@@ -25,7 +25,7 @@ public class Reportes {
         reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/Proveedores.jasper");
         JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
         JasperViewer ver= new JasperViewer(print,false);
-        ver.setTitle("Proveedores");
+        ver.setTitle("Lista de Proveedores");
         ver.setVisible(true);
     }
     
@@ -74,4 +74,39 @@ public class Reportes {
         ver.setVisible(true);
     }
     
+    public static void ReporteEvolucion(Connection c) throws SQLException,JRException {
+        JasperReport reporte = null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/EvolucionAeronautica.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
+        JasperViewer ver= new JasperViewer(print,false);
+        ver.setTitle("Evolución de la Aeronautica");
+        ver.setVisible(true);
+    }
+    
+    public static void ReporteAlaMasUtilizada(Connection c) throws SQLException,JRException {
+        JasperReport reporte = null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/AlaMasUtilizada.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
+        JasperViewer ver= new JasperViewer(print,false);
+        ver.setTitle("Tipo de ala Más Utilizada");
+        ver.setVisible(true);
+    }
+    
+    public static void ReporteDescripcionPiezas(Connection c) throws SQLException,JRException {
+        JasperReport reporte = null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/DescripcionPiezas.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
+        JasperViewer ver= new JasperViewer(print,false);
+        ver.setTitle("Descripción de las piezas");
+        ver.setVisible(true);
+    }
+    
+    public static void ReporteInventarioMensual(Connection c) throws SQLException,JRException {
+        JasperReport reporte = null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/InventarioMensual.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
+        JasperViewer ver= new JasperViewer(print,false);
+        ver.setTitle("Inventario Mensual");
+        ver.setVisible(true);
+    }
 }

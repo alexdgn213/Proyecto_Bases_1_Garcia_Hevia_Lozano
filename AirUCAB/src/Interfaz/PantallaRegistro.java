@@ -170,7 +170,7 @@ public class PantallaRegistro extends javax.swing.JFrame {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         jlMensaje.setText("");
         if(jpClave.getText().equals(jpClave1.getText())){
-            Usuario u = new Usuario(tfUsuario.getText(),jpClave.getText(),1);
+            Usuario u = new Usuario(tfUsuario.getText(),jpClave.getText(),5);
             u.agregarADB(conector);
             PantallaLogin pantallaNueva = new PantallaLogin(conector);
             this.dispose();

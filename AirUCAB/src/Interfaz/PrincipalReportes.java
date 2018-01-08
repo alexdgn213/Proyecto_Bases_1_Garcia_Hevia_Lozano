@@ -240,6 +240,11 @@ public class PrincipalReportes extends javax.swing.JPanel {
 
         generar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_file_download_black_24dp_1x.png"))); // NOI18N
         generar4.setContentAreaFilled(false);
+        generar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generar4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Reporte4Layout = new javax.swing.GroupLayout(Reporte4);
         Reporte4.setLayout(Reporte4Layout);
@@ -405,6 +410,11 @@ public class PrincipalReportes extends javax.swing.JPanel {
 
         generar9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_file_download_black_24dp_1x.png"))); // NOI18N
         generar9.setContentAreaFilled(false);
+        generar9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generar9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Reporte9Layout = new javax.swing.GroupLayout(Reporte9);
         Reporte9.setLayout(Reporte9Layout);
@@ -472,6 +482,11 @@ public class PrincipalReportes extends javax.swing.JPanel {
 
         generar11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_file_download_black_24dp_1x.png"))); // NOI18N
         generar11.setContentAreaFilled(false);
+        generar11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generar11ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Reporte11Layout = new javax.swing.GroupLayout(Reporte11);
         Reporte11.setLayout(Reporte11Layout);
@@ -699,6 +714,11 @@ public class PrincipalReportes extends javax.swing.JPanel {
 
         generar18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_file_download_black_24dp_1x.png"))); // NOI18N
         generar18.setContentAreaFilled(false);
+        generar18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generar18ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Reporte18Layout = new javax.swing.GroupLayout(Reporte18);
         Reporte18.setLayout(Reporte18Layout);
@@ -869,6 +889,46 @@ public class PrincipalReportes extends javax.swing.JPanel {
             Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_generar3ActionPerformed
+
+    private void generar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar4ActionPerformed
+        try {
+            Reportes.ReporteEvolucion(conector.conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generar4ActionPerformed
+
+    private void generar11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar11ActionPerformed
+        try {
+            Reportes.ReporteAlaMasUtilizada(conector.conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generar11ActionPerformed
+
+    private void generar18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar18ActionPerformed
+        try {
+            Reportes.ReporteDescripcionPiezas(conector.conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generar18ActionPerformed
+
+    private void generar9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar9ActionPerformed
+        try {
+            Reportes.ReporteInventarioMensual(conector.conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generar9ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

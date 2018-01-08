@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5af3201a-0900-4c9c-b212-54fea013006a">
 	<property name="ireport.zoom" value="0.75"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="26"/>
+	<property name="ireport.y" value="51"/>
 	<queryString>
 		<![CDATA[select '	Después del 29 de septiembre de 1912, cuando el célebre vuelo de Frank Boland sobre Caracas, estábamos en el umbral de la I Guerra Mundial y será en ese conflicto cuando la aviación pasa a convertirse en un arma poderosa. A comienzos del año 1920 el empresario caraqueño Eloy Pérez suscribe un contrato con el teniente italiano Cosme Renella, con el fin de ofrecer en la capital y otras ciudades del interior del país, una serie de espectáculos que prácticamente eran maniobras ejecutadas por el referido piloto.
 
@@ -67,7 +67,25 @@ Order by pagina;]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-38" y="-30" width="657" height="109" backcolor="#3F51B5" uuid="48c6f414-9979-490c-9727-38c720c416c2"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="38" y="30" width="109" height="20" forecolor="#FFFFFF" uuid="0deaccd2-7bf9-4008-b375-80703b97d7f0"/>
+					<textElement>
+						<font fontName="Roboto" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="38" y="64" width="555" height="31" forecolor="#FFFFFF" uuid="fba00e82-c70d-4ce1-81ed-a98e8ab90564"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[EVOLUCION DE LA AERONAUTICA]]></text>
+				</staticText>
+			</frame>
+		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
@@ -87,9 +105,24 @@ Order by pagina;]]>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="29" splitType="Stretch"/>
+		<band height="48" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="621" height="46" backcolor="#3F51B5" uuid="dd03af77-e5d4-40c8-af74-d44f8785ba57"/>
+				<staticText>
+					<reportElement x="30" y="12" width="555" height="31" forecolor="#FFFFFF" uuid="dc1b7ea9-d07d-4dee-bd5b-3faa433bfa70"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[AirUCAB - Reportes]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="514" y="12" width="71" height="31" forecolor="#FFFFFF" uuid="bb6a0cda-61c4-4907-8dce-bc10b42357f3"/>
+					<textElement>
+						<font fontName="Roboto" size="24"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
 	</pageFooter>
-	<summary>
-		<band splitType="Stretch"/>
-	</summary>
 </jasperReport>
