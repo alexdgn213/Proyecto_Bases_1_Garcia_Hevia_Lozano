@@ -8,6 +8,8 @@ package Reportes;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -134,6 +136,27 @@ public class Reportes {
         JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
         JasperViewer ver= new JasperViewer(print,false);
         ver.setTitle("Promedio de producción mensual");
+        ver.setVisible(true);
+    }
+    
+    public static void ReporteAvionesMasRentables(Connection c) throws SQLException,JRException {
+        JasperReport reporte = null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/AvionesMasRentables.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
+        JasperViewer ver= new JasperViewer(print,false);
+        ver.setTitle("Aviones mas Rentables");
+        ver.setVisible(true);
+    }
+    
+    public static void ReporteDetalleAvion(Connection c, int mod_codigo) throws SQLException,JRException {
+        JasperReport reporte = null;
+        
+        Map<String, Object> parametros = new HashMap<String, Object>();
+        parametros.put("parVar1", mod_codigo);
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/EspecificacionesModelo.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,parametros,c);
+        JasperViewer ver= new JasperViewer(print,false);
+        ver.setTitle("Especificaciones del Modelo");
         ver.setVisible(true);
     }
 }

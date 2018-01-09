@@ -13,6 +13,7 @@ import Dominio.Cliente;
 import Dominio.Informacion_contacto;
 import Dominio.Lugar;
 import Dominio.Proveedor;
+import Dominio.modelo_aeronave;
 import Reportes.Reportes;
 import java.awt.Color;
 import java.sql.Date;
@@ -44,6 +45,7 @@ public class PrincipalReportes extends javax.swing.JPanel {
         this.panelMensaje = panelMensaje;
         this.permisos= permisos;
         initComponents();
+        modelo_aeronave.llenarComboBox(conector, comboModelo);
         jScrollPane2.getViewport().setBackground(AdaptadorSQLUI.fondoScrolls);
         this.setSize(870, 610);
     }
@@ -99,6 +101,7 @@ public class PrincipalReportes extends javax.swing.JPanel {
         Reporte13 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         generar13 = new javax.swing.JButton();
+        comboModelo = new javax.swing.JComboBox<>();
         Reporte14 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         generar14 = new javax.swing.JButton();
@@ -533,6 +536,11 @@ public class PrincipalReportes extends javax.swing.JPanel {
 
         generar12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_file_download_black_24dp_1x.png"))); // NOI18N
         generar12.setContentAreaFilled(false);
+        generar12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generar12ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Reporte12Layout = new javax.swing.GroupLayout(Reporte12);
         Reporte12.setLayout(Reporte12Layout);
@@ -564,6 +572,19 @@ public class PrincipalReportes extends javax.swing.JPanel {
 
         generar13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_file_download_black_24dp_1x.png"))); // NOI18N
         generar13.setContentAreaFilled(false);
+        generar13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generar13ActionPerformed(evt);
+            }
+        });
+
+        comboModelo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboModeloActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Reporte13Layout = new javax.swing.GroupLayout(Reporte13);
         Reporte13.setLayout(Reporte13Layout);
@@ -572,7 +593,9 @@ public class PrincipalReportes extends javax.swing.JPanel {
             .addGroup(Reporte13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel21)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 441, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
+                .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(generar13, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -580,10 +603,14 @@ public class PrincipalReportes extends javax.swing.JPanel {
             Reporte13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Reporte13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(Reporte13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(generar13, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(Reporte13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Reporte13Layout.createSequentialGroup()
+                        .addGroup(Reporte13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(generar13, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(comboModelo))
+                .addContainerGap())
         );
 
         Reporte14.setOpaque(false);
@@ -975,6 +1002,33 @@ public class PrincipalReportes extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_generar2ActionPerformed
 
+    private void generar12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar12ActionPerformed
+        try {
+            Reportes.ReporteAvionesMasRentables(conector.conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generar12ActionPerformed
+
+    private void generar13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar13ActionPerformed
+        if(comboModelo.getSelectedIndex()>0){
+            try {
+            Reportes.ReporteDetalleAvion(conector.conexion,comboModelo.getSelectedIndex());
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (JRException ex) {
+                Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_generar13ActionPerformed
+
+    private void comboModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboModeloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboModeloActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Reporte1;
@@ -995,6 +1049,7 @@ public class PrincipalReportes extends javax.swing.JPanel {
     private javax.swing.JPanel Reporte7;
     private javax.swing.JPanel Reporte8;
     private javax.swing.JPanel Reporte9;
+    private javax.swing.JComboBox<String> comboModelo;
     private javax.swing.JButton generar1;
     private javax.swing.JButton generar10;
     private javax.swing.JButton generar11;

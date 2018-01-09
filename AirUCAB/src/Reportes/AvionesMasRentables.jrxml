@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="741c5866-2403-420e-b62f-799ff457bdbf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 2">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="InventarioMensual" uuid="de72eed2-dd0f-4c87-af35-e5f66a8f7a2e">
+		<queryString>
+			<![CDATA[Select sc.codigo,sc.modelo, AVG(sc.retraso) as promedio
+FROM
+    (select a.aer_codigo as codigo, mod_nombre as modelo, pp.pru_pie_fecha_estimada - pp.pru_pie_fecha_realizacion as retraso
+    from aeronave a, modelo_aeronave m, pieza p, tipo_pieza tp, pru_pie pp
+    WHERE a.fk_mod_codigo=m.mod_codigo AND p.fk_aer_codigo=a.aer_codigo AND p.fk_tip_codigo=tp.tip_codigo
+    UNION ALL
+    select a.aer_codigo as codigo, mod_nombre as modelo, pa.pru_aer_fecha_estimada - pa.pru_aer_fecha_realizacion as retraso
+    from aeronave a, modelo_aeronave m, pru_aer pa
+    WHERE a.fk_mod_codigo=m.mod_codigo AND pa.fk_aer_codigo=a.aer_codigo) as sc
+GROUP BY sc.codigo,sc.modelo
+ORDER BY promedio
+LIMIT 10;]]>
+		</queryString>
+		<field name="codigo" class="java.lang.Integer"/>
+		<field name="modelo" class="java.lang.String"/>
+		<field name="promedio" class="java.math.BigDecimal"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[Select * from estatus limit 1;]]>
+	</queryString>
+	<field name="est_codigo" class="java.lang.Integer"/>
+	<field name="est_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-36" y="-30" width="657" height="109" backcolor="#3F51B5" uuid="b3d78855-bc05-4a98-a415-ab030fe2538c"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="36" y="30" width="109" height="20" forecolor="#FFFFFF" uuid="a886bce5-6668-4960-9c8f-d3fb22cef58d"/>
+					<textElement>
+						<font fontName="Roboto" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="36" y="64" width="555" height="31" forecolor="#FFFFFF" uuid="524f3eab-43a3-478b-bae9-7049765332c0"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[AVIONES MAS RENTABLES]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 2" style="table 2" x="109" y="16" width="360" height="80" uuid="e76da605-45e3-4e3b-b4d5-d001acb14649"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="InventarioMensual" uuid="3579a2d5-6dda-44b0-a4f9-4084e0d119b7">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="69" uuid="5eb59099-061d-43cf-a8de-5a2bc553b7a0">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="69" height="30" uuid="dad8e200-d905-432c-b4a1-dcb0808e8b4e"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Codigo]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="69" height="20" uuid="18dac278-61e9-4e35-b305-77cfe5a7a106"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="125" uuid="7b60acc5-f103-4a6e-abb4-220dc7639691">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="125" height="30" uuid="2b33105d-32c7-4b7c-a42a-92eedda86b60"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Modelo]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="125" height="20" uuid="0b526143-d8b6-42f7-af7f-f49983bba3b0"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="166" uuid="a47f2e4c-2180-4c70-a250-40db1c2dfb33">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="166" height="30" uuid="861d1954-88f7-4079-858b-f03bd9444c3c"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<text><![CDATA[Promedio de Retrasos]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="166" height="20" uuid="b2f9f4cc-8ded-454d-b1de-9abb47ddd4a0"/>
+								<textElement>
+									<font fontName="Roboto" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{promedio}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-36" y="0" width="621" height="54" backcolor="#3F51B5" uuid="333e7a77-f78c-48d5-97d0-3b8167fe8295"/>
+				<staticText>
+					<reportElement x="30" y="12" width="555" height="31" forecolor="#FFFFFF" uuid="95b1cc0f-4f4b-4fd3-b2de-6280c912757a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[AirUCAB - Reportes]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="499" y="12" width="71" height="29" forecolor="#FFFFFF" uuid="d8e7c91e-7be0-463d-ad8b-8d7e4e8ccd09"/>
+					<textElement>
+						<font fontName="Roboto" size="24"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -179,6 +179,34 @@
 			<style backcolor="#EFF7FF"/>
 		</conditionalStyle>
 	</style>
+	<style name="table 7">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
 	<subDataset name="Avion" uuid="8df87259-0fe2-41c8-9350-e592f2092346">
 		<parameter name="parVar12" class="java.lang.Integer"/>
 		<queryString>
@@ -221,136 +249,66 @@ where mod_codigo=$P{parVar12}]]>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="045952f1-1564-4899-8ffc-a01f4a9035e9"/>
+				<textFieldExpression><![CDATA[$P{parVar1}]]></textFieldExpression>
+			</textField>
+		</band>
 	</columnHeader>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 6" style="table 6" x="51" y="45" width="360" height="80" uuid="96bf7e17-3ee0-4b41-ad3e-95ff23006b56"/>
+				<reportElement key="table 7" style="table 7" x="100" y="45" width="360" height="80" uuid="ea94ce5f-b3b5-4d48-b9a3-6c48d293ae5d"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Avion" uuid="4ae34c3c-fc5c-46c0-bdae-8b4c34c46994">
+					<datasetRun subDataset="Avion" uuid="95cb61a9-bca8-4a13-b874-159bd87d5b27">
 						<datasetParameter name="parVar12">
-							<datasetParameterExpression><![CDATA[$P{parVar1}]]></datasetParameterExpression>
+							<datasetParameterExpression><![CDATA[$P{parVar1}.intValue()]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="90" uuid="9eb56548-1bd9-4ee9-bbf2-092e2cf86d17">
-						<jr:columnHeader style="table 6_CH" height="30">
+					<jr:column width="129" uuid="58d977f8-c721-4055-a9d4-9f886a80bcce">
+						<jr:columnHeader style="table 7_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="c43b2fbe-d8b8-447a-9f1b-6073a3d410eb"/>
+								<reportElement x="0" y="0" width="129" height="30" uuid="c923a3b8-d57b-4f2a-abcf-dd3f75b96d65"/>
 								<text><![CDATA[caracteristica_car_nombre]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 6_CH" height="30"/>
-						<jr:detailCell style="table 6_TD" height="20">
+						<jr:columnFooter style="table 7_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="ab62ba86-1c6a-4a89-8c99-1f764e328ee4"/>
+								<reportElement x="0" y="0" width="129" height="20" uuid="b3f16cad-6f35-462d-a51a-d577deccccbf"/>
 								<textFieldExpression><![CDATA[$F{caracteristica_car_nombre}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="ab515190-0a74-43b2-a446-17233d51a45c">
-						<jr:columnHeader style="table 6_CH" height="30">
+					<jr:column width="112" uuid="3894aa35-0605-4dd0-9fcf-d397f9a9e9de">
+						<jr:columnHeader style="table 7_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="5211e554-b9f5-47f2-9948-1ce0e2e01935"/>
+								<reportElement x="0" y="0" width="112" height="30" uuid="2511588b-97ae-40ac-a900-6055bab71e5a"/>
 								<text><![CDATA[mod_car_mod_car_valor]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 6_CH" height="30"/>
-						<jr:detailCell style="table 6_TD" height="20">
+						<jr:columnFooter style="table 7_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="33cd5bc1-3762-4baa-bc0e-210fb06af4b0"/>
+								<reportElement x="0" y="0" width="112" height="20" uuid="ce42b130-e180-49c1-b9b5-095d5f319d41"/>
 								<textFieldExpression><![CDATA[$F{mod_car_mod_car_valor}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="30add234-d65c-4961-90d5-93e7314af628">
-						<jr:columnHeader style="table 6_CH" height="30">
+					<jr:column width="118" uuid="741292a2-cd19-43de-82ba-f040a2f14ace">
+						<jr:columnHeader style="table 7_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="cc963eae-693a-40ec-ad41-4c5fb07a0203"/>
+								<reportElement x="0" y="0" width="118" height="30" uuid="0c18ada1-a636-46a3-8aa7-eaa9f21879b0"/>
 								<text><![CDATA[mod_car_mod_car_descripcion]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 6_CH" height="30"/>
-						<jr:detailCell style="table 6_TD" height="20">
+						<jr:columnFooter style="table 7_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="fb4a9d4d-2b92-4912-b75a-4e0488b6a56d"/>
+								<reportElement x="0" y="0" width="118" height="20" uuid="5ac3c746-0034-4371-b3b8-09aa038eb7fb"/>
 								<textFieldExpression><![CDATA[$F{mod_car_mod_car_descripcion}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="f3cd9aa7-fb24-430c-8131-16daa5d73377">
-						<jr:columnHeader style="table 6_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="1bae4f15-65f2-4847-bfa7-cc9bbccf17a2"/>
-								<text><![CDATA[mod_car_fk_mod_codigo]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 6_CH" height="30"/>
-						<jr:detailCell style="table 6_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="448e6085-c78a-40e0-a95d-b8e7082f1901"/>
-								<textFieldExpression><![CDATA[$F{mod_car_fk_mod_codigo}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="e340ac94-ba56-4c77-97b0-9be1f875f3f0">
-						<jr:columnHeader style="table 6_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="947180fd-c60d-4909-a487-c348d05410d5"/>
-								<text><![CDATA[mod_car_fk_car_codigo]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 6_CH" height="30"/>
-						<jr:detailCell style="table 6_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="52c2632a-5975-4559-962a-b65285dc08bd"/>
-								<textFieldExpression><![CDATA[$F{mod_car_fk_car_codigo}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="f4d3951b-6ec7-47a9-a344-4d924cecaa10">
-						<jr:columnHeader style="table 6_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="c01796ad-459a-4c19-889c-47c0cdaeaa68"/>
-								<text><![CDATA[modelo_aeronave_mod_codigo]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 6_CH" height="30"/>
-						<jr:detailCell style="table 6_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="3e830b7e-e028-46b5-a080-2dfea2df18f2"/>
-								<textFieldExpression><![CDATA[$F{modelo_aeronave_mod_codigo}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="c294bdc0-2c5d-4d96-a11c-a592ea28fafe">
-						<jr:columnHeader style="table 6_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="018e78c5-3bde-4aa8-b8bd-3cbeb8ce8f9f"/>
-								<text><![CDATA[modelo_aeronave_mod_nombre]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 6_CH" height="30"/>
-						<jr:detailCell style="table 6_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="5906a173-5155-488a-b3b9-2b50ad86e48d"/>
-								<textFieldExpression><![CDATA[$F{modelo_aeronave_mod_nombre}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="cc8f8a07-6d49-4845-9702-bd82f01f8957">
-						<jr:columnHeader style="table 6_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="7b96319e-df1b-49a4-b92c-334a0f0fdbf7"/>
-								<text><![CDATA[modelo_aeronave_mod_descripcion]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 6_CH" height="30"/>
-						<jr:detailCell style="table 6_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="5d750bb6-586b-441b-acfc-306f5c9d4bde"/>
-								<textFieldExpression><![CDATA[$F{modelo_aeronave_mod_descripcion}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
