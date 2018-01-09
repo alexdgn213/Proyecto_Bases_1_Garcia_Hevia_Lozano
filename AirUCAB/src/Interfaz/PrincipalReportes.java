@@ -178,6 +178,11 @@ public class PrincipalReportes extends javax.swing.JPanel {
 
         generar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_file_download_black_24dp_1x.png"))); // NOI18N
         generar2.setContentAreaFilled(false);
+        generar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generar2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Reporte2Layout = new javax.swing.GroupLayout(Reporte2);
         Reporte2.setLayout(Reporte2Layout);
@@ -959,6 +964,16 @@ public class PrincipalReportes extends javax.swing.JPanel {
             Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_generar6ActionPerformed
+
+    private void generar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar2ActionPerformed
+        try {
+            Reportes.ReportePromedioProduccionMensual(conector.conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generar2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

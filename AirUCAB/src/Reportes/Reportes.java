@@ -127,4 +127,13 @@ public class Reportes {
         ver.setTitle("Media de Aviones Mensualmente");
         ver.setVisible(true);
     }
+    
+    public static void ReportePromedioProduccionMensual(Connection c) throws SQLException,JRException {
+        JasperReport reporte = null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/PromedioProduccionMensual.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
+        JasperViewer ver= new JasperViewer(print,false);
+        ver.setTitle("Promedio de producción mensual");
+        ver.setVisible(true);
+    }
 }
