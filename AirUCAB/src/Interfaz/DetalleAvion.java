@@ -104,11 +104,12 @@ public class DetalleAvion extends javax.swing.JPanel {
         jLabel23 = new javax.swing.JLabel();
         jcbPrueba = new javax.swing.JComboBox<>();
         jLabel24 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        jlEstimado = new javax.swing.JLabel();
         jcbEstatus = new javax.swing.JComboBox<>();
         jtfFechaRealizacion = new javax.swing.JTextField();
         jlErrorFecha = new javax.swing.JLabel();
         bAddInf = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaPiezas = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
@@ -116,6 +117,7 @@ public class DetalleAvion extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jtfCantidad = new javax.swing.JTextField();
         botonVolver = new javax.swing.JButton();
+        jl = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(870, 610));
         setOpaque(false);
@@ -201,9 +203,9 @@ public class DetalleAvion extends javax.swing.JPanel {
         jLabel24.setText("Estatus:");
         jLabel24.setToolTipText("");
 
-        jLabel21.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel21.setText("Fecha Realizacion:");
-        jLabel21.setToolTipText("");
+        jlEstimado.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jlEstimado.setText("Estimado:");
+        jlEstimado.setToolTipText("");
 
         jcbEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -220,6 +222,10 @@ public class DetalleAvion extends javax.swing.JPanel {
             }
         });
 
+        jLabel25.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel25.setText("Fecha Realizacion:");
+        jLabel25.setToolTipText("");
+
         javax.swing.GroupLayout panelNuevaLayout = new javax.swing.GroupLayout(panelNueva);
         panelNueva.setLayout(panelNuevaLayout);
         panelNuevaLayout.setHorizontalGroup(
@@ -233,30 +239,32 @@ public class DetalleAvion extends javax.swing.JPanel {
                         .addComponent(bAddInf, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelNuevaLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addGroup(panelNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelNuevaLayout.createSequentialGroup()
-                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jcbEstatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(panelNuevaLayout.createSequentialGroup()
+                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jcbPrueba, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelNuevaLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelNuevaLayout.createSequentialGroup()
                                 .addComponent(jtfFechaRealizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jlErrorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(21, Short.MAX_VALUE))
-                            .addGroup(panelNuevaLayout.createSequentialGroup()
-                                .addGroup(panelNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(panelNuevaLayout.createSequentialGroup()
-                                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jcbEstatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(panelNuevaLayout.createSequentialGroup()
-                                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jcbPrueba, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))))
+                                .addComponent(jlErrorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(21, Short.MAX_VALUE))))
         );
         panelNuevaLayout.setVerticalGroup(
             panelNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNuevaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelNuevaLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panelNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bAddInf, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -270,10 +278,11 @@ public class DetalleAvion extends javax.swing.JPanel {
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfFechaRealizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlErrorFecha))
-                .addContainerGap())
+                    .addComponent(jlErrorFecha)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(jlEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         tablaPiezas.setModel(new javax.swing.table.DefaultTableModel(
@@ -345,7 +354,7 @@ public class DetalleAvion extends javax.swing.JPanel {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -361,6 +370,10 @@ public class DetalleAvion extends javax.swing.JPanel {
                 botonVolverActionPerformed(evt);
             }
         });
+
+        jl.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jl.setText("Fecha Compra:");
+        jl.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -380,21 +393,6 @@ public class DetalleAvion extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jtfFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jtfProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jtfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(306, 306, 306))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -407,7 +405,24 @@ public class DetalleAvion extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(panelInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap())))))
+                                .addContainerGap())
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jtfProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jtfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jtfFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jl, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(86, 86, 86))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,7 +451,9 @@ public class DetalleAvion extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jtfFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -460,86 +477,12 @@ public class DetalleAvion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        /*
-        int fk_lugar = 0;
-        if (c==null){
-           Cliente c = new Cliente(Integer.parseInt(jtCodigo.getText()),jtfMaterial.getText(),Integer.parseInt(jtfProveedor.getText()),Date.valueOf(jtfFechaCompra.getText()),fk_lugar);
-           c.agregarADB(conector);
-           new Thread(new MensajeUI(panelMensaje,"Cliente agregado exitosamente",1)).start();
-        }
-        else{
-            c.setCli_rif(Integer.parseInt(jtCodigo.getText()));
-            c.setCli_nombre(jtfMaterial.getText());
-            c.setCli_monto_acreditado(Integer.parseInt(jtfProveedor.getText()));
-            c.setCli_fecha_inicio(Date.valueOf(jtfFechaCompra.getText()));
-            c.setFk_lug_codigo(fk_lugar);
-            c.modificarEnDB(conector);
-            new Thread(new MensajeUI(panelMensaje,"Cliente modificado exitosamente",1)).start();
-        }
-        
-        if(pru_lot.pruebasListasLote(conector, l.getLot_codigo())){
-            PrincipalLotes nuevoPanel = new PrincipalLotes(conector,contenedor,panelMensaje);
-            contenedor.removeAll();
-            contenedor.add(nuevoPanel);
-            contenedor.updateUI();     
-            //new Thread(new MensajeUI(panelMensaje,"Se han cargado al inventario los materiales",0)).start();
-        }
-        else{
-            new Thread(new MensajeUI(panelMensaje,"Aun no se han completado todas las pruebas",0)).start();
-        
-        }
-*/
-        
-        
-        
-        
-    }//GEN-LAST:event_botonGuardarActionPerformed
-
-    private void bAddInfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddInfActionPerformed
-        
-        jlErrorFecha.setVisible(false);
-        boolean A = Comprobador.ComprobarDate(jtfFechaRealizacion, jlErrorFecha);
-        if (A) {
-            if(jcbPrueba.getSelectedIndex()>0 && jcbEstatus.getSelectedIndex()>0){
-                Pru_aer relacion = Pru_aer.relacionDada(conector,jcbPrueba.getSelectedIndex(), a.getAer_codigo());
-                if(relacion == null){
-                    relacion = new Pru_aer( Date.valueOf(jtfFechaRealizacion.getText()),
-                    jcbPrueba.getSelectedIndex(),jcbEstatus.getSelectedIndex(),a.getAer_codigo());
-                    relacion.agregarADB(conector);
-                }
-                else{
-                    relacion.setFk_est_codigo(jcbEstatus.getSelectedIndex());
-                    relacion.setPru_aer_fecha_realizacion(Date.valueOf(jtfFechaRealizacion.getText()));
-                    relacion.modificarEnDB(conector);
-                }
-            }
-            Pru_aer.llenarTablaAvion(conector, tablaPruebas, a.getAer_codigo());
-        }else {new Thread(new MensajeUI(panelMensaje,"Los datos ingresados no son correctos",0)).start();}
-
-    }//GEN-LAST:event_bAddInfActionPerformed
-
-    private void tablaPruebasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPruebasMouseClicked
-        int fila = tablaPruebas.getSelectedRow();
-        if (fila>=0){
-            int id = (Integer) tablaPruebas.getValueAt(fila, 0);
-            Pru_aer pa = Pru_aer.buscarPorCodigo(conector, id);
-            jcbPrueba.setSelectedIndex(pa.getFk_pru_codigo());
-            jcbEstatus.setSelectedIndex(pa.getFk_est_codigo());
-            jtfFechaRealizacion.setText(pa.getPru_aer_fecha_realizacion().toString());
-        }
-    }//GEN-LAST:event_tablaPruebasMouseClicked
-
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         PrincipalAviones nuevoPanel = new PrincipalAviones(conector,contenedor,panelMensaje,permisos);
         contenedor.removeAll();
         contenedor.add(nuevoPanel);
-        contenedor.updateUI();    
+        contenedor.updateUI();
     }//GEN-LAST:event_botonVolverActionPerformed
-
-    private void tablaPiezasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPiezasMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaPiezasMouseClicked
 
     private void jbModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificar1ActionPerformed
         int fila = tablaPiezas.getSelectedRow();
@@ -554,6 +497,77 @@ public class DetalleAvion extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jbModificar1ActionPerformed
 
+    private void tablaPiezasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPiezasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaPiezasMouseClicked
+
+    private void bAddInfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddInfActionPerformed
+
+        jlErrorFecha.setVisible(false);
+        boolean A = Comprobador.ComprobarDate(jtfFechaRealizacion, jlErrorFecha);
+        if (A) {
+            if(jcbPrueba.getSelectedIndex()>0 && jcbEstatus.getSelectedIndex()>0){
+                Pru_aer relacion = Pru_aer.relacionDada(conector,jcbPrueba.getSelectedIndex(), a.getAer_codigo());
+                if(relacion == null){
+                    relacion = new Pru_aer( Date.valueOf(jtfFechaRealizacion.getText()),
+                        jcbPrueba.getSelectedIndex(),jcbEstatus.getSelectedIndex(),a.getAer_codigo());
+                    relacion.agregarADB(conector);
+                }
+                else{
+                    relacion.setFk_est_codigo(jcbEstatus.getSelectedIndex());
+                    relacion.setPru_aer_fecha_realizacion(Date.valueOf(jtfFechaRealizacion.getText()));
+                    relacion.modificarEnDB(conector);
+                }
+            }
+            Pru_aer.llenarTablaAvion(conector, tablaPruebas, a.getAer_codigo());
+        }else {new Thread(new MensajeUI(panelMensaje,"Los datos ingresados no son correctos",0)).start();}
+    }//GEN-LAST:event_bAddInfActionPerformed
+
+    private void tablaPruebasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPruebasMouseClicked
+        int fila = tablaPruebas.getSelectedRow();
+        if (fila>=0){
+            int id = (Integer) tablaPruebas.getValueAt(fila, 0);
+            Pru_aer pa = Pru_aer.buscarPorCodigo(conector, id);
+            jlEstimado.setText("Estimado: "+pa.getPru_aer_fecha_estimada().toString());
+            jcbPrueba.setSelectedIndex(pa.getFk_pru_codigo());
+            jcbEstatus.setSelectedIndex(pa.getFk_est_codigo());
+            jtfFechaRealizacion.setText(pa.getPru_aer_fecha_realizacion().toString());
+        }
+    }//GEN-LAST:event_tablaPruebasMouseClicked
+
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        /*
+        int fk_lugar = 0;
+        if (c==null){
+            Cliente c = new Cliente(Integer.parseInt(jtCodigo.getText()),jtfMaterial.getText(),Integer.parseInt(jtfProveedor.getText()),Date.valueOf(jtfFechaCompra.getText()),fk_lugar);
+            c.agregarADB(conector);
+            new Thread(new MensajeUI(panelMensaje,"Cliente agregado exitosamente",1)).start();
+        }
+        else{
+            c.setCli_rif(Integer.parseInt(jtCodigo.getText()));
+            c.setCli_nombre(jtfMaterial.getText());
+            c.setCli_monto_acreditado(Integer.parseInt(jtfProveedor.getText()));
+            c.setCli_fecha_inicio(Date.valueOf(jtfFechaCompra.getText()));
+            c.setFk_lug_codigo(fk_lugar);
+            c.modificarEnDB(conector);
+            new Thread(new MensajeUI(panelMensaje,"Cliente modificado exitosamente",1)).start();
+        }
+
+        if(pru_lot.pruebasListasLote(conector, l.getLot_codigo())){
+            PrincipalLotes nuevoPanel = new PrincipalLotes(conector,contenedor,panelMensaje);
+            contenedor.removeAll();
+            contenedor.add(nuevoPanel);
+            contenedor.updateUI();
+            //new Thread(new MensajeUI(panelMensaje,"Se han cargado al inventario los materiales",0)).start();
+        }
+        else{
+            new Thread(new MensajeUI(panelMensaje,"Aun no se han completado todas las pruebas",0)).start();
+
+        }
+        */
+
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAddInf;
@@ -561,10 +575,10 @@ public class DetalleAvion extends javax.swing.JPanel {
     private javax.swing.JButton botonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -578,7 +592,9 @@ public class DetalleAvion extends javax.swing.JPanel {
     private javax.swing.JButton jbModificar1;
     private javax.swing.JComboBox<String> jcbEstatus;
     private javax.swing.JComboBox<String> jcbPrueba;
+    private javax.swing.JLabel jl;
     private javax.swing.JLabel jlErrorFecha;
+    private javax.swing.JLabel jlEstimado;
     private javax.swing.JTextField jtCodigo;
     private javax.swing.JTextField jtfCantidad;
     private javax.swing.JTextField jtfFechaCompra;

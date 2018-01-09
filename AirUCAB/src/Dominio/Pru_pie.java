@@ -24,6 +24,7 @@ import javax.swing.JTable;
 public class Pru_pie {
     
     int pru_pie_codigo;
+    Date pru_pie_fecha_estimada;
     Date pru_pie_fecha_realizacion;
     int fk_pru_codigo;
     int fk_pie_codigo;
@@ -45,6 +46,15 @@ public class Pru_pie {
     }
 
     public Pru_pie(Date pru_pie_fecha_realizacion, int fk_pru_codigo, int fk_pie_codigo, int fk_est_codigo) {
+        this.pru_pie_fecha_realizacion = pru_pie_fecha_realizacion;
+        this.fk_pru_codigo = fk_pru_codigo;
+        this.fk_pie_codigo = fk_pie_codigo;
+        this.fk_est_codigo = fk_est_codigo;
+    }
+
+    public Pru_pie(int pru_pie_codigo, Date pru_pie_fecha_estimada, Date pru_pie_fecha_realizacion, int fk_pru_codigo, int fk_pie_codigo, int fk_est_codigo) {
+        this.pru_pie_codigo = pru_pie_codigo;
+        this.pru_pie_fecha_estimada = pru_pie_fecha_estimada;
         this.pru_pie_fecha_realizacion = pru_pie_fecha_realizacion;
         this.fk_pru_codigo = fk_pru_codigo;
         this.fk_pie_codigo = fk_pie_codigo;
@@ -125,14 +135,14 @@ public class Pru_pie {
     public static Pru_pie relacionDada(ConectorDB conector, int pru_codigo, int pie_codigo){
        Pru_pie respuesta = null; 
         try{
-            String stm = "SELECT pru_pie_codigo, pru_pie_fecha_realizacion, fk_pru_codigo, fk_pie_codigo, fk_est_codigo FROM pru_pie "
+            String stm = "SELECT pru_pie_codigo, pru_pie_fecha_estimada,pru_pie_fecha_realizacion, fk_pru_codigo, fk_pie_codigo, fk_est_codigo FROM pru_pie "
                     + "WHERE fk_pie_codigo=? AND fk_pru_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, pie_codigo);
             pst.setInt(2, pru_codigo);
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
-                respuesta = new Pru_pie(rs.getInt("pru_pie_codigo"),rs.getDate("pru_pie_fecha_realizacion"),rs.getInt("fk_pru_codigo"),rs.getInt("fk_pie_codigo"),rs.getInt("fk_est_codigo"));
+                respuesta = new Pru_pie(rs.getInt("pru_pie_codigo"),rs.getDate("pru_pie_fecha_estimada"),rs.getDate("pru_pie_fecha_realizacion"),rs.getInt("fk_pru_codigo"),rs.getInt("fk_pie_codigo"),rs.getInt("fk_est_codigo"));
             }
             pst.close();
         }catch (SQLException ex){
@@ -161,7 +171,7 @@ public class Pru_pie {
     }
     
     public static void llenarTablaDePruebas(ConectorDB conector, JTable jTable, int id){
-        ResultSet rs =obtenerResultSet(conector,"SELECT pru_pie_codigo as Codigo ,pru_pie_fecha_realizacion as Fecha_Realizacion,pru_nombre as Prueba,est_nombre as Estatus"
+        ResultSet rs =obtenerResultSet(conector,"SELECT pru_pie_codigo as Codigo ,pru_pie_fecha_estimada as Fecha_Estimada,pru_pie_fecha_realizacion as Fecha_Realizacion,pru_nombre as Prueba,est_nombre as Estatus"
                 + " From Pru_pie, prueba, estatus"
                 + " WHERE fk_pru_codigo=pru_codigo AND fk_est_codigo=est_codigo "
                 + " AND fk_pie_codigo="+String.valueOf(id));
@@ -172,11 +182,11 @@ public class Pru_pie {
     public static Pru_pie buscarPorCodigo(ConectorDB conector, int codigo){
         Pru_pie tp = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT pru_pie_codigo,pru_pie_fecha_realizacion, fk_pru_codigo,fk_pie_codigo,fk_est_codigo FROM pru_pie WHERE pru_pie_codigo=?");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT pru_pie_codigo,pru_pie_fecha_estimada,pru_pie_fecha_realizacion, fk_pru_codigo,fk_pie_codigo,fk_est_codigo FROM pru_pie WHERE pru_pie_codigo=?");
             pst.setInt(1, codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                tp = new Pru_pie(rs.getInt("pru_pie_codigo"),rs.getDate("pru_pie_fecha_realizacion"),rs.getInt("fk_pru_codigo"),rs.getInt("fk_pie_codigo"),rs.getInt("fk_est_codigo"));
+                tp = new Pru_pie(rs.getInt("pru_pie_codigo"),rs.getDate("pru_pie_fecha_estimada"),rs.getDate("pru_pie_fecha_realizacion"),rs.getInt("fk_pru_codigo"),rs.getInt("fk_pie_codigo"),rs.getInt("fk_est_codigo"));
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
@@ -223,6 +233,15 @@ public class Pru_pie {
     public void setFk_est_codigo(int fk_est_codigo) {
         this.fk_est_codigo = fk_est_codigo;
     }
+
+    public void setPru_pie_fecha_estimada(Date pru_pie_fecha_estimada) {
+        this.pru_pie_fecha_estimada = pru_pie_fecha_estimada;
+    }
+
+    public Date getPru_pie_fecha_estimada() {
+        return pru_pie_fecha_estimada;
+    }
+    
     
     
 }

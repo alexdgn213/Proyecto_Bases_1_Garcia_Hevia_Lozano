@@ -25,7 +25,7 @@ public class Pru_aer {
     
     int pru_aer_codigo;
     Date pru_aer_fecha_realizacion;
-    Date pru_aer_fecha_estamada;
+    Date pru_aer_fecha_estimada;
     int fk_pru_codigo;
     int fk_aer_codigo;
     int fk_est_codigo;
@@ -52,6 +52,17 @@ public class Pru_aer {
         this.fk_aer_codigo = fk_aer_codigo;
         this.fk_est_codigo = fk_est_codigo;
     }
+
+    public Pru_aer(int pru_aer_codigo, Date pru_aer_fecha_estamada, Date pru_aer_fecha_realizacion, int fk_pru_codigo, int fk_aer_codigo, int fk_est_codigo) {
+        this.pru_aer_codigo = pru_aer_codigo;
+        this.pru_aer_fecha_realizacion = pru_aer_fecha_realizacion;
+        this.pru_aer_fecha_estimada = pru_aer_fecha_estamada;
+        this.fk_pru_codigo = fk_pru_codigo;
+        this.fk_aer_codigo = fk_aer_codigo;
+        this.fk_est_codigo = fk_est_codigo;
+    }
+    
+    
     
     public void agregarADB(ConectorDB conector){
         try{
@@ -159,14 +170,14 @@ public class Pru_aer {
      public static Pru_aer relacionDada(ConectorDB conector, int pru_codigo, int aer_codigo){
        Pru_aer respuesta = null; 
         try{
-            String stm = "SELECT pru_aer_codigo, pru_aer_fecha_realizacion, fk_pru_codigo, fk_aer_codigo, fk_est_codigo FROM pru_aer "
+            String stm = "SELECT pru_aer_codigo, pru_aer_fecha_realizacion,pru_aer_fecha_estimada, fk_pru_codigo, fk_aer_codigo, fk_est_codigo FROM pru_aer "
                     + "WHERE fk_aer_codigo=? AND fk_pru_codigo=?";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setInt(1, aer_codigo);
             pst.setInt(2, pru_codigo);
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
-                respuesta = new Pru_aer(rs.getInt("pru_aer_codigo"),rs.getDate("pru_aer_fecha_realizacion"),rs.getInt("fk_pru_codigo"),rs.getInt("fk_aer_codigo"),rs.getInt("fk_est_codigo"));
+                respuesta = new Pru_aer(rs.getInt("pru_aer_codigo"),rs.getDate("pru_aer_fecha_estamada"),rs.getDate("pru_aer_fecha_realizacion"),rs.getInt("fk_pru_codigo"),rs.getInt("fk_aer_codigo"),rs.getInt("fk_est_codigo"));
             }
             pst.close();
         }catch (SQLException ex){
@@ -176,13 +187,13 @@ public class Pru_aer {
     }
     
     public static void llenarTabla(ConectorDB conector, JTable jTable){
-        ResultSet rs =obtenerResultSet(conector,"SELECT pru_aer_codigo as Codigo,pru_aer_fecha_realizacion as Fecha_Realizacion,fk_pru_codigo as Codigo_Prueba,fk_aer_codigo as Codigo_Pieza,fk_est_codigo as Codigo_Estatus FROM Pru_aer");
+        ResultSet rs =obtenerResultSet(conector,"SELECT pru_aer_codigo as Codigo,pru_aer_fecha_estimada as Fecha_Estimada,pru_aer_fecha_realizacion as Fecha_Realizacion,fk_pru_codigo as Codigo_Prueba,fk_aer_codigo as Codigo_Pieza,fk_est_codigo as Codigo_Estatus FROM Pru_aer");
         AdaptadorSQLUI.llenarTabla(jTable, rs);   
     }
    
     
     public static void llenarTablaAvion(ConectorDB conector, JTable jTable, int id){
-        ResultSet rs =obtenerResultSet(conector,"SELECT pa.pru_aer_codigo as Codigo,pa.pru_aer_fecha_realizacion as Fecha_Realizacion,p.pru_nombre as Prueba,e.est_nombre as Estatus "
+        ResultSet rs =obtenerResultSet(conector,"SELECT pa.pru_aer_codigo as Codigo,pru_aer_fecha_estimada as Fecha_Estimada,pa.pru_aer_fecha_realizacion as Fecha_Realizacion,p.pru_nombre as Prueba,e.est_nombre as Estatus "
                 + " FROM pru_aer pa left join prueba p on pa.fk_pru_codigo=p.pru_codigo left join estatus e on e.est_codigo=pa.fk_est_codigo"
                 + " WHERE fk_aer_codigo="+String.valueOf(id));
         AdaptadorSQLUI.llenarTabla(jTable, rs);   
@@ -191,11 +202,11 @@ public class Pru_aer {
     public static Pru_aer buscarPorCodigo(ConectorDB conector, int codigo){
         Pru_aer tp = null;
         try {
-            PreparedStatement pst = conector.conexion.prepareStatement("SELECT pru_aer_codigo,pru_aer_fecha_realizacion, fk_pru_codigo,fk_aer_codigo,fk_est_codigo FROM Pru_aer WHERE pru_aer_codigo=?");
+            PreparedStatement pst = conector.conexion.prepareStatement("SELECT pru_aer_codigo,pru_aer_fecha_estimada,pru_aer_fecha_realizacion, fk_pru_codigo,fk_aer_codigo,fk_est_codigo FROM Pru_aer WHERE pru_aer_codigo=?");
             pst.setInt(1, codigo);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                tp = new Pru_aer(rs.getInt("pru_aer_codigo"),rs.getDate("pru_aer_fecha_realizacion"),rs.getInt("fk_pru_codigo"),rs.getInt("fk_aer_codigo"),rs.getInt("fk_est_codigo"));
+                tp = new Pru_aer(rs.getInt("pru_aer_codigo"),rs.getDate("pru_aer_fecha_estimada"),rs.getDate("pru_aer_fecha_realizacion"),rs.getInt("fk_pru_codigo"),rs.getInt("fk_aer_codigo"),rs.getInt("fk_est_codigo"));
             }
         } catch (SQLException ex) {
             System.out.print(ex.toString());
@@ -242,6 +253,15 @@ public class Pru_aer {
     public void setFk_est_codigo(int fk_est_codigo) {
         this.fk_est_codigo = fk_est_codigo;
     }
+
+    public Date getPru_aer_fecha_estimada() {
+        return pru_aer_fecha_estimada;
+    }
+
+    public void setPru_aer_fecha_estimada(Date pru_aer_fecha_estamada) {
+        this.pru_aer_fecha_estimada = pru_aer_fecha_estamada;
+    }
+    
     
     
 }
