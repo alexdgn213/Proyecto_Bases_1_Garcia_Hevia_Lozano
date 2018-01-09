@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.Calendar;
 import javax.swing.JTable;
 
 /**
@@ -24,6 +25,7 @@ public class Pru_aer {
     
     int pru_aer_codigo;
     Date pru_aer_fecha_realizacion;
+    Date pru_aer_fecha_estamada;
     int fk_pru_codigo;
     int fk_aer_codigo;
     int fk_est_codigo;
@@ -53,12 +55,29 @@ public class Pru_aer {
     
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO Pru_aer(pru_aer_fecha_realizacion,fk_pru_codigo,fk_aer_codigo,fk_est_codigo) VALUES(?,?,?,?)";
+            int dias = 0;
+            try {
+            PreparedStatement pst = conector.conexion.prepareStatement("select pru_tiempo_estimado from prueba where pru_codigo = "+String.valueOf(fk_pru_codigo));
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                dias=rs.getInt("pru_tiempo_estimado");
+            };
+            } catch (SQLException ex) {
+                System.out.print(ex.toString());
+            }
+            String stm = "INSERT INTO Pru_aer(pru_aer_fecha_realizacion,pru_aer_fecha_estimada,fk_pru_codigo,fk_aer_codigo,fk_est_codigo) " +
+            "VALUES (?,?,?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setDate(1,pru_aer_fecha_realizacion);
-            pst.setInt(2, fk_pru_codigo);
-            pst.setInt(3,fk_aer_codigo);
-            pst.setInt(4,fk_est_codigo);
+            Calendar c = Calendar.getInstance();
+            c.setTime(pru_aer_fecha_realizacion);
+            c.add(Calendar.DATE, dias);
+            Date fechaFinal = new Date(c.getTimeInMillis());
+            pst.setDate(1,fechaFinal);
+            pst.setDate(2,fechaFinal);
+            pst.setInt(3, fk_pru_codigo);
+            pst.setInt(4,fk_aer_codigo);
+            pst.setInt(5,fk_est_codigo);
+            //System.out.print(pst);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){

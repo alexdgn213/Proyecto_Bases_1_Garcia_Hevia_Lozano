@@ -35,7 +35,7 @@ public class Ensamblaje{
         this.ens_descripcion = ens_descripcion;
         this.fk_zon_codigo = fk_zon_codigo;
         this.fk_fab_codigo = fk_fab_codigo;
-	      this.fk_pie_codigo = fk_pie_codigo;
+	this.fk_pie_codigo = fk_pie_codigo;
         this.fk_tip_codigo = fk_tip_codigo;
         this.fk_mot_codigo = fk_mot_codigo;
         this.fk_est_codigo = fk_est_codigo;
@@ -66,6 +66,7 @@ public class Ensamblaje{
 
     public void agregarADB(ConectorDB conector){
         try{
+            
             String stm = "INSERT INTO Ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_est_codigo) VALUES(?,?,?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
             pst.setString(1, ens_descripcion);
