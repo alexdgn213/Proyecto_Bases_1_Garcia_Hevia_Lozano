@@ -59,7 +59,7 @@
 	<pageFooter>
 		<band height="54" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-14" y="0" width="621" height="54" backcolor="#3F51B5" uuid="a3f50c52-419d-4006-960d-d89802801ce2"/>
+				<reportElement mode="Opaque" x="-35" y="0" width="621" height="54" backcolor="#3F51B5" uuid="a3f50c52-419d-4006-960d-d89802801ce2"/>
 				<staticText>
 					<reportElement x="30" y="12" width="555" height="31" forecolor="#FFFFFF" uuid="2ed4a7bf-69d4-4779-8aa2-c8af8211cede"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">

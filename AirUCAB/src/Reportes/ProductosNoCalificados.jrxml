@@ -94,7 +94,8 @@ FROM
      INNER JOIN "public"."pru_lot" pru_lot ON lote_material."lot_codigo" = pru_lot."fk_lot_codigo"
      INNER JOIN "public"."estatus" estatus ON pru_lot."fk_est_codigo" = estatus."est_codigo"
 WHERE estatus."est_nombre"='Cancelado' AND pru_lot."fk_pru_codigo"='1'
-GROUP BY  material."mat_nombre"]]>
+GROUP BY  material."mat_nombre"
+LIMIT 1;]]>
 	</queryString>
 	<field name="material_mat_nombre" class="java.lang.String"/>
 	<field name="lote_material_lot_cantidad" class="java.lang.Long"/>
@@ -104,37 +105,20 @@ GROUP BY  material."mat_nombre"]]>
 	<title>
 		<band height="79" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-52" y="-195" width="657" height="109" backcolor="#3F51B5" uuid="0b275e46-88ea-477e-8a9c-4c98c72753d9"/>
+				<reportElement mode="Opaque" x="-28" y="-30" width="657" height="109" backcolor="#3F51B5" uuid="a39c5483-ba77-4dcc-a267-a38e7caf3622"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="62" y="30" width="109" height="20" forecolor="#FFFFFF" uuid="d0ed34b5-c78c-4628-af93-4939f3f67e68"/>
+					<reportElement x="30" y="30" width="109" height="20" forecolor="#FFFFFF" uuid="526d413a-4c18-4cc8-8800-85d750de3730"/>
 					<textElement>
 						<font fontName="Roboto" size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="62" y="66" width="555" height="31" forecolor="#FFFFFF" uuid="622e9ba3-6ef9-47d0-80d6-78696c52fb04"/>
+					<reportElement x="30" y="64" width="555" height="31" forecolor="#FFFFFF" uuid="e263140d-8896-4125-82dc-e797caea8fd1"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Roboto" size="24" isBold="true"/>
 					</textElement>
-					<text><![CDATA[TOP 10 CLIENTES]]></text>
-				</staticText>
-			</frame>
-			<frame>
-				<reportElement mode="Opaque" x="-52" y="-195" width="657" height="109" backcolor="#3F51B5" uuid="55ae9656-1c50-4cf1-b2ca-c2318b3cd2ed"/>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="62" y="30" width="109" height="20" forecolor="#FFFFFF" uuid="5bded855-da06-4026-b361-07e6e7d28ad4"/>
-					<textElement>
-						<font fontName="Roboto" size="12"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
-				<staticText>
-					<reportElement x="62" y="66" width="555" height="31" forecolor="#FFFFFF" uuid="17147851-75a3-417f-a3c1-653773ab502e"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Roboto" size="24" isBold="true"/>
-					</textElement>
-					<text><![CDATA[TOP 10 CLIENTES]]></text>
+					<text><![CDATA[PRODUCTOS NO CALIFICADOS]]></text>
 				</staticText>
 			</frame>
 		</band>
@@ -197,23 +181,6 @@ GROUP BY  material."mat_nombre"]]>
 					</jr:column>
 				</jr:table>
 			</componentElement>
-			<frame>
-				<reportElement mode="Opaque" x="-62" y="-179" width="657" height="109" backcolor="#3F51B5" uuid="ed3266e5-da51-46bc-9396-049bb378bf45"/>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="66" y="36" width="109" height="20" forecolor="#FFFFFF" uuid="040d6e4d-37d4-496d-b4f4-8532f9efa5d4"/>
-					<textElement>
-						<font fontName="Roboto" size="12"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
-				<staticText>
-					<reportElement x="62" y="64" width="555" height="31" forecolor="#FFFFFF" uuid="6b828a75-b794-42b8-8221-3cbf6b7fd562"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Roboto" size="24" isBold="true"/>
-					</textElement>
-					<text><![CDATA[PRODUCTOS NO CALIFICADOS]]></text>
-				</staticText>
-			</frame>
 		</band>
 	</detail>
 	<columnFooter>

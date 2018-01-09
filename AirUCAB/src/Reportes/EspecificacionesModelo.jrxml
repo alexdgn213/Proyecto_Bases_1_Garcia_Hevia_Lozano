@@ -235,94 +235,107 @@ where mod_codigo=$P{parVar12}]]>
 	</subDataset>
 	<parameter name="parVar1" class="java.lang.Integer"/>
 	<queryString>
-		<![CDATA[select mod_nombre as elNombre from modelo_aeronave]]>
+		<![CDATA[SELECT
+     caracteristica."car_nombre" AS caracteristica_car_nombre,
+     mod_car."mod_car_valor" AS mod_car_mod_car_valor,
+     mod_car."mod_car_descripcion" AS mod_car_mod_car_descripcion
+FROM
+     "public"."caracteristica" caracteristica INNER JOIN "public"."mod_car" mod_car ON caracteristica."car_codigo" = mod_car."fk_car_codigo"
+     INNER JOIN "public"."modelo_aeronave" modelo_aeronave ON mod_car."fk_mod_codigo" = modelo_aeronave."mod_codigo"
+where mod_codigo=$P{parVar1}]]>
 	</queryString>
-	<field name="elnombre" class="java.lang.String"/>
+	<field name="caracteristica_car_nombre" class="java.lang.String"/>
+	<field name="mod_car_mod_car_valor" class="java.lang.Float"/>
+	<field name="mod_car_mod_car_descripcion" class="java.lang.String"/>
 	<variable name="variable1" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="133" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-37" y="-36" width="657" height="109" backcolor="#3F51B5" uuid="3edb45a5-3808-4b33-8162-b243fd150c6a"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="46" y="30" width="109" height="20" forecolor="#FFFFFF" uuid="39cb677c-591e-415c-bc84-4337349d27d5"/>
+					<textElement>
+						<font fontName="Roboto" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="45" y="64" width="555" height="31" forecolor="#FFFFFF" uuid="fb14506c-b1f8-4c7b-a38d-258c13536d39"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DESCRIPCION DEL MODELO]]></text>
+				</staticText>
+			</frame>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="35" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="100" height="20" uuid="045952f1-1564-4899-8ffc-a01f4a9035e9"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{parVar1}]]></textFieldExpression>
 			</textField>
 		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
-			<componentElement>
-				<reportElement key="table 7" style="table 7" x="100" y="45" width="360" height="80" uuid="ea94ce5f-b3b5-4d48-b9a3-6c48d293ae5d"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Avion" uuid="95cb61a9-bca8-4a13-b874-159bd87d5b27">
-						<datasetParameter name="parVar12">
-							<datasetParameterExpression><![CDATA[$P{parVar1}.intValue()]]></datasetParameterExpression>
-						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					</datasetRun>
-					<jr:column width="129" uuid="58d977f8-c721-4055-a9d4-9f886a80bcce">
-						<jr:columnHeader style="table 7_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="129" height="30" uuid="c923a3b8-d57b-4f2a-abcf-dd3f75b96d65"/>
-								<text><![CDATA[caracteristica_car_nombre]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 7_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="129" height="20" uuid="b3f16cad-6f35-462d-a51a-d577deccccbf"/>
-								<textFieldExpression><![CDATA[$F{caracteristica_car_nombre}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="112" uuid="3894aa35-0605-4dd0-9fcf-d397f9a9e9de">
-						<jr:columnHeader style="table 7_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="112" height="30" uuid="2511588b-97ae-40ac-a900-6055bab71e5a"/>
-								<text><![CDATA[mod_car_mod_car_valor]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 7_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="112" height="20" uuid="ce42b130-e180-49c1-b9b5-095d5f319d41"/>
-								<textFieldExpression><![CDATA[$F{mod_car_mod_car_valor}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="118" uuid="741292a2-cd19-43de-82ba-f040a2f14ace">
-						<jr:columnHeader style="table 7_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="118" height="30" uuid="0c18ada1-a636-46a3-8aa7-eaa9f21879b0"/>
-								<text><![CDATA[mod_car_mod_car_descripcion]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 7_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="118" height="20" uuid="5ac3c746-0034-4371-b3b8-09aa038eb7fb"/>
-								<textFieldExpression><![CDATA[$F{mod_car_mod_car_descripcion}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="63" y="0" width="100" height="20" uuid="d11b1b7a-6432-4bf7-8253-940889f16f42"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{caracteristica_car_nombre}+": "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="0" width="100" height="20" uuid="b21d9e1f-387b-4714-a451-789e179a362c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mod_car_mod_car_valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="263" y="0" width="100" height="20" uuid="94474c3a-a785-49dc-b256-c4790930435f"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mod_car_mod_car_descripcion}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-26" y="0" width="621" height="54" backcolor="#3F51B5" uuid="90e51a2b-0712-414f-bf49-8850b2c2092a"/>
+				<staticText>
+					<reportElement x="30" y="12" width="555" height="31" forecolor="#FFFFFF" uuid="2eaa953a-2c93-49e7-a558-4814b97a0f7a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Roboto" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[AirUCAB - Reportes]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="508" y="14" width="71" height="29" forecolor="#FFFFFF" uuid="d895f80d-f96e-4461-8817-a47349fe1a04"/>
+					<textElement>
+						<font fontName="Roboto" size="24"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>
