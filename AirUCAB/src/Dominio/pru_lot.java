@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.Calendar;
 import javax.swing.JTable;
 
 /**
@@ -52,12 +53,27 @@ public class pru_lot {
     
     public void agregarADB(ConectorDB conector){
         try{
-            String stm = "INSERT INTO pru_lot(pru_lot_fecha_realizacion,fk_pru_codigo,fk_lot_codigo,fk_est_codigo) VALUES(?,?,?,?)";
+            int dias = 0;
+            try {
+            PreparedStatement pst = conector.conexion.prepareStatement("select pru_tiempo_estimado from prueba where pru_codigo = "+String.valueOf(fk_pru_codigo));
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                dias=rs.getInt("pru_tiempo_estimado");
+            };
+            } catch (SQLException ex) {
+                System.out.print(ex.toString());
+            }
+            String stm = "INSERT INTO pru_lot(pru_lot_fecha_realizacion,pru_lot_fecha_estimada,fk_pru_codigo,fk_lot_codigo,fk_est_codigo) VALUES(?,?,?,?,?)";
             PreparedStatement pst = conector.conexion.prepareStatement(stm);
-            pst.setDate(1, pru_lot_fecha_realizacion);
-            pst.setInt(2,fk_pru_codigo);
-            pst.setInt(3,fk_lot_codigo);
-            pst.setInt(4,fk_est_codigo);
+            Calendar c = Calendar.getInstance();
+            c.setTime(pru_lot_fecha_realizacion);
+            c.add(Calendar.DATE, dias);
+            Date fechaFinal = new Date(c.getTimeInMillis());
+            pst.setDate(1,fechaFinal);
+            pst.setDate(2,fechaFinal);
+            pst.setInt(3,fk_pru_codigo);
+            pst.setInt(4,fk_lot_codigo);
+            pst.setInt(5,fk_est_codigo);
             pst.executeUpdate();
             pst.close();
         }catch (SQLException ex){

@@ -370,6 +370,7 @@ create table prueba
 	pru_codigo serial not null,
 	pru_nombre varchar(80) not null,
 	pru_descripcion varchar(90) not null,
+    pru_tiempo_estimado int not null,
 	constraint pk_prueba primary key(pru_codigo)
 );
 
