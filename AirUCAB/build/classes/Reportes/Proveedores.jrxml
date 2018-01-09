@@ -61,7 +61,7 @@
      proveedor."pro_rif" AS proveedor_pro_rif,
      proveedor."pro_nombre" AS proveedor_pro_nombre,
      proveedor."pro_monto_acreditado" AS proveedor_pro_monto_acreditado,
-     date(proveedor."pro_fecha_inicio") AS proveedor_pro_fecha_inicio,
+     to_char(date(proveedor."pro_fecha_inicio"),'DD-MM-YYYY') AS proveedor_pro_fecha_inicio,
      lugar."lug_nombre" AS lugar_lug_nombre
 FROM
      "public"."lugar" lugar INNER JOIN "public"."proveedor" proveedor ON lugar."lug_codigo" = proveedor."fk_lug_codigo"]]>
@@ -69,7 +69,7 @@ FROM
 		<field name="proveedor_pro_rif" class="java.lang.Integer"/>
 		<field name="proveedor_pro_nombre" class="java.lang.String"/>
 		<field name="proveedor_pro_monto_acreditado" class="java.lang.Integer"/>
-		<field name="proveedor_pro_fecha_inicio" class="java.sql.Date"/>
+		<field name="proveedor_pro_fecha_inicio" class="java.lang.String"/>
 		<field name="lugar_lug_nombre" class="java.lang.String"/>
 		<group name="proveedor_pro_rif">
 			<groupExpression><![CDATA[$F{proveedor_pro_rif}]]></groupExpression>
