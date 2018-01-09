@@ -109,4 +109,22 @@ public class Reportes {
         ver.setTitle("Inventario Mensual");
         ver.setVisible(true);
     }
+    
+    public static void ReporteProduccionAnual(Connection c) throws SQLException,JRException {
+        JasperReport reporte = null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/ProduccionAnual.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
+        JasperViewer ver= new JasperViewer(print,false);
+        ver.setTitle("Produccion Anual");
+        ver.setVisible(true);
+    }
+    
+    public static void ReporteCantidadMediaAviones(Connection c) throws SQLException,JRException {
+        JasperReport reporte = null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/CantidadMediaAviones.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
+        JasperViewer ver= new JasperViewer(print,false);
+        ver.setTitle("Media de Aviones Mensualmente");
+        ver.setVisible(true);
+    }
 }

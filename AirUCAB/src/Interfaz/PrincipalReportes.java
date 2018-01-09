@@ -142,6 +142,11 @@ public class PrincipalReportes extends javax.swing.JPanel {
 
         generar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_file_download_black_24dp_1x.png"))); // NOI18N
         generar1.setContentAreaFilled(false);
+        generar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Reporte1Layout = new javax.swing.GroupLayout(Reporte1);
         Reporte1.setLayout(Reporte1Layout);
@@ -312,6 +317,11 @@ public class PrincipalReportes extends javax.swing.JPanel {
 
         generar6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_file_download_black_24dp_1x.png"))); // NOI18N
         generar6.setContentAreaFilled(false);
+        generar6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generar6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Reporte6Layout = new javax.swing.GroupLayout(Reporte6);
         Reporte6.setLayout(Reporte6Layout);
@@ -929,6 +939,26 @@ public class PrincipalReportes extends javax.swing.JPanel {
             Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_generar9ActionPerformed
+
+    private void generar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar1ActionPerformed
+        try {
+            Reportes.ReporteProduccionAnual(conector.conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generar1ActionPerformed
+
+    private void generar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar6ActionPerformed
+        try {
+            Reportes.ReporteCantidadMediaAviones(conector.conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generar6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
