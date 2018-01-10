@@ -243,7 +243,7 @@ where mod_codigo=$P{parVar12}]]>
 FROM
      "public"."caracteristica" caracteristica INNER JOIN "public"."mod_car" mod_car ON caracteristica."car_codigo" = mod_car."fk_car_codigo"
      INNER JOIN "public"."modelo_aeronave" modelo_aeronave ON mod_car."fk_mod_codigo" = modelo_aeronave."mod_codigo"
-where mod_codigo=$P{parVar1}]]>
+where mod_nombre=$P{nombre}]]>
 	</queryString>
 	<field name="caracteristica_car_nombre" class="java.lang.String"/>
 	<field name="mod_car_mod_car_valor" class="java.lang.Float"/>
