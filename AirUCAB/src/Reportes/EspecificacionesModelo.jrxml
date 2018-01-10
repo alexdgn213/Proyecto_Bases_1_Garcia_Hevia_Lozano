@@ -235,6 +235,9 @@ where mod_codigo=$P{parVar12}]]>
 	</subDataset>
 	<parameter name="parVar1" class="java.lang.Integer"/>
 	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="modelo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{nombre}.chars()]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      caracteristica."car_nombre" AS caracteristica_car_nombre,
