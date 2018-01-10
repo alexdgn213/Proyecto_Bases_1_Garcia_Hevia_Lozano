@@ -1531,6 +1531,10 @@ INSERT INTO zona (zon_nombre, zon_descripcion, fk_fab_codigo) VALUES
 
 INSERT INTO personal (per_ci, per_nombre, per_apellido_1, per_apellido_2, per_fecha_inicio, per_titulacion, per_experiencia,per_fnac, fk_lug_codigo, fk_zon_codigo,fk_fab_codigo) VALUES
 (10000000, 'Alejandro', 'Rojas', 'Reyes', '01/03/2015', 'Ingeniero aeronautico', 'Recien graduado','03/05/1987', 1348, 1,1 ),
+(10000001, 'Edson', 'Goncalves', 'Reyes', '01/03/2015', 'Ingeniero aeronautico', 'Recien graduado','03/05/1987', 1348, 1,1 ),
+(10000002, 'Evandro', 'Goncalves', 'Pereira', '01/03/2015','Obrero', 'Recien graduado','03/05/1987', 1348, 1,1 ),
+(10000003, 'Bridi', 'Alvarado', 'Reyes', '01/07/2015', 'Ingeniera Telecom', 'Recien graduado','03/05/1987', 1348, 1,1 ),
+(10000004, 'Valeria', 'Hevia', 'Reyes', '01/03/2015', 'Comunicadora', 'Recien graduado','03/05/1987', 1348, 1,1 ),
 (20000000, 'Benito', 'Suarez', 'Ocando', '01/09/2015', 'Pintor', '7 años Toyota','08/12/1985', 1348, 2,1),
 (11212123, 'Keysi', 'Sayago', 'Gomez', '01/03/2014', 'Tecnico superior en administracion', '2 años Plumrose','12/12/1990', 476, 3,2),
 (11212312, 'Michelle', 'Gonzalez', 'Jraiche', '01/01/2006', 'Ingeniero mecánico', '4 años Vepica','08/10/1977', 476, 5,3),
@@ -2814,8 +2818,12 @@ de aviones que nosotros también fabricamos.'),
   --QUE VA en per_pru_pie_encargado? en teoria 1 es el encargado, 0 no es no?
   INSERT INTO per_pru_pie(per_pru_pie_encargado,fk_per_ci,fk_pru_codigo,fk_pie_codigo,fk_pru_pie_codigo)VALUES
   (1,11212123,3,1,1),
+  (1,10000003,3,1,1),
   (1,10000000,3,2,2),
+  (1,10000001,3,2,2),
+  (1,10000002,3,2,2),
   (1,20000000,5,3,3),
+  (1,10000004,5,3,3),
   (1,19080988,3,4,4),
   (1,10909899,5,5,5);
 
