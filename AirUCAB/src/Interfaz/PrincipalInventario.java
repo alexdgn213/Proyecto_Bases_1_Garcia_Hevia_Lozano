@@ -93,6 +93,8 @@ public class PrincipalInventario extends javax.swing.JPanel {
             }
         });
 
+        panelComprar.setOpaque(false);
+
         tablaMateriales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

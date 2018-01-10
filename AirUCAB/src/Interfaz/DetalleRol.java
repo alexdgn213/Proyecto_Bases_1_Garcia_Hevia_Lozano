@@ -116,6 +116,7 @@ public class DetalleRol extends javax.swing.JPanel {
         jLabel3.setToolTipText("");
 
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_check_black_48dp_1x.png"))); // NOI18N
+        botonGuardar.setContentAreaFilled(false);
         botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardarActionPerformed(evt);
@@ -124,6 +125,7 @@ public class DetalleRol extends javax.swing.JPanel {
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_close_black_48dp_1x.png"))); // NOI18N
         botonCancelar.setToolTipText("");
+        botonCancelar.setContentAreaFilled(false);
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActionPerformed(evt);
@@ -131,6 +133,7 @@ public class DetalleRol extends javax.swing.JPanel {
         });
 
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_delete_black_48dp_1x.png"))); // NOI18N
+        botonEliminar.setContentAreaFilled(false);
         botonEliminar.setMaximumSize(new java.awt.Dimension(69, 48));
         botonEliminar.setMinimumSize(new java.awt.Dimension(69, 48));
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +189,7 @@ public class DetalleRol extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tablaNoPuede);
 
         botonGuardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_upward_black_24dp_1x.png"))); // NOI18N
+        botonGuardar1.setContentAreaFilled(false);
         botonGuardar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardar1ActionPerformed(evt);
@@ -193,6 +197,7 @@ public class DetalleRol extends javax.swing.JPanel {
         });
 
         botonGuardar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_arrow_downward_black_24dp_1x.png"))); // NOI18N
+        botonGuardar2.setContentAreaFilled(false);
         botonGuardar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardar2ActionPerformed(evt);
@@ -255,7 +260,7 @@ public class DetalleRol extends javax.swing.JPanel {
                     .addGroup(panelMaterialesLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 758, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelMaterialesLayout.createSequentialGroup()
                         .addGap(163, 163, 163)
@@ -268,7 +273,7 @@ public class DetalleRol extends javax.swing.JPanel {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jtfRif, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -276,7 +281,7 @@ public class DetalleRol extends javax.swing.JPanel {
             .addGroup(panelMaterialesLayout.createSequentialGroup()
                 .addGap(116, 116, 116)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         panelMaterialesLayout.setVerticalGroup(
             panelMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

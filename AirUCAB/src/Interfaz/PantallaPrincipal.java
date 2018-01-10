@@ -102,6 +102,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuFactura = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        menuFactura1 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
         separador3 = new javax.swing.JLabel();
         menuClientes = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -364,6 +367,30 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuFactura.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
+        menuFactura1.setOpaque(false);
+        menuFactura1.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuFactura1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuFactura1MouseClicked(evt);
+            }
+        });
+        menuFactura1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel29.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel29.setText("Solicitudes");
+        jLabel29.setToolTipText("");
+        jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel29MouseClicked(evt);
+            }
+        });
+        menuFactura1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_attach_money_black_24dp_1x.png"))); // NOI18N
+        jLabel32.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuFactura1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+
         separador3.setBackground(new java.awt.Color(0, 0, 0));
         separador3.setOpaque(true);
 
@@ -475,10 +502,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         panelLateralExtendidoLayout.setHorizontalGroup(
             panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuModeloAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuFactura1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
                 .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(separador1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(separador2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(separador3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separador4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -489,17 +524,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                             .addComponent(menuVender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(menuFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(menuProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(menuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(separador4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(menuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(menuUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(menuReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 43, Short.MAX_VALUE))
-            .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menuInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuModeloAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLateralExtendidoLayout.setVerticalGroup(
             panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,6 +553,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuFactura1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separador3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -536,7 +566,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addComponent(separador4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         LateralExpandido.add(panelLateralExtendido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 661));
@@ -806,6 +836,22 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         panelContenido.updateUI();
     }//GEN-LAST:event_campoUsuarioMouseClicked
 
+    private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipaSolicitudes(conector,panelContenido,panelMensaje, permisos);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
+    }//GEN-LAST:event_jLabel29MouseClicked
+
+    private void menuFactura1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFactura1MouseClicked
+        Contenido.setVisible(true);
+        nuevoPanel = new PrincipaSolicitudes(conector,panelContenido,panelMensaje, permisos);
+        panelContenido.removeAll();
+        panelContenido.add(nuevoPanel);
+        panelContenido.updateUI();
+    }//GEN-LAST:event_menuFactura1MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Contenido;
     private javax.swing.JPanel LateralExpandido;
@@ -830,9 +876,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -846,6 +894,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel menuClientes;
     private javax.swing.JPanel menuComprar;
     private javax.swing.JPanel menuFactura;
+    private javax.swing.JPanel menuFactura1;
     private javax.swing.JPanel menuInicio;
     private javax.swing.JPanel menuInventario;
     private javax.swing.JPanel menuLotes;
