@@ -658,6 +658,11 @@ public class PrincipalReportes extends javax.swing.JPanel {
 
         generar15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_file_download_black_24dp_1x.png"))); // NOI18N
         generar15.setContentAreaFilled(false);
+        generar15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generar15ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Reporte15Layout = new javax.swing.GroupLayout(Reporte15);
         Reporte15.setLayout(Reporte15Layout);
@@ -1015,7 +1020,7 @@ public class PrincipalReportes extends javax.swing.JPanel {
     private void generar13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar13ActionPerformed
         if(comboModelo.getSelectedIndex()>0){
             try {
-            Reportes.ReporteDetalleAvion(conector.conexion,comboModelo.getSelectedIndex());
+            Reportes.ReporteDetalleAvion(conector.conexion,comboModelo.getSelectedIndex(),comboModelo.getSelectedItem().toString());
             } catch (SQLException ex) {
                 Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
             } catch (JRException ex) {
@@ -1028,6 +1033,16 @@ public class PrincipalReportes extends javax.swing.JPanel {
     private void comboModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboModeloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboModeloActionPerformed
+
+    private void generar15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar15ActionPerformed
+        try {
+            Reportes.ReportePromedioTraslados(conector.conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generar15ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

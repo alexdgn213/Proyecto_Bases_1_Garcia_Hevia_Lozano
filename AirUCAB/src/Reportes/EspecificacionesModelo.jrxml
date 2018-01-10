@@ -234,6 +234,7 @@ where mod_codigo=$P{parVar12}]]>
 		<field name="modelo_aeronave_mod_descripcion" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="parVar1" class="java.lang.Integer"/>
+	<parameter name="nombre" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      caracteristica."car_nombre" AS caracteristica_car_nombre,
@@ -275,11 +276,11 @@ where mod_codigo=$P{parVar1}]]>
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="100" height="20" uuid="045952f1-1564-4899-8ffc-a01f4a9035e9"/>
+				<reportElement x="0" y="0" width="132" height="20" uuid="20dbfe73-9cdf-43d7-85b6-d53c9e2115f8"/>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font fontName="Roboto" size="14" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{parVar1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -317,7 +318,7 @@ where mod_codigo=$P{parVar1}]]>
 	<pageFooter>
 		<band height="54" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-26" y="0" width="621" height="54" backcolor="#3F51B5" uuid="90e51a2b-0712-414f-bf49-8850b2c2092a"/>
+				<reportElement mode="Opaque" x="-27" y="0" width="621" height="54" backcolor="#3F51B5" uuid="90e51a2b-0712-414f-bf49-8850b2c2092a"/>
 				<staticText>
 					<reportElement x="30" y="12" width="555" height="31" forecolor="#FFFFFF" uuid="2eaa953a-2c93-49e7-a558-4814b97a0f7a"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">

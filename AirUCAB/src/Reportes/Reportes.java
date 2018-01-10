@@ -148,15 +148,25 @@ public class Reportes {
         ver.setVisible(true);
     }
     
-    public static void ReporteDetalleAvion(Connection c, int mod_codigo) throws SQLException,JRException {
+    public static void ReporteDetalleAvion(Connection c, int mod_codigo,String nombre) throws SQLException,JRException {
         JasperReport reporte = null;
         
         Map<String, Object> parametros = new HashMap<String, Object>();
         parametros.put("parVar1", mod_codigo);
+        parametros.put("nombre", nombre);
         reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/EspecificacionesModelo.jasper");
         JasperPrint print = JasperFillManager.fillReport(reporte,parametros,c);
         JasperViewer ver= new JasperViewer(print,false);
         ver.setTitle("Especificaciones del Modelo");
+        ver.setVisible(true);
+    }
+    
+    public static void ReportePromedioTraslados(Connection c) throws SQLException,JRException {
+        JasperReport reporte = null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/PromedioDeTraslados.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
+        JasperViewer ver= new JasperViewer(print,false);
+        ver.setTitle("Promedios de Traslados");
         ver.setVisible(true);
     }
 }
