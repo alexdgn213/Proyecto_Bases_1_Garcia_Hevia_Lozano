@@ -1539,6 +1539,8 @@ INSERT INTO personal (per_ci, per_nombre, per_apellido_1, per_apellido_2, per_fe
 (11212123, 'Keysi', 'Sayago', 'Gomez', '01/03/2014', 'Tecnico superior en administracion', '2 años Plumrose','12/12/1990', 476, 3,2),
 (11212312, 'Michelle', 'Gonzalez', 'Jraiche', '01/01/2006', 'Ingeniero mecánico', '4 años Vepica','08/10/1977', 476, 5,3),
 (19080988, 'Victor', 'Manrique', 'Perez', '05/01/2008', 'Ingeniero en produccion', 'Recien graduado','10/05/1994', 476, 6,3),
+(19080989, 'Ana', 'Medina', 'Mendoza', '05/01/2008', 'Ingeniero en electronica', 'Recien graduado','10/05/1994', 476, 6,3),
+(16580988, 'Ramiro', 'Vargas', 'City', '05/01/2008', 'Ingeniero en computacion', 'Recien graduado','10/05/1994', 476, 6,3),
 (10909899, 'Jamileth', 'Granados', 'Sislema', '01/08/2015', 'Bachiller', '3 años Mcdonals','03/10/1992', 474, 4,3);
 
 INSERT INTO beneficiario (ben_ci,ben_nombre,ben_apellido_1,ben_apellido_2,ben_parentesco,fk_lug_codigo,fk_per_ci) VALUES
@@ -2825,6 +2827,8 @@ de aviones que nosotros también fabricamos.'),
   (1,20000000,5,3,3),
   (1,10000004,5,3,3),
   (1,19080988,3,4,4),
+  (1,16580988,3,4,4),
+  (1,19080989,3,4,4),
   (1,10909899,5,5,5);
 
 INSERT INTO rol(rol_nombre,rol_descripcion) VALUES
