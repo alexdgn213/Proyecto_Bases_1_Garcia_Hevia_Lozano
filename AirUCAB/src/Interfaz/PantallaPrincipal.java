@@ -45,8 +45,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuComprar.setVisible(permisos.contains("clote_material"));
         menuVender.setVisible(permisos.contains("caeronave"));
         menuFactura.setVisible(permisos.contains("rfactura"));
+        menuFactura.setVisible(permisos.contains("rsolicitud"));
         separador2.setVisible(permisos.contains("clote_material")||permisos.contains("caeronave")
-                              ||permisos.contains("rfactura")
+                              ||permisos.contains("rfactura")||permisos.contains("rsolicitud")
         );
         menuClientes.setVisible(permisos.contains("rcliente"));
         menuProveedores.setVisible(permisos.contains("rproveedor"));
@@ -102,7 +103,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuFactura = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        menuFactura1 = new javax.swing.JPanel();
+        menuSolicitudes = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         separador3 = new javax.swing.JLabel();
@@ -367,14 +368,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuFactura.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
-        menuFactura1.setOpaque(false);
-        menuFactura1.setPreferredSize(new java.awt.Dimension(162, 30));
-        menuFactura1.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuSolicitudes.setOpaque(false);
+        menuSolicitudes.setPreferredSize(new java.awt.Dimension(162, 30));
+        menuSolicitudes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuFactura1MouseClicked(evt);
+                menuSolicitudesMouseClicked(evt);
             }
         });
-        menuFactura1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menuSolicitudes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel29.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(66, 66, 66));
@@ -385,11 +386,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 jLabel29MouseClicked(evt);
             }
         });
-        menuFactura1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
+        menuSolicitudes.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
 
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_attach_money_black_24dp_1x.png"))); // NOI18N
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_message_black_24dp_1x.png"))); // NOI18N
         jLabel32.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        menuFactura1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
+        menuSolicitudes.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
         separador3.setBackground(new java.awt.Color(0, 0, 0));
         separador3.setOpaque(true);
@@ -506,7 +507,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menuInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menuModeloAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuFactura1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(menuSolicitudes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelLateralExtendidoLayout.createSequentialGroup()
                 .addGroup(panelLateralExtendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -553,7 +554,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuFactura1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menuSolicitudes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separador3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -844,13 +845,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         panelContenido.updateUI();
     }//GEN-LAST:event_jLabel29MouseClicked
 
-    private void menuFactura1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFactura1MouseClicked
+    private void menuSolicitudesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSolicitudesMouseClicked
         Contenido.setVisible(true);
         nuevoPanel = new PrincipaSolicitudes(conector,panelContenido,panelMensaje, permisos);
         panelContenido.removeAll();
         panelContenido.add(nuevoPanel);
         panelContenido.updateUI();
-    }//GEN-LAST:event_menuFactura1MouseClicked
+    }//GEN-LAST:event_menuSolicitudesMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Contenido;
@@ -894,13 +895,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel menuClientes;
     private javax.swing.JPanel menuComprar;
     private javax.swing.JPanel menuFactura;
-    private javax.swing.JPanel menuFactura1;
     private javax.swing.JPanel menuInicio;
     private javax.swing.JPanel menuInventario;
     private javax.swing.JPanel menuLotes;
     private javax.swing.JPanel menuModeloAviones;
     private javax.swing.JPanel menuProveedores;
     private javax.swing.JPanel menuReporte;
+    private javax.swing.JPanel menuSolicitudes;
     private javax.swing.JPanel menuUsuario;
     private javax.swing.JPanel menuVender;
     private javax.swing.JPanel panelContenido;

@@ -2864,7 +2864,13 @@ INSERT INTO privilegio(pri_accion,pri_descripcion,pri_nombre_clave)VALUES
 ('Añadir roles','Permite añadir roles','crol'),
 ('Modificar roles','Permite modificar roles','urol'),
 ('Eliminar roles','Permite eliminar roles','drol'),
-('Ver reportes','Permite ver los reportes','rreporte');
+('Ver reportes','Permite ver los reportes','rreporte'),
+('Ver solicitudes','Permite ver las solicitudes','rsolicitud'),
+('Añadir solicitud','Permite añadir solicitudes','csolicitud'),
+('Modificar solicitud','Permite modificar solicitudes','usolicitud'),
+('Eliminar solicitud','Permite eliminar solicitud','dsolicitud')
+;
+
 
 INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
 (1,1),
@@ -2898,6 +2904,10 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
 (1,29),
 (1,30),
 (1,31),
+(1,32),
+(1,33),
+(1,34),
+(1,35),
 (2,1),
 (2,2),
 (2,3),
@@ -2922,6 +2932,10 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
 (2,22),
 (2,23),
 (2,31),
+(2,32),
+(2,33),
+(2,34),
+(2,35),
 (3,1),
 (3,2),
 (3,3),
@@ -2942,6 +2956,9 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
 (3,20),
 (3,21),
 (3,22),
+(3,32),
+(3,33),
+(3,34),
 (4,1),
 (4,5),
 (4,6),
@@ -2950,6 +2967,7 @@ INSERT INTO rol_pri(fk_rol_codigo,fk_pri_codigo) VALUES
 (4,15),
 (4,16),
 (4,20),
+(4,32),
 (5,1),
 (5,16),
 (5,20);

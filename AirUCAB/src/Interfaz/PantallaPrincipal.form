@@ -107,7 +107,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="menuInicio" min="-2" max="-2" attributes="0"/>
                           <Component id="menuModeloAviones" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="menuFactura1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="menuSolicitudes" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -161,7 +161,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="menuFactura" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="menuFactura1" min="-2" max="-2" attributes="0"/>
+                      <Component id="menuSolicitudes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="separador3" min="-2" pref="1" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -610,7 +610,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="menuFactura1">
+            <Container class="javax.swing.JPanel" name="menuSolicitudes">
               <Properties>
                 <Property name="opaque" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -618,7 +618,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuFactura1MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuSolicitudesMouseClicked"/>
               </Events>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -648,7 +648,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel32">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Interfaz/Imagenes/ic_attach_money_black_24dp_1x.png"/>
+                      <Image iconType="3" name="/Interfaz/Imagenes/ic_message_black_24dp_1x.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Cursor Por defecto"/>
