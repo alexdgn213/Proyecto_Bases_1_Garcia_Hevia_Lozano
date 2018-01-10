@@ -308,8 +308,8 @@ create table ensamblaje
 (
 	ens_codigo serial not null,
 	ens_descripcion varchar(80) not null,
-	ens_fecha_estimada int,
-	ens_fecha_finalizada int,
+	ens_fecha_estimada date,
+	ens_fecha_finalizada date,
 	fk_zon_codigo int not null,
     fk_fab_codigo int not null,
 	fk_pie_codigo int,
