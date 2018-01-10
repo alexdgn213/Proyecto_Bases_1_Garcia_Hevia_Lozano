@@ -169,4 +169,13 @@ public class Reportes {
         ver.setTitle("Promedios de Traslados");
         ver.setVisible(true);
     }
+    
+    public static void ReportePlantaMasEficiente(Connection c) throws SQLException,JRException {
+        JasperReport reporte = null;
+        reporte=(JasperReport) JRLoader.loadObjectFromFile("src/Reportes/PlantaMasEficiente.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte,null,c);
+        JasperViewer ver= new JasperViewer(print,false);
+        ver.setTitle("Planta más Eficiente");
+        ver.setVisible(true);
+    }
 }

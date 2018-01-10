@@ -730,6 +730,11 @@ public class PrincipalReportes extends javax.swing.JPanel {
 
         generar17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_file_download_black_24dp_1x.png"))); // NOI18N
         generar17.setContentAreaFilled(false);
+        generar17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generar17ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Reporte17Layout = new javax.swing.GroupLayout(Reporte17);
         Reporte17.setLayout(Reporte17Layout);
@@ -1043,6 +1048,16 @@ public class PrincipalReportes extends javax.swing.JPanel {
             Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_generar15ActionPerformed
+
+    private void generar17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar17ActionPerformed
+        try {
+            Reportes.ReportePlantaMasEficiente(conector.conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generar17ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
