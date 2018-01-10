@@ -2697,19 +2697,19 @@ de aviones que nosotros también fabricamos.'),
 	('Finalizado'),
 	('Cancelado');
 
-  INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_mot_codigo,fk_est_codigo) VALUES
-  ('Ensamblaje del Ala',5,3,1,null,4),
-  ('Ensamblaje del Fuselaje',7,5,2,null,4),
-  ('Ensamblaje del Grupo Motopropulsor',8,1,3,null,4),
-  ('Ensamblaje de Alerones',5,3,4,null,4),
-  ('Ensamblaje de Flaps',5,3,5,null,1),
-  ('Ensamblaje de Spoilers',5,3,6,null,1),
-  ('Ensamblaje de Flaps',5,3,7,null,1),
-  ('Ensamblaje de Estabilizadores',5,3,8,null,1),
-  ('Ensamblaje de Instrumentos de Control',10,4,9,null,1),
-  ('Creacion de Asientos',9,2,10,null,1),
-  ('Ensamblaje de Tren de Aterrizaje Fijo',5,3,11,null,1),
-  ('Ensamblaje de Tren de Aterrizaje Retractil',5,3,12,null,1);
+  INSERT INTO ensamblaje(ens_descripcion,fk_zon_codigo,fk_fab_codigo,fk_pie_codigo,fk_mot_codigo,fk_est_codigo,ens_fecha_estimada,ens_fecha_finalizada) VALUES
+  ('Ensamblaje del Ala',5,3,1,null,4,'01/01/2016','02/01/2016'),
+  ('Ensamblaje del Fuselaje',7,5,2,null,4,'09/09/2015','09/09/2015'),
+  ('Ensamblaje del Grupo Motopropulsor',8,1,3,null,4,'01/01/2016','02/01/2016'),
+  ('Ensamblaje de Alerones',5,3,4,null,4,'05/05/2017','05/05/2017'),
+  ('Ensamblaje de Flaps',5,3,5,null,1,'04/04/2015','04/05/2015'),
+  ('Ensamblaje de Spoilers',5,3,6,null,1,'03/03/2016','03/03/2016'),
+  ('Ensamblaje de Flaps',5,3,7,null,1,'03/03/2016','03/03/2016'),
+  ('Ensamblaje de Estabilizadores',5,3,8,null,1,'02/02/2016','10/01/2016'),
+  ('Ensamblaje de Instrumentos de Control',10,4,9,null,1,'01/01/2017','12/03/2016'),
+  ('Creacion de Asientos',9,2,10,null,1,'10/10/2016','10/10/2016'),
+  ('Ensamblaje de Tren de Aterrizaje Fijo',5,3,11,null,1,'04/04/2015','04/06/2015'),
+  ('Ensamblaje de Tren de Aterrizaje Retractil',5,3,12,null,1,'11/07/2015','11/06/2015');
   
   --ENSAMBLAJES DE TODOS LOS MOTORES.... aqui 
   
