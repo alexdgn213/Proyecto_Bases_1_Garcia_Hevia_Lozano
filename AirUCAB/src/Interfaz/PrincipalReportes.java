@@ -397,6 +397,11 @@ public class PrincipalReportes extends javax.swing.JPanel {
 
         generar8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagenes/ic_file_download_black_24dp_1x.png"))); // NOI18N
         generar8.setContentAreaFilled(false);
+        generar8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generar8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Reporte8Layout = new javax.swing.GroupLayout(Reporte8);
         Reporte8.setLayout(Reporte8Layout);
@@ -1058,6 +1063,16 @@ public class PrincipalReportes extends javax.swing.JPanel {
             Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_generar17ActionPerformed
+
+    private void generar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generar8ActionPerformed
+        try {
+            Reportes.ReporteEquipoMasEficiente(conector.conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generar8ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
