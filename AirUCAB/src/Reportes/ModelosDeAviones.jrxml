@@ -84,7 +84,7 @@
 		</conditionalStyle>
 	</style>
 	<subDataset name="ModelosdeAviones" uuid="f5674594-a836-41a0-98ee-c6f7c544b1b1">
-		<queryString language="SQL">
+		<queryString>
 			<![CDATA[SELECT
      modelo_aeronave."mod_codigo" AS modelo_aeronave_mod_codigo,
      modelo_aeronave."mod_nombre" AS modelo_aeronave_mod_nombre

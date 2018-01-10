@@ -48,14 +48,14 @@ LIMIT 1]]>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<textField>
-				<reportElement x="136" y="0" width="100" height="20" uuid="80c21aba-b723-4876-ac84-54b28da01a20"/>
+				<reportElement x="136" y="0" width="226" height="20" uuid="80c21aba-b723-4876-ac84-54b28da01a20"/>
 				<textElement>
 					<font fontName="Roboto" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo_pieza_tip_nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="136" y="20" width="100" height="20" uuid="313c5d86-f871-41b2-96db-53404c6aa784"/>
+				<reportElement x="136" y="20" width="226" height="20" uuid="313c5d86-f871-41b2-96db-53404c6aa784"/>
 				<textElement>
 					<font fontName="Roboto" size="12"/>
 				</textElement>

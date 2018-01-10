@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7eda342-3372-47d5-86ab-3e5040875cbc">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="105"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -94,12 +94,12 @@
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-62" y="-205" width="657" height="109" backcolor="#3F51B5" uuid="41bbcbe2-3aca-42c7-a9d8-458e4860d890"/>
+				<reportElement mode="Opaque" x="-58" y="-144" width="657" height="109" backcolor="#3F51B5" uuid="41bbcbe2-3aca-42c7-a9d8-458e4860d890"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
 					<reportElement x="62" y="30" width="109" height="20" forecolor="#FFFFFF" uuid="97302a2d-6206-4b61-9d14-d909d9dbbd77"/>
 					<textElement>
@@ -116,7 +116,7 @@
 				</staticText>
 			</frame>
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="119" y="0" width="360" height="80" uuid="f283cb6e-3729-4aab-971a-e8b4a6d92068"/>
+				<reportElement key="table 1" style="table 1" x="100" y="0" width="360" height="80" uuid="f283cb6e-3729-4aab-971a-e8b4a6d92068"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="TOP10CLIENTES" uuid="e6442755-f773-4a0b-82fb-0c156854570b">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>

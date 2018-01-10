@@ -280,7 +280,7 @@ where mod_nombre=$P{nombre}]]>
 				<textElement>
 					<font fontName="Roboto" size="14" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{nombre} +":"]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -290,21 +290,21 @@ where mod_nombre=$P{nombre}]]>
 	<detail>
 		<band height="27" splitType="Stretch">
 			<textField>
-				<reportElement x="63" y="0" width="100" height="20" uuid="d11b1b7a-6432-4bf7-8253-940889f16f42"/>
+				<reportElement x="62" y="0" width="227" height="20" uuid="d11b1b7a-6432-4bf7-8253-940889f16f42"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{caracteristica_car_nombre}+": "]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="163" y="0" width="100" height="20" uuid="b21d9e1f-387b-4714-a451-789e179a362c"/>
+				<reportElement x="289" y="0" width="110" height="20" uuid="b21d9e1f-387b-4714-a451-789e179a362c"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mod_car_mod_car_valor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="263" y="0" width="100" height="20" uuid="94474c3a-a785-49dc-b256-c4790930435f"/>
+				<reportElement x="399" y="0" width="100" height="20" uuid="94474c3a-a785-49dc-b256-c4790930435f"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>

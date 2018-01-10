@@ -146,7 +146,7 @@ GROUP by origen,destino;]]>
 							<staticText>
 								<reportElement x="0" y="0" width="123" height="30" uuid="c7b300f6-2f1c-4fb7-a90a-39d088ed3da3"/>
 								<textElement>
-									<font size="12" isBold="true"/>
+									<font size="12" isBold="false"/>
 								</textElement>
 								<text><![CDATA[origen]]></text>
 							</staticText>
@@ -156,7 +156,7 @@ GROUP by origen,destino;]]>
 							<textField>
 								<reportElement x="0" y="0" width="123" height="20" uuid="2c9c4893-0626-427c-a752-dc7ae69013fd"/>
 								<textElement>
-									<font size="12" isBold="true"/>
+									<font size="12" isBold="false"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{origen}]]></textFieldExpression>
 							</textField>
@@ -167,7 +167,7 @@ GROUP by origen,destino;]]>
 							<staticText>
 								<reportElement x="0" y="0" width="131" height="30" uuid="37493f1e-4b39-442e-b622-991544860321"/>
 								<textElement>
-									<font size="12" isBold="true"/>
+									<font size="12" isBold="false"/>
 								</textElement>
 								<text><![CDATA[destino]]></text>
 							</staticText>
@@ -177,7 +177,7 @@ GROUP by origen,destino;]]>
 							<textField>
 								<reportElement x="0" y="0" width="131" height="20" uuid="2d00baa6-bb82-4692-a7af-7ae4fc7224b3"/>
 								<textElement>
-									<font size="12" isBold="true"/>
+									<font size="12" isBold="false"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{destino}]]></textFieldExpression>
 							</textField>
@@ -188,7 +188,7 @@ GROUP by origen,destino;]]>
 							<staticText>
 								<reportElement x="0" y="0" width="161" height="30" uuid="5429fbef-d0d5-4913-9d74-ee67fe19fb73"/>
 								<textElement>
-									<font size="12" isBold="true"/>
+									<font size="12" isBold="false"/>
 								</textElement>
 								<text><![CDATA[promedio]]></text>
 							</staticText>
@@ -198,7 +198,7 @@ GROUP by origen,destino;]]>
 							<textField>
 								<reportElement x="0" y="0" width="161" height="20" uuid="4d035492-6c27-42ff-a31d-db95ccb8eb4c"/>
 								<textElement>
-									<font size="12" isBold="true"/>
+									<font size="12" isBold="false"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{promedio}]]></textFieldExpression>
 							</textField>

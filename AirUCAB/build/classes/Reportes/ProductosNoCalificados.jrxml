@@ -60,7 +60,7 @@
 		</conditionalStyle>
 	</style>
 	<subDataset name="ProductosNoCalificados" uuid="a85ed531-82b1-425e-8662-e4885b0ed582">
-		<queryString language="SQL">
+		<queryString>
 			<![CDATA[SELECT
     
      material."mat_nombre" AS material_mat_nombre,

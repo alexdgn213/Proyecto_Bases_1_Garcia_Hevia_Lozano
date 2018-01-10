@@ -155,7 +155,7 @@ limit 1;]]>
 					<jr:column width="176" uuid="0f32ce51-ae0f-4c9a-8061-155b56d76ecf">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="163" height="30" uuid="937323b5-41f0-4c8e-96f6-9a1b9382b7d8"/>
+								<reportElement x="0" y="0" width="176" height="30" uuid="937323b5-41f0-4c8e-96f6-9a1b9382b7d8"/>
 								<textElement>
 									<font fontName="Roboto" size="12"/>
 								</textElement>
@@ -165,7 +165,7 @@ limit 1;]]>
 						<jr:columnFooter style="table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="163" height="20" uuid="17574c3a-cf46-4f5b-a555-1c2e1cea54ee"/>
+								<reportElement x="0" y="0" width="176" height="20" uuid="17574c3a-cf46-4f5b-a555-1c2e1cea54ee"/>
 								<textElement>
 									<font fontName="Roboto" size="12"/>
 								</textElement>

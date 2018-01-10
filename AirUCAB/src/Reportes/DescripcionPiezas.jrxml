@@ -36,16 +36,16 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="173" splitType="Stretch">
+		<band height="130" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="17" width="218" height="20" uuid="9ec94e05-cc04-4479-91da-e61339780af0"/>
+				<reportElement x="0" y="9" width="218" height="20" uuid="9ec94e05-cc04-4479-91da-e61339780af0"/>
 				<textElement>
-					<font fontName="Roboto" isBold="true"/>
+					<font fontName="Roboto" size="14" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nombre} +":"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="16" y="70" width="518" height="89" uuid="3c51bd87-f870-495f-b7c1-8a6d986ae891"/>
+				<reportElement stretchType="RelativeToTallestObject" x="26" y="37" width="518" height="89" uuid="3c51bd87-f870-495f-b7c1-8a6d986ae891"/>
 				<textElement>
 					<font fontName="Roboto" size="12"/>
 				</textElement>

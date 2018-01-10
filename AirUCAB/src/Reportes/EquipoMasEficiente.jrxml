@@ -162,37 +162,49 @@ limit 1]]>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 2" style="table 2" x="60" y="41" width="360" height="80" uuid="e2f084bd-bc60-4bde-a353-4834490efc6d"/>
+				<reportElement key="table 2" style="table 2" x="75" y="23" width="337" height="80" uuid="e2f084bd-bc60-4bde-a353-4834490efc6d"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="EquipoMasEficiente" uuid="22e461ce-57ca-4c0e-a85e-4567144ff288">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="111" uuid="9cf99d0f-5ded-4a4e-8f88-a8e8b7529c33">
+					<jr:column width="90" uuid="9cf99d0f-5ded-4a4e-8f88-a8e8b7529c33">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="16" y="0" width="90" height="30" uuid="dced3b5f-f394-40c8-8921-c80d4b6ea3ec"/>
+								<reportElement x="0" y="0" width="90" height="30" uuid="dced3b5f-f394-40c8-8921-c80d4b6ea3ec"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
 								<text><![CDATA[Cedula]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="16" y="0" width="90" height="20" uuid="4293f7ee-aac2-47a5-a166-42d1a020b07a"/>
+								<reportElement x="0" y="0" width="90" height="20" uuid="4293f7ee-aac2-47a5-a166-42d1a020b07a"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{per_ci}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="106" uuid="2ef6f987-216f-4c05-9b85-e0db826e92ea">
+					<jr:column width="117" uuid="2ef6f987-216f-4c05-9b85-e0db826e92ea">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="16" y="0" width="90" height="30" uuid="47565b5a-747c-4de8-972c-dd8286bceb30"/>
+								<reportElement x="0" y="0" width="117" height="30" uuid="47565b5a-747c-4de8-972c-dd8286bceb30"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
 								<text><![CDATA[Nombre]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="16" y="0" width="90" height="20" uuid="7a0418ac-5c37-43cb-9f4f-a8a1e99e2cac"/>
+								<reportElement x="0" y="0" width="117" height="20" uuid="7a0418ac-5c37-43cb-9f4f-a8a1e99e2cac"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{per_nombre}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -200,14 +212,20 @@ limit 1]]>
 					<jr:column width="106" uuid="470e3adc-ce34-4b9f-95b9-8525c1310773">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="16" y="0" width="90" height="30" uuid="80788db8-f4cf-4d87-87fd-b6d6531c4ecc"/>
+								<reportElement x="0" y="0" width="106" height="30" uuid="80788db8-f4cf-4d87-87fd-b6d6531c4ecc"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
 								<text><![CDATA[Primer Apellido]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="16" y="0" width="90" height="20" uuid="ca7c55b1-a431-4134-ae13-d2e15296be53"/>
+								<reportElement x="0" y="0" width="106" height="20" uuid="ca7c55b1-a431-4134-ae13-d2e15296be53"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{per_apellido_1}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -215,14 +233,20 @@ limit 1]]>
 					<jr:column width="106" uuid="1c26c880-5676-4004-a189-1cc5d30d3c6a">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="16" y="0" width="90" height="30" uuid="a729b488-cd22-4e35-9112-0b1f12c161f6"/>
+								<reportElement x="0" y="0" width="106" height="30" uuid="a729b488-cd22-4e35-9112-0b1f12c161f6"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
 								<text><![CDATA[Segundo Apellido]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="16" y="0" width="90" height="20" uuid="4010f40d-eaef-47d0-ada3-f01bfd8bfdd0"/>
+								<reportElement x="0" y="0" width="106" height="20" uuid="4010f40d-eaef-47d0-ada3-f01bfd8bfdd0"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{per_apellido_2}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -237,16 +261,16 @@ limit 1]]>
 	<pageFooter>
 		<band height="54" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-15" y="0" width="621" height="54" backcolor="#3F51B5" uuid="333e7a77-f78c-48d5-97d0-3b8167fe8295"/>
+				<reportElement mode="Opaque" x="-36" y="0" width="621" height="54" backcolor="#3F51B5" uuid="333e7a77-f78c-48d5-97d0-3b8167fe8295"/>
 				<staticText>
-					<reportElement x="30" y="12" width="555" height="31" forecolor="#FFFFFF" uuid="95b1cc0f-4f4b-4fd3-b2de-6280c912757a"/>
+					<reportElement x="36" y="12" width="555" height="31" forecolor="#FFFFFF" uuid="95b1cc0f-4f4b-4fd3-b2de-6280c912757a"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Roboto" size="14" isBold="true"/>
 					</textElement>
 					<text><![CDATA[AirUCAB - Reportes]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="499" y="12" width="71" height="29" forecolor="#FFFFFF" uuid="d8e7c91e-7be0-463d-ad8b-8d7e4e8ccd09"/>
+					<reportElement x="520" y="12" width="71" height="29" forecolor="#FFFFFF" uuid="d8e7c91e-7be0-463d-ad8b-8d7e4e8ccd09"/>
 					<textElement>
 						<font fontName="Roboto" size="24"/>
 					</textElement>
