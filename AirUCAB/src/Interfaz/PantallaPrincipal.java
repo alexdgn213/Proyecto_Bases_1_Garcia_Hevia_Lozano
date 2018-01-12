@@ -45,7 +45,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuComprar.setVisible(permisos.contains("clote_material"));
         menuVender.setVisible(permisos.contains("caeronave"));
         menuFactura.setVisible(permisos.contains("rfactura"));
-        menuFactura.setVisible(permisos.contains("rsolicitud"));
+        menuSolicitudes.setVisible(permisos.contains("rsolicitud"));
         separador2.setVisible(permisos.contains("clote_material")||permisos.contains("caeronave")
                               ||permisos.contains("rfactura")||permisos.contains("rsolicitud")
         );
